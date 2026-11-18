@@ -231,7 +231,7 @@
         <div class="grid-input">
           <div class="grup-field">
             <label for="namaSiswa">Nama Lengkap Siswa *</label>
-            <input type="text" id="namaSiswa" placeholder="Contoh: Ahmad Fauzan" required>
+            <input type="text" id="namaSiswa" placeholder="Contoh: Herdianto Parenta" required>
           </div>
           <div class="grup-field">
             <label for="kelasSiswa">Kelas *</label>
@@ -239,19 +239,17 @@
               <option value="">-- Pilih Kelas --</option>
               <option value="VII A">Kelas VII A</option>
               <option value="VII B">Kelas VII B</option>
-              <option value="VII C">Kelas VII C</option>
               <option value="VIII A">Kelas VIII A</option>
               <option value="VIII B">Kelas VIII B</option>
-              <option value="VIII C">Kelas VIII C</option>
               <option value="IX A">Kelas IX A</option>
               <option value="IX B">Kelas IX B</option>
-              <option value="IX C">Kelas IX C</option>
             </select>
           </div>
           <div class="grup-field">
             <label for="topikSelect">Pokok Bahasan *</label>
             <select id="topikSelect">
               <option value="populasiSampel" data-nama="Populasi dan Sampel">Populasi dan Sampel (100 Soal)</option>
+              <option value="operasiBilanganRasional" data-nama="Operasi Bilangan Rasional">Operasi Bilangan Rasional (100 Soal TKA)</option>
               <!-- Nanti saat bank soal materi lain sudah dibuat, tinggal tambahkan pilihan di bawah ini:
               <option value="bilanganRasional" data-nama="Bilangan Rasional">Bilangan Rasional (100 Soal)</option>
               <option value="operasiBilanganRasional" data-nama="Operasi Bilangan Rasional">Operasi Bilangan Rasional (100 Soal)</option>
@@ -299,6 +297,7 @@
 
   <!-- PEMANGGILAN BANK SOAL MODULAR PER POKOK BAHASAN -->
   <script src="bank-soal-populasi-sampel.js"></script>
+  <script src="bank-soal-operasi-bilangan-rasional.js"></script>
   <!-- Nanti tinggal tambahkan baris <script src="bank-soal-nama-materi.js"></script> di bawah ini:
   <script src="bank-soal-bilangan-rasional.js"></script>
   <script src="bank-soal-operasi-bilangan-rasional.js"></script>
@@ -372,7 +371,7 @@
         </div>
       `;
 
-      const hurufOpsi = ["A", "B", "C", "D"];
+      const hurufOpsi = ["A", "B", "C", "D", "E"];
       soalTerpilih.forEach((item, index) => {
         html += `<div class="kartu-soal" id="kotak_soal_${index}">
           <p class="teks-soal"><strong>${index + 1}.</strong> ${item.soal}</p>`;
