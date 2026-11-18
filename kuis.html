@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Interaktif Matematika SMP - MathSMP</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$']] } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .panel-kuis {
+      max-width: 860px;
+      margin: 32px auto;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+    }
+    .form-identitas {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 22px;
+      margin-top: 20px;
+    }
+    .grid-input {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .grup-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .grup-field input,
+    .grup-field select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 15px;
+      background: #ffffff;
+    }
+    .grup-field input:focus,
+    .grup-field select:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .btn-mulai {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 13px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .btn-mulai:hover {
+      background: #1d4ed8;
+    }
+    .banner-peserta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: #1e3a8a;
+    }
+    .kartu-soal {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 18px;
+      background: #f8fafc;
+    }
+    .teks-soal {
+      font-size: 16px;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+    .opsi-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 11px 14px;
+      margin-top: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .opsi-label:hover {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+    .opsi-label input[type="radio"] {
+      margin-top: 4px;
+      transform: scale(1.15);
+    }
+    .kotak-skor {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 2px solid #2563eb;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin: 20px 0 24px 0;
+    }
+    .angka-skor {
+      font-size: 52px;
+      font-weight: 800;
+      color: #1e3a8a;
+      line-height: 1.1;
+      margin: 6px 0;
+    }
+    .aksi-hasil {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .btn-wa {
+      background: #16a34a;
+      color: #ffffff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-ulang {
+      background: #ffffff;
+      color: #1e3a8a;
+      border: 1px solid #2563eb;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .pembahasan-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .benar { background: #dcfce7; border-left: 4px solid #16a34a; color: #14532d; }
+    .salah { background: #fee2e2; border-left: 4px solid #dc2626; color: #7f1d1d; }
+    .panel-riwayat {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 2px dashed #cbd5e1;
+    }
+    .tabel-wadah {
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+    table.tabel-nilai {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    table.tabel-nilai th,
+    table.tabel-nilai td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    table.tabel-nilai th {
+      background: #1e3a8a;
+      color: #ffffff;
+    }
+    table.tabel-nilai tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    .status-simpan {
+      font-size: 13px;
+      margin-top: 10px;
+      font-weight: 600;
+      color: #15803d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="navbar">
+    <div class="wadah nav-isi">
+      <a href="index.html" class="logo">
+        <span class="logo-ikon">∑</span> Math<span>SMP</span>
+      </a>
+      <nav class="menu-utama">
+        <a href="index.html">Beranda</a>
+        <a href="index.html#layanan">Materi</a>
+        <a href="kuis.html" class="aktif">Bank Soal</a>
+        <a href="index.html#layanan">Tools</a>
+        <a href="index.html#layanan">Ruang Guru</a>
+        <a href="index.html#tentang">Tentang</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wadah">
+    <div class="panel-kuis">
+      <h2>🎯 Kuis Interaktif Matematika SMP</h2>
+      <p>Sistem akan memilih <strong>10 soal secara acak</strong> dari bank <strong>100 soal</strong>. Isi nama dan kelasmu terlebih dahulu sebelum memulai.</p>
+
+      <!-- FORM IDENTITAS SISWA -->
+      <div id="formIdentitas" class="form-identitas">
+        <div class="grid-input">
+          <div class="grup-field">
+            <label for="namaSiswa">Nama Lengkap Siswa *</label>
+            <input type="text" id="namaSiswa" placeholder="Contoh: Ahmad Fauzan" required>
+          </div>
+          <div class="grup-field">
+            <label for="kelasSiswa">Kelas *</label>
+            <select id="kelasSiswa">
+              <option value="">-- Pilih Kelas --</option>
+              <option value="VII A">Kelas VII A</option>
+              <option value="VII B">Kelas VII B</option>
+              <option value="VII C">Kelas VII C</option>
+              <option value="VIII A">Kelas VIII A</option>
+              <option value="VIII B">Kelas VIII B</option>
+              <option value="VIII C">Kelas VIII C</option>
+              <option value="IX A">Kelas IX A</option>
+              <option value="IX B">Kelas IX B</option>
+              <option value="IX C">Kelas IX C</option>
+            </select>
+          </div>
+          <div class="grup-field">
+            <label for="topikSelect">Pokok Bahasan *</label>
+            <select id="topikSelect">
+              <option value="populasiSampel" data-nama="Populasi dan Sampel">Populasi dan Sampel (100 Soal)</option>
+              <!-- Nanti saat bank soal materi lain sudah dibuat, tinggal tambahkan pilihan di bawah ini:
+              <option value="bilanganRasional" data-nama="Bilangan Rasional">Bilangan Rasional (100 Soal)</option>
+              <option value="operasiBilanganRasional" data-nama="Operasi Bilangan Rasional">Operasi Bilangan Rasional (100 Soal)</option>
+              <option value="fungsiLinear" data-nama="Fungsi Linear dan Grafiknya">Fungsi Linear dan Grafiknya (100 Soal)</option>
+              <option value="nilaiFungsi" data-nama="Penyajian dan Nilai Fungsi">Penyajian dan Nilai Fungsi (100 Soal)</option>
+              -->
+            </select>
+          </div>
+        </div>
+        <button class="btn-mulai" onclick="mulaiKuis()">Mulai Kuis (Acak 10 Soal)</button>
+      </div>
+
+      <!-- AREA SOAL & HASIL -->
+      <div id="areaKuis"></div>
+
+      <!-- RIWAYAT NILAI TERSIMPAN DI PERANGKAT -->
+      <div class="panel-riwayat">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <h3 style="color:#1e3a8a; font-size:18px;">📋 Rekap Nama & Skor Tersimpan</h3>
+            <p style="font-size:13px; color:#64748b;">Hasil pengerjaan tersimpan otomatis di browser ini dan dapat diunduh sebagai file Excel (CSV).</p>
+          </div>
+          <button onclick="unduhCSV()" style="background:#0f172a; color:#fff; border:none; padding:9px 14px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">📥 Unduh Rekap (.CSV)</button>
+        </div>
+        <div class="tabel-wadah">
+          <table class="tabel-nilai">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Waktu</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+                <th>Materi</th>
+                <th>Benar</th>
+                <th>Skor</th>
+              </tr>
+            </thead>
+            <tbody id="isiTabelRiwayat"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- PEMANGGILAN BANK SOAL MODULAR PER POKOK BAHASAN -->
+  <script src="bank-soal-populasi-sampel.js"></script>
+  <!-- Nanti tinggal tambahkan baris <script src="bank-soal-nama-materi.js"></script> di bawah ini:
+  <script src="bank-soal-bilangan-rasional.js"></script>
+  <script src="bank-soal-operasi-bilangan-rasional.js"></script>
+  <script src="bank-soal-fungsi-linear.js"></script>
+  <script src="bank-soal-nilai-fungsi.js"></script>
+  -->
+
+  <script>
+    // OPSIONAL: Tempel URL Web App Google Apps Script di dalam tanda kutip di bawah ini
+    // jika Bapak/Ibu ingin skor siswa otomatis masuk ke Google Sheets secara online.
+    const URL_GOOGLE_SHEET = "https://script.google.com/macros/s/AKfycby6qtarvFl-xBTszC9QyxDcAwXlH3QStWkrPfygXkXm_yKmvbIAn2y48ylKy9m3ajPs/exec";
+
+    // Nomor WhatsApp Guru (format 628xxx, opsional - jika dikosongkan siswa tinggal pilih kontak guru di WA)
+    const NOMOR_WA_GURU = "6285342137045";
+
+    let soalTerpilih = [];
+    let pesertaAktif = { nama: "", kelas: "", topikLabel: "" };
+
+    // Otomatis pilih pokok bahasan jika dibuka dari tautan khusus, misal: kuis.html?topik=populasiSampel
+    (function pilihTopikDariUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const topikUrl = params.get("topik");
+      if (topikUrl) {
+        const selectEl = document.getElementById("topikSelect");
+        if ([...selectEl.options].some(opt => opt.value === topikUrl)) {
+          selectEl.value = topikUrl;
+        }
+      }
+    })();
+
+    function mulaiKuis() {
+      const nama = document.getElementById("namaSiswa").value.trim();
+      const kelas = document.getElementById("kelasSiswa").value;
+      const selectEl = document.getElementById("topikSelect");
+      const topikKode = selectEl.value;
+      const opsiAktif = selectEl.options[selectEl.selectedIndex];
+      const namaMateri = opsiAktif.getAttribute("data-nama") || opsiAktif.text;
+
+      if (!nama) {
+        alert("Silakan isi Nama Lengkap terlebih dahulu!");
+        document.getElementById("namaSiswa").focus();
+        return;
+      }
+      if (!kelas) {
+        alert("Silakan pilih Kelas terlebih dahulu!");
+        document.getElementById("kelasSiswa").focus();
+        return;
+      }
+      if (!window.bankSoal || !window.bankSoal[topikKode] || window.bankSoal[topikKode].length === 0) {
+        alert("Bank soal untuk pokok bahasan ini belum tersedia atau sedang disiapkan.");
+        return;
+      }
+
+      pesertaAktif = { nama: nama, kelas: kelas, topikLabel: namaMateri };
+      document.getElementById("formIdentitas").style.display = "none";
+
+      // Mengacak 100 soal menggunakan algoritma Fisher-Yates
+      const semuaSoal = [...window.bankSoal[topikKode]];
+      for (let i = semuaSoal.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [semuaSoal[i], semuaSoal[j]] = [semuaSoal[j], semuaSoal[i]];
+      }
+
+      // Ambil 10 nomor soal teratas
+      soalTerpilih = semuaSoal.slice(0, 10);
+
+      let html = `
+        <div class="banner-peserta">
+          <div><strong>Peserta:</strong> ${pesertaAktif.nama} (${pesertaAktif.kelas})</div>
+          <div><strong>Materi:</strong> ${pesertaAktif.topikLabel} • 10 Soal Acak</div>
+        </div>
+      `;
+
+      const hurufOpsi = ["A", "B", "C", "D"];
+      soalTerpilih.forEach((item, index) => {
+        html += `<div class="kartu-soal" id="kotak_soal_${index}">
+          <p class="teks-soal"><strong>${index + 1}.</strong> ${item.soal}</p>`;
+        item.pilihan.forEach((pil, idxPil) => {
+          html += `<label class="opsi-label">
+            <input type="radio" name="soal_${index}" value="${idxPil}">
+            <span><strong>${hurufOpsi[idxPil]}.</strong> ${pil}</span>
+          </label>`;
+        });
+        html += `</div>`;
+      });
+
+      html += `<button class="btn-mulai" style="background:#16a34a; font-size:16px;" onclick="periksaJawaban()">✔ Selesai & Simpan Nilai</button>`;
+      document.getElementById("areaKuis").innerHTML = html;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.MathJax) MathJax.typesetPromise();
+    }
+
+    function periksaJawaban() {
+      let belumDijawab = 0;
+      soalTerpilih.forEach((_, index) => {
+        if (!document.querySelector(`input[name="soal_${index}"]:checked`)) {
+          belumDijawab++;
+        }
+      });
+
+      if (belumDijawab > 0) {
+        const lanjut = confirm(`Masih ada ${belumDijawab} soal yang belum dijawab. Tetap kumpulkan dan lihat nilai?`);
+        if (!lanjut) return;
+      }
+
+      let jumlahBenar = 0;
+      let ulasanHtml = "";
+      const hurufOpsi = ["A", "B", "C", "D"];
+
+      soalTerpilih.forEach((item, index) => {
+        const terpilih = document.querySelector(`input[name="soal_${index}"]:checked`);
+        const jawabanSiswa = terpilih ? parseInt(terpilih.value) : -1;
+        const isBenar = jawabanSiswa === item.jawabanBenar;
+        if (isBenar) jumlahBenar++;
+
+        const teksJawabanSiswa = jawabanSiswa === -1
+          ? "Tidak dijawab"
+          : `${hurufOpsi[jawabanSiswa]}. ${item.pilihan[jawabanSiswa]}`;
+        const teksKunci = `${hurufOpsi[item.jawabanBenar]}. ${item.pilihan[item.jawabanBenar]}`;
+
+        ulasanHtml += `<div class="kartu-soal">
+          <p class="teks-soal"><strong>${index + 1}.</strong> ${item.soal}</p>
+          <p style="font-size:14px; margin-bottom:6px;">Jawabanmu: <strong>${teksJawabanSiswa}</strong></p>
+          <div class="pembahasan-box ${isBenar ? "benar" : "salah"}">
+            <strong>${isBenar ? "✔ Benar!" : "✘ Kurang Tepat."}</strong> Kunci Jawaban: <strong>${teksKunci}</strong><br>
+            <em>Pembahasan:</em> ${item.pembahasan}
+          </div>
+        </div>`;
+      });
+
+      const nilaiAkhir = jumlahBenar * 10;
+      const waktuSekarang = new Date().toLocaleString("id-ID", {
+        day: "2-digit", month: "2-digit", year: "numeric",
+        hour: "2-digit", minute: "2-digit"
+      });
+
+      const dataHasil = {
+        waktu: waktuSekarang,
+        nama: pesertaAktif.nama,
+        kelas: pesertaAktif.kelas,
+        materi: pesertaAktif.topikLabel,
+        benar: `${jumlahBenar}/10`,
+        skor: nilaiAkhir
+      };
+
+      // 1. Simpan ke penyimpanan browser (localStorage)
+      simpanKeRiwayat(dataHasil);
+
+      // 2. Kirim ke Google Sheets jika URL sudah diisi guru
+      if (URL_GOOGLE_SHEET) {
+        fetch(URL_GOOGLE_SHEET, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dataHasil)
+        }).catch(() => {});
+      }
+
+      const pesanWA = encodeURIComponent(
+        `*HASIL KUIS MATEMATIKA (MathSMP)*\n` +
+        `Nama: ${dataHasil.nama}\n` +
+        `Kelas: ${dataHasil.kelas}\n` +
+        `Materi: ${dataHasil.materi}\n` +
+        `Benar: ${dataHasil.benar}\n` +
+        `Nilai Akhir: *${dataHasil.skor}*\n` +
+        `Waktu: ${dataHasil.waktu}`
+      );
+      const linkWA = NOMOR_WA_GURU
+        ? `https://wa.me/${NOMOR_WA_GURU}?text=${pesanWA}`
+        : `https://api.whatsapp.com/send?text=${pesanWA}`;
+
+      const hasilHeader = `
+        <div class="kotak-skor">
+          <p style="font-weight:700; color:#1e3a8a;">${dataHasil.nama} • Kelas ${dataHasil.kelas}</p>
+          <div class="angka-skor">${nilaiAkhir}</div>
+          <p>Benar <strong>${jumlahBenar}</strong> dari <strong>10</strong> soal (${dataHasil.materi})</p>
+          <p class="status-simpan">✔ Nama dan skor telah tersimpan di rekap halaman ini.</p>
+          <div class="aksi-hasil">
+            <a href="${linkWA}" target="_blank" class="btn-wa">📲 Kirim Skor ke WhatsApp Guru</a>
+            <button class="btn-ulang" onclick="ulangKuis()">🔄 Kerjakan Ulang (10 Soal Baru)</button>
+          </div>
+        </div>
+        <h3 style="margin-bottom:14px; color:#0f172a;">Pembahasan Soal:</h3>
+      `;
+
+      document.getElementById("areaKuis").innerHTML = hasilHeader + ulasanHtml;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.MathJax) MathJax.typesetPromise();
+    }
+
+    function ulangKuis() {
+      document.getElementById("areaKuis").innerHTML = "";
+      document.getElementById("formIdentitas").style.display = "block";
+    }
+
+    function simpanKeRiwayat(dataBaru) {
+      const daftar = JSON.parse(localStorage.getItem("rekapNilaiMathSMP") || "[]");
+      daftar.unshift(dataBaru);
+      localStorage.setItem("rekapNilaiMathSMP", JSON.stringify(daftar));
+      tampilkanRiwayat();
+    }
+
+    function tampilkanRiwayat() {
+      const daftar = JSON.parse(localStorage.getItem("rekapNilaiMathSMP") || "[]");
+      const tbody = document.getElementById("isiTabelRiwayat");
+
+      if (daftar.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#64748b;">Belum ada riwayat pengerjaan kuis di perangkat ini.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = daftar.map((item, idx) => `
+        <tr>
+          <td>${idx + 1}</td>
+          <td>${item.waktu}</td>
+          <td><strong>${item.nama}</strong></td>
+          <td>${item.kelas}</td>
+          <td>${item.materi}</td>
+          <td>${item.benar}</td>
+          <td><strong>${item.skor}</strong></td>
+        </tr>
+      `).join("");
+    }
+
+    function unduhCSV() {
+      const daftar = JSON.parse(localStorage.getItem("rekapNilaiMathSMP") || "[]");
+      if (daftar.length === 0) {
+        alert("Belum ada data nilai yang tersimpan untuk diunduh.");
+        return;
+      }
+      let csv = "No,Waktu,Nama Siswa,Kelas,Materi,Jumlah Benar,Skor\n";
+      daftar.forEach((item, i) => {
+        csv += `${i + 1},"${item.waktu}","${item.nama}","${item.kelas}","${item.materi}","${item.benar}",${item.skor}\n`;
+      });
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Rekap-Nilai-MathSMP.csv";
+      a.click();
+    }
+
+    // Muat tabel riwayat saat halaman dibuka
+    tampilkanRiwayat();
+  </script>
+
+</body>
+</html>
