@@ -85,7 +85,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="navbar">
     <div class="wadah nav-isi">
       <a href="index.html" class="logo">
@@ -93,7 +92,7 @@
       </a>
       <nav class="menu-utama">
         <a href="index.html">Beranda</a>
-        <a href="materi-kelas-7.html" class="aktif">Materi</a>
+        <a href="index.html#layanan" class="aktif">Materi</a>
         <a href="kuis.html">Bank Soal</a>
         <a href="index.html#layanan">Tools</a>
         <a href="index.html#layanan">Ruang Guru</a>
@@ -104,33 +103,21 @@
 
   <main class="wadah">
     <div class="wadah-materi">
-      <div class="wadah-materi">
       <h2>📘 Bahan Bacaan Matematika Kelas VII</h2>
-      <p>Pilih pokok bahasan di bawah ini untuk membaca modul PDF secara langsung atau mengunduhnya.</p>
+      <p>Pilih pokok bahasan Kelas VII di bawah ini untuk membaca modul PDF atau mengunduhnya.</p>
 
-      <!-- TOMBOL PILIHAN BAB (Sesuai 5 file di folder pdf Anda) -->
       <div class="daftar-bab">
-        <button class="btn-bab aktif" onclick="gantiMateri(this, 'Bab 1: Bilangan Rasional', 'pdf/Bilangan-Rasional.pdf')">
+        <button class="btn-bab aktif" onclick="gantiMateri(this, 'Materi 1: Bilangan Rasional', 'pdf/Bilangan-Rasional.pdf')">
           1. Bilangan Rasional
         </button>
-        <button class="btn-bab" onclick="gantiMateri(this, 'Bab 2: Operasi Bilangan Rasional', 'pdf/Operasi-Bilangan-Rasional.pdf')">
+        <button class="btn-bab" onclick="gantiMateri(this, 'Materi 2: Operasi Bilangan Rasional', 'pdf/Operasi-Bilangan-Rasional.pdf')">
           2. Operasi Bilangan Rasional
-        </button>
-        <button class="btn-bab" onclick="gantiMateri(this, 'Bab 3: Fungsi Linear dan Grafiknya', 'pdf/Fungsi-Linear-dan-Grafiknya.pdf')">
-          3. Fungsi Linear & Grafiknya
-        </button>
-        <button class="btn-bab" onclick="gantiMateri(this, 'Bab 4: Penyajian dan Nilai Fungsi', 'pdf/Penyajian-dan-Nilai-Fungsi.pdf')">
-          4. Penyajian & Nilai Fungsi
-        </button>
-        <button class="btn-bab" onclick="gantiMateri(this, 'Bab 5: Populasi dan Sampel', 'pdf/Populasi-dan-Sampel.pdf')">
-          5. Populasi dan Sampel
         </button>
       </div>
 
-      <!-- KETERANGAN & TOMBOL UNDUH (Diarahkan ke file pertama: Bilangan-Rasional.pdf) -->
       <div class="info-dokumen">
         <div>
-          <strong id="judulBab" style="font-size: 17px; color: #1e3a8a;">Bab 1: Bilangan Rasional</strong>
+          <strong id="judulBab" style="font-size: 17px; color: #1e3a8a;">Materi 1: Bilangan Rasional</strong>
           <p style="font-size: 13px; color: #475569;">Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.</p>
         </div>
         <div class="grup-aksi">
@@ -139,34 +126,15 @@
         </div>
       </div>
 
-      <!-- LAYAR BACA PDF AWAL (Diarahkan ke file pertama: Bilangan-Rasional.pdf) -->
       <iframe id="layarPdf" class="bingkai-pdf" src="pdf/Bilangan-Rasional.pdf"></iframe>
-    </div>
-
-      <!-- KETERANGAN & TOMBOL UNDUH -->
-      <div class="info-dokumen">
-        <div>
-          <strong id="judulBab" style="font-size: 17px; color: #1e3a8a;">Bab 1: Bilangan Bulat & Pecahan</strong>
-          <p style="font-size: 13px; color: #475569;">Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.</p>
-        </div>
-        <div class="grup-aksi">
-          <a id="tombolUnduh" href="pdf/bilangan-bulat.pdf" target="_blank" class="btn-unduh">📥 Buka / Unduh PDF</a>
-          <a href="kuis.html" class="btn-ke-kuis">🎯 Latihan Soal &rarr;</a>
-        </div>
-      </div>
-
-      <!-- LAYAR BACA PDF -->
-      <iframe id="layarPdf" class="bingkai-pdf" src="pdf/bilangan-bulat.pdf"></iframe>
     </div>
   </main>
 
   <script>
     function gantiMateri(tombolKlik, judulBaru, lokasiFilePdf) {
-      // Mengatur warna tombol aktif
       document.querySelectorAll('.btn-bab').forEach(btn => btn.classList.remove('aktif'));
       tombolKlik.classList.add('aktif');
 
-      // Mengganti judul, layar baca PDF, dan link unduhan
       document.getElementById('judulBab').textContent = judulBaru;
       document.getElementById('layarPdf').src = lokasiFilePdf;
       document.getElementById('tombolUnduh').href = lokasiFilePdf;
