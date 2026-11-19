@@ -184,7 +184,7 @@ window.bankSoal.bangunRuangSisiLengkung = [
     ],
     "jawabanBenar": 1,
     "pembahasan": "Volume awal $V_1 = \\pi r^2 t$. Volume baru $V_2 = \\pi (2r)^2 (\\frac{1}{2}t) = \\pi (4r^2)(\\frac{1}{2}t) = 2\\pi r^2 t = 2V_1$. Jadi volumenya menjadi 2 kali volume semula."
-  }
+  },
   {
     "soal": "Sebuah kaleng cat berbentuk tabung memiliki diameter $28\\text{ cm}$ dan tinggi $25\\text{ cm}$. Jika label kertas pembungkus ditempelkan mengelilingi selimut kaleng tanpa tumpang tindih, luas kertas pembungkus tersebut adalah .... ($\\pi = \\frac{22}{7}$)",
     "gambar": "<svg viewBox='0 0 220 175' width='220' height='175' xmlns='http://www.w3.org/2000/svg'><ellipse cx='110' cy='32' rx='50' ry='14' fill='#f1f5f9' stroke='#334155' stroke-width='2'/><rect x='60' y='52' width='100' height='75' fill='#fef08a' stroke='#ca8a04' stroke-width='1.5'/><path d='M60 32 L60 142 A50 14 0 0 0 160 142 L160 32' fill='none' stroke='#334155' stroke-width='2'/><text x='110' y='94' font-size='11' text-anchor='middle' fill='#854d0e' font-weight='bold'>Label</text><text x='182' y='92' font-size='11' text-anchor='middle' fill='#1e293b' font-weight='bold'>25 cm</text><text x='110' y='24' font-size='11' text-anchor='middle' fill='#dc2626' font-weight='bold'>d = 28 cm</text></svg>",
@@ -460,7 +460,7 @@ window.bankSoal.bangunRuangSisiLengkung = [
     ],
     "jawabanBenar": 0,
     "pembahasan": "Luas selimut $= 2\\pi r t = 616 \\Rightarrow 2 \\times \\frac{22}{7} \\times r \\times 14 = 616 \\Rightarrow 88r = 616 \\Rightarrow r = 7\\text{ cm}$. Luas alas $= \\pi r^2 = \\frac{22}{7} \\times 49 = 154\\text{ cm}^2$. Luas seluruh permukaan $= 2 \\times 154 + 616 = 308 + 616 = 924\\text{ cm}^2$."
-  }
+  },
   {
     "soal": "Sebuah wadah penyimpanan gula aren cair di Kecamatan Tabang berbentuk tabung dengan diameter $40\\text{ cm}$ dan tinggi $50\\text{ cm}$. Gula aren cair tersebut akan dikemas ke dalam botol-botol kecil berbentuk tabung berdiameter $8\\text{ cm}$ dan tinggi $10\\text{ cm}$. Banyak botol maksimal yang dapat diisi penuh adalah ....",
     "gambar": "<svg viewBox='0 0 240 165' width='240' height='165' xmlns='http://www.w3.org/2000/svg'><rect x='30' y='25' width='75' height='110' fill='#fde68a' stroke='#b45309' stroke-width='2'/><ellipse cx='67.5' cy='25' rx='37.5' ry='10' fill='#fef3c7' stroke='#b45309' stroke-width='1.5'/><text x='67.5' y='85' font-size='10' text-anchor='middle' fill='#92400e' font-weight='bold'>d=40, t=50</text><text x='132' y='85' font-size='16' text-anchor='middle' fill='#334155' font-weight='bold'>→</text><rect x='165' y='85' width='30' height='50' fill='#fde68a' stroke='#b45309' stroke-width='2'/><ellipse cx='180' cy='85' rx='15' ry='5' fill='#fef3c7' stroke='#b45309' stroke-width='1.5'/><text x='180' y='152' font-size='10' text-anchor='middle' fill='#92400e' font-weight='bold'>d=8, t=10</text></svg>",
@@ -748,7 +748,7 @@ window.bankSoal.bangunRuangSisiLengkung = [
     ],
     "jawabanBenar": 1,
     "pembahasan": "Volume kerucut $= \\frac{1}{3}\\pi r^2 t = 314 \\Rightarrow \\frac{1}{3} \\times 3,14 \\times 25 \\times t = 314 \\Rightarrow t = \\frac{314 \\times 3}{78,5} = 4 \\times 3 = 12\\text{ cm}$. Garis pelukis $s = \\sqrt{r^2 + t^2} = \\sqrt{5^2 + 12^2} = 13\\text{ cm}$."
-  }
+  },
   {
     "soal": "Sebuah lumbung penyimpanan hasil panen padi di Kecamatan Tabang dilengkapi atap berbentuk kerucut dengan diameter $4,2\\text{ meter}$ dan tinggi $2\\text{ meter}$. Volume ruang udara di bawah atap lumbung tersebut adalah .... ($\\pi = \\frac{22}{7}$)",
     "gambar": "<svg viewBox='0 0 220 165' width='220' height='165' xmlns='http://www.w3.org/2000/svg'><polygon points='110,25 40,125 180,125' fill='#fde68a' stroke='#92400e' stroke-width='2'/><ellipse cx='110' cy='125' rx='70' ry='15' fill='#fef3c7' stroke='#92400e' stroke-width='2'/><line x1='110' y1='25' x2='110' y2='125' stroke='#dc2626' stroke-width='1.5' stroke-dasharray='4,3'/><text x='90' y='80' font-size='11' fill='#dc2626' font-weight='bold'>2 m</text><text x='110' y='152' font-size='11' text-anchor='middle' fill='#78350f' font-weight='bold'>d = 4,2 m</text></svg>",
