@@ -1,9 +1,51 @@
 <!DOCTYPE html>
-<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Generator modul ajar berbantuan AI untuk berbagai mata pelajaran SMP MathSMP."><title>Generator Modul Ajar — Ruang Guru MathSMP</title><link rel="stylesheet" href="../../assets/css/style-baru.css"><link rel="stylesheet" href="../../assets/css/ruang-guru.css"></head>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Generator modul ajar berbantuan AI untuk berbagai mata pelajaran SMP MathSMP."><title>Generator Modul Ajar — Ruang Guru MathSMP</title><link rel="stylesheet" href="../../assets/css/style-baru.css"><link rel="stylesheet" href="../../assets/css/ruang-guru.css">
+<style>
+  [hidden] { display: none !important; }
+  .rg-mode-choice{max-width:900px;margin:22px auto 28px;padding:24px;background:#fff;border:1px solid #e1e8f2;border-radius:17px;box-shadow:0 8px 24px #102a5609}
+  .rg-mode-choice h2{margin:0 0 7px;color:#1c345f;font:800 19px 'Plus Jakarta Sans',sans-serif}
+  .rg-mode-choice>p{margin:0 0 18px;color:#6d7c93;font-size:12px;line-height:1.65}
+  .rg-mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .rg-mode-card{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-height:190px;padding:20px;text-align:left;border:1px solid #dce5f1;border-radius:14px;background:#fff;color:#243957;cursor:pointer;transition:.18s ease}
+  .rg-mode-card:hover,.rg-mode-card:focus-visible{border-color:#7da0e8;box-shadow:0 8px 22px #285fd218;transform:translateY(-2px);outline:none}
+  .rg-mode-card.ai{background:linear-gradient(145deg,#f7f9ff,#eef3ff);border-color:#cedcf8}
+  .rg-mode-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#edf3ff;color:#285fd2;font-size:21px;font-weight:900}
+  .rg-mode-card.ai .rg-mode-icon{background:#e8eaff;color:#6547c8}
+  .rg-mode-card strong{font:800 15px 'Plus Jakarta Sans',sans-serif;color:#1c345f}
+  .rg-mode-card small{font-size:11px;line-height:1.6;color:#6b7b94}
+  .rg-mode-cta{margin-top:auto;color:#285fd2;font-size:10px;font-weight:900}
+  .rg-mode-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 13px;padding:10px 12px;border:1px solid #e1e8f2;border-radius:10px;background:#f8faff}
+  .rg-mode-toolbar strong{font-size:11px;color:#29436d}
+  .rg-mode-toolbar span{font-size:9px;color:#73829a}
+  .rg-mode-change{border:1px solid #cfdbef;background:#fff;color:#315fc5;border-radius:8px;padding:7px 10px;font:800 10px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}
+  .rg-mode-change:hover{background:#edf4ff}
+  .rg-ai-only-note{padding:10px 12px;border:1px solid #dce7fb;border-radius:9px;background:#f5f8ff;color:#526b95;font-size:10px;line-height:1.6;margin-bottom:13px}
+  @media(max-width:650px){.rg-mode-choice{padding:17px}.rg-mode-grid{grid-template-columns:1fr}.rg-mode-card{min-height:155px}.rg-mode-toolbar{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
 <body data-generator="modul">
 <header class="site-header"><div class="container nav-wrap"><a class="brand" href="../../index.html"><span class="brand-mark">∑</span><span>Math<span>SMP</span></span></a><nav class="main-nav" aria-label="Navigasi utama"><a href="../../index.html">Beranda</a><a href="../../index.html#kelas">Materi</a><a href="../latihan/latihan-soal.html">Latihan Soal</a><details class="nav-dropdown"><summary><span class="nav-tka-dot"></span>TKA SMP <span class="chevron">⌄</span></summary><div class="nav-dropdown-menu"><a href="../tka/bank-soal-tka.html">Bank Soal TKA</a><a href="../tka/tryout-tka.html">Tryout TKA</a></div></details><a href="../latihan/kuis.html">Kuis</a><a class="active" href="ruang-guru.html">Ruang Guru</a></nav></div></header>
 <main class="rg-generator-main"><div class="container"><div class="rg-generator-intro"><div><div class="rg-breadcrumb"><a href="ruang-guru.html">Ruang Guru</a> / Generator Modul Ajar</div><div class="rg-kicker">GENERATOR 02 · PERENCANAAN PEMBELAJARAN</div><h1>Generator Modul Ajar</h1><p>Pilih mata pelajaran, gunakan ATP jika tersedia, dan beri arahan. Gemini menyusun draf modul ajar sesuai karakteristik mapel untuk ditinjau dan diedit.</p></div></div>
-<section class="rg-ai-setup" aria-labelledby="geminiSetupTitle">
+<section class="rg-mode-choice" id="moduleModeChoice" aria-labelledby="moduleModeTitle">
+  <h2 id="moduleModeTitle">Pilih cara menyusun modul ajar</h2>
+  <p>Tentukan alur kerja terlebih dahulu. Formulir akan menyesuaikan pilihan: mode manual menyediakan isian lengkap, sedangkan mode AI hanya meminta informasi inti dan AI menyusun bagian modul lainnya.</p>
+  <div class="rg-mode-grid">
+    <button class="rg-mode-card" type="button" data-module-mode="manual" aria-describedby="manualModeDescription">
+      <span class="rg-mode-icon" aria-hidden="true">✎</span>
+      <strong>Susun secara manual</strong>
+      <small id="manualModeDescription">Guru mengisi seluruh bagian modul ajar sendiri, lalu MathSMP menatanya menjadi dokumen yang dapat diedit dan diunduh.</small>
+      <span class="rg-mode-cta">Pilih mode manual →</span>
+    </button>
+    <button class="rg-mode-card ai" type="button" data-module-mode="ai" aria-describedby="aiModeDescription">
+      <span class="rg-mode-icon" aria-hidden="true">✦</span>
+      <strong>Buat dengan bantuan AI</strong>
+      <small id="aiModeDescription">Guru cukup menentukan identitas, mapel, materi, ATP/CP/TP/TPK, alokasi waktu, dan arahan. Gemini menyusun kegiatan, asesmen, diferensiasi, serta refleksi.</small>
+      <span class="rg-mode-cta">Pilih mode AI →</span>
+    </button>
+  </div>
+</section>
+
+<section class="rg-ai-setup" id="geminiSetupPanel" aria-labelledby="geminiSetupTitle" hidden>
   <div class="rg-ai-setup-head">
     <div><span class="rg-ai-kicker">✦ GEMINI AI · FREE TIER · BYOK</span><h2 id="geminiSetupTitle">Hubungkan Gemini AI</h2><p>Gunakan API Key Gemini milik Anda sendiri. Masukkan sekali; centang “Ingat perangkat ini” bila ingin MathSMP mengingatnya pada browser pribadi.</p></div>
     <a class="rg-ai-key-link" href="https://aistudio.google.com/api-keys" target="_blank" rel="noopener noreferrer">Buat API Key di Google AI Studio ↗</a>
@@ -27,8 +69,12 @@
   </div>
 </section>
 
-<div class="rg-generator-layout"><section class="rg-panel rg-form-panel"><div class="rg-panel-heading"><h2>Identitas dan rancangan</h2><span class="rg-step-badge">LANGKAH 1</span></div>
-<form id="generatorForm"><div class="rg-form-grid">
+<div class="rg-generator-layout" id="moduleGeneratorWorkspace" hidden><section class="rg-panel rg-form-panel"><div class="rg-mode-toolbar">
+  <div><strong id="activeModuleMode">Mode belum dipilih</strong><br><span id="activeModuleModeHint">Pilih cara penyusunan modul.</span></div>
+  <button class="rg-mode-change" type="button" id="changeModuleMode">Ganti pilihan</button>
+</div>
+<div class="rg-panel-heading"><h2>Identitas dan rancangan</h2><span class="rg-step-badge">LANGKAH 1</span></div>
+<form id="generatorForm"><div class="rg-ai-only-note" id="aiModeInputNote" hidden>Mode AI: isi bagian inti yang tersedia. Bagian seperti kompetensi awal, pemahaman bermakna, pertanyaan pemantik, langkah pembelajaran, asesmen, diferensiasi, dan refleksi akan disusun oleh Gemini. Anda dapat menyunting semua hasilnya setelah dokumen dibuat.</div><div class="rg-form-grid">
 <div class="rg-field full"><label for="school">Nama sekolah</label><input id="school" placeholder="Nama sekolah"></div>
 <div class="rg-field"><label for="teacher">Nama guru</label><input id="teacher" placeholder="Nama penyusun"></div><div class="rg-field"><label for="subject">Mata pelajaran</label><input id="subject" name="subject" list="subjectSuggestions" value="Matematika" placeholder="Contoh: IPA, IPS, Bahasa Indonesia"><datalist id="subjectSuggestions"><option value="Matematika"><option value="IPA"><option value="IPS"><option value="Bahasa Indonesia"><option value="Bahasa Inggris"><option value="Pendidikan Pancasila"><option value="Informatika"><option value="Seni Budaya"><option value="PJOK"><option value="Prakarya"><option value="Pendidikan Agama"></datalist><span class="rg-hint">Bisa digunakan untuk semua mata pelajaran. Ketik nama mapel; AI akan menyesuaikan isi dengan disiplin yang dipilih.</span></div>
 <div class="rg-field"><label for="className">Kelas</label><select id="className"><option>VII</option><option>VIII</option><option>IX</option></select></div><div class="rg-field"><label for="phase">Fase</label><select id="phase"><option>D</option><option>E</option></select></div>
@@ -40,24 +86,79 @@
 <div class="rg-field full"><label for="mainObjective">Tujuan Pembelajaran (TP)</label><textarea id="mainObjective" placeholder="Terisi dari pokok bahasan ATP atau dapat diisi manual"></textarea></div>
 <div class="rg-field full"><label for="objective">Tujuan Pembelajaran Khusus (TPK)</label><textarea id="objective" placeholder="Terisi dari subpokok bahasan ATP atau dapat diisi manual"></textarea></div>
 <div class="rg-field full"><label for="dimensions">Dimensi Profil Lulusan</label><input id="dimensions" placeholder="Diisi otomatis dari TPK terpilih; dapat disunting"></div>
-<div class="rg-field full"><label for="prior">Kompetensi awal / prasyarat</label><textarea id="prior" placeholder="Pengetahuan atau keterampilan prasyarat"></textarea></div>
-<div class="rg-field full"><label for="understanding">Pemahaman bermakna</label><textarea id="understanding" placeholder="Pemahaman utama yang diharapkan dimiliki peserta didik"></textarea></div>
-<div class="rg-field full"><label for="trigger">Pertanyaan pemantik</label><textarea id="trigger" placeholder="Tuliskan pertanyaan untuk membangun rasa ingin tahu"></textarea></div>
+<div class="rg-field full" data-module-field="manual-only"><label for="prior">Kompetensi awal / prasyarat</label><textarea id="prior" placeholder="Pengetahuan atau keterampilan prasyarat"></textarea></div>
+<div class="rg-field full" data-module-field="manual-only"><label for="understanding">Pemahaman bermakna</label><textarea id="understanding" placeholder="Pemahaman utama yang diharapkan dimiliki peserta didik"></textarea></div>
+<div class="rg-field full" data-module-field="manual-only"><label for="trigger">Pertanyaan pemantik</label><textarea id="trigger" placeholder="Tuliskan pertanyaan untuk membangun rasa ingin tahu"></textarea></div>
 <div class="rg-field full"><label for="model">Model / pendekatan pembelajaran</label><input id="model" placeholder="Contoh: Problem Based Learning, diskusi, eksplorasi"></div>
-<div class="rg-field full"><label for="aiInstruction">Arahan tambahan untuk AI (opsional)</label><textarea id="aiInstruction" placeholder="Contoh: gunakan pembelajaran kontekstual dengan alat sederhana yang tersedia di sekolah."></textarea></div>
-<div class="rg-field full"><label for="opening">Kegiatan pendahuluan</label><textarea id="opening" placeholder="Orientasi, apersepsi, motivasi, dan penyampaian tujuan"></textarea></div>
-<div class="rg-field full"><label for="core">Kegiatan inti</label><textarea id="core" placeholder="Langkah pembelajaran, aktivitas guru dan peserta didik"></textarea></div>
-<div class="rg-field full"><label for="closing">Kegiatan penutup</label><textarea id="closing" placeholder="Simpulan, refleksi, umpan balik, dan tindak lanjut"></textarea></div>
-<div class="rg-field full"><label for="assessment">Asesmen</label><textarea id="assessment" placeholder="Asesmen awal, formatif, sumatif, teknik, dan instrumen"></textarea></div>
-<div class="rg-field full"><label for="differentiation">Diferensiasi / tindak lanjut</label><textarea id="differentiation" placeholder="Dukungan, remedial, dan pengayaan"></textarea></div>
-<div class="rg-field full"><label for="reflection">Refleksi guru dan peserta didik</label><textarea id="reflection" placeholder="Pertanyaan atau catatan refleksi setelah pembelajaran"></textarea></div>
-</div><div class="rg-form-actions"><button class="rg-action-btn rg-action-ai" id="aiGenerate" type="button">✦ Buat modul dengan AI</button><button class="rg-action-btn rg-action-primary" type="submit">Buat kerangka manual <span>→</span></button><button class="rg-action-btn rg-action-secondary" type="reset">Reset formulir</button></div></form>
-<div class="rg-note rg-note-amber"><strong>Catatan:</strong> mode AI menghasilkan draf substantif berdasarkan mata pelajaran, CP/TP/TPK, ATP bila tersedia, dan arahan guru; mode manual hanya menata isian. AI tidak mengarang CP resmi. Tinjau kesesuaian kurikulum dan kondisi kelas sebelum digunakan.</div></section>
+<div class="rg-field full" data-module-field="ai-only"><label for="aiInstruction">Arahan tambahan untuk AI (opsional)</label><textarea id="aiInstruction" placeholder="Contoh: gunakan pembelajaran kontekstual dengan alat sederhana yang tersedia di sekolah."></textarea></div>
+<div class="rg-field full" data-module-field="manual-only"><label for="opening">Kegiatan pendahuluan</label><textarea id="opening" placeholder="Orientasi, apersepsi, motivasi, dan penyampaian tujuan"></textarea></div>
+<div class="rg-field full" data-module-field="manual-only"><label for="core">Kegiatan inti</label><textarea id="core" placeholder="Langkah pembelajaran, aktivitas guru dan peserta didik"></textarea></div>
+<div class="rg-field full" data-module-field="manual-only"><label for="closing">Kegiatan penutup</label><textarea id="closing" placeholder="Simpulan, refleksi, umpan balik, dan tindak lanjut"></textarea></div>
+<div class="rg-field full" data-module-field="manual-only"><label for="assessment">Asesmen</label><textarea id="assessment" placeholder="Asesmen awal, formatif, sumatif, teknik, dan instrumen"></textarea></div>
+<div class="rg-field full" data-module-field="manual-only"><label for="differentiation">Diferensiasi / tindak lanjut</label><textarea id="differentiation" placeholder="Dukungan, remedial, dan pengayaan"></textarea></div>
+<div class="rg-field full" data-module-field="manual-only"><label for="reflection">Refleksi guru dan peserta didik</label><textarea id="reflection" placeholder="Pertanyaan atau catatan refleksi setelah pembelajaran"></textarea></div>
+</div><div class="rg-form-actions"><button class="rg-action-btn rg-action-ai" id="aiGenerate" type="button" data-module-action="ai" hidden>✦ Buat modul dengan AI</button><button class="rg-action-btn rg-action-primary" id="manualGenerate" type="submit" data-module-action="manual" hidden>Buat kerangka manual <span>→</span></button><button class="rg-action-btn rg-action-secondary" type="reset">Reset formulir</button></div></form>
+<div class="rg-note rg-note-amber"><strong>Catatan:</strong> mode manual hanya menata isian yang ditulis guru. Mode AI menyusun draf substantif dari informasi inti yang diberikan. AI tidak mengarang CP resmi. Tinjau kesesuaian kurikulum dan kondisi kelas sebelum digunakan.</div></section>
 <section class="rg-panel rg-preview-panel"><div class="rg-preview-toolbar"><strong>Pratinjau dokumen · dapat diedit</strong><div class="rg-preview-actions"><button class="rg-small-btn" id="downloadWord" type="button" disabled>Unduh Word</button><button class="rg-small-btn" id="printPdf" type="button" disabled>Cetak / PDF</button><button class="rg-small-btn" id="copyText" type="button" disabled>Salin teks</button></div></div>
-<div class="rg-ai-revision">
+<div class="rg-ai-revision" id="aiRevisionPanel" hidden>
   <label for="aiRevisionPrompt">Revisi hasil dengan AI</label>
   <div class="rg-ai-revision-row"><textarea id="aiRevisionPrompt" rows="2" placeholder="Contoh: buat aktivitas lebih kontekstual, sederhanakan bahasa, atau tambahkan asesmen formatif berbentuk rubrik."></textarea><button class="rg-action-btn rg-action-primary" id="aiRevise" type="button" disabled>✦ Revisi dengan AI</button></div>
   <span class="rg-hint">AI membaca draf yang sedang tampil dan membuat versi revisi. Periksa kembali semua hasil sebelum digunakan.</span>
 </div>
 <div class="rg-preview-hint">Klik bagian dokumen untuk memperbaiki redaksi, menambah rincian, atau menyesuaikan kegiatan.</div><div class="rg-document-wrap"><div id="documentPreview" class="rg-document-placeholder"><div><span>▧</span><strong>Modul ajar belum dibuat</strong><p>Lengkapi data rancangan, lalu buat kerangka modul ajar.</p></div></div></div></section></div><a class="rg-back-link" href="ruang-guru.html">← Kembali ke Ruang Guru</a></div></main>
-<footer class="site-footer"><div class="container"><a class="brand footer-brand" href="../../index.html"><span class="brand-mark">∑</span><span>Math<span>SMP</span></span></a><div class="footer-bottom">© 2026 MathSMP · Generator Modul Ajar</div></div></footer><div class="rg-toast" id="toast" role="status" aria-live="polite"></div><script src="../../data/atp/matematika/atp-data.js"></script><script src="../../assets/js/gemini-ai.js"></script><script src="../../assets/js/ruang-guru-tools.js"></script></body></html>
+<footer class="site-footer"><div class="container"><a class="brand footer-brand" href="../../index.html"><span class="brand-mark">∑</span><span>Math<span>SMP</span></span></a><div class="footer-bottom">© 2026 MathSMP · Generator Modul Ajar</div></div></footer><div class="rg-toast" id="toast" role="status" aria-live="polite"></div><script src="../../data/atp/matematika/atp-data.js"></script><script src="../../assets/js/gemini-ai.js"></script><script src="../../assets/js/ruang-guru-tools.js"></script>
+<script>
+(() => {
+  "use strict";
+  const choice = document.getElementById("moduleModeChoice");
+  const workspace = document.getElementById("moduleGeneratorWorkspace");
+  const aiSetup = document.getElementById("geminiSetupPanel");
+  const revisionPanel = document.getElementById("aiRevisionPanel");
+  const inputNote = document.getElementById("aiModeInputNote");
+  const modeTitle = document.getElementById("activeModuleMode");
+  const modeHint = document.getElementById("activeModuleModeHint");
+  const changeButton = document.getElementById("changeModuleMode");
+  const form = document.getElementById("generatorForm");
+  const manualButton = document.getElementById("manualGenerate");
+  const aiButton = document.getElementById("aiGenerate");
+  const aiOnly = document.querySelectorAll('[data-module-field="ai-only"]');
+  const manualOnly = document.querySelectorAll('[data-module-field="manual-only"]');
+  let activeMode = "";
+
+  function chooseMode(mode) {
+    if (mode !== "manual" && mode !== "ai") return;
+    activeMode = mode;
+    choice.hidden = true;
+    workspace.hidden = false;
+    aiSetup.hidden = mode !== "ai";
+    revisionPanel.hidden = mode !== "ai";
+    inputNote.hidden = mode !== "ai";
+    manualButton.hidden = mode !== "manual";
+    aiButton.hidden = mode !== "ai";
+    manualOnly.forEach(node => { node.hidden = mode === "ai"; });
+    aiOnly.forEach(node => { node.hidden = mode === "manual"; });
+    modeTitle.textContent = mode === "ai" ? "Mode: Bantuan Gemini AI" : "Mode: Penyusunan manual";
+    modeHint.textContent = mode === "ai"
+      ? "Isi informasi inti; Gemini menyusun bagian pembelajaran lainnya."
+      : "Isi seluruh bagian modul sesuai rancangan guru.";
+    document.getElementById("generatorForm")?.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  document.querySelectorAll("[data-module-mode]").forEach(button => {
+    button.addEventListener("click", () => chooseMode(button.dataset.moduleMode));
+  });
+  changeButton?.addEventListener("click", () => {
+    choice.hidden = false;
+    workspace.hidden = true;
+    aiSetup.hidden = true;
+    activeMode = "";
+    choice.scrollIntoView({behavior:"smooth", block:"center"});
+  });
+  form?.addEventListener("reset", () => {
+    // Reset tidak mengubah mode yang sedang dipakai.
+    window.setTimeout(() => {
+      if (activeMode) chooseMode(activeMode);
+    }, 0);
+  });
+})();
+</script></body></html>
