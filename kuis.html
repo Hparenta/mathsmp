@@ -19,13 +19,19 @@
       padding: 28px;
       box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
     }
-    .form-identitas {
+    .form-identitas, .form-pilih-materi {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
       border-radius: 12px;
       padding: 22px;
       margin-top: 20px;
     }
+    .form-identitas[hidden], .form-pilih-materi[hidden] { display: none !important; }
+    .langkah-kuis { display:flex; gap:10px; margin:22px 0 8px; }
+    .langkah-kuis span { flex:1; padding:10px 12px; border-radius:8px; background:#e2e8f0; color:#475569; font-size:13px; font-weight:700; text-align:center; }
+    .langkah-kuis span.aktif { background:#dbeafe; color:#1d4ed8; border:1px solid #93c5fd; }
+    .materi-terpilih { padding:12px 14px; margin-bottom:16px; border-radius:8px; background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+    .btn-kembali { margin-top:10px; width:100%; padding:11px 18px; border:1px solid #cbd5e1; border-radius:8px; background:#fff; color:#334155; font-weight:700; cursor:pointer; }
     .grid-input {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -212,10 +218,11 @@
       </a>
       <nav class="menu-utama">
         <a href="index.html">Beranda</a>
-        <a href="index.html#layanan">Materi</a>
-        <a href="kuis.html" class="aktif">Bank Soal</a>
-        <a href="index.html#layanan">Tools</a>
-        <a href="index.html#layanan">Ruang Guru</a>
+        <a href="index.html#kelas">Materi</a>
+        <a href="latihan-soal.html">Latihan Soal</a>
+        <a href="tka.html">TKA SMP</a>
+        <a href="kuis.html" class="aktif">Kuis Harian</a>
+        <a href="ruang-guru.html">Ruang Guru</a>
         <a href="index.html#tentang">Tentang</a>
       </nav>
     </div>
@@ -223,15 +230,35 @@
 
   <main class="wadah">
     <div class="panel-kuis">
-      <h2>🎯 Kuis Interaktif Matematika SMP</h2>
-      <p>Sistem akan memilih <strong>10 soal secara acak</strong> dari bank <strong>100 soal</strong>. Isi nama dan kelasmu terlebih dahulu sebelum memulai.</p>
+      <h2>🎯 Kuis Harian Matematika SMP</h2>
+      <p>Pilih materi kuis reguler, lalu isi identitas untuk memulai sesi berisi <strong>10 soal acak</strong>. Bank kuis ini terpisah dari Bank Soal dan Tryout TKA.</p>
 
-      <!-- FORM IDENTITAS SISWA -->
-      <div id="formIdentitas" class="form-identitas">
+      <div class="langkah-kuis" aria-label="Tahapan kuis">
+        <span id="langkahMateri" class="aktif">1. Pilih Materi</span>
+        <span id="langkahIdentitas">2. Identitas Siswa</span>
+      </div>
+
+      <!-- TAHAP 1: PILIH MATERI -->
+      <section id="formPilihMateri" class="form-pilih-materi">
+        <div class="grup-field">
+          <label for="topikSelect">Pilih Pokok Bahasan / Materi Kuis *</label>
+          <select id="topikSelect">
+            <option value="">-- Pilih Materi Kuis --</option>
+            <option value="populasiSampel" data-nama="Populasi dan Sampel">Populasi dan Sampel (100 Soal)</option>
+            <option value="operasiBilanganRasional" data-nama="Operasi Bilangan Rasional">Operasi Bilangan Rasional (100 Soal)</option>
+            <option value="fungsiLinear" data-nama="Fungsi Linear">Kelas VIII - Fungsi Linear dan Grafiknya</option>
+          </select>
+        </div>
+        <button class="btn-mulai" type="button" onclick="lanjutIdentitas()">Lanjutkan</button>
+      </section>
+
+      <!-- TAHAP 2: IDENTITAS SISWA (MUNCUL SETELAH MATERI DIPILIH) -->
+      <section id="formIdentitas" class="form-identitas" hidden>
+        <div class="materi-terpilih"><strong>Materi kuis:</strong> <span id="labelMateriTerpilih"></span></div>
         <div class="grid-input">
           <div class="grup-field">
             <label for="namaSiswa">Nama Lengkap Siswa *</label>
-            <input type="text" id="namaSiswa" placeholder="Contoh: Herdianto Parenta" required>
+            <input type="text" id="namaSiswa" placeholder="Contoh: Herdianto Parenta" autocomplete="name" required>
           </div>
           <div class="grup-field">
             <label for="kelasSiswa">Kelas *</label>
@@ -245,23 +272,10 @@
               <option value="IX B">Kelas IX B</option>
             </select>
           </div>
-          <div class="grup-field">
-            <label for="topikSelect">Pokok Bahasan *</label>
-            <select id="topikSelect">
-              <option value="populasiSampel" data-nama="Populasi dan Sampel">Populasi dan Sampel (100 Soal)</option>
-              <option value="operasiBilanganRasional" data-nama="Operasi Bilangan Rasional">Operasi Bilangan Rasional (100 Soal TKA)</option>
-              <option value="fungsiLinear" data-nama="Fungsi Linear">Kelas VIII - Fungsi Linear dan Grafiknya</option>
-              <!-- Nanti saat bank soal materi lain sudah dibuat, tinggal tambahkan pilihan di bawah ini:
-              <option value="bilanganRasional" data-nama="Bilangan Rasional">Bilangan Rasional (100 Soal)</option>
-              <option value="operasiBilanganRasional" data-nama="Operasi Bilangan Rasional">Operasi Bilangan Rasional (100 Soal)</option>
-              <option value="fungsiLinear" data-nama="Fungsi Linear dan Grafiknya">Fungsi Linear dan Grafiknya (100 Soal)</option>
-              <option value="nilaiFungsi" data-nama="Penyajian dan Nilai Fungsi">Penyajian dan Nilai Fungsi (100 Soal)</option>
-              -->
-            </select>
-          </div>
         </div>
-        <button class="btn-mulai" onclick="mulaiKuis()">Mulai Kuis (Acak 10 Soal)</button>
-      </div>
+        <button class="btn-mulai" type="button" onclick="mulaiKuis()">Mulai Kuis (Acak 10 Soal)</button>
+        <button class="btn-kembali" type="button" onclick="kembaliPilihMateri()">← Kembali, ganti materi</button>
+      </section>
 
       <!-- AREA SOAL & HASIL -->
       <div id="areaKuis"></div>
@@ -315,6 +329,13 @@
     // Nomor WhatsApp Guru (format 628xxx, opsional - jika dikosongkan siswa tinggal pilih kontak guru di WA)
     const NOMOR_WA_GURU = "6285342137045";
 
+    // Amankan input identitas peserta saat ditampilkan kembali sebagai HTML.
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, karakter => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[karakter]));
+    }
+
     let soalTerpilih = [];
     let pesertaAktif = { nama: "", kelas: "", topikLabel: "" };
 
@@ -329,6 +350,36 @@
         }
       }
     })();
+
+    function lanjutIdentitas() {
+      const selectEl = document.getElementById("topikSelect");
+      const topikKode = selectEl.value;
+      if (!topikKode) {
+        alert("Silakan pilih pokok bahasan atau materi kuis terlebih dahulu!");
+        selectEl.focus();
+        return;
+      }
+      if (!window.bankSoal || !window.bankSoal[topikKode] || window.bankSoal[topikKode].length === 0) {
+        alert("Bank soal untuk materi ini belum tersedia atau sedang disiapkan.");
+        return;
+      }
+      const opsiAktif = selectEl.options[selectEl.selectedIndex];
+      const namaMateri = opsiAktif.getAttribute("data-nama") || opsiAktif.text;
+      document.getElementById("labelMateriTerpilih").textContent = namaMateri;
+      document.getElementById("formPilihMateri").hidden = true;
+      document.getElementById("formIdentitas").hidden = false;
+      document.getElementById("langkahMateri").classList.remove("aktif");
+      document.getElementById("langkahIdentitas").classList.add("aktif");
+      document.getElementById("namaSiswa").focus();
+    }
+
+    function kembaliPilihMateri() {
+      document.getElementById("formIdentitas").hidden = true;
+      document.getElementById("formPilihMateri").hidden = false;
+      document.getElementById("langkahIdentitas").classList.remove("aktif");
+      document.getElementById("langkahMateri").classList.add("aktif");
+      document.getElementById("topikSelect").focus();
+    }
 
     function mulaiKuis() {
       const nama = document.getElementById("namaSiswa").value.trim();
@@ -354,7 +405,8 @@
       }
 
       pesertaAktif = { nama: nama, kelas: kelas, topikLabel: namaMateri };
-      document.getElementById("formIdentitas").style.display = "none";
+      document.getElementById("formPilihMateri").hidden = true;
+      document.getElementById("formIdentitas").hidden = true;
 
       // Mengacak 100 soal menggunakan algoritma Fisher-Yates
       const semuaSoal = [...window.bankSoal[topikKode]];
@@ -407,7 +459,7 @@
 
       let jumlahBenar = 0;
       let ulasanHtml = "";
-      const hurufOpsi = ["A", "B", "C", "D"];
+      const hurufOpsi = ["A", "B", "C", "D", "E"];
 
       soalTerpilih.forEach((item, index) => {
         const terpilih = document.querySelector(`input[name="soal_${index}"]:checked`);
@@ -462,7 +514,7 @@
         `*HASIL KUIS MATEMATIKA (MathSMP)*\n` +
         `Nama: ${dataHasil.nama}\n` +
         `Kelas: ${dataHasil.kelas}\n` +
-        `Materi: ${dataHasil.materi}\n` +
+        `Materi: ${escapeHTML(dataHasil.materi)}\n` +
         `Benar: ${dataHasil.benar}\n` +
         `Nilai Akhir: *${dataHasil.skor}*\n` +
         `Waktu: ${dataHasil.waktu}`
@@ -473,9 +525,9 @@
 
       const hasilHeader = `
         <div class="kotak-skor">
-          <p style="font-weight:700; color:#1e3a8a;">${dataHasil.nama} • Kelas ${dataHasil.kelas}</p>
+          <p style="font-weight:700; color:#1e3a8a;">${escapeHTML(dataHasil.nama)} • Kelas ${escapeHTML(dataHasil.kelas)}</p>
           <div class="angka-skor">${nilaiAkhir}</div>
-          <p>Benar <strong>${jumlahBenar}</strong> dari <strong>10</strong> soal (${dataHasil.materi})</p>
+          <p>Benar <strong>${jumlahBenar}</strong> dari <strong>10</strong> soal (${escapeHTML(dataHasil.materi)})</p>
           <p class="status-simpan">✔ Nama dan skor telah tersimpan di rekap halaman ini.</p>
           <div class="aksi-hasil">
             <a href="${linkWA}" target="_blank" class="btn-wa">📲 Kirim Skor ke WhatsApp Guru</a>
@@ -492,7 +544,13 @@
 
     function ulangKuis() {
       document.getElementById("areaKuis").innerHTML = "";
-      document.getElementById("formIdentitas").style.display = "block";
+      document.getElementById("namaSiswa").value = "";
+      document.getElementById("kelasSiswa").value = "";
+      document.getElementById("formIdentitas").hidden = true;
+      document.getElementById("formPilihMateri").hidden = false;
+      document.getElementById("langkahIdentitas").classList.remove("aktif");
+      document.getElementById("langkahMateri").classList.add("aktif");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function simpanKeRiwayat(dataBaru) {
@@ -514,10 +572,10 @@
       tbody.innerHTML = daftar.map((item, idx) => `
         <tr>
           <td>${idx + 1}</td>
-          <td>${item.waktu}</td>
-          <td><strong>${item.nama}</strong></td>
-          <td>${item.kelas}</td>
-          <td>${item.materi}</td>
+          <td>${escapeHTML(item.waktu)}</td>
+          <td><strong>${escapeHTML(item.nama)}</strong></td>
+          <td>${escapeHTML(item.kelas)}</td>
+          <td>${escapeHTML(item.materi)}</td>
           <td>${item.benar}</td>
           <td><strong>${item.skor}</strong></td>
         </tr>
@@ -530,10 +588,15 @@
         alert("Belum ada data nilai yang tersimpan untuk diunduh.");
         return;
       }
-      let csv = "No,Waktu,Nama Siswa,Kelas,Materi,Jumlah Benar,Skor\n";
-      daftar.forEach((item, i) => {
-        csv += `${i + 1},"${item.waktu}","${item.nama}","${item.kelas}","${item.materi}","${item.benar}",${item.skor}\n`;
-      });
+      const kolomCSV = nilai => {
+        let teks = String(nilai ?? "");
+        // Hindari teks peserta ditafsirkan sebagai rumus spreadsheet.
+        if (/^[=+@\-]/.test(teks)) teks = "'" + teks;
+        return `"${teks.replace(/"/g, '""')}"`;
+      };
+      const barisCSV = [["No", "Waktu", "Nama Siswa", "Kelas", "Materi", "Jumlah Benar", "Skor"]];
+      daftar.forEach((item, i) => barisCSV.push([i + 1, item.waktu, item.nama, item.kelas, item.materi, item.benar, item.skor]));
+      const csv = "\ufeff" + barisCSV.map(baris => baris.map(kolomCSV).join(",")).join("\r\n");
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");

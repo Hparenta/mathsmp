@@ -1,6 +1,6 @@
 // Bank Soal Matematika SMP - MathSMP (SMPN 1 Tabang)
-// Pokok Bahasan: Operasi Bilangan Rasional (100 Soal TKA Lengkap - 5 Opsi A-E)
-// Komposisi Kognitif: 20% LOTS (20 Soal), 50% MOTS (50 Soal), 30% HOTS (30 Soal)
+// Pokok Bahasan: Operasi Bilangan Rasional (100 soal kuis reguler - 5 opsi A-E)
+// Komposisi kognitif sesuai rancangan bank kuis reguler.
 
 window.bankSoal = window.bankSoal || {};
 
