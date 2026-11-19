@@ -101,6 +101,14 @@
       color: #0f172a;
       margin-bottom: 12px;
     }
+    .gambar-soal {
+      margin: 12px 0;
+      text-align: center;
+    }
+    .gambar-soal svg {
+      max-width: 100%;
+      height: auto;
+    }
     .opsi-label {
       display: flex;
       align-items: flex-start;
@@ -430,7 +438,8 @@
       const hurufOpsi = ["A", "B", "C", "D", "E"];
       soalTerpilih.forEach((item, index) => {
         html += `<div class="kartu-soal" id="kotak_soal_${index}">
-          <p class="teks-soal"><strong>${index + 1}.</strong> ${item.soal}</p>`;
+          <p class="teks-soal"><strong>${index + 1}.</strong> ${item.soal}</p>
+          ${item.gambar ? `<div class="gambar-soal">${item.gambar}</div>` : ""}`;
         item.pilihan.forEach((pil, idxPil) => {
           html += `<label class="opsi-label">
             <input type="radio" name="soal_${index}" value="${idxPil}">
@@ -476,6 +485,7 @@
 
         ulasanHtml += `<div class="kartu-soal">
           <p class="teks-soal"><strong>${index + 1}.</strong> ${item.soal}</p>
+          ${item.gambar ? `<div class="gambar-soal">${item.gambar}</div>` : ""}
           <p style="font-size:14px; margin-bottom:6px;">Jawabanmu: <strong>${teksJawabanSiswa}</strong></p>
           <div class="pembahasan-box ${isBenar ? "benar" : "salah"}">
             <strong>${isBenar ? "✔ Benar!" : "✘ Kurang Tepat."}</strong> Kunci Jawaban: <strong>${teksKunci}</strong><br>
