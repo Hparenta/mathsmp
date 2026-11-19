@@ -1,0 +1,335 @@
+/* PENGATURAN DASAR */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #1e293b;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wadah {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 1. HEADER / NAVBAR */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-isi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e3a8a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo span {
+  color: #2563eb;
+}
+
+.logo-ikon {
+  background-color: #2563eb;
+  color: #ffffff !important;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.menu-utama {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.menu-utama a {
+  font-weight: 600;
+  font-size: 15px;
+  color: #475569;
+  padding: 6px 4px;
+  transition: color 0.2s;
+}
+
+.menu-utama a:hover,
+.menu-utama a.aktif {
+  color: #2563eb;
+}
+
+/* 2. BAGIAN UTAMA (HERO) */
+.hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #ffffff;
+  padding: 72px 0;
+  text-align: center;
+}
+
+.lencana {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 650px;
+  margin: 0 auto 28px auto;
+  color: #dbeafe;
+}
+
+.hero-tombol {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-utama {
+  background-color: #facc15;
+  color: #1e293b;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 8px;
+}
+
+.btn-sekunder {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  padding: 13px 26px;
+  border-radius: 8px;
+}
+
+/* 3. BAGIAN LAYANAN UTAMA */
+.bagian {
+  padding: 64px 0;
+}
+
+.judul-bagian {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.judul-bagian h2 {
+  font-size: 28px;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.judul-bagian p {
+  color: #64748b;
+}
+
+.grid-layanan {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.kartu-layanan {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.kartu-layanan:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border-color: #93c5fd;
+}
+
+.ikon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.biru { background: #dbeafe; }
+.hijau { background: #dcfce7; }
+.oranye { background: #ffedd5; }
+.ungu { background: #f3e8ff; }
+.merah { background: #fee2e2; }
+.teal { background: #ccfbf1; }
+
+.kartu-layanan h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.kartu-layanan p {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.panah {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* 4. BAGIAN BAWAH (3 KOLOM) */
+.latar-abu {
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.grid-bawah {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.kotak-info {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.kotak-info h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eff6ff;
+  color: #1e3a8a;
+}
+
+.daftar-tautan {
+  list-style: none;
+}
+
+.daftar-tautan li {
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.daftar-tautan li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.daftar-tautan strong {
+  display: block;
+  font-size: 14px;
+  color: #1e293b;
+  margin-bottom: 3px;
+}
+
+.daftar-tautan a:hover strong {
+  color: #2563eb;
+}
+
+.daftar-tautan span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* 5. FOOTER */
+.footer {
+  background-color: #0f172a;
+  color: #cbd5e1;
+  padding-top: 48px;
+}
+
+.footer-isi {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding-bottom: 36px;
+}
+
+.logo-putih {
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.footer-desk {
+  max-width: 400px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.footer-tautan {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-tautan h4 {
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.footer-tautan a {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.footer-tautan a:hover {
+  color: #ffffff;
+}
+
+.footer-bawah {
+  border-top: 1px solid #1e293b;
+  text-align: center;
+  padding: 18px;
+  font-size: 13px;
+  color: #64748b;
+}

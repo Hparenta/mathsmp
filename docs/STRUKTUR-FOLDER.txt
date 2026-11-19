@@ -1,0 +1,28 @@
+PANDUAN STRUKTUR FOLDER MathSMP
+
+Beranda index.html sengaja dipertahankan di root repository agar GitHub Pages dapat membukanya secara langsung.
+
+Folder halaman:
+- pages/materi: halaman materi kelas VII, VIII, IX.
+- pages/latihan: latihan soal dan kuis harian.
+- pages/tka: portal TKA, katalog bank TKA, dan tryout TKA.
+- pages/ruang-guru: katalog ATP, dashboard guru, generator soal, modul ajar, dan LKPD.
+
+Folder aset:
+- assets/css: semua file CSS.
+- assets/js: skrip aplikasi, generator, integrasi Gemini, dan fitur TKA.
+- assets/pdf/matematika: seluruh modul PDF.
+
+Folder data:
+- data/atp/matematika: data JavaScript dan workbook ATP.
+- data/bank-soal/kuis-harian/matematika: bank kuis reguler.
+- data/bank-soal/tka/matematika: bank soal khusus TKA.
+
+PENTING SAAT MEMINDAHKAN KE REPOSITORY GITHUB LAMA:
+Karena file-file lama berada di root, mengunggah struktur baru tidak otomatis menghapus salinan lama. Setelah memastikan website baru berjalan, hapus salinan lama di root repository: semua file HTML selain index.html, semua file CSS/JS yang sudah dipindahkan, folder pdf lama, folder atp lama, dan file petunjuk/konfigurasi OAuth yang sudah tidak dipakai. Jangan hapus index.html di root.
+
+File OAuth lama yang tidak digunakan pada versi Gemini API Free BYOK:
+- gemini-oauth-config.js
+- PETUNJUK-OAUTH-GEMINI.txt
+
+Jangan hapus direktori baru di assets/, data/, pages/, dan docs/.
