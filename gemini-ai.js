@@ -271,29 +271,37 @@
   }
 
   function buildPrompt(generatorType, data, mode, previousText = "", revision = "") {
+    const subject = String(data.subject || "").trim() || "Mata pelajaran belum ditentukan";
+    const isMath = /matematika|mathematics|math\b/i.test(subject);
     const context = {
       sekolah: data.school || "Tidak disebutkan",
       guru: data.teacher || "Tidak disebutkan",
-      mata_pelajaran: data.subject || "Matematika",
+      mata_pelajaran: subject,
       kelas: data.className || "Tidak disebutkan",
+      fase: data.phase || "Tidak disebutkan",
       semester: data.semester || "Tidak disebutkan",
       materi: data.topic || "Belum dipilih",
+      capaian_pembelajaran_CP: data.cp || "Tidak diberikan; jangan mengarang atau mengatasnamakan CP resmi",
       tujuan_pembelajaran_TP: data.mainObjective || "Tidak tersedia",
       tujuan_pembelajaran_khusus_TPK: data.objective || "Tidak tersedia",
       dimensi_profil_lulusan: data.dimensions || "Tidak ditentukan",
       alokasi_waktu: data.allocation || "Tidak ditentukan",
-      capaian_pembelajaran_CP: data.cp || "Tidak disediakan dalam workbook ATP; jangan mengarang CP resmi",
+      referensi_ATP: data.atpReference || "Tidak menggunakan ATP terintegrasi; gunakan CP/TP/TPK yang diisi guru",
       arahan_tambahan: data.aiInstruction || "Tidak ada"
     };
 
     const common = [
-      "Anda adalah asisten perancang pembelajaran Matematika SMP Indonesia yang teliti, praktis, dan berorientasi pada pembelajaran mendalam.",
-      "Tulis seluruh keluaran dalam Bahasa Indonesia yang baik, jelas, spesifik, dapat dilaksanakan guru SMP, dan tidak bertele-tele.",
-      "Gunakan konteks ATP sebagai acuan utama. Pertahankan redaksi TP, TPK, dimensi profil lulusan, kelas, semester, materi, dan alokasi waktu persis sebagaimana diberikan. Jangan mengganti, memperluas, atau mengarang isi ATP.",
-      "Jangan mengarang kutipan peraturan, CP resmi, atau sumber. Jika CP tidak diberikan, jangan membuat klaim bahwa teks yang dihasilkan adalah CP resmi.",
+      "Anda adalah asisten perancang pembelajaran lintas mata pelajaran untuk pendidikan SMP/MTs Indonesia. Anda harus mengikuti mata pelajaran yang dipilih guru, bukan menganggap semua permintaan sebagai Matematika.",
+      `MATA PELAJARAN YANG HARUS DIIKUTI: ${subject}. Semua konsep, istilah, stimulus, aktivitas, soal, asesmen, dan rubrik harus sesuai dengan disiplin ilmu ini. Jangan mengubah mata pelajaran atau menyisipkan materi Matematika kecuali memang relevan dengan mata pelajaran yang dipilih.`,
+      "Tulis seluruh keluaran dalam Bahasa Indonesia yang baik, jelas, spesifik, sesuai tingkat kelas, dapat dilaksanakan guru SMP, dan tidak bertele-tele.",
+      "Gunakan CP, TP, TPK, dan referensi ATP yang diberikan guru sebagai acuan. Pertahankan redaksi tujuan yang berasal dari dokumen guru; jangan mengganti atau mengklaimnya sebagai dokumen resmi lain.",
+      "Jika guru tidak memberikan CP/TP/TPK atau ATP, jangan mengarang kutipan CP resmi, nomor regulasi, atau sumber. Susun draf berdasarkan materi dan arahan yang tersedia, serta jangan menyatakan bahwa rumusan buatan AI adalah CP resmi.",
+      "Pilih pendekatan, aktivitas, stimulus, bentuk respons, dan bukti belajar yang sesuai dengan karakteristik mata pelajaran. Jangan memaksakan perhitungan matematika pada mata pelajaran lain. Pertimbangkan praktik, eksperimen, diskusi, membaca, menulis, pengamatan, karya, gerak, atau analisis sumber hanya jika relevan dan realistis.",
       "Jaga kesesuaian tingkat kesulitan dengan kelas yang dipilih. Aktivitas harus realistis dengan sumber daya sekolah yang wajar; jangan mengasumsikan laboratorium, internet stabil, atau perangkat setiap siswa tersedia.",
-      "Pastikan seluruh soal, bilangan, operasi, satuan, kunci, dan pembahasan diperiksa ulang secara mandiri. Hindari soal ambigu atau lebih dari satu jawaban benar jika tidak diminta.",
-      "Jangan menyertakan data pribadi peserta didik. Jangan mengembalikan Markdown fence; jawaban harus mengikuti skema JSON yang diminta."
+      isMath
+        ? "Untuk materi Matematika, periksa ulang setiap perhitungan, bilangan, operasi, satuan, kunci, dan pembahasan secara mandiri."
+        : "Untuk mata pelajaran selain Matematika, periksa ketepatan konsep, istilah, fakta, penalaran, dan kesesuaian jawaban dengan materi. Jangan mengarang kutipan atau sumber. Jika ada fakta yang bergantung pada sumber tertentu tetapi sumber tidak diberikan, hindari menyajikannya sebagai kutipan atau kepastian resmi.",
+      "Hindari soal ambigu atau lebih dari satu jawaban benar jika tidak diminta. Jangan menyertakan data pribadi peserta didik. Jangan mengembalikan Markdown fence; jawaban harus mengikuti skema JSON yang diminta."
     ].join("\n");
 
     if (generatorType === "modul") {
@@ -302,7 +310,7 @@
       const modeText = mode === "revise"
         ? `TUGAS REVISI: Perbaiki dokumen sesuai instruksi berikut: ${revision}. Pertahankan bagian yang sudah baik dari dokumen saat ini, perbaiki hanya yang perlu, dan kembalikan semua field lengkap agar dokumen dapat dibangun ulang.\nDOKUMEN SAAT INI:\n${previousText}`
         : "TUGAS: Susun draf modul ajar yang substantif, bukan sekadar kerangka atau daftar judul. Isi semua bagian dengan kegiatan konkret, urutan waktu yang masuk akal sesuai alokasi, pertanyaan/tugas, asesmen yang benar-benar dapat digunakan, kriteria keberhasilan, serta diferensiasi yang operasional.";
-      return `${common}\n\nJENIS DOKUMEN: MODUL AJAR MATEMATIKA SMP.\nKONTEKS ATP DAN FORMULIR:\n${JSON.stringify(context, null, 2)}\n\nDATA ISIAN SAAT INI:\n${JSON.stringify(current, null, 2)}\n\n${modeText}\n\nSYARAT KHUSUS:\n- Jangan isi atau mengarang CP. CP tetap diambil dari kolom manual guru, bukan dari keluaran Anda.\n- Kegiatan inti harus berurutan, menyebut aktivitas guru dan peserta didik, serta menerapkan pengalaman belajar yang bermakna, berkesadaran, dan menggembirakan secara wajar.\n- Sertakan estimasi waktu tiap tahap jika alokasi tersedia dan pastikan totalnya masuk akal.\n- Asesmen harus memiliki contoh instrumen atau indikator, bukan hanya menyebut diagnostik/formatif/sumatif.\n- Diferensiasi harus konkret untuk kebutuhan dukungan dan pengayaan.\n- Isi semua 10 field dalam JSON; gunakan string dengan pemisah baris untuk butir berurutan.`;
+      return `${common}\n\nJENIS DOKUMEN: MODUL AJAR ${subject.toUpperCase()} UNTUK SMP/MTs.\nKONTEKS ATP DAN FORMULIR:\n${JSON.stringify(context, null, 2)}\n\nDATA ISIAN SAAT INI:\n${JSON.stringify(current, null, 2)}\n\n${modeText}\n\nSYARAT KHUSUS:\n- Jangan mengisi atau mengarang CP resmi. Gunakan CP hanya jika guru telah memberikannya; jika tidak tersedia, jangan membuat bagian CP baru seolah-olah resmi.\n- Kegiatan inti harus berurutan, menyebut aktivitas guru dan peserta didik, serta sesuai dengan karakteristik mata pelajaran ${subject}.\n- Terapkan pengalaman belajar yang bermakna, berkesadaran, dan menggembirakan secara wajar; jangan sekadar menempelkan istilah tersebut.\n- Sertakan estimasi waktu tiap tahap jika alokasi tersedia dan pastikan totalnya masuk akal.\n- Asesmen harus memiliki contoh instrumen, indikator, kriteria keberhasilan, atau rubrik yang sesuai dengan kompetensi yang diukur.\n- Diferensiasi harus konkret untuk kebutuhan dukungan dan pengayaan.\n- Isi semua 10 field dalam JSON; gunakan string dengan pemisah baris untuk butir berurutan.`;
     }
 
     if (generatorType === "lkpd") {
@@ -311,8 +319,8 @@
       const taskCount = Math.max(1, Math.min(20, Number.parseInt(data.taskCount, 10) || 5));
       const modeText = mode === "revise"
         ? `TUGAS REVISI: Revisi LKPD sesuai instruksi: ${revision}. Pertahankan isi dokumen yang masih relevan. Kembalikan semua field dan tepat ${taskCount} tugas.\nDOKUMEN SAAT INI:\n${previousText}`
-        : `TUGAS: Buat LKPD siap pakai, bukan template kosong. Buat stimulus mandiri yang cukup, petunjuk yang jelas, langkah kegiatan aktif dan kolaboratif, serta tepat ${taskCount} pertanyaan/tugas yang meningkat dari pemahaman ke penalaran/penerapan.`;
-      return `${common}\n\nJENIS DOKUMEN: LKPD MATEMATIKA SMP.\nKONTEKS ATP DAN FORMULIR:\n${JSON.stringify(context, null, 2)}\nBENTUK KERJA: ${data.grouping || "Individu"}.\nBENTUK RESPONS: ${data.taskType || "Jawaban singkat"}.\nJUMLAH TUGAS: ${taskCount}.\nISIAN SAAT INI:\n${JSON.stringify(current, null, 2)}\n\n${modeText}\n\nSYARAT KHUSUS:\n- Setiap tugas harus dapat dijawab berdasarkan stimulus, data, dan materi yang disediakan.\n- Untuk soal hitungan, periksa hasilnya dan pastikan data cukup.\n- Gunakan konteks kehidupan sehari-hari yang dekat dengan peserta didik, tanpa memaksakan konteks.\n- Jangan menampilkan kunci jawaban pada lembar siswa.\n- Kembalikan materials, stimulus, instructions, activity, tasks, reflection. Activity berupa satu string dengan tiap langkah pada baris baru; tasks berupa array tepat ${taskCount} elemen.`;
+        : `TUGAS: Buat LKPD siap pakai, bukan template kosong. Buat stimulus mandiri yang cukup, petunjuk yang jelas, langkah kegiatan aktif dan kolaboratif, serta tepat ${taskCount} pertanyaan/tugas yang meningkat dari pemahaman ke penalaran/penerapan sesuai mata pelajaran.`;
+      return `${common}\n\nJENIS DOKUMEN: LKPD ${subject.toUpperCase()} UNTUK SMP/MTs.\nKONTEKS ATP DAN FORMULIR:\n${JSON.stringify(context, null, 2)}\nBENTUK KERJA: ${data.grouping || "Individu"}.\nBENTUK RESPONS: ${data.taskType || "Jawaban singkat"}.\nJUMLAH TUGAS: ${taskCount}.\nISIAN SAAT INI:\n${JSON.stringify(current, null, 2)}\n\n${modeText}\n\nSYARAT KHUSUS:\n- Setiap tugas harus dapat dikerjakan berdasarkan stimulus, data, sumber, dan materi yang disediakan.\n- Pastikan stimulus dan instruksi cocok dengan karakteristik mata pelajaran; jangan memakai konteks hitungan jika tidak relevan.\n- Gunakan situasi nyata yang dekat dengan peserta didik tanpa memaksakan konteks lokal.\n- Jangan menampilkan kunci jawaban pada lembar siswa.\n- Kembalikan materials, stimulus, instructions, activity, tasks, reflection. Activity berupa satu string dengan tiap langkah pada baris baru; tasks berupa array tepat ${taskCount} elemen.`;
     }
 
     const requestedCount = Math.max(1, Math.min(40, Number.parseInt(data.questionCount, 10) || 10));
@@ -321,7 +329,10 @@
     const modeText = mode === "revise"
       ? `TUGAS REVISI: Revisi naskah soal mengikuti instruksi: ${revision}. Pertahankan jumlah soal tepat ${requestedCount} dan bentuk ${typeText}. Gunakan dokumen saat ini sebagai dasar, tetapi perbaiki soal yang diminta.\nDOKUMEN SAAT INI:\n${previousText}`
       : `TUGAS: Buat tepat ${requestedCount} butir soal tipe ${typeText}, lengkap dan siap digunakan sebagai draf evaluasi kelas.`;
-    return `${common}\n\nJENIS DOKUMEN: NASKAH SOAL MATEMATIKA SMP.\nKONTEKS ATP DAN FORMULIR:\n${JSON.stringify(context, null, 2)}\nJUMLAH SOAL: ${requestedCount}.\nBENTUK SOAL: ${typeText}.\nPETUNJUK PENGERJAAN: ${data.instruction || "Bacalah setiap soal dengan teliti."}\n\n${modeText}\n\nSYARAT KHUSUS:\n- Semua butir harus mengukur TP/TPK yang dipilih. Variasikan konteks dan proses berpikir, jangan mengulang soal yang sama dengan angka berbeda.\n- Untuk pilihan ganda, setiap soal harus memiliki tepat empat opsi A-D yang masuk akal, hanya satu jawaban benar, dan distraktor harus sejenis serta tidak ambigu. Field answer harus berupa huruf A, B, C, atau D.\n- Untuk isian/uraian, options harus array kosong dan answer berisi jawaban final atau pokok jawaban.\n- Untuk bentuk campuran, distribusikan jenis pg/isian/uraian secara seimbang sedekat mungkin sambil tetap berjumlah tepat ${requestedCount}.\n- Sertakan pembahasan yang menunjukkan proses perhitungan atau alasan kunci. Kerjakan ulang seluruh hitungan sebelum mengirim jawaban.\n- Hindari menyebut soal ini sebagai soal TKA. Ini adalah naskah kuis/evaluasi reguler kecuali guru menyatakan lain.\n- Kembalikan array questions tepat ${requestedCount} elemen dengan field type, question, options, answer, explanation.`;
+    const mathSpecific = isMath
+      ? "- Untuk soal Matematika, kerjakan ulang setiap perhitungan sebelum menetapkan kunci dan pembahasan. Tampilkan satuan dan langkah penyelesaian yang diperlukan."
+      : "- Untuk mata pelajaran selain Matematika, gunakan istilah dan konsep yang tepat sesuai disiplin ilmu; pastikan kunci benar dan pembahasan menjelaskan alasan berdasarkan informasi pada soal atau pengetahuan mapel yang mapan.";
+    return `${common}\n\nJENIS DOKUMEN: NASKAH SOAL ${subject.toUpperCase()} SMP/MTs.\nKONTEKS ATP DAN FORMULIR:\n${JSON.stringify(context, null, 2)}\nJUMLAH SOAL: ${requestedCount}.\nBENTUK SOAL: ${typeText}.\nPETUNJUK PENGERJAAN: ${data.instruction || "Bacalah setiap soal dengan teliti."}\n\n${modeText}\n\nSYARAT KHUSUS:\n- Semua butir harus mengukur TP/TPK atau tujuan yang dipilih dan sesuai dengan mata pelajaran ${subject}. Variasikan konteks dan proses berpikir; jangan mengulang soal yang sama dengan angka atau kata berbeda.\n- Untuk pilihan ganda, setiap soal harus memiliki tepat empat opsi A-D yang masuk akal, hanya satu jawaban benar, dan distraktor harus sejenis serta tidak ambigu. Field answer harus berupa huruf A, B, C, atau D.\n- Untuk isian/uraian, options harus array kosong dan answer berisi jawaban final atau pokok jawaban yang dinilai.\n- Untuk bentuk campuran, distribusikan jenis pg/isian/uraian secara seimbang sedekat mungkin sambil tetap berjumlah tepat ${requestedCount}.\n${mathSpecific}\n- Sertakan pembahasan atau alasan kunci yang jelas, bukan hanya mengulang jawaban.\n- Hindari menyebut soal ini sebagai soal TKA. Ini adalah naskah kuis/evaluasi reguler kecuali guru menyatakan lain.\n- Kembalikan array questions tepat ${requestedCount} elemen dengan field type, question, options, answer, explanation.`;
   }
 
   function extractText(data) {

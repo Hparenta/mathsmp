@@ -67,12 +67,12 @@
       ? generatedQuestions.map((item, i) => `<tr><td>${i + 1}</td><td>${esc(item.answer || "")}</td><td>${esc(item.explanation || "")}</td></tr>`).join("")
       : Array.from({length: count}, (_, i) => `<tr><td>${i + 1}</td><td>[Isi kunci]</td><td>[Tuliskan pembahasan]</td></tr>`).join("");
     const keyPage = includeKey ? `<div style="page-break-before:always"></div><h2>KUNCI JAWABAN DAN PEMBAHASAN (UNTUK GURU)</h2><p class="rg-doc-small">${generatedQuestions ? "Kunci dan pembahasan merupakan draf AI; guru wajib memeriksa kembali sebelum digunakan." : "Lengkapi kunci dan pembahasan setelah butir soal selesai ditinjau."}</p><table><thead><tr><th style="width:50px">No.</th><th style="width:150px">Kunci</th><th>Pembahasan / alasan jawaban</th></tr></thead><tbody>${keyRows}</tbody></table>` : "";
-    return `<h1>NASKAH SOAL ${esc((get("subject") || "MATEMATIKA").toUpperCase())}</h1><p class="rg-doc-subtitle">${fallback(school)}${school ? "<br>" : ""}Tahun Pelajaran: [Isi tahun pelajaran]</p>${metaTable([["Mata Pelajaran", get("subject") || "Matematika"],["Kelas / Semester", `${get("className") || "…"} / ${get("semester") || "…"}`],["Materi", get("topic")],["Dimensi Profil Lulusan", get("dimensions")],["Nama", "........................................................"],["Hari / Tanggal", "........................................................"],["Alokasi Waktu", "........................................................"]])}${section("Tujuan Pembelajaran (TP)", paragraphs(get("mainObjective")))}${section("Tujuan Pembelajaran Khusus (TPK) / Tujuan yang Diukur", paragraphs(get("objective")))}${section("Petunjuk Pengerjaan", paragraphs(get("instruction")))}<h2>SOAL (${esc(typeLabel.toUpperCase())})</h2>${blocks}${keyPage}<p class="rg-doc-small" style="margin-top:24px;text-align:center">MathSMP · Dokumen disusun dan ditinjau oleh guru</p>`;
+    return `<h1>NASKAH SOAL ${esc((get("subject") || "MATA PELAJARAN").toUpperCase())}</h1><p class="rg-doc-subtitle">${fallback(school)}${school ? "<br>" : ""}Tahun Pelajaran: [Isi tahun pelajaran]</p>${metaTable([["Mata Pelajaran", get("subject") || "Mata Pelajaran"],["Kelas / Semester", `${get("className") || "…"} / ${get("semester") || "…"}`],["Materi", get("topic")],["Dimensi Profil Lulusan", get("dimensions")],["Nama", "........................................................"],["Hari / Tanggal", "........................................................"],["Alokasi Waktu", "........................................................"]])}${section("Capaian Pembelajaran (CP)", paragraphs(get("cp")))}${section("Tujuan Pembelajaran (TP)", paragraphs(get("mainObjective")))}${section("Tujuan Pembelajaran Khusus (TPK) / Tujuan yang Diukur", paragraphs(get("objective")))}${section("Petunjuk Pengerjaan", paragraphs(get("instruction")))}<h2>SOAL (${esc(typeLabel.toUpperCase())})</h2>${blocks}${keyPage}<p class="rg-doc-small" style="margin-top:24px;text-align:center">MathSMP · Dokumen disusun dan ditinjau oleh guru</p>`;
   }
 
   function buildModuleDocument() {
-    const rows = [["Satuan Pendidikan", get("school")], ["Penyusun", get("teacher")], ["Mata Pelajaran", get("subject") || "Matematika"], ["Fase / Kelas", `${get("phase") || "…"} / ${get("className") || "…"}`], ["Semester", get("semester")], ["Materi", get("topic")], ["Alokasi Waktu", get("allocation")], ["Dimensi Profil Lulusan", get("dimensions")]];
-    return `<h1>MODUL AJAR</h1><p class="rg-doc-subtitle">${fallback(get("subject") || "Matematika")} · Fase ${fallback(get("phase"))}</p>${metaTable(rows)}${section("A. Capaian Pembelajaran (CP)", paragraphs(get("cp")))}${section("B. Tujuan Pembelajaran (TP)", paragraphs(get("mainObjective")))}${section("C. Tujuan Pembelajaran Khusus (TPK)", paragraphs(get("objective")))}${section("D. Kompetensi Awal", paragraphs(get("prior")))}${section("E. Pemahaman Bermakna", paragraphs(get("understanding")))}${section("F. Pertanyaan Pemantik", paragraphs(get("trigger")))}${section("G. Model dan Pendekatan Pembelajaran", paragraphs(get("model")))}${section("H. Langkah-Langkah Pembelajaran", `<h3>1. Kegiatan Pendahuluan</h3>${paragraphs(get("opening"))}<h3>2. Kegiatan Inti</h3>${paragraphs(get("core"))}<h3>3. Kegiatan Penutup</h3>${paragraphs(get("closing"))}`)}${section("I. Asesmen", paragraphs(get("assessment")))}${section("J. Diferensiasi dan Tindak Lanjut", paragraphs(get("differentiation")))}${section("K. Refleksi", paragraphs(get("reflection")))}<p class="rg-doc-small" style="margin-top:25px">Catatan: CP perlu diisi dengan merujuk dokumen CP yang berlaku; ATP sumber hanya menyediakan TP dan TPK sebagai kolom terpisah.</p>`;
+    const rows = [["Satuan Pendidikan", get("school")], ["Penyusun", get("teacher")], ["Mata Pelajaran", get("subject") || "Mata Pelajaran"], ["Fase / Kelas", `${get("phase") || "…"} / ${get("className") || "…"}`], ["Semester", get("semester")], ["Materi", get("topic")], ["Alokasi Waktu", get("allocation")], ["Dimensi Profil Lulusan", get("dimensions")]];
+    return `<h1>MODUL AJAR</h1><p class="rg-doc-subtitle">${fallback(get("subject") || "Mata Pelajaran")} · Fase ${fallback(get("phase"))}</p>${metaTable(rows)}${section("A. Capaian Pembelajaran (CP)", paragraphs(get("cp")))}${section("B. Tujuan Pembelajaran (TP)", paragraphs(get("mainObjective")))}${section("C. Tujuan Pembelajaran Khusus (TPK)", paragraphs(get("objective")))}${section("D. Kompetensi Awal", paragraphs(get("prior")))}${section("E. Pemahaman Bermakna", paragraphs(get("understanding")))}${section("F. Pertanyaan Pemantik", paragraphs(get("trigger")))}${section("G. Model dan Pendekatan Pembelajaran", paragraphs(get("model")))}${section("H. Langkah-Langkah Pembelajaran", `<h3>1. Kegiatan Pendahuluan</h3>${paragraphs(get("opening"))}<h3>2. Kegiatan Inti</h3>${paragraphs(get("core"))}<h3>3. Kegiatan Penutup</h3>${paragraphs(get("closing"))}`)}${section("I. Asesmen", paragraphs(get("assessment")))}${section("J. Diferensiasi dan Tindak Lanjut", paragraphs(get("differentiation")))}${section("K. Refleksi", paragraphs(get("reflection")))}<p class="rg-doc-small" style="margin-top:25px">Catatan: gunakan CP resmi sesuai mata pelajaran dan fase. Jika CP tidak tercantum dalam ATP yang dipilih, isi dari dokumen rujukan yang berlaku.</p>`;
   }
 
   function buildLKPDDocument() {
@@ -83,7 +83,7 @@
       ? generatedTasks.map((task, i) => `<tr><td style="width:38px">${i + 1}</td><td>${esc(task)}</td><td>[Ruang jawaban peserta didik]</td></tr>`).join("")
       : Array.from({length: taskCount}, (_, i) => `<tr><td style="width:38px">${i + 1}</td><td>[Tuliskan pertanyaan atau tugas ${i + 1}]</td><td>[Ruang jawaban peserta didik]</td></tr>`).join("");
     const steps = get("activity") ? `<ol>${get("activity").split(/\n+/).map(x => x.trim()).filter(Boolean).map(x => `<li>${esc(x)}</li>`).join("")}</ol>` : '<p class="rg-output-empty">[Tambahkan langkah kegiatan, satu langkah per baris]</p>';
-    return `<h1>LEMBAR KERJA PESERTA DIDIK (LKPD)</h1><p class="rg-doc-subtitle">${fallback(get("subject") || "Matematika")} · ${fallback(get("topic"))}</p>${metaTable([["Satuan Pendidikan", get("school")], ["Nama Guru", get("teacher")], ["Kelas / Semester", `${get("className") || "…"} / ${get("semester") || "…"}`], ["Alokasi Waktu", get("allocation")], ["Bentuk Kerja", get("grouping")], ["Dimensi Profil Lulusan", get("dimensions")]])}${section("A. Acuan Tujuan Pembelajaran (TP)", paragraphs(get("mainObjective")))}${section("B. Tujuan Kegiatan / Tujuan Pembelajaran Khusus (TPK)", paragraphs(get("objective")))}${section("C. Alat, Bahan, dan Sumber Belajar", paragraphs(get("materials")))}${section("D. Informasi / Stimulus", paragraphs(get("stimulus")))}${section("E. Petunjuk Pengerjaan", paragraphs(get("instructions")))}${section("F. Langkah Kegiatan", steps)}${section("G. Tugas dan Pertanyaan", `<p class="rg-doc-small">Bentuk respons: ${esc(taskType)}</p><table><thead><tr><th>No.</th><th>Tugas / Pertanyaan</th><th>Jawaban / Hasil Kerja</th></tr></thead><tbody>${tasks}</tbody></table>`)}${section("H. Kesimpulan", '<p>[Tuliskan kesimpulan berdasarkan hasil kegiatan.]</p><div class="rg-doc-answer-space"></div>')}${section("I. Refleksi Peserta Didik", paragraphs(get("reflection")))}<p class="rg-doc-small" style="margin-top:25px">MathSMP · Lembar kerja dapat disesuaikan dengan kebutuhan pembelajaran</p>`;
+    return `<h1>LEMBAR KERJA PESERTA DIDIK (LKPD)</h1><p class="rg-doc-subtitle">${fallback(get("subject") || "Mata Pelajaran")} · ${fallback(get("topic"))}</p>${metaTable([["Satuan Pendidikan", get("school")], ["Nama Guru", get("teacher")], ["Kelas / Semester", `${get("className") || "…"} / ${get("semester") || "…"}`], ["Alokasi Waktu", get("allocation")], ["Bentuk Kerja", get("grouping")], ["Dimensi Profil Lulusan", get("dimensions")]])}${section("A. Capaian Pembelajaran (CP)", paragraphs(get("cp")))}${section("B. Acuan Tujuan Pembelajaran (TP)", paragraphs(get("mainObjective")))}${section("C. Tujuan Kegiatan / Tujuan Pembelajaran Khusus (TPK)", paragraphs(get("objective")))}${section("D. Alat, Bahan, dan Sumber Belajar", paragraphs(get("materials")))}${section("E. Informasi / Stimulus", paragraphs(get("stimulus")))}${section("F. Petunjuk Pengerjaan", paragraphs(get("instructions")))}${section("G. Langkah Kegiatan", steps)}${section("H. Tugas dan Pertanyaan", `<p class="rg-doc-small">Bentuk respons: ${esc(taskType)}</p><table><thead><tr><th>No.</th><th>Tugas / Pertanyaan</th><th>Jawaban / Hasil Kerja</th></tr></thead><tbody>${tasks}</tbody></table>`)}${section("I. Kesimpulan", '<p>[Tuliskan kesimpulan berdasarkan hasil kegiatan.]</p><div class="rg-doc-answer-space"></div>')}${section("J. Refleksi Peserta Didik", paragraphs(get("reflection")))}<p class="rg-doc-small" style="margin-top:25px">MathSMP · Lembar kerja dapat disesuaikan dengan kebutuhan pembelajaran</p>`;
   }
 
   function setupAtpReference() {
@@ -92,6 +92,7 @@
     const subtopicSelect = document.getElementById("atpSubtopicSelect");
     const classField = document.getElementById("className");
     const semesterField = document.getElementById("semester");
+    const subjectField = document.getElementById("subject");
     const topicField = document.getElementById("topic");
     const mainObjectiveField = document.getElementById("mainObjective");
     const objectiveField = document.getElementById("objective");
@@ -99,19 +100,20 @@
     const allocationField = document.getElementById("allocation");
     const phaseField = document.getElementById("phase");
     const usable = atpRecords.filter(item => item && item.id && item.judul && Array.isArray(item.pokokBahasan));
+    let availableRecords = [];
 
-    usable.forEach(item => {
-      const option = document.createElement("option");
-      option.value = item.id;
-      option.textContent = `${item.judul} — Kelas ${item.kelas || "VII–IX"}`;
-      atpSelect.appendChild(option);
-    });
-    if (!usable.length) {
-      atpSelect.disabled = true;
-      atpSelect.innerHTML = '<option value="">Data ATP belum tersedia — isi manual</option>';
-    }
-
-    const activeRecord = () => usable.find(item => item.id === atpSelect.value) || null;
+    const normalize = value => String(value || "").toLocaleLowerCase("id-ID").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+    const subjectOfRecord = item => item.mataPelajaran || item.mapel || item.subject || item.judul || "";
+    const matchesSubject = item => {
+      const selectedSubject = normalize(subjectField?.value || "");
+      const recordSubject = normalize(subjectOfRecord(item));
+      if (!selectedSubject || !recordSubject) return false;
+      // Memudahkan variasi penulisan seperti "Matematika SMP" atau "Math".
+      if (/matematika|mathematics|math\b/.test(selectedSubject)) return /matematika|mathematics|math\b/.test(recordSubject);
+      // Untuk record ATP tanpa metadata mapel tersendiri, nama judul dipakai sebagai petunjuk.
+      return recordSubject.includes(selectedSubject) || selectedSubject.includes(recordSubject);
+    };
+    const activeRecord = () => availableRecords.find(item => item.id === atpSelect.value) || null;
     const resetSelect = (node, placeholder) => {
       if (!node) return;
       node.innerHTML = "";
@@ -197,20 +199,53 @@
       showToast("TP dan TPK dari ATP diterapkan. Periksa kembali sebelum membuat dokumen.");
     }
 
+    function refreshATPOptions(clearIncompatibleSelection = false) {
+      const previousRecord = activeRecord();
+      const previousId = atpSelect.value;
+      availableRecords = usable.filter(matchesSubject);
+      atpSelect.innerHTML = "";
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      const subjectName = (subjectField?.value || "mata pelajaran ini").trim();
+      placeholder.textContent = availableRecords.length
+        ? "Belum memilih ATP / isi manual"
+        : `Belum ada ATP untuk ${subjectName || "mata pelajaran ini"} — isi CP, TP, dan TPK manual`;
+      atpSelect.appendChild(placeholder);
+      availableRecords.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.id;
+        option.textContent = `${item.judul} — Kelas ${item.kelas || "VII–IX"}`;
+        atpSelect.appendChild(option);
+      });
+      atpSelect.disabled = availableRecords.length === 0;
+      const stillAvailable = availableRecords.some(item => item.id === previousId);
+      atpSelect.value = stillAvailable ? previousId : "";
+      if (clearIncompatibleSelection && previousRecord && !stillAvailable) {
+        // Jangan biarkan TP/TPK dari ATP Matematika terbawa ke mata pelajaran lain.
+        [topicField, mainObjectiveField, objectiveField, dimensionsField, allocationField].forEach(node => {
+          if (node) node.value = "";
+        });
+      }
+      updateTopics();
+    }
+
     atpSelect.addEventListener("change", () => {
       const record = activeRecord();
       if (record && phaseField) phaseField.value = record.fase || "D";
       updateTopics();
-      if (!record) showToast("Mode manual dipilih. Isi materi dan tujuan pembelajaran sendiri.");
+      if (!record) showToast("Mode manual dipilih. Isi CP, TP, TPK, dan materi sesuai mata pelajaran.");
     });
     if (classField) classField.addEventListener("change", updateTopics);
     if (semesterField) semesterField.addEventListener("change", updateTopics);
     if (topicSelect) topicSelect.addEventListener("change", updateSubtopics);
     if (subtopicSelect) subtopicSelect.addEventListener("change", applySubtopic);
+    if (subjectField) subjectField.addEventListener("change", () => refreshATPOptions(true));
     form.addEventListener("reset", () => window.setTimeout(() => {
       if (atpSelect) atpSelect.value = "";
-      updateTopics();
+      refreshATPOptions(false);
     }, 0));
+
+    refreshATPOptions(false);
   }
 
   function showToast(message) {
@@ -343,7 +378,7 @@
       });
       const checked = validateAIResult(result);
       applyAIResult(checked);
-      renderDocument(mode === "revise" ? "Revisi AI selesai. Periksa isi dan perhitungan sebelum digunakan." : "Draf AI selesai dibuat. Periksa seluruh soal, kegiatan, asesmen, dan kesesuaian ATP sebelum digunakan.");
+      renderDocument(mode === "revise" ? "Revisi AI selesai. Periksa isi, fakta, dan kesesuaian dengan mata pelajaran sebelum digunakan." : "Draf AI selesai dibuat. Periksa seluruh isi, fakta, asesmen, dan kesesuaian dengan CP/TP/ATP sebelum digunakan.");
       if (aiRevisionPrompt) aiRevisionPrompt.value = "";
     } catch (error) {
       showToast(error.message || "AI gagal membuat dokumen. Coba lagi.");
