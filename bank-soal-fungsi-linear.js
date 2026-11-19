@@ -2,8 +2,8 @@
 // Topik: Fungsi Linear dan Grafiknya (100 Soal Pilihan Ganda A-D)
 // Proporsi: 30 LOTS (No. 1-30), 45 MOTS (No. 31-75), 25 HOTS (No. 76-100)
 
-window.BANK_SOAL = window.BANK_SOAL || {};
-window.BANK_SOAL["fungsi-linear"] = [
+window.bankSoal = window.bankSoal || {};
+window.bankSoal.FungsiLinear = [
   {
     "nomor": 1,
     "level": "LOTS",
