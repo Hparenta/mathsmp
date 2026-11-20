@@ -85,3 +85,7 @@
 @media(max-width:1000px){.main-nav{gap:1px}.main-nav>a,.nav-dropdown>summary{padding:8px;font-size:12px}.nav-cta{display:none!important}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:850px){.tka-highlight{grid-template-columns:1fr}.tka-hero-grid,.teacher-hero-grid{grid-template-columns:1fr;gap:22px}.tka-hero-visual,.teacher-hero-art{min-height:230px}.teacher-tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.main-nav{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:5px}.main-nav>a,.nav-dropdown>summary{font-size:11px;padding:8px 9px}.nav-dropdown-menu{position:fixed;top:120px;left:14px}.feature-grid{grid-template-columns:1fr}.tka-highlight{padding:25px 20px}.tka-mini-grid{gap:8px}.tka-mini-card{padding:14px 11px}.tka-service-grid,.teacher-tool-grid{grid-template-columns:1fr}.tka-hero,.teacher-hero{padding:46px 0}.tka-hero h1,.teacher-hero h1{font-size:35px}.tka-hero-visual{min-height:230px}.teacher-tool-card>p{min-height:0}}
+/* Menu Kuis digabung ke Latihan Soal */
+nav a[href*="kuis.html"] {
+  display: none !important;
+}

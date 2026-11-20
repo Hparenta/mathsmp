@@ -333,3 +333,7 @@ a {
   font-size: 13px;
   color: #64748b;
 }
+/* Menu Kuis digabung ke Latihan Soal */
+nav a[href*="kuis.html"] {
+  display: none !important;
+}
