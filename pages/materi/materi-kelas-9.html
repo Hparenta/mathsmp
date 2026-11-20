@@ -105,18 +105,21 @@
   <main class="wadah">
     <div class="wadah-materi">
       <h2>📙 Bahan Bacaan Matematika Kelas IX</h2>
-      <p>Pilih pokok bahasan Kelas IX di bawah ini untuk membaca modul PDF atau mengunduhnya.</p>
+      <p>Pilih pokok bahasan Kelas IX di bawah ini untuk membaca modul PDF atau bahan bacaan HTML.</p>
 
       <div class="daftar-bab">
-        <button class="btn-bab aktif" onclick="gantiMateri(this, 'Materi 1: Populasi dan Sampel', 'pdf/Populasi-dan-Sampel.pdf')">
+        <button class="btn-bab aktif" onclick="gantiMateri(this, 'Materi 1: Populasi dan Sampel', '../../assets/pdf/matematika/Populasi-dan-Sampel.pdf', 'pdf')">
           1. Populasi dan Sampel
+        </button>
+        <button class="btn-bab" onclick="gantiMateri(this, 'Materi 2: Teknik Sampling dan Penelitian Sederhana', '../../assets/pdf/matematika/Materi%20Kelas%209/bahan_bacaan_teknik_sampling.html', 'html')">
+          2. Teknik Sampling dan Penelitian Sederhana
         </button>
       </div>
 
       <div class="info-dokumen">
         <div>
           <strong id="judulBab" style="font-size: 17px; color: #9a3412;">Materi 1: Populasi dan Sampel</strong>
-          <p style="font-size: 13px; color: #475569;">Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.</p>
+          <p id="petunjukDokumen" style="font-size: 13px; color: #475569;">Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.</p>
         </div>
         <div class="grup-aksi">
           <a id="tombolUnduh" href="../../assets/pdf/matematika/Populasi-dan-Sampel.pdf" target="_blank" class="btn-unduh">📥 Buka / Unduh PDF</a>
@@ -129,13 +132,25 @@
   </main>
 
   <script>
-    function gantiMateri(tombolKlik, judulBaru, lokasiFilePdf) {
+    function gantiMateri(tombolKlik, judulBaru, lokasiFile, jenisMateri) {
       document.querySelectorAll('.btn-bab').forEach(btn => btn.classList.remove('aktif'));
       tombolKlik.classList.add('aktif');
 
+      const tombolBuka = document.getElementById('tombolUnduh');
+      const petunjuk = document.getElementById('petunjukDokumen');
+      const layar = document.getElementById('layarPdf');
+
       document.getElementById('judulBab').textContent = judulBaru;
-      document.getElementById('layarPdf').src = lokasiFilePdf;
-      document.getElementById('tombolUnduh').href = lokasiFilePdf;
+      layar.src = lokasiFile;
+      tombolBuka.href = lokasiFile;
+
+      if (jenisMateri === 'html') {
+        tombolBuka.textContent = '📖 Buka Bahan Bacaan';
+        petunjuk.textContent = 'Bahan bacaan HTML ditampilkan di bawah ini. Jika tidak tampil, klik tombol Buka Bahan Bacaan.';
+      } else {
+        tombolBuka.textContent = '📥 Buka / Unduh PDF';
+        petunjuk.textContent = 'Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.';
+      }
     }
   </script>
 
