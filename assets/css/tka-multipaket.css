@@ -1,0 +1,46 @@
+/* Multi-paket & multi-mapel TKA MathSMP */
+.tka-selector-panel{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;background:#fff;border:1px solid #dfe7f2;border-radius:16px;padding:18px;margin:0 0 20px;box-shadow:0 6px 20px rgba(16,42,86,.035)}
+.tka-selector-panel label{display:flex;flex-direction:column;gap:7px;color:#334155;font-size:13px;font-weight:750}
+.tka-selector-panel select{min-height:44px;width:100%;border:1px solid #cbd5e1;border-radius:9px;background:#fff;padding:10px 12px;font:inherit;color:#1e293b}
+.tka-instructions{margin:0 0 16px;padding:13px 16px 13px 34px;border-radius:11px;background:#f6f8fc;color:#52647d;font-size:13px;line-height:1.7}.tka-instructions:empty{display:none}.tka-selector-status{grid-column:1/-1;margin:0;color:#64748b;font-size:12px;line-height:1.55}
+.tka-package-intro{margin:0 0 15px}
+.tka-stimulus-block{background:#f4f7fc;border:1px solid #e0e8f4;border-left:4px solid #7e9fcf;border-radius:12px;padding:15px 17px;margin:14px 0;color:#40536f;line-height:1.7;white-space:pre-wrap}
+.tka-stimulus-block strong{display:block;color:#244776;margin-bottom:4px;font-size:13px}
+.tka-illustration-wrap{margin:14px 0 16px;padding:12px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;text-align:center}
+.tka-illustration{display:block;max-width:100%;width:auto;height:auto;max-height:360px;margin:0 auto;object-fit:contain}
+.tka-question-kind{display:inline-flex;align-items:center;padding:5px 9px;border-radius:20px;background:#edf4ff;color:#315d9e;font-size:10px;font-weight:800}
+.tka-category-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border:1px solid #dce5f0;border-radius:10px;font-size:13px}
+.tka-category-table th,.tka-category-table td{padding:10px 12px;border-bottom:1px solid #e6edf5;text-align:left;vertical-align:top}
+.tka-category-table th{background:#eef4fc;color:#35577f;font-size:11px}
+.tka-category-table tr:last-child td{border-bottom:0}
+.tka-category-table td:last-child{text-align:center;font-weight:750;white-space:nowrap}
+.tka-statement-list{display:grid;gap:12px;margin:14px 0}
+.tka-statement-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:13px 14px;background:#fff;border:1px solid #dce5f0;border-radius:10px}
+.tka-statement-text{color:#334155;line-height:1.6;font-size:14px}
+.tka-statement-code{display:inline-grid;place-items:center;width:25px;height:25px;margin-right:7px;border-radius:7px;background:#eaf1fb;color:#28538d;font-weight:850;font-size:12px;vertical-align:middle}
+.tka-category-options{display:flex;gap:8px;flex-wrap:wrap}
+.tka-category-choice{display:inline-flex;align-items:center;gap:5px;padding:7px 10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#334155;font-size:12px;cursor:pointer}
+.tka-category-choice:has(input:checked){background:#eff6ff;border-color:#7aa4dc;color:#174b8e}
+.tka-category-choice input{margin:0}
+.tka-subject-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.tka-subject-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:24px;box-shadow:0 8px 25px rgba(16,42,86,.045);display:flex;flex-direction:column;gap:12px}
+.tka-subject-card h2{margin:0;color:#17325b;font-size:22px}
+.tka-subject-card p{margin:0;color:#63748b;line-height:1.65;font-size:14px}
+.tka-subject-icon{width:50px;height:50px;display:grid;place-items:center;border-radius:15px;background:#eaf2ff;color:#2862ba}
+.tka-subject-icon svg{width:27px;height:27px}
+.tka-package-list{display:grid;gap:8px;margin:4px 0}
+.tka-package-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;background:#f6f8fc;border-radius:9px;color:#3d536f;font-size:13px}
+.tka-package-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:auto}
+.tka-home-note{font-size:12px;color:#718096;line-height:1.6;margin:0}
+.tka-review-statement{padding:9px 11px;border-radius:8px;background:#f7f9fc;margin:7px 0;color:#46566f;font-size:13px;line-height:1.55}
+.tka-review-statement strong{color:#1e477e}
+.tka-status-draft{display:inline-flex;padding:5px 9px;border-radius:20px;background:#fff5df;color:#956313;font-size:10px;font-weight:850}
+.tka-status-live{display:inline-flex;padding:5px 9px;border-radius:20px;background:#e8f8f1;color:#087a58;font-size:10px;font-weight:850}
+.tka-nav-number.partial{background:#fff8e8;border-color:#f1c46f;color:#92620e}
+@media(max-width:760px){
+  .tka-selector-panel{grid-template-columns:1fr}
+  .tka-instructions{margin:0 0 16px;padding:13px 16px 13px 34px;border-radius:11px;background:#f6f8fc;color:#52647d;font-size:13px;line-height:1.7}.tka-instructions:empty{display:none}.tka-selector-status{grid-column:auto}
+  .tka-subject-grid{grid-template-columns:1fr}
+  .tka-statement-row{grid-template-columns:1fr;gap:8px}
+  .tka-category-options{justify-content:flex-start}
+}

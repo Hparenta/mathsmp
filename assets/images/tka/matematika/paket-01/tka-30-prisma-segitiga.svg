@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Prisma tegak dengan alas segitiga siku-siku</title><desc id="svg-desc">Prisma segitiga tegak memiliki alas segitiga siku-siku dengan sisi siku-siku 6 dan 8 sentimeter, panjang prisma 15 sentimeter.</desc>
+<defs>
+ <style>
+  text{font-family:Arial,Helvetica,sans-serif;fill:#263b59}
+  .title{font-size:23px;font-weight:700;fill:#173b70}
+  .label{font-size:18px;font-weight:700;fill:#173b70}
+  .small{font-size:15px;fill:#64748b}
+  .tiny{font-size:13px;fill:#64748b}
+  .axis{stroke:#263b59;stroke-width:2.5;fill:none}
+  .grid{stroke:#dce6f3;stroke-width:1}
+  .blue{stroke:#2563eb;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .teal{stroke:#0f8b83;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .dash{stroke-dasharray:8 7}
+ </style>
+ <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#2563eb" stroke-width="1.4"/></marker>
+ <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#64748b" stroke-width="1.4"/></marker>
+</defs>
+<rect x="0" y="0" width="920" height="500" rx="24" fill="#ffffff"/>
+<text x="42" y="42" class="title">Prisma tegak dengan alas segitiga siku-siku</text><text x="42" y="72" class="small">Tinggi prisma 15 cm</text>
+<!-- Dua alas segitiga siku-siku yang sejajar -->
+<path d="M155 350 L335 350 L155 220 Z" fill="#e7f0ff" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
+<path d="M530 350 L710 350 L530 220 Z" fill="#f4f7ff" stroke="#2563eb" stroke-width="4" stroke-linejoin="round"/>
+<!-- Tiga rusuk penghubung membentuk prisma -->
+<path d="M155 350 H530 M335 350 H710 M155 220 H530" stroke="#2563eb" stroke-width="4" fill="none"/>
+<!-- Rusuk atas terlihat; sisi miring belakang dibuat putus-putus -->
+<path d="M155 220 H530" stroke="#2563eb" stroke-width="4" fill="none"/>
+<path d="M530 220 L710 350" stroke="#91a8c7" stroke-width="2" stroke-dasharray="7 6" fill="none"/>
+<!-- Sudut siku-siku pada alas depan -->
+<path d="M155 322 H183 V350" stroke="#0f8b83" stroke-width="3" fill="none"/>
+<!-- Ukuran sisi alas -->
+<path d="M125 220 V350 M117 220 H133 M117 350 H133" stroke="#64748b" stroke-width="2"/><text x="99" y="290" text-anchor="middle" class="label" transform="rotate(-90 99 290)">8 cm</text>
+<path d="M155 382 H335 M155 374 V390 M335 374 V390" stroke="#64748b" stroke-width="2"/><text x="245" y="415" text-anchor="middle" class="label">6 cm</text>
+<!-- Panjang prisma ditunjukkan pada rusuk penghubung atas -->
+<path d="M155 190 H530 M155 182 V198 M530 182 V198" stroke="#0f8b83" stroke-width="2.5"/><text x="342" y="178" text-anchor="middle" class="label" fill="#0f766e">15 cm</text>
+
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Diagram lingkaran kegiatan ekstrakurikuler</title><desc id="svg-desc">Diagram lingkaran 240 siswa: Pramuka 108 derajat, Basket 90, Musik 72, Robotik 54, dan Seni belum diketahui.</desc>
+<defs>
+ <style>
+  text{font-family:Arial,Helvetica,sans-serif;fill:#263b59}
+  .title{font-size:23px;font-weight:700;fill:#173b70}
+  .label{font-size:18px;font-weight:700;fill:#173b70}
+  .small{font-size:15px;fill:#64748b}
+  .tiny{font-size:13px;fill:#64748b}
+  .axis{stroke:#263b59;stroke-width:2.5;fill:none}
+  .grid{stroke:#dce6f3;stroke-width:1}
+  .blue{stroke:#2563eb;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .teal{stroke:#0f8b83;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .dash{stroke-dasharray:8 7}
+ </style>
+ <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#2563eb" stroke-width="1.4"/></marker>
+ <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#64748b" stroke-width="1.4"/></marker>
+</defs>
+<rect x="0" y="0" width="920" height="500" rx="24" fill="#ffffff"/>
+<text x="42" y="42" class="title">Pilihan ekstrakurikuler 240 siswa</text><text x="42" y="70" class="small">Diagram lingkaran berdasarkan besar sudut juring</text><path d="M265 270 L265.0 105.0 A165 165 0 0 1 421.9 321.0 Z" fill="#2563eb" stroke="#fff" stroke-width="4"/><text x="351.8" y="214.0" text-anchor="middle" font-size="19" font-weight="800" fill="#fff">108°</text><path d="M265 270 L421.9 321.0 A165 165 0 0 1 214.0 426.9 Z" fill="#0f8b83" stroke="#fff" stroke-width="4"/><text x="313.7" y="372.6" text-anchor="middle" font-size="19" font-weight="800" fill="#fff">90°</text><path d="M265 270 L214.0 426.9 A165 165 0 0 1 100.0 270.0 Z" fill="#8b5cf6" stroke="#fff" stroke-width="4"/><text x="178.2" y="340.0" text-anchor="middle" font-size="19" font-weight="800" fill="#fff">72°</text><path d="M265 270 L100.0 270.0 A165 165 0 0 1 168.0 136.5 Z" fill="#e6a23c" stroke="#fff" stroke-width="4"/><text x="169.4" y="228.3" text-anchor="middle" font-size="19" font-weight="800" fill="#fff">54°</text><path d="M265 270 L168.0 136.5 A165 165 0 0 1 265.0 105.0 Z" fill="#94a3b8" stroke="#fff" stroke-width="4"/><text x="231.9" y="175.0" text-anchor="middle" font-size="19" font-weight="800" fill="#fff">?</text><rect x="535" y="130" width="22" height="22" rx="6" fill="#2563eb"/><text x="575" y="147" class="label">Pramuka</text><text x="840" y="147" text-anchor="end" class="small">108°</text><rect x="535" y="192" width="22" height="22" rx="6" fill="#0f8b83"/><text x="575" y="209" class="label">Basket</text><text x="840" y="209" text-anchor="end" class="small">90°</text><rect x="535" y="254" width="22" height="22" rx="6" fill="#8b5cf6"/><text x="575" y="271" class="label">Musik</text><text x="840" y="271" text-anchor="end" class="small">72°</text><rect x="535" y="316" width="22" height="22" rx="6" fill="#e6a23c"/><text x="575" y="333" class="label">Robotik</text><text x="840" y="333" text-anchor="end" class="small">54°</text><rect x="535" y="378" width="22" height="22" rx="6" fill="#94a3b8"/><text x="575" y="395" class="label">Seni</text><text x="840" y="395" text-anchor="end" class="small">Belum diketahui</text><rect x="535" y="475" width="320" height="1" fill="#dce6f3"/><text x="535" y="470" class="tiny">Jumlah seluruh siswa: 240</text>
+</svg>

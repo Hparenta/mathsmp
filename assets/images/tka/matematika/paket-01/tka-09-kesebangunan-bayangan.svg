@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Ilustrasi kesebangunan tiang dan pohon</title><desc id="svg-desc">Dua segitiga siku-siku sebangun dengan tinggi tiang 2 meter dan bayangan 1,6 meter, serta tinggi pohon belum diketahui dan bayangan 10,4 meter.</desc>
+<defs>
+ <style>
+  text{font-family:Arial,Helvetica,sans-serif;fill:#263b59}
+  .title{font-size:23px;font-weight:700;fill:#173b70}
+  .label{font-size:18px;font-weight:700;fill:#173b70}
+  .small{font-size:15px;fill:#64748b}
+  .tiny{font-size:13px;fill:#64748b}
+  .axis{stroke:#263b59;stroke-width:2.5;fill:none}
+  .grid{stroke:#dce6f3;stroke-width:1}
+  .blue{stroke:#2563eb;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .teal{stroke:#0f8b83;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .dash{stroke-dasharray:8 7}
+ </style>
+ <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#2563eb" stroke-width="1.4"/></marker>
+ <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#64748b" stroke-width="1.4"/></marker>
+</defs>
+<rect x="0" y="0" width="920" height="500" rx="24" fill="#ffffff"/>
+<text x="42" y="42" class="title">Tinggi benda dan panjang bayangan</text><text x="42" y="72" class="small">Sinar matahari dianggap sejajar</text>
+<path d="M70 385 H850" stroke="#6b7f99" stroke-width="3"/>
+<!-- pole --> <path d="M180 265 V385" stroke="#2563eb" stroke-width="8"/><path d="M180 265 L276 385" stroke="#0f8b83" stroke-width="3" stroke-dasharray="8 7"/><path d="M180 385 H276" stroke="#2563eb" stroke-width="6"/>
+<path d="M150 265 V385" stroke="#64748b" stroke-width="2"/><path d="M140 265 H160 M140 385 H160" stroke="#64748b" stroke-width="2"/><text x="125" y="325" class="label" text-anchor="middle">2 m</text>
+<text x="228" y="414" class="label" text-anchor="middle">1,6 m</text><text x="180" y="220" class="label" text-anchor="middle">Tiang</text>
+<!-- tree --> <path d="M570 60 V385" stroke="#0f8b83" stroke-width="13"/><path d="M570 60 L830 385" stroke="#2563eb" stroke-width="3" stroke-dasharray="8 7"/><path d="M570 385 H830" stroke="#0f8b83" stroke-width="6"/>
+<path d="M535 60 V385" stroke="#64748b" stroke-width="2"/><path d="M525 60 H545 M525 385 H545" stroke="#64748b" stroke-width="2"/><text x="500" y="230" class="label" text-anchor="middle">? m</text>
+<text x="700" y="414" class="label" text-anchor="middle">10,4 m</text><text x="620" y="90" class="label" text-anchor="start">Pohon</text>
+<path d="M276 385 L830 385" stroke="#9aa9bb" stroke-width="1.5" stroke-dasharray="5 6"/>
+<rect x="350" y="270" width="145" height="58" rx="14" fill="#fff7e8" stroke="#f4d9a7"/><text x="422" y="294" text-anchor="middle" class="tiny">Perbandingan</text><text x="422" y="316" text-anchor="middle" class="label">sebangun</text>
+</svg>

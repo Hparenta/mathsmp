@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Tabel frekuensi nilai kuis</title><desc id="svg-desc">Tabel nilai 5, 6, 7, 8, 9, dan 10 dengan frekuensi berturut-turut 1, 2, 3, 2, 1, dan 1.</desc>
+<defs>
+ <style>
+  text{font-family:Arial,Helvetica,sans-serif;fill:#263b59}
+  .title{font-size:23px;font-weight:700;fill:#173b70}
+  .label{font-size:18px;font-weight:700;fill:#173b70}
+  .small{font-size:15px;fill:#64748b}
+  .tiny{font-size:13px;fill:#64748b}
+  .axis{stroke:#263b59;stroke-width:2.5;fill:none}
+  .grid{stroke:#dce6f3;stroke-width:1}
+  .blue{stroke:#2563eb;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .teal{stroke:#0f8b83;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .dash{stroke-dasharray:8 7}
+ </style>
+ <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#2563eb" stroke-width="1.4"/></marker>
+ <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#64748b" stroke-width="1.4"/></marker>
+</defs>
+<rect x="0" y="0" width="920" height="500" rx="24" fill="#ffffff"/>
+<text x="42" y="46" class="title">Tabel frekuensi nilai kuis</text><text x="42" y="78" class="small">Distribusi nilai dari 10 siswa</text>
+<g transform="translate(40 140)"><rect width="840" height="230" rx="16" fill="#fff" stroke="#cbd8e8" stroke-width="2"/><path d="M0 115 H840 M120 0 V230 M240 0 V230 M360 0 V230 M480 0 V230 M600 0 V230 M720 0 V230" stroke="#cbd8e8" stroke-width="2" fill="none"/><path d="M0 16 Q0 0 16 0 H824 Q840 0 840 16 V115 H0Z" fill="#edf4ff"/><text x="60" y="68" text-anchor="middle" class="label">Nilai</text><text x="60" y="175" text-anchor="middle" font-size="15" font-weight="700" fill="#173b70">Banyak</text><text x="60" y="195" text-anchor="middle" font-size="15" font-weight="700" fill="#173b70">siswa</text>
+<g text-anchor="middle" class="label"><text x="180" y="68">5</text><text x="300" y="68">6</text><text x="420" y="68">7</text><text x="540" y="68">8</text><text x="660" y="68">9</text><text x="780" y="68">10</text><text x="180" y="180">1</text><text x="300" y="180">2</text><text x="420" y="180">3</text><text x="540" y="180">2</text><text x="660" y="180">1</text><text x="780" y="180">1</text></g></g>
+<rect x="650" y="400" width="230" height="48" rx="13" fill="#e8f7f4"/><text x="765" y="430" class="label" text-anchor="middle">Total: 10 siswa</text>
+</svg>

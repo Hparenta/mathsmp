@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Ilustrasi akuarium dan kubus</title><desc id="svg-desc">Akuarium balok lebar 50 sentimeter dan tinggi 60 sentimeter, tinggi air awal 30 sentimeter, kubus pejal bersisi 20 sentimeter terendam seluruhnya.</desc>
+<defs>
+ <style>
+  text{font-family:Arial,Helvetica,sans-serif;fill:#263b59}
+  .title{font-size:23px;font-weight:700;fill:#173b70}
+  .label{font-size:18px;font-weight:700;fill:#173b70}
+  .small{font-size:15px;fill:#64748b}
+  .tiny{font-size:13px;fill:#64748b}
+  .axis{stroke:#263b59;stroke-width:2.5;fill:none}
+  .grid{stroke:#dce6f3;stroke-width:1}
+  .blue{stroke:#2563eb;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .teal{stroke:#0f8b83;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .dash{stroke-dasharray:8 7}
+ </style>
+ <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#2563eb" stroke-width="1.4"/></marker>
+ <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#64748b" stroke-width="1.4"/></marker>
+</defs>
+<rect x="0" y="0" width="920" height="500" rx="24" fill="#ffffff"/>
+<text x="42" y="42" class="title">Akuarium dan perpindahan air</text><text x="42" y="72" class="small">Tampak depan akuarium berukuran 50 cm × 60 cm</text>
+<path d="M190 130 V405 H650 V130" fill="#fff" stroke="#355579" stroke-width="6" stroke-linejoin="round"/>
+<!-- water fill --> <path d="M195 270 H645 V400 H195 Z" fill="#d9efff"/><path d="M195 270 H645" stroke="#60a5fa" stroke-width="4" stroke-dasharray="10 7"/>
+<path d="M195 252 H645" stroke="#0f8b83" stroke-width="4"/><text x="420" y="238" text-anchor="middle" class="label" fill="#0f766e">Permukaan air setelah kubus masuk</text>
+<!-- cube in water --> <rect x="390" y="315" width="130" height="85" rx="3" fill="#a9c7fa" stroke="#2563eb" stroke-width="3"/><path d="M390 315 L420 294 H550 L520 315 Z" fill="#d7e6ff" stroke="#2563eb" stroke-width="3"/><path d="M520 315 L550 294 V379 L520 400 Z" fill="#83a7e7" stroke="#2563eb" stroke-width="3"/><text x="455" y="360" class="label" text-anchor="middle">Kubus</text><text x="455" y="385" class="small" text-anchor="middle">20 cm</text>
+<!-- dims --> <path d="M150 270 V400 M140 270 H160 M140 400 H160" stroke="#64748b" stroke-width="2"/><text x="123" y="340" class="label" text-anchor="middle" transform="rotate(-90 123 340)">30 cm (awal)</text>
+<path d="M690 130 V405 M680 130 H700 M680 405 H700" stroke="#64748b" stroke-width="2"/><text x="720" y="270" class="label" transform="rotate(90 720 270)">60 cm</text>
+<path d="M190 435 H650 M190 427 V443 M650 427 V443" stroke="#64748b" stroke-width="2"/><text x="420" y="466" text-anchor="middle" class="label">50 cm</text>
+<rect x="690" y="145" width="175" height="75" rx="14" fill="#eff7ff" stroke="#d7e6fb"/><text x="707" y="174" class="tiny">Garis putus-putus</text><text x="707" y="199" class="small">Tinggi air awal</text>
+</svg>

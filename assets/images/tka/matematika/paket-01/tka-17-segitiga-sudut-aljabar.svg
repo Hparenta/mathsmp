@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Segitiga ABC dengan label sudut aljabar</title><desc id="svg-desc">Segitiga ABC tidak menurut skala, dengan sudut A sama dengan 2x derajat, sudut B x tambah 20 derajat, dan sudut C 3x kurang 8 derajat.</desc>
+<defs>
+ <style>
+  text{font-family:Arial,Helvetica,sans-serif;fill:#263b59}
+  .title{font-size:23px;font-weight:700;fill:#173b70}
+  .label{font-size:18px;font-weight:700;fill:#173b70}
+  .small{font-size:15px;fill:#64748b}
+  .tiny{font-size:13px;fill:#64748b}
+  .axis{stroke:#263b59;stroke-width:2.5;fill:none}
+  .grid{stroke:#dce6f3;stroke-width:1}
+  .blue{stroke:#2563eb;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .teal{stroke:#0f8b83;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .dash{stroke-dasharray:8 7}
+ </style>
+ <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#2563eb" stroke-width="1.4"/></marker>
+ <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#64748b" stroke-width="1.4"/></marker>
+</defs>
+<rect x="0" y="0" width="920" height="500" rx="24" fill="#ffffff"/>
+<text x="42" y="44" class="title">Segitiga ABC dengan sudut aljabar</text><text x="42" y="74" class="small">Bentuk segitiga tidak digambar menurut skala ukuran</text>
+<path d="M250 390 L650 390 L490 125 Z" fill="#eaf2ff" stroke="#28527e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M300 390 A50 50 0 0 1 278 350" stroke="#2563eb" stroke-width="3" fill="none"/><path d="M602 390 A48 48 0 0 0 626 354" stroke="#0f8b83" stroke-width="3" fill="none"/><path d="M466 166 A40 40 0 0 1 516 166" stroke="#8b5cf6" stroke-width="3" fill="none"/>
+<text x="220" y="420" class="label">A</text><text x="660" y="420" class="label">B</text><text x="486" y="108" class="label">C</text>
+<rect x="105" y="276" width="132" height="46" rx="12" fill="#eff5ff" stroke="#d8e5f7"/><text x="171" y="306" text-anchor="middle" class="label">2x°</text><path d="M237 299 L274 330" stroke="#2563eb" stroke-width="2"/>
+<rect x="660" y="275" width="170" height="46" rx="12" fill="#e8f7f4" stroke="#ccebe3"/><text x="745" y="305" text-anchor="middle" class="label">(x + 20)°</text><path d="M660 299 L625 330" stroke="#0f8b83" stroke-width="2"/>
+<rect x="425" y="135" width="155" height="46" rx="12" fill="#f2edff" stroke="#ded5fb"/><text x="502" y="165" text-anchor="middle" class="label">(3x − 8)°</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Lintasan lari berbentuk stadion</title><desc id="svg-desc">Bentuk stadion terdiri atas persegi panjang 28 meter kali 14 meter dan dua setengah lingkaran berdiameter 14 meter.</desc>
+<defs>
+ <style>
+  text{font-family:Arial,Helvetica,sans-serif;fill:#263b59}
+  .title{font-size:23px;font-weight:700;fill:#173b70}
+  .label{font-size:18px;font-weight:700;fill:#173b70}
+  .small{font-size:15px;fill:#64748b}
+  .tiny{font-size:13px;fill:#64748b}
+  .axis{stroke:#263b59;stroke-width:2.5;fill:none}
+  .grid{stroke:#dce6f3;stroke-width:1}
+  .blue{stroke:#2563eb;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .teal{stroke:#0f8b83;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .dash{stroke-dasharray:8 7}
+ </style>
+ <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#2563eb" stroke-width="1.4"/></marker>
+ <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#64748b" stroke-width="1.4"/></marker>
+</defs>
+<rect x="0" y="0" width="920" height="500" rx="24" fill="#ffffff"/>
+<text x="42" y="42" class="title">Lintasan lari berbentuk stadion</text><text x="42" y="72" class="small">Persegi panjang dengan dua setengah lingkaran</text>
+<path d="M310 155 H610 A90 90 0 0 1 610 335 H310 A90 90 0 0 1 310 155 Z" fill="#eaf2ff" stroke="#2563eb" stroke-width="5"/>
+<path d="M310 155 V335 M610 155 V335" stroke="#90a6c3" stroke-width="2" stroke-dasharray="7 7"/>
+<path d="M310 120 H610 M310 111 V129 M610 111 V129" stroke="#0f8b83" stroke-width="2.5"/><text x="460" y="107" text-anchor="middle" class="label">28 m</text>
+<path d="M260 155 V335 M251 155 H269 M251 335 H269" stroke="#0f8b83" stroke-width="2.5"/><text x="235" y="250" text-anchor="middle" class="label" transform="rotate(-90 235 250)">14 m</text>
+<path d="M610 245 H700" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5 6"/><text x="712" y="250" class="small">Diameter 14 m</text>
+<rect x="80" y="395" width="760" height="54" rx="14" fill="#f2f7ff" stroke="#e0eaf7"/><text x="460" y="429" class="label" text-anchor="middle">Bagian lurus: 2 × 28 m  •  Dua setengah lingkaran = 1 lingkaran penuh</text>
+</svg>
