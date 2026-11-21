@@ -57,23 +57,29 @@
     const image = illustrationHTML(visual.illustration);
     const kind = q.tipe === "pilihan_tunggal" ? "Pilihan Ganda (PG)"
       : q.tipe === "pilihan_ganda_kompleks" ? "PGK · MCMA" : "PGK · Kategori";
+
+    // Kunci sengaja tidak ditampilkan di daftar opsi. Kunci hanya muncul
+    // setelah pengunjung membuka bagian "Lihat kunci dan pembahasan".
     let answers = "";
     if (q.tipe === "pilihan_ganda_kategori") {
-      answers = `<table class="tka-category-table"><thead><tr><th>Pernyataan</th><th>Respons benar</th></tr></thead><tbody>${q.pernyataan.map(p =>
-        `<tr><td><strong>${esc(p.kode)}.</strong> ${esc(p.teks)}</td><td>${esc(p.kunci)}</td></tr>`
-      ).join("")}</tbody></table>`;
+      answers = `<ol class="tka-option-list tka-category-list" type="A">${q.pernyataan.map(p =>
+        `<li>${esc(p.teks)} <span class="tka-category-choice-label">Pilih: Benar / Salah</span></li>`
+      ).join("")}</ol>`;
     } else {
-      answers = `<ol class="tka-option-list" type="A">${q.pilihan.map(o => {
-        const correct = q.kunci.includes(o.kode);
-        return `<li><strong>${esc(o.kode)}.</strong> ${esc(o.teks)}${correct ? ` <span class="tka-status-live">Kunci</span>` : ""}</li>`;
-      }).join("")}</ol>`;
+      // Penomoran A, B, C, D berasal dari marker <ol>, sehingga tidak
+      // ditulis ulang di dalam teks (menghindari tampilan "A. A. ...").
+      answers = `<ol class="tka-option-list" type="A">${q.pilihan.map(o =>
+        `<li>${esc(o.teks)}</li>`
+      ).join("")}</ol>`;
     }
+
     const answerText = q.tipe === "pilihan_ganda_kategori"
       ? q.pernyataan.map(p => `${esc(p.kode)}: ${esc(p.kunci)}`).join(" · ")
       : q.kunci.map(code => {
           const opt = q.pilihan.find(item => item.kode === code);
           return `${esc(code)}${opt ? `. ${esc(opt.teks)}` : ""}`;
         }).join("; ");
+
     return `<article class="tka-question-card">
       <div class="tka-question-meta"><span>${esc(q.domain)} · ${esc(q.subdomain || "")}</span><span>Nomor ${q.nomor}</span></div>
       <div style="margin-top:9px"><span class="tka-question-kind">${kind}</span></div>
