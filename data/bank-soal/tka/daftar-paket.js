@@ -11,8 +11,8 @@ window.daftarPaketTKA = {
     {
       "id": "bahasa-indonesia",
       "nama": "Bahasa Indonesia",
-      "deskripsi": "Pemahaman teks informasi dan fiksi, inferensi, evaluasi, dan apresiasi bacaan.",
-      "status": "draft"
+      "deskripsi": "Pemahaman tekstual, inferensial, evaluasi, dan apresiasi bacaan fiksi maupun informasi.",
+      "status": "published"
     }
   ],
   "paket": [
@@ -41,9 +41,9 @@ window.daftarPaketTKA = {
       "mataPelajaranId": "bahasa-indonesia",
       "nama": "Paket 01",
       "judul": "Tryout TKA Bahasa Indonesia SMP — Paket 01",
-      "status": "draft",
-      "jumlahSoal": 0,
-      "durasiMenit": 0,
+      "status": "published",
+      "jumlahSoal": 30,
+      "durasiMenit": 75,
       "file": "data/bank-soal/tka/bahasa-indonesia/paket-01.js"
     }
   ]
