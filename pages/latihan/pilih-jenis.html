@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173b68">
+  <title>Jenis Latihan — MathSMP</title>
+  <link rel="stylesheet" href="../../assets/css/style-baru.css">
+  <link rel="stylesheet" href="../../assets/css/latihan-hub.css">
+</head>
+<body class="lh-page">
+<header class="lh-header">
+  <div class="lh-container lh-header-inner">
+    <a class="lh-brand" href="../../index.html" aria-label="MathSMP, Beranda">
+      <span class="lh-brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M5 11.5c6.7-2.4 13.2-1.2 19 3.1v26c-5.8-4.3-12.3-5.5-19-3.1v-26Z" fill="currentColor" opacity=".96"/><path d="M43 11.5c-6.7-2.4-13.2-1.2-19 3.1v26c5.8-4.3 12.3-5.5 19-3.1v-26Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 16c4.5-1 8.5-.4 12 1.6M8 22c4.5-1 8.5-.4 12 1.6M28 17.6c3.5-2 7.5-2.6 12-1.6M28 23.6c3.5-2 7.5-2.6 12-1.6" stroke="#173b68" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      <span>Math<strong>SMP</strong></span>
+    </a>
+    <a class="lh-home-link" href="../../index.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1V10Z" fill="currentColor" opacity=".9"/></svg> Beranda</a>
+  </div>
+</header>
+<main class="lh-main">
+  <div class="lh-container">
+    <div class="lh-breadcrumb"><a href="latihan-soal.html">Latihan Soal</a><span>›</span><span id="breadcrumbMapel">Mata Pelajaran</span></div>
+    <section class="lh-intro" aria-labelledby="judul-halaman">
+      <div class="lh-intro-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><rect x="6" y="7" width="36" height="34" rx="6" stroke="currentColor" stroke-width="3"/><path d="M15 17h3m6 0h9M15 25h3m6 0h9M15 33h3m6 0h9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <div><span class="lh-eyebrow" id="eyebrowMapel">Mata Pelajaran</span><h1 id="judul-halaman">Latihan Soal</h1><p>Pilih jenis pembelajaran yang ingin kamu gunakan.</p></div>
+    </section>
+    <h2 class="lh-section-title">Pilih Jenis Pembelajaran</h2>
+    <section class="lh-choice-grid" aria-label="Jenis latihan">
+      <a class="lh-card lh-choice-card bank" id="linkBank" href="bank-soal.html?mapel=matematika">
+        <span class="lh-card-icon" aria-hidden="true"><svg viewBox="0 0 56 56" fill="none"><path d="M6 12c8-3 15-1.5 22 4v32c-7-5.5-14-7-22-4V12Z" fill="currentColor"/><path d="M50 12c-8-3-15-1.5-22 4v32c7-5.5 14-7 22-4V12Z" fill="#74aef2" stroke="currentColor" stroke-width="1.8"/><path d="M13 21h9M13 28h9M34 21h9M34 28h9" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <h2>Bank Soal</h2><p>Tempat belajar dan berlatih dari seluruh kumpulan soal. Buka soal, coba pahami, lalu lihat kunci dan pembahasannya.</p>
+        <span class="lh-card-action">Belajar Mandiri <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="lh-card lh-choice-card quiz" id="linkKuis" href="daftar-kuis.html?mapel=matematika">
+        <span class="lh-card-icon" aria-hidden="true"><svg viewBox="0 0 56 56" fill="none"><rect x="10" y="9" width="36" height="41" rx="6" stroke="currentColor" stroke-width="3"/><rect x="20" y="5" width="16" height="9" rx="3" fill="currentColor"/><path d="m18 25 3.5 3.5L27 22M31 26h8m-21 12 3.5 3.5L27 35m4 3h8" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h2>Kuis</h2><p>Mengerjakan paket kuis yang disiapkan guru. Ikuti petunjuk, selesaikan soal, dan lihat hasil latihanmu.</p>
+        <span class="lh-card-action">Evaluasi <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </section>
+    <a class="lh-back-link" href="latihan-soal.html"><svg viewBox="0 0 24 24" fill="none"><path d="m14 5-7 7 7 7M7 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Ganti Mata Pelajaran</a>
+  </div>
+  <div class="lh-wave" aria-hidden="true"></div>
+</main>
+<footer class="lh-footer">© 2026 MathSMP</footer>
+<script>
+(() => {
+  const labels = {
+    matematika: 'Matematika',
+    'bahasa-indonesia': 'Bahasa Indonesia'
+  };
+  const params = new URLSearchParams(location.search);
+  const mapel = params.get('mapel') || 'matematika';
+  if (!labels[mapel]) {
+    location.replace('latihan-soal.html');
+    return;
+  }
+  document.title = `Latihan ${labels[mapel]} — MathSMP`;
+  document.getElementById('breadcrumbMapel').textContent = labels[mapel];
+  document.getElementById('eyebrowMapel').textContent = labels[mapel];
+  document.getElementById('linkBank').href = `bank-soal.html?mapel=${encodeURIComponent(mapel)}`;
+  document.getElementById('linkKuis').href = `daftar-kuis.html?mapel=${encodeURIComponent(mapel)}`;
+})();
+</script>
+</body>
+</html>

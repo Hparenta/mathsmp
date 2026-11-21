@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kuis Interaktif Matematika SMP - MathSMP</title>
+  <title>Kuis Reguler — MathSMP</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
   <script>
     window.MathJax = { tex: { inlineMath: [['$', '$']] } };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <style>
+    .header-latihan-minimal { background:#173b68; color:#fff; box-shadow:0 8px 22px rgba(15,42,83,.12); }
+    .header-latihan-inner { max-width:1100px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .header-latihan-brand { display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-size:24px; font-weight:850; letter-spacing:-.04em; }
+    .header-latihan-brand strong { color:#f59e0b; }
+    .header-latihan-mark { display:inline-grid; width:40px; height:40px; place-items:center; border-radius:12px; background:#2467d7; color:#fff; font-size:23px; box-shadow:0 6px 16px rgba(0,0,0,.16); }
+    .header-latihan-home { display:inline-flex; align-items:center; gap:8px; color:#fff; text-decoration:none; font-weight:750; }
+    .stimulus-soal { margin:12px 0 16px; padding:14px 16px; border:1px solid #cfe0f7; border-left:4px solid #2d7de0; border-radius:12px; background:#f4f8ff; color:#243b5a; line-height:1.65; }
+    .stimulus-soal strong { display:block; margin-bottom:7px; color:#2466b5; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+    @media(max-width:600px){ .header-latihan-inner{padding:14px 16px;} .header-latihan-brand{font-size:21px;} }
     .panel-kuis {
       max-width: 860px;
       margin: 32px auto;
@@ -218,28 +227,17 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="navbar">
-    <div class="wadah nav-isi">
-      <a href="../../index.html" class="logo">
-        <span class="logo-ikon">∑</span> Math<span>SMP</span>
-      </a>
-      <nav class="menu-utama">
-        <a href="../../index.html">Beranda</a>
-        <a href="../../index.html#kelas">Materi</a>
-        <a href="latihan-soal.html">Latihan Soal</a>
-        <a href="../tka/tka.html">TKA SMP</a>
-        <a href="kuis.html" class="aktif">Kuis Harian</a>
-        <a href="../ruang-guru/ruang-guru.html">Ruang Guru</a>
-        <a href="../../index.html#tentang">Tentang</a>
-      </nav>
+  <header class="header-latihan-minimal">
+    <div class="header-latihan-inner">
+      <a href="../../index.html" class="header-latihan-brand" aria-label="MathSMP, Beranda"><span class="header-latihan-mark" aria-hidden="true">∑</span><span>Math<strong>SMP</strong></span></a>
+      <a href="../../index.html" class="header-latihan-home">⌂ <span>Beranda</span></a>
     </div>
   </header>
 
   <main class="wadah">
     <div class="panel-kuis">
-      <h2>🎯 Kuis Harian Matematika SMP</h2>
-      <p>Pilih materi kuis reguler, lalu isi identitas untuk memulai sesi berisi <strong>10 soal acak</strong>. Bank kuis ini terpisah dari Bank Soal dan Tryout TKA.</p>
+      <h2 id="judulKuisPage">🎯 Kuis Reguler MathSMP</h2>
+      <p id="deskripsiKuisPage">Pilih paket kuis reguler, isi identitas, lalu kerjakan soal yang disiapkan guru. Paket ini terpisah dari Bank Soal TKA dan Tryout TKA.</p>
 
       <div class="langkah-kuis" aria-label="Tahapan kuis">
         <span id="langkahMateri" class="aktif">1. Pilih Materi</span>
@@ -256,6 +254,7 @@
             <option value="operasiBilanganRasional" data-nama="Operasi Bilangan Rasional">Operasi Bilangan Rasional (100 Soal)</option>
             <option value="fungsiLinear" data-nama="Fungsi Linear">Kelas VIII - Fungsi Linear dan Grafiknya</option>
             <option value="bangunRuangSisiLengkung" data-nama="Bangun Ruang Sisi Lengkung">Kelas IX - Bangun Ruang Sisi Lengkung</option>
+            <option value="bahasaIndonesiaKelas7SemesterGanjil" data-nama="UAS Bahasa Indonesia Kelas VII — Semester Ganjil">Bahasa Indonesia Kelas VII — UAS Semester Ganjil (30 soal)</option>
           </select>
         </div>
         <button class="btn-mulai" type="button" onclick="lanjutIdentitas()">Lanjutkan</button>
@@ -306,7 +305,8 @@
                 <th>Waktu</th>
                 <th>Nama Siswa</th>
                 <th>Kelas</th>
-                <th>Materi</th>
+                <th>Mata Pelajaran</th>
+                <th>Materi / Paket</th>
                 <th>Benar</th>
                 <th>Skor</th>
               </tr>
@@ -324,12 +324,7 @@
   <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-operasi-bilangan-rasional.js"></script>
   <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-fungsi-linear.js"></script>
   <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-bangun-ruang-sisi-lengkung.js"></script>
-  <!-- Nanti tinggal tambahkan baris <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-nama-materi.js"></script> di bawah ini:
-  <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-bilangan-rasional.js"></script>
-  <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-operasi-bilangan-rasional.js"></script>
-  <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-fungsi-linear.js"></script>
-  <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-nilai-fungsi.js"></script>
-  -->
+  <script src="../../data/bank-soal/kuis-harian/bahasa-indonesia/bank-soal-kelas-7-semester-ganjil.js"></script>
 
   <script>
     // OPSIONAL: Tempel URL Web App Google Apps Script di dalam tanda kutip di bawah ini
@@ -347,7 +342,22 @@
     }
 
     let soalTerpilih = [];
-    let pesertaAktif = { nama: "", kelas: "", topikLabel: "" };
+    let pesertaAktif = { nama: "", kelas: "", topikLabel: "", mapel: "Matematika" };
+    const KONFIGURASI_KUIS = {
+      bahasaIndonesiaKelas7SemesterGanjil: {
+        mapel: "Bahasa Indonesia",
+        jumlahSoal: 30,
+        acak: false,
+        petunjukPaket: "30 soal sesuai urutan naskah UAS Semester Ganjil (10 LOTS, 15 Medium, 5 HOTS)."
+      }
+    };
+    function konfigurasiKuis(topikKode) {
+      return KONFIGURASI_KUIS[topikKode] || { mapel: "Matematika", jumlahSoal: 10, acak: true, petunjukPaket: "10 soal acak dari bank materi." };
+    }
+    function mapelAktif() {
+      return konfigurasiKuis(document.getElementById("topikSelect").value).mapel;
+    }
+
 
     // Otomatis pilih pokok bahasan jika dibuka dari tautan khusus, misal: kuis.html?topik=populasiSampel
     (function pilihTopikDariUrl() {
@@ -360,6 +370,19 @@
         }
       }
     })();
+
+    function perbaruiInfoKuis() {
+      const mapel = mapelAktif();
+      document.getElementById("judulKuisPage").textContent = `🎯 Kuis ${mapel} SMP`;
+      document.title = `Kuis ${mapel} — MathSMP`;
+      if (mapel === "Bahasa Indonesia") {
+        document.getElementById("deskripsiKuisPage").textContent = "Paket UAS Bahasa Indonesia Kelas VII Semester Ganjil berisi 30 soal pilihan ganda A–D. Kerjakan sesuai urutan naskah, lalu lihat nilai dan pembahasan.";
+      } else {
+        document.getElementById("deskripsiKuisPage").textContent = "Pilih materi kuis reguler, lalu isi identitas untuk memulai sesi berisi 10 soal acak. Bank kuis ini terpisah dari Bank Soal dan Tryout TKA.";
+      }
+    }
+    document.getElementById("topikSelect").addEventListener("change", perbaruiInfoKuis);
+    perbaruiInfoKuis();
 
     function lanjutIdentitas() {
       const selectEl = document.getElementById("topikSelect");
@@ -414,36 +437,43 @@
         return;
       }
 
-      pesertaAktif = { nama: nama, kelas: kelas, topikLabel: namaMateri };
+      const konfigurasi = konfigurasiKuis(topikKode);
+      pesertaAktif = { nama: nama, kelas: kelas, topikLabel: namaMateri, mapel: konfigurasi.mapel };
       document.getElementById("formPilihMateri").hidden = true;
       document.getElementById("formIdentitas").hidden = true;
 
-      // Mengacak 100 soal menggunakan algoritma Fisher-Yates
-      const semuaSoal = [...window.bankSoal[topikKode]];
-      for (let i = semuaSoal.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [semuaSoal[i], semuaSoal[j]] = [semuaSoal[j], semuaSoal[i]];
+      let semuaSoal = [...window.bankSoal[topikKode]];
+      if (konfigurasi.acak) {
+        // Kuis Matematika yang sudah ada tetap mengambil 10 soal secara acak.
+        for (let i = semuaSoal.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [semuaSoal[i], semuaSoal[j]] = [semuaSoal[j], semuaSoal[i]];
+        }
       }
-
-      // Ambil 10 nomor soal teratas
-      soalTerpilih = semuaSoal.slice(0, 10);
+      // Paket Bahasa Indonesia Kelas VII menggunakan seluruh 30 soal sesuai urutan naskah.
+      soalTerpilih = semuaSoal.slice(0, konfigurasi.jumlahSoal);
+      const labelJumlah = konfigurasi.acak ? `${soalTerpilih.length} Soal Acak` : `${soalTerpilih.length} Soal sesuai Naskah`;
 
       let html = `
         <div class="banner-peserta">
-          <div><strong>Peserta:</strong> ${pesertaAktif.nama} (${pesertaAktif.kelas})</div>
-          <div><strong>Materi:</strong> ${pesertaAktif.topikLabel} • 10 Soal Acak</div>
+          <div><strong>Peserta:</strong> ${escapeHTML(pesertaAktif.nama)} (${escapeHTML(pesertaAktif.kelas)})</div>
+          <div><strong>Mata Pelajaran:</strong> ${escapeHTML(pesertaAktif.mapel)} · <strong>Paket:</strong> ${escapeHTML(pesertaAktif.topikLabel)} · ${labelJumlah}</div>
         </div>
       `;
 
       const hurufOpsi = ["A", "B", "C", "D", "E"];
       soalTerpilih.forEach((item, index) => {
+        const stimulusHTML = item.stimulus
+          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${escapeHTML(item.stimulus).replace(/\n/g, "<br>")}</div>`
+          : "";
         html += `<div class="kartu-soal" id="kotak_soal_${index}">
-          <p class="teks-soal"><strong>${index + 1}.</strong> ${item.soal}</p>
+          ${stimulusHTML}
+          <p class="teks-soal"><strong>${item.nomorAsli || index + 1}.</strong> ${escapeHTML(item.soal)}</p>
           ${item.gambar ? `<div class="gambar-soal">${item.gambar}</div>` : ""}`;
         item.pilihan.forEach((pil, idxPil) => {
           html += `<label class="opsi-label">
             <input type="radio" name="soal_${index}" value="${idxPil}">
-            <span><strong>${hurufOpsi[idxPil]}.</strong> ${pil}</span>
+            <span><strong>${hurufOpsi[idxPil]}.</strong> ${escapeHTML(pil)}</span>
           </label>`;
         });
         html += `</div>`;
@@ -483,18 +513,22 @@
           : `${hurufOpsi[jawabanSiswa]}. ${item.pilihan[jawabanSiswa]}`;
         const teksKunci = `${hurufOpsi[item.jawabanBenar]}. ${item.pilihan[item.jawabanBenar]}`;
 
+        const stimulusHTML = item.stimulus
+          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${escapeHTML(item.stimulus).replace(/\n/g, "<br>")}</div>`
+          : "";
         ulasanHtml += `<div class="kartu-soal">
-          <p class="teks-soal"><strong>${index + 1}.</strong> ${item.soal}</p>
+          ${stimulusHTML}
+          <p class="teks-soal"><strong>${item.nomorAsli || index + 1}.</strong> ${escapeHTML(item.soal)}</p>
           ${item.gambar ? `<div class="gambar-soal">${item.gambar}</div>` : ""}
-          <p style="font-size:14px; margin-bottom:6px;">Jawabanmu: <strong>${teksJawabanSiswa}</strong></p>
+          <p style="font-size:14px; margin-bottom:6px;">Jawabanmu: <strong>${escapeHTML(teksJawabanSiswa)}</strong></p>
           <div class="pembahasan-box ${isBenar ? "benar" : "salah"}">
-            <strong>${isBenar ? "✔ Benar!" : "✘ Kurang Tepat."}</strong> Kunci Jawaban: <strong>${teksKunci}</strong><br>
-            <em>Pembahasan:</em> ${item.pembahasan}
+            <strong>${isBenar ? "✔ Benar!" : "✘ Kurang Tepat."}</strong> Kunci Jawaban: <strong>${escapeHTML(teksKunci)}</strong><br>
+            <em>Pembahasan:</em> ${escapeHTML(item.pembahasan || "Pembahasan belum tersedia.")}
           </div>
         </div>`;
       });
 
-      const nilaiAkhir = jumlahBenar * 10;
+      const nilaiAkhir = Math.round((jumlahBenar / Math.max(soalTerpilih.length, 1)) * 100);
       const waktuSekarang = new Date().toLocaleString("id-ID", {
         day: "2-digit", month: "2-digit", year: "numeric",
         hour: "2-digit", minute: "2-digit"
@@ -504,8 +538,9 @@
         waktu: waktuSekarang,
         nama: pesertaAktif.nama,
         kelas: pesertaAktif.kelas,
+        mapel: pesertaAktif.mapel,
         materi: pesertaAktif.topikLabel,
-        benar: `${jumlahBenar}/10`,
+        benar: `${jumlahBenar}/${soalTerpilih.length}`,
         skor: nilaiAkhir
       };
 
@@ -523,10 +558,11 @@
       }
 
       const pesanWA = encodeURIComponent(
-        `*HASIL KUIS MATEMATIKA (MathSMP)*\n` +
+        `*HASIL KUIS ${dataHasil.mapel.toUpperCase()} (MathSMP)*\n` +
         `Nama: ${dataHasil.nama}\n` +
         `Kelas: ${dataHasil.kelas}\n` +
-        `Materi: ${escapeHTML(dataHasil.materi)}\n` +
+        `Mata Pelajaran: ${dataHasil.mapel}\n` +
+        `Materi/Paket: ${dataHasil.materi}\n` +
         `Benar: ${dataHasil.benar}\n` +
         `Nilai Akhir: *${dataHasil.skor}*\n` +
         `Waktu: ${dataHasil.waktu}`
@@ -539,11 +575,11 @@
         <div class="kotak-skor">
           <p style="font-weight:700; color:#1e3a8a;">${escapeHTML(dataHasil.nama)} • Kelas ${escapeHTML(dataHasil.kelas)}</p>
           <div class="angka-skor">${nilaiAkhir}</div>
-          <p>Benar <strong>${jumlahBenar}</strong> dari <strong>10</strong> soal (${escapeHTML(dataHasil.materi)})</p>
+          <p>Benar <strong>${jumlahBenar}</strong> dari <strong>${soalTerpilih.length}</strong> soal (${escapeHTML(dataHasil.materi)})</p>
           <p class="status-simpan">✔ Nama dan skor telah tersimpan di rekap halaman ini.</p>
           <div class="aksi-hasil">
             <a href="${linkWA}" target="_blank" class="btn-wa">📲 Kirim Skor ke WhatsApp Guru</a>
-            <button class="btn-ulang" onclick="ulangKuis()">🔄 Kerjakan Ulang (10 Soal Baru)</button>
+            <button class="btn-ulang" onclick="ulangKuis()">🔄 Kerjakan Ulang</button>
           </div>
         </div>
         <h3 style="margin-bottom:14px; color:#0f172a;">Pembahasan Soal:</h3>
@@ -577,7 +613,7 @@
       const tbody = document.getElementById("isiTabelRiwayat");
 
       if (daftar.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#64748b;">Belum ada riwayat pengerjaan kuis di perangkat ini.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#64748b;">Belum ada riwayat pengerjaan kuis di perangkat ini.</td></tr>`;
         return;
       }
 
@@ -587,6 +623,7 @@
           <td>${escapeHTML(item.waktu)}</td>
           <td><strong>${escapeHTML(item.nama)}</strong></td>
           <td>${escapeHTML(item.kelas)}</td>
+          <td>${escapeHTML(item.mapel || "Matematika")}</td>
           <td>${escapeHTML(item.materi)}</td>
           <td>${item.benar}</td>
           <td><strong>${item.skor}</strong></td>
@@ -606,8 +643,8 @@
         if (/^[=+@\-]/.test(teks)) teks = "'" + teks;
         return `"${teks.replace(/"/g, '""')}"`;
       };
-      const barisCSV = [["No", "Waktu", "Nama Siswa", "Kelas", "Materi", "Jumlah Benar", "Skor"]];
-      daftar.forEach((item, i) => barisCSV.push([i + 1, item.waktu, item.nama, item.kelas, item.materi, item.benar, item.skor]));
+      const barisCSV = [["No", "Waktu", "Nama Siswa", "Kelas", "Mata Pelajaran", "Materi/Paket", "Jumlah Benar", "Skor"]];
+      daftar.forEach((item, i) => barisCSV.push([i + 1, item.waktu, item.nama, item.kelas, item.mapel || "Matematika", item.materi, item.benar, item.skor]));
       const csv = "\ufeff" + barisCSV.map(baris => baris.map(kolomCSV).join(",")).join("\r\n");
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);

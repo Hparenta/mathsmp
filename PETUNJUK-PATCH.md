@@ -1,25 +1,36 @@
-# Patch TKA Bahasa Indonesia — Paket 01
+PATCH MATHSMP — TENTANG SAYA & KONTAK
 
-Patch ini menambahkan Paket 01 Bahasa Indonesia ke fondasi TKA multi-mata-pelajaran yang sudah disiapkan sebelumnya.
+Tujuan:
+- Menambahkan halaman Tentang Saya dan Kontak.
+- Menambahkan tautan Tentang Saya dan Kontak pada navigasi utama dan footer beranda.
+- Menampilkan identitas Herdianto Parenta, guru Matematika SMPN 1 Tabang sejak Maret 2019.
+- Menambahkan tombol WhatsApp ke nomor 0853 4213 7045.
+- Menampilkan logo Instagram, Facebook, YouTube, dan TikTok sebagai placeholder. Saat diklik, halaman menampilkan pesan bahwa akun akan segera ditambahkan.
 
-## Jika folder TKA MultiMapel sudah terpasang
+FILE PATCH:
+1. index.html                                  [GANTI FILE LAMA]
+2. assets/css/profile-pages.css                 [FILE BARU]
+3. pages/profil/tentang-saya.html                [FILE BARU]
+4. pages/profil/kontak.html                      [FILE BARU]
 
-Ekstrak ZIP ini ke folder utama proyek MathSMP dan izinkan penggantian file. File yang berubah:
+CARA PEMASANGAN:
+1. Cadangkan index.html yang sekarang.
+2. Ganti file index.html di folder utama proyek dengan index.html dari patch.
+3. Buat folder assets/css jika belum ada, lalu unggah profile-pages.css ke sana.
+4. Buat folder pages/profil jika belum ada.
+5. Unggah tentang-saya.html dan kontak.html ke pages/profil/.
+6. Commit perubahan ke branch main.
 
-1. `data/bank-soal/tka/daftar-paket.js` — mengaktifkan Bahasa Indonesia dan mendaftarkan Paket 01 (30 soal, 75 menit).
-2. `data/bank-soal/tka/bahasa-indonesia/paket-01.js` — bank soal baru.
-3. `data/bank-soal/tka/bahasa-indonesia/README-STRUKTUR.md` — dokumentasi bank Bahasa Indonesia.
+CATATAN:
+- Nomor WhatsApp ditautkan menggunakan format internasional Indonesia: https://wa.me/6285342137045.
+- Tidak ada email atau tautan akun media sosial yang dibuat karena alamat akun belum diberikan.
+- Logo media sosial adalah tombol placeholder, bukan tautan akun sungguhan.
+- Halaman menggunakan stylesheet style-baru.css dan homepage-ui.css yang sudah ada pada proyek. Pastikan kedua file tersebut tetap ada.
+- Tidak ada file soal, data TKA, materi, atau mesin kuis yang diubah.
 
-Mesin `bank-soal-tka-app.js`, `tryout-tka.js`, selector, dan halaman tidak perlu diubah.
-
-## Jika fondasi TKA MultiMapel belum dipasang
-
-Gunakan arsip lengkap `MathSMP-TKA-MultiMapel-Update-Bahasa-Indonesia.zip`, bukan patch kecil ini.
-
-## Catatan isi
-
-- 30 PG tunggal, 4 opsi, urutan soal mengikuti naskah.
-- Distribusi sesuai naskah: 10 LOTS, 15 Medium, 5 HOTS.
-- Durasi simulasi 75 menit; angka ini tidak tercantum pada DOCX, melainkan disetel mengacu alokasi Bahasa Indonesia TKA SMP tahun 2026.
-- Opsi B nomor 22 dirapikan untuk menghapus pleonasme; kunci tetap B.
-- Paket ini latihan setara TKA berbasis naskah UAS Bab 1–2, bukan instrumen resmi TKA dan hanya menggunakan PG tunggal.
+PENGUJIAN SETELAH PEMASANGAN:
+1. Dari beranda, klik Tentang Saya dan pastikan halaman profil terbuka.
+2. Klik Kontak dan pastikan halaman kontak terbuka.
+3. Klik tombol WhatsApp dan pastikan menuju nomor 0853 4213 7045.
+4. Klik setiap ikon media sosial dan pastikan pemberitahuan "Akun [platform] MathSMP akan segera ditambahkan." tampil.
+5. Uji navigasi desktop dan menu mobile, termasuk tombol Beranda, Materi, Latihan Soal, TKA, dan Ruang Guru.

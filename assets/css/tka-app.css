@@ -30,3 +30,39 @@
 @media(max-width:760px){.tka-page-hero-inner{align-items:flex-start}.tka-hero-chip{width:100px;height:100px;border-radius:20px}.tka-hero-chip strong{font-size:36px}.tka-panel-head{align-items:flex-start;flex-direction:column}.tka-metric-row{gap:8px}.tka-metric{padding:14px 12px}.tka-metric strong{font-size:22px}.tka-metric span{font-size:11px}.tka-test-layout{grid-template-columns:1fr}.tka-nav-panel{order:-1}.tka-nav-grid{grid-template-columns:repeat(10,1fr)}.tka-form-grid,.tka-filter-row{grid-template-columns:1fr}.tka-panel{padding:18px}.tka-current-question{padding:17px}}
 @media(max-width:440px){.tka-page-hero-inner{flex-direction:column}.tka-hero-chip{width:100%;height:auto;padding:12px;flex-direction:row;gap:9px}.tka-hero-chip strong{font-size:25px}.tka-metric-row{grid-template-columns:1fr}.tka-nav-grid{grid-template-columns:repeat(6,1fr)}.tka-question-actions .tka-btn{flex:1}.tka-result-heading{align-items:flex-start}}
 @media print{.site-header,.site-footer,.tka-workspace>a,.tka-button-row,.tka-note,#riwayatPanel{display:none!important}.tka-page-main{background:#fff}.tka-panel{box-shadow:none;border:0}}
+
+
+/* Header ringkas untuk halaman Bank Soal TKA dan Tryout TKA */
+.tka-simple-header{background:#173a67;border-bottom:0}
+.tka-simple-header .nav-wrap{min-height:76px}
+.tka-simple-header .brand{color:#fff}
+.tka-simple-header .brand>span:last-child{color:#fff}
+.tka-simple-header .brand>span:last-child span{color:#ffb454}
+.tka-simple-header .brand-mark{background:transparent;box-shadow:none;color:#fff;width:42px;height:42px;border-radius:0}.tka-simple-header .brand-mark svg{display:block;width:42px;height:42px}
+.tka-simple-header .main-nav{gap:0}
+.tka-simple-header .main-nav a.tka-home-link{display:inline-flex;align-items:center;gap:9px;padding:10px 8px;border-radius:9px;background:transparent;color:#fff;font-size:15px;font-weight:750}
+.tka-simple-header .main-nav a.tka-home-link:hover{background:rgba(255,255,255,.12);color:#fff}
+.tka-home-link svg{width:19px;height:19px;display:block}
+
+/* Saat simulasi berlangsung, siswa hanya melihat area ujian dan header ringkas. */
+body.tka-exam-mode .tka-page-hero,
+body.tka-exam-mode .tka-selector-panel,
+body.tka-exam-mode .tka-workspace>.tka-panel-head,
+body.tka-exam-mode .tka-metric-row,
+body.tka-exam-mode #statusKesiapan,
+body.tka-exam-mode .tka-note,
+body.tka-exam-mode .site-footer{display:none!important}
+body.tka-exam-mode .tka-page-main{min-height:calc(100vh - 76px);padding-bottom:24px}
+body.tka-exam-mode .tka-workspace{padding-top:18px}
+
+@media(max-width:850px){
+  .tka-simple-header .nav-wrap{flex-direction:row;align-items:center;gap:12px}
+  .tka-simple-header .main-nav{width:auto}
+}
+@media(max-width:600px){
+  .tka-simple-header .nav-wrap{min-height:66px;flex-direction:row;align-items:center;padding:9px 0;gap:12px}
+  .tka-simple-header .brand{font-size:21px}
+  .tka-simple-header .brand-mark{font-size:27px}
+  .tka-simple-header .main-nav{width:auto;overflow:visible;padding:0}
+  .tka-simple-header .main-nav a.tka-home-link{font-size:13px;padding:8px 6px}
+}

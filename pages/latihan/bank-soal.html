@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173b68">
+  <title>Bank Soal — MathSMP</title>
+  <link rel="stylesheet" href="../../assets/css/style-baru.css">
+  <link rel="stylesheet" href="../../assets/css/latihan-hub.css">
+  <script>window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .lh-stimulus-block{margin:12px 0 16px;padding:14px 16px;border:1px solid #cfe0f7;border-left:4px solid #2d7de0;border-radius:12px;background:#f4f8ff;color:#243b5a;line-height:1.65}
+    .lh-stimulus-label{display:block;margin-bottom:7px;color:#2466b5;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .lh-question-level{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#eef3ff;color:#315a9c;font-size:11px;font-weight:750}
+    .lh-level-button{display:flex;width:100%;align-items:center;gap:10px;padding:10px 12px;border:0;border-radius:10px;background:transparent;color:#35516e;text-align:left;font:inherit;cursor:pointer}
+    .lh-level-button[aria-pressed="true"]{background:#e7f0ff;color:#155bc0;font-weight:750}
+  </style>
+</head>
+<body class="lh-page">
+<header class="lh-header">
+  <div class="lh-container lh-header-inner">
+    <a class="lh-brand" href="../../index.html" aria-label="MathSMP, Beranda">
+      <span class="lh-brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M5 11.5c6.7-2.4 13.2-1.2 19 3.1v26c-5.8-4.3-12.3-5.5-19-3.1v-26Z" fill="currentColor" opacity=".96"/><path d="M43 11.5c-6.7-2.4-13.2-1.2-19 3.1v26c5.8-4.3 12.3-5.5 19-3.1v-26Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 16c4.5-1 8.5-.4 12 1.6M8 22c4.5-1 8.5-.4 12 1.6M28 17.6c3.5-2 7.5-2.6 12-1.6M28 23.6c3.5-2 7.5-2.6 12-1.6" stroke="#173b68" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      <span>Math<strong>SMP</strong></span>
+    </a>
+    <a class="lh-home-link" href="../../index.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1V10Z" fill="currentColor" opacity=".9"/></svg> Beranda</a>
+  </div>
+</header>
+<main class="lh-main">
+  <div class="lh-container">
+    <div class="lh-breadcrumb"><a href="latihan-soal.html">Latihan Soal</a><span>›</span><a id="breadcrumbJenis" href="pilih-jenis.html?mapel=matematika">Matematika</a><span>›</span><span>Bank Soal</span></div>
+    <div id="kontenBank">
+      <div class="lh-bank-layout">
+        <aside class="lh-panel lh-sidebar" id="filterSidebar" aria-label="Filter topik">
+          <h2>Topik</h2>
+          <button class="lh-topic-button" type="button" data-topic="semua" aria-pressed="true"><span class="lh-topic-symbol">▦</span>Semua Topik</button>
+          <button class="lh-topic-button" type="button" data-topic="operasiBilanganRasional" aria-pressed="false"><span class="lh-topic-symbol">⅟</span>Bilangan Rasional</button>
+          <button class="lh-topic-button" type="button" data-topic="fungsiLinear" aria-pressed="false"><span class="lh-topic-symbol">ƒ</span>Fungsi Linear</button>
+          <button class="lh-topic-button" type="button" data-topic="populasiSampel" aria-pressed="false"><span class="lh-topic-symbol">▥</span>Statistika</button>
+          <button class="lh-topic-button" type="button" data-topic="bangunRuangSisiLengkung" aria-pressed="false"><span class="lh-topic-symbol">◇</span>Bangun Ruang</button>
+        </aside>
+        <section class="lh-panel lh-bank-content">
+          <div class="lh-bank-heading">
+            <div><span class="lh-eyebrow" id="eyebrowBank">Latihan Mandiri</span><h1 id="judulBank">Bank Soal Matematika</h1><p>Pilih topik atau cari soal yang ingin kamu pelajari.</p></div>
+            <label class="lh-search"><input id="cariSoal" type="search" placeholder="Cari soal..." aria-label="Cari soal"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="2"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></label>
+          </div>
+          <div class="lh-bank-meta"><span id="jumlahSoal">Memuat kumpulan soal...</span><span>Kunci dan pembahasan dibuka secara mandiri</span></div>
+          <div class="lh-question-list" id="daftarSoal" aria-live="polite"></div>
+          <div class="lh-pagination" id="pagination"></div>
+        </section>
+      </div>
+    </div>
+    <a class="lh-back-link" id="kembaliJenis" href="pilih-jenis.html?mapel=matematika"><svg viewBox="0 0 24 24" fill="none"><path d="m14 5-7 7 7 7M7 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Kembali ke pilihan Bank Soal / Kuis</a>
+  </div>
+</main>
+<footer class="lh-footer">© 2026 MathSMP · Bank Soal untuk belajar mandiri</footer>
+<script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-populasi-sampel.js"></script>
+<script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-operasi-bilangan-rasional.js"></script>
+<script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-fungsi-linear.js"></script>
+<script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-bangun-ruang-sisi-lengkung.js"></script>
+<script src="../../data/bank-soal/kuis-harian/bahasa-indonesia/bank-soal-kelas-7-semester-ganjil.js"></script>
+<script>
+(() => {
+  const labels = { matematika: 'Matematika', 'bahasa-indonesia': 'Bahasa Indonesia' };
+  const params = new URLSearchParams(location.search);
+  const mapel = params.get('mapel') || 'matematika';
+  if (!labels[mapel]) { location.replace('latihan-soal.html'); return; }
+  const label = labels[mapel];
+  document.title = `Bank Soal ${label} — MathSMP`;
+  document.getElementById('breadcrumbJenis').textContent = label;
+  document.getElementById('breadcrumbJenis').href = `pilih-jenis.html?mapel=${encodeURIComponent(mapel)}`;
+  document.getElementById('kembaliJenis').href = `pilih-jenis.html?mapel=${encodeURIComponent(mapel)}`;
+  document.getElementById('judulBank').textContent = `Bank Soal ${label}`;
+  if (mapel === 'bahasa-indonesia') {
+    document.querySelector('.lh-bank-heading p').textContent = 'Bank soal Bahasa Indonesia Kelas VII · Semester Ganjil. Pilih level atau cari soal untuk belajar mandiri.';
+    document.getElementById('filterSidebar').innerHTML = `
+      <h2>Level Soal</h2>
+      <button class="lh-level-button" type="button" data-level="semua" aria-pressed="true">▦ Semua Soal</button>
+      <button class="lh-level-button" type="button" data-level="LOTS" aria-pressed="false">LOTS · C1–C2</button>
+      <button class="lh-level-button" type="button" data-level="Medium" aria-pressed="false">Medium · C3–C4</button>
+      <button class="lh-level-button" type="button" data-level="HOTS" aria-pressed="false">HOTS · C4–C6</button>`;
+  }
+  const daftarTopik = mapel === 'matematika' ? [
+    { id: 'operasiBilanganRasional', nama: 'Operasi Bilangan Rasional', kelas: 'Kelas VII' },
+    { id: 'fungsiLinear', nama: 'Fungsi Linear dan Grafiknya', kelas: 'Kelas VIII' },
+    { id: 'populasiSampel', nama: 'Populasi dan Sampel', kelas: 'Kelas IX' },
+    { id: 'bangunRuangSisiLengkung', nama: 'Bangun Ruang Sisi Lengkung', kelas: 'Kelas IX' }
+  ] : [
+    { id: 'bahasaIndonesiaKelas7SemesterGanjil', nama: 'UAS Semester Ganjil', kelas: 'Kelas VII' }
+  ];
+  const pageSize = 10;
+  let activeTopic = 'semua';
+  let activeLevel = 'semua';
+  let activePage = 1;
+  const listEl = document.getElementById('daftarSoal');
+  const searchEl = document.getElementById('cariSoal');
+  const countEl = document.getElementById('jumlahSoal');
+  const paginationEl = document.getElementById('pagination');
+
+  function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+  }
+  function semuaSoal() {
+    const result = [];
+    daftarTopik.forEach(topic => {
+      const items = Array.isArray(window.bankSoal?.[topic.id]) ? window.bankSoal[topic.id] : [];
+      items.forEach((item, index) => result.push({ ...item, _topicId: topic.id, _topicName: topic.nama, _kelas: topic.kelas, _sourceNo: index + 1 }));
+    });
+    return result;
+  }
+  function filterSoal() {
+    const keyword = searchEl.value.trim().toLocaleLowerCase('id');
+    return semuaSoal().filter(item => {
+      const topicMatch = activeTopic === 'semua' || item._topicId === activeTopic;
+      const levelMatch = activeLevel === 'semua' || item.level === activeLevel;
+      const searchable = `${item.stimulus || ''} ${item.soal || ''} ${item.pilihan?.join(' ') || ''} ${item._topicName}`.toLocaleLowerCase('id');
+      return topicMatch && levelMatch && searchable.includes(keyword);
+    });
+  }
+  function render() {
+    const filtered = filterSoal();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+    activePage = Math.min(activePage, totalPages);
+    const start = (activePage - 1) * pageSize;
+    const visible = filtered.slice(start, start + pageSize);
+    countEl.textContent = `${filtered.length.toLocaleString('id-ID')} soal ditemukan${filtered.length ? ` · Menampilkan ${start + 1}–${start + visible.length}` : ''}`;
+    if (!visible.length) {
+      listEl.innerHTML = '<div class="lh-empty"><span class="lh-empty-icon">🔎</span><h2>Soal tidak ditemukan</h2><p>Coba kata kunci lain atau pilih topik yang berbeda.</p></div>';
+    } else {
+      listEl.innerHTML = visible.map((item, index) => {
+        const letters = ['A','B','C','D','E'];
+        const options = Array.isArray(item.pilihan) ? item.pilihan : [];
+        const keyIndex = Number(item.jawabanBenar);
+        const keyText = Number.isInteger(keyIndex) && options[keyIndex] !== undefined
+          ? `${letters[keyIndex]}. ${escapeHTML(options[keyIndex])}` : 'Kunci belum tersedia';
+        const stimulusHTML = item.stimulus
+          ? `<div class="lh-stimulus-block"><span class="lh-stimulus-label">Stimulus / Bahan Bacaan</span>${escapeHTML(item.stimulus).replace(/\n/g, '<br>')}</div>`
+          : '';
+        return `<article class="lh-question">
+          <div class="lh-question-top"><span class="lh-question-number">Soal ${item.nomorAsli || start + index + 1}</span><span>${escapeHTML(item._kelas)} · ${escapeHTML(item._topicName)} ${item.level ? `· <span class="lh-question-level">${escapeHTML(item.level)}</span>` : ''}</span></div>
+          ${stimulusHTML}
+          <p class="lh-question-text">${escapeHTML(item.soal).replace(/\n/g, '<br>')}</p>
+          ${item.gambar ? `<div class="lh-question-image">${item.gambar}</div>` : ''}
+          <div class="lh-options">${options.map((option, optionIndex) => `<div class="lh-option"><span class="lh-option-letter">${letters[optionIndex] || ''}.</span><span>${escapeHTML(option)}</span></div>`).join('')}</div>
+          <details class="lh-answer"><summary>Lihat kunci dan pembahasan</summary><div class="lh-answer-body"><strong>Kunci jawaban: ${keyText}</strong><p>${escapeHTML(item.pembahasan || 'Pembahasan belum tersedia.').replace(/\n/g, '<br>')}</p></div></details>
+        </article>`;
+      }).join('');
+    }
+    paginationEl.innerHTML = '';
+    if (filtered.length > pageSize) {
+      const previous = document.createElement('button'); previous.type = 'button'; previous.textContent = '‹ Sebelumnya'; previous.disabled = activePage === 1; previous.addEventListener('click', () => { activePage--; render(); });
+      const label = document.createElement('span'); label.textContent = `Halaman ${activePage} dari ${totalPages}`;
+      const next = document.createElement('button'); next.type = 'button'; next.textContent = 'Berikutnya ›'; next.disabled = activePage === totalPages; next.addEventListener('click', () => { activePage++; render(); });
+      paginationEl.append(previous, label, next);
+    }
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([listEl]).catch(() => {});
+  }
+  document.querySelectorAll('.lh-topic-button').forEach(button => button.addEventListener('click', () => {
+    activeTopic = button.dataset.topic;
+    activePage = 1;
+    document.querySelectorAll('.lh-topic-button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    render();
+  }));
+  document.querySelectorAll('.lh-level-button').forEach(button => button.addEventListener('click', () => {
+    activeLevel = button.dataset.level;
+    activePage = 1;
+    document.querySelectorAll('.lh-level-button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    render();
+  }));
+  searchEl.addEventListener('input', () => { activePage = 1; render(); });
+  const requestedTopic = params.get('topik');
+  if (requestedTopic && daftarTopik.some(topic => topic.id === requestedTopic)) {
+    activeTopic = requestedTopic;
+    document.querySelectorAll('.lh-topic-button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.topic === requestedTopic)));
+  }
+  const requestedLevel = params.get('level');
+  if (requestedLevel && ['LOTS', 'Medium', 'HOTS'].includes(requestedLevel)) {
+    activeLevel = requestedLevel;
+    document.querySelectorAll('.lh-level-button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.level === requestedLevel)));
+  }
+  render();
+})();
+</script>
+</body>
+</html>

@@ -6,90 +6,25 @@
   <title>Materi Kelas VII - MathSMP</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
   <style>
-    .wadah-materi {
-      max-width: 960px;
-      margin: 32px auto;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 28px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
-    }
-    .daftar-bab {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
-    .btn-bab {
-      padding: 10px 18px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      color: #334155;
-      transition: all 0.2s;
-    }
-    .btn-bab:hover {
-      border-color: #2563eb;
-      color: #2563eb;
-    }
-    .btn-bab.aktif {
-      background: #2563eb;
-      color: #ffffff;
-      border-color: #2563eb;
-    }
-    .info-dokumen {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      background: #eff6ff;
-      border-left: 4px solid #2563eb;
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 16px;
-    }
-    .grup-aksi {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .btn-unduh {
-      background: #1e3a8a;
-      color: #ffffff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .btn-ke-kuis {
-      background: #16a34a;
-      color: #ffffff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .bingkai-pdf {
-      width: 100%;
-      height: 620px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: #f1f5f9;
-    }
+    .wadah-materi{max-width:960px;margin:32px auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:28px;box-shadow:0 4px 16px rgba(15,23,42,.05)}
+    .daftar-bab{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+    .btn-bab{padding:10px 18px;border:1px solid #cbd5e1;background:#f8fafc;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;color:#334155;transition:all .2s}
+    .btn-bab:hover{border-color:#2563eb;color:#2563eb}
+    .btn-bab.aktif{background:#2563eb;color:#fff;border-color:#2563eb}
+    .info-dokumen{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;background:#eff6ff;border-left:4px solid #2563eb;padding:16px;border-radius:8px;margin-bottom:16px}
+    .grup-aksi{display:flex;gap:10px;flex-wrap:wrap}
+    .btn-unduh,.btn-ke-kuis{display:inline-flex;align-items:center;background:#1e3a8a;color:#fff;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600}
+    .btn-ke-kuis{background:#16a34a}
+    .bingkai-pdf{width:100%;height:620px;border:1px solid #cbd5e1;border-radius:8px;background:#f1f5f9}
+    .status-materi{padding:18px;border:1px solid #f4cf8a;border-left:4px solid #d97706;background:#fffbeb;border-radius:8px;color:#854d0e;line-height:1.65;margin-bottom:16px}
+    [hidden]{display:none!important}
+    @media(max-width:600px){.wadah-materi{padding:18px;margin:18px auto}.bingkai-pdf{height:520px}.info-dokumen{align-items:flex-start}}
   </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="wadah nav-isi">
-      <a href="../../index.html" class="logo">
-        <span class="logo-ikon">∑</span> Math<span>SMP</span>
-      </a>
+      <a href="../../index.html" class="logo"><span class="logo-ikon">∑</span> Math<span>SMP</span></a>
       <nav class="menu-utama">
         <a href="../../index.html">Beranda</a>
         <a href="../../index.html#kelas" class="aktif">Materi</a>
@@ -108,39 +43,55 @@
       <p>Pilih pokok bahasan Kelas VII di bawah ini untuk membaca modul PDF atau mengunduhnya.</p>
 
       <div class="daftar-bab">
-        <button class="btn-bab aktif" onclick="gantiMateri(this, 'Materi 1: Bilangan Rasional', 'pdf/Bilangan-Rasional.pdf')">
-          1. Bilangan Rasional
-        </button>
-        <button class="btn-bab" onclick="gantiMateri(this, 'Materi 2: Operasi Bilangan Rasional', 'pdf/Operasi-Bilangan-Rasional.pdf')">
-          2. Operasi Bilangan Rasional
-        </button>
+        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 1: Bilangan Rasional', '', 'kosong')">1. Bilangan Rasional</button>
+        <button class="btn-bab aktif" type="button" onclick="gantiMateri(this, 'Materi 2: Operasi Bilangan Rasional', '../../assets/pdf/matematika/Operasi-Bilangan-Rasional.pdf', 'pdf')">2. Operasi Bilangan Rasional</button>
       </div>
 
       <div class="info-dokumen">
         <div>
-          <strong id="judulBab" style="font-size: 17px; color: #1e3a8a;">Materi 1: Bilangan Rasional</strong>
-          <p style="font-size: 13px; color: #475569;">Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.</p>
+          <strong id="judulBab" style="font-size:17px;color:#1e3a8a">Materi 2: Operasi Bilangan Rasional</strong>
+          <p id="petunjukDokumen" style="font-size:13px;color:#475569">Modul PDF ditampilkan di bawah. Pada perangkat HP, gunakan tombol Buka / Unduh PDF bila pratinjau tidak muncul.</p>
         </div>
         <div class="grup-aksi">
-          <a id="tombolUnduh" href="../../assets/pdf/matematika/Bilangan-Rasional.pdf" target="_blank" class="btn-unduh">📥 Buka / Unduh PDF</a>
-          <a href="../latihan/kuis.html" class="btn-ke-kuis">🎯 Latihan Soal &rarr;</a>
+          <a id="tombolUnduh" href="../../assets/pdf/matematika/Operasi-Bilangan-Rasional.pdf" target="_blank" rel="noopener" class="btn-unduh">📥 Buka / Unduh PDF</a>
+          <a href="../latihan/latihan-soal.html" class="btn-ke-kuis">🎯 Latihan Soal →</a>
         </div>
       </div>
 
-      <iframe id="layarPdf" class="bingkai-pdf" src="../../assets/pdf/matematika/Bilangan-Rasional.pdf"></iframe>
+      <div id="statusMateriKosong" class="status-materi" hidden>
+        <strong>File bahan bacaan belum berisi konten.</strong>
+        <p>File <code>Bilangan-Rasional.pdf</code> yang ada di proyek saat ini hanya menampilkan satu halaman putih saat diperiksa. Mohon ganti file tersebut dengan PDF asli materi Bilangan Rasional agar dapat ditampilkan di sini.</p>
+      </div>
+      <iframe id="layarPdf" class="bingkai-pdf" title="Bahan bacaan Matematika Kelas VII" src="../../assets/pdf/matematika/Operasi-Bilangan-Rasional.pdf"></iframe>
     </div>
   </main>
 
   <script>
-    function gantiMateri(tombolKlik, judulBaru, lokasiFilePdf) {
+    function gantiMateri(tombolKlik, judulBaru, lokasiFilePdf, jenisMateri) {
       document.querySelectorAll('.btn-bab').forEach(btn => btn.classList.remove('aktif'));
       tombolKlik.classList.add('aktif');
-
       document.getElementById('judulBab').textContent = judulBaru;
-      document.getElementById('layarPdf').src = lokasiFilePdf;
-      document.getElementById('tombolUnduh').href = lokasiFilePdf;
+
+      const layar = document.getElementById('layarPdf');
+      const tombolBuka = document.getElementById('tombolUnduh');
+      const petunjuk = document.getElementById('petunjukDokumen');
+      const peringatan = document.getElementById('statusMateriKosong');
+
+      if (jenisMateri === 'kosong') {
+        layar.hidden = true;
+        tombolBuka.hidden = true;
+        peringatan.hidden = false;
+        petunjuk.textContent = 'Materi belum dapat ditampilkan karena file sumber perlu diperbarui.';
+        return;
+      }
+
+      layar.hidden = false;
+      tombolBuka.hidden = false;
+      peringatan.hidden = true;
+      layar.src = lokasiFilePdf;
+      tombolBuka.href = lokasiFilePdf;
+      petunjuk.textContent = 'Modul PDF ditampilkan di bawah. Pada perangkat HP, gunakan tombol Buka / Unduh PDF bila pratinjau tidak muncul.';
     }
   </script>
-
 </body>
 </html>

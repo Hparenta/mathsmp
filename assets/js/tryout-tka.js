@@ -309,6 +309,9 @@
     startedAt=Date.now();
     submitted=false;
 
+    // Sederhanakan halaman setelah peserta benar-benar memulai simulasi.
+    // Header minimalis (logo + Beranda) tetap tampil selama ujian.
+    document.body.classList.add("tka-exam-mode");
     $("panelPersiapan").hidden=true;
     $("riwayatPanel").hidden=true;
     $("areaTryout").hidden=false;
