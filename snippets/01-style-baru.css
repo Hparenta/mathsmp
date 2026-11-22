@@ -1,0 +1,12 @@
+/* MathSMP brand logo: header dan footer halaman utama, TKA, Ruang Guru, profil */
+.brand-mark {
+  background: url('../images/logo-mathsmp.svg') center / contain no-repeat !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: transparent !important;
+  font-size: 0 !important;
+}
+.brand-mark > svg {
+  display: none !important;
+}

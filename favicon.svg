@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">MathSMP</title>
+  <desc id="desc">Logo MathSMP berupa simbol Sigma, lintasan pengetahuan, dan buku terbuka berwarna biru.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1767f2"/>
+      <stop offset="0.55" stop-color="#0750cf"/>
+      <stop offset="1" stop-color="#092d85"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#54d9ff"/>
+      <stop offset="1" stop-color="#16a9ef"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="clip"><rect x="12" y="12" width="488" height="488" rx="112"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect x="12" y="12" width="488" height="488" rx="112" fill="url(#bg)"/>
+    <path d="M12 205C110 78 226 8 500 20V12H12Z" fill="url(#shine)"/>
+    <path d="M12 390C126 280 239 195 500 106V500H12Z" fill="#001d6b" opacity=".16"/>
+    <!-- Sigma block mark -->
+    <path d="M111 126H383V181H218L303 256L218 331H383V386H111V348L234 256L111 164Z" fill="#fff"/>
+    <!-- Knowledge orbit -->
+    <path d="M74 292C119 218 208 185 322 169C383 160 427 173 446 194C464 214 451 243 422 267C363 315 252 353 143 370C96 377 61 361 54 337C50 321 58 305 74 292Z" fill="none" stroke="url(#cyan)" stroke-width="13" stroke-linecap="round" opacity=".98"/>
+    <path d="M76 305C152 247 270 211 369 207" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".88"/>
+    <!-- Open book -->
+    <path d="M76 405C132 386 193 392 255 439C317 392 378 386 434 405L434 453C371 432 311 440 255 484C199 440 139 432 76 453Z" fill="#fff"/>
+    <path d="M76 453C139 432 199 440 255 484C311 440 371 432 434 453" fill="none" stroke="url(#cyan)" stroke-width="13" stroke-linecap="round"/>
+    <path d="M255 439V483" stroke="#dbeafe" stroke-width="5" stroke-linecap="round"/>
+    <!-- Small learning sparkles -->
+    <path d="M401 71L411 94L434 104L411 114L401 137L391 114L368 104L391 94Z" fill="#fff"/>
+    <path d="M449 125L456 141L472 148L456 155L449 171L442 155L426 148L442 141Z" fill="#fff" opacity=".95"/>
+  </g>
+</svg>
