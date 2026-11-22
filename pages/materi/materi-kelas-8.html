@@ -15,9 +15,10 @@
     .grup-aksi{display:flex;gap:10px;flex-wrap:wrap}
     .btn-unduh,.btn-ke-kuis{display:inline-flex;align-items:center;background:#15803d;color:#fff;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600}
     .btn-ke-kuis{background:#2563eb}
-    .bingkai-pdf{width:100%;height:620px;border:1px solid #cbd5e1;border-radius:8px;background:#f1f5f9}
+    .bingkai-pdf{width:100%;height:720px;border:1px solid #cbd5e1;border-radius:8px;background:#f1f5f9}
     [hidden]{display:none!important}
-    @media(max-width:600px){.wadah-materi{padding:18px;margin:18px auto}.bingkai-pdf{height:520px}.info-dokumen{align-items:flex-start}}
+    .jenis-dokumen{display:inline-block;margin-top:5px;padding:3px 8px;border-radius:20px;background:#dcfce7;color:#166534;font-size:11px;font-weight:700}
+    @media(max-width:600px){.wadah-materi{padding:18px;margin:18px auto}.bingkai-pdf{height:620px}.info-dokumen{align-items:flex-start}}
   </style>
 </head>
 <body>
@@ -39,22 +40,26 @@
   <main class="wadah">
     <div class="wadah-materi">
       <h2>📗 Bahan Bacaan Matematika Kelas VIII</h2>
-      <p>Pilih pokok bahasan Kelas VIII di bawah ini untuk membaca modul PDF atau mengunduhnya.</p>
+      <p>Pilih pokok bahasan Kelas VIII untuk membaca modul PDF atau bahan bacaan HTML interaktif.</p>
 
-      <div class="daftar-bab">
-        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 1: Penyajian dan Nilai Fungsi', '../../assets/pdf/matematika/Penyajian-dan-Nilai-Fungsi.pdf')">1. Penyajian &amp; Nilai Fungsi</button>
-        <button class="btn-bab aktif" type="button" onclick="gantiMateri(this, 'Materi 2: Fungsi Linear dan Grafiknya', '../../assets/pdf/matematika/Fungsi-Linear-dan-Grafiknya.pdf')">2. Fungsi Linear &amp; Grafiknya</button>
-        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 3: Konsep Relasi', '../../assets/pdf/matematika/Konsep-Relasi.pdf')">3. Konsep Relasi</button>
-        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 4: Konsep Fungsi', '../../assets/pdf/matematika/Konsep-Fungsi.pdf')">4. Konsep Fungsi</button>
+      <div class="daftar-bab" aria-label="Daftar materi Kelas VIII">
+        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 1: Penyajian dan Nilai Fungsi', '../../assets/pdf/matematika/Penyajian-dan-Nilai-Fungsi.pdf', 'pdf')">1. Penyajian &amp; Nilai Fungsi <small>(PDF)</small></button>
+        <button class="btn-bab aktif" type="button" onclick="gantiMateri(this, 'Materi 2: Fungsi Linear dan Grafiknya', '../../assets/pdf/matematika/Fungsi-Linear-dan-Grafiknya.pdf', 'pdf')">2. Fungsi Linear &amp; Grafiknya <small>(PDF)</small></button>
+        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 3: Konsep Relasi', '../../assets/pdf/matematika/Konsep-Relasi.pdf', 'pdf')">3. Konsep Relasi <small>(PDF)</small></button>
+        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 4: Konsep Fungsi', '../../assets/pdf/matematika/Konsep-Fungsi.pdf', 'pdf')">4. Konsep Fungsi <small>(PDF)</small></button>
+        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 5: Bilangan Berpangkat Bulat Positif', '../../assets/pdf/matematika/Materi%20Kelas%208/Bilangan%20Berpangkat%20Bulat%20Positif%20Kelas%20VIII.html', 'html')">5. Bilangan Berpangkat Bulat Positif <small>(Interaktif)</small></button>
+        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 6: Fungsi Linear dan Non-Linear', '../../assets/pdf/matematika/Materi%20Kelas%208/Fungsi_Linear_NonLinear_Kelas_VIII.html', 'html')">6. Fungsi Linear &amp; Non-Linear <small>(Interaktif)</small></button>
+        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 7: Notasi Ilmiah', '../../assets/pdf/matematika/Materi%20Kelas%208/Notasi%20Ilmiah%20Kelas%20VIII.html', 'html')">7. Notasi Ilmiah <small>(Interaktif)</small></button>
       </div>
 
       <div class="info-dokumen">
         <div>
           <strong id="judulBab" style="font-size:17px;color:#166534">Materi 2: Fungsi Linear dan Grafiknya</strong>
           <p id="petunjukDokumen" style="font-size:13px;color:#475569">Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.</p>
+          <span id="jenisDokumen" class="jenis-dokumen">Dokumen PDF</span>
         </div>
         <div class="grup-aksi">
-          <a id="tombolUnduh" href="../../assets/pdf/matematika/Fungsi-Linear-dan-Grafiknya.pdf" target="_blank" rel="noopener" class="btn-unduh">📥 Buka / Unduh PDF</a>
+          <a id="tombolUnduh" href="../../assets/pdf/matematika/Fungsi-Linear-dan-Grafiknya.pdf" target="_blank" rel="noopener noreferrer" class="btn-unduh">📥 Buka / Unduh PDF</a>
           <a href="../latihan/latihan-soal.html" class="btn-ke-kuis">🎯 Latihan Soal →</a>
         </div>
       </div>
@@ -64,12 +69,29 @@
   </main>
 
   <script>
-    function gantiMateri(tombolKlik, judulBaru, lokasiFilePdf) {
+    function gantiMateri(tombolKlik, judulBaru, lokasiFile, jenisMateri = 'pdf') {
       document.querySelectorAll('.btn-bab').forEach(btn => btn.classList.remove('aktif'));
       tombolKlik.classList.add('aktif');
       document.getElementById('judulBab').textContent = judulBaru;
-      document.getElementById('layarPdf').src = lokasiFilePdf;
-      document.getElementById('tombolUnduh').href = lokasiFilePdf;
+      const layar = document.getElementById('layarPdf');
+      const tombolBuka = document.getElementById('tombolUnduh');
+      const petunjuk = document.getElementById('petunjukDokumen');
+      const labelJenis = document.getElementById('jenisDokumen');
+      layar.src = lokasiFile;
+      tombolBuka.href = lokasiFile;
+      if (jenisMateri === 'html') {
+        tombolBuka.textContent = '📖 Buka Bahan Bacaan';
+        petunjuk.textContent = 'Bahan bacaan interaktif ditampilkan di bawah ini. Gunakan tombol Buka Bahan Bacaan jika ingin membukanya di tab baru.';
+        labelJenis.textContent = 'Bahan bacaan HTML interaktif';
+        labelJenis.style.background = '#dbeafe';
+        labelJenis.style.color = '#1d4ed8';
+      } else {
+        tombolBuka.textContent = '📥 Buka / Unduh PDF';
+        petunjuk.textContent = 'Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.';
+        labelJenis.textContent = 'Dokumen PDF';
+        labelJenis.style.background = '#dcfce7';
+        labelJenis.style.color = '#166534';
+      }
     }
   </script>
 </body>

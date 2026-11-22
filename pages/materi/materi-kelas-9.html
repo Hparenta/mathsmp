@@ -6,90 +6,24 @@
   <title>Materi Kelas IX - MathSMP</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
   <style>
-    .wadah-materi {
-      max-width: 960px;
-      margin: 32px auto;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 28px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
-    }
-    .daftar-bab {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
-    .btn-bab {
-      padding: 10px 18px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      color: #334155;
-      transition: all 0.2s;
-    }
-    .btn-bab:hover {
-      border-color: #ea580c;
-      color: #ea580c;
-    }
-    .btn-bab.aktif {
-      background: #ea580c;
-      color: #ffffff;
-      border-color: #ea580c;
-    }
-    .info-dokumen {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      background: #fff7ed;
-      border-left: 4px solid #ea580c;
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 16px;
-    }
-    .grup-aksi {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .btn-unduh {
-      background: #c2410c;
-      color: #ffffff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .btn-ke-kuis {
-      background: #2563eb;
-      color: #ffffff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .bingkai-pdf {
-      width: 100%;
-      height: 620px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: #f1f5f9;
-    }
+    .wadah-materi { max-width: 960px; margin: 32px auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 28px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05); }
+    .daftar-bab { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+    .btn-bab { padding: 10px 18px; border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; color: #334155; transition: all 0.2s; }
+    .btn-bab:hover { border-color: #ea580c; color: #ea580c; }
+    .btn-bab.aktif { background: #ea580c; color: #ffffff; border-color: #ea580c; }
+    .info-dokumen { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; background: #fff7ed; border-left: 4px solid #ea580c; padding: 16px; border-radius: 8px; margin-bottom: 16px; }
+    .grup-aksi { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-unduh { display:inline-flex; align-items:center; background: #c2410c; color: #ffffff; padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+    .btn-ke-kuis { display:inline-flex; align-items:center; background: #2563eb; color: #ffffff; padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+    .bingkai-pdf { width: 100%; height: 720px; border: 1px solid #cbd5e1; border-radius: 8px; background: #f1f5f9; }
+    .jenis-dokumen { display:inline-block; margin-top:5px; padding:3px 8px; border-radius:20px; background:#ffedd5; color:#9a3412; font-size:11px; font-weight:700; }
+    @media(max-width:600px){ .wadah-materi{padding:18px;margin:18px auto}.bingkai-pdf{height:620px}.info-dokumen{align-items:flex-start} }
   </style>
 </head>
 <body>
-
   <header class="navbar">
     <div class="wadah nav-isi">
-      <a href="../../index.html" class="logo">
-        <span class="logo-ikon">∑</span> Math<span>SMP</span>
-      </a>
+      <a href="../../index.html" class="logo"><span class="logo-ikon">∑</span> Math<span>SMP</span></a>
       <nav class="menu-utama">
         <a href="../../index.html">Beranda</a>
         <a href="../../index.html#kelas" class="aktif">Materi</a>
@@ -105,54 +39,55 @@
   <main class="wadah">
     <div class="wadah-materi">
       <h2>📙 Bahan Bacaan Matematika Kelas IX</h2>
-      <p>Pilih pokok bahasan Kelas IX di bawah ini untuk membaca modul PDF atau bahan bacaan HTML.</p>
+      <p>Pilih pokok bahasan Kelas IX untuk membaca modul PDF atau bahan bacaan HTML interaktif.</p>
 
-      <div class="daftar-bab">
-        <button class="btn-bab aktif" onclick="gantiMateri(this, 'Materi 1: Populasi dan Sampel', '../../assets/pdf/matematika/Populasi-dan-Sampel.pdf', 'pdf')">
-          1. Populasi dan Sampel
-        </button>
-        <button class="btn-bab" onclick="gantiMateri(this, 'Materi 2: Teknik Sampling dan Penelitian Sederhana', '../../assets/pdf/matematika/Materi%20Kelas%209/bahan_bacaan_teknik_sampling.html', 'html')">
-          2. Teknik Sampling dan Penelitian Sederhana
-        </button>
+      <div class="daftar-bab" aria-label="Daftar materi Kelas IX">
+        <button class="btn-bab aktif" type="button" onclick="gantiMateri(this, 'Materi 1: Populasi dan Sampel', '../../assets/pdf/matematika/Populasi-dan-Sampel.pdf', 'pdf')">1. Populasi dan Sampel <small>(PDF)</small></button>
+        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 2: Teknik Sampling dan Penelitian Sederhana', '../../assets/pdf/matematika/Materi%20Kelas%209/bahan_bacaan_teknik_sampling.html', 'html')">2. Teknik Sampling dan Penelitian Sederhana <small>(Interaktif)</small></button>
+        <button class="btn-bab" type="button" onclick="gantiMateri(this, 'Materi 3: Penyajian Data — Diagram Batang dan Lingkaran', '../../assets/pdf/matematika/Materi%20Kelas%209/Penyajian_Data_Diagram_Batang_dan_Lingkaran_Kelas_IX.html', 'html')">3. Penyajian Data: Diagram Batang &amp; Lingkaran <small>(Interaktif)</small></button>
       </div>
 
       <div class="info-dokumen">
         <div>
           <strong id="judulBab" style="font-size: 17px; color: #9a3412;">Materi 1: Populasi dan Sampel</strong>
           <p id="petunjukDokumen" style="font-size: 13px; color: #475569;">Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.</p>
+          <span id="jenisDokumen" class="jenis-dokumen">Dokumen PDF</span>
         </div>
         <div class="grup-aksi">
-          <a id="tombolUnduh" href="../../assets/pdf/matematika/Populasi-dan-Sampel.pdf" target="_blank" class="btn-unduh">📥 Buka / Unduh PDF</a>
-          <a href="../latihan/kuis.html" class="btn-ke-kuis">🎯 Latihan Soal &rarr;</a>
+          <a id="tombolUnduh" href="../../assets/pdf/matematika/Populasi-dan-Sampel.pdf" target="_blank" rel="noopener noreferrer" class="btn-unduh">📥 Buka / Unduh PDF</a>
+          <a href="../latihan/latihan-soal.html" class="btn-ke-kuis">🎯 Latihan Soal →</a>
         </div>
       </div>
 
-      <iframe id="layarPdf" class="bingkai-pdf" src="../../assets/pdf/matematika/Populasi-dan-Sampel.pdf"></iframe>
+      <iframe id="layarPdf" class="bingkai-pdf" title="Bahan bacaan Matematika Kelas IX" src="../../assets/pdf/matematika/Populasi-dan-Sampel.pdf"></iframe>
     </div>
   </main>
 
   <script>
-    function gantiMateri(tombolKlik, judulBaru, lokasiFile, jenisMateri) {
+    function gantiMateri(tombolKlik, judulBaru, lokasiFile, jenisMateri = 'pdf') {
       document.querySelectorAll('.btn-bab').forEach(btn => btn.classList.remove('aktif'));
       tombolKlik.classList.add('aktif');
-
       const tombolBuka = document.getElementById('tombolUnduh');
       const petunjuk = document.getElementById('petunjukDokumen');
       const layar = document.getElementById('layarPdf');
-
+      const labelJenis = document.getElementById('jenisDokumen');
       document.getElementById('judulBab').textContent = judulBaru;
       layar.src = lokasiFile;
       tombolBuka.href = lokasiFile;
-
       if (jenisMateri === 'html') {
         tombolBuka.textContent = '📖 Buka Bahan Bacaan';
-        petunjuk.textContent = 'Bahan bacaan HTML ditampilkan di bawah ini. Jika tidak tampil, klik tombol Buka Bahan Bacaan.';
+        petunjuk.textContent = 'Bahan bacaan interaktif ditampilkan di bawah ini. Jika tidak tampil, klik tombol Buka Bahan Bacaan.';
+        labelJenis.textContent = 'Bahan bacaan HTML interaktif';
+        labelJenis.style.background = '#dbeafe';
+        labelJenis.style.color = '#1d4ed8';
       } else {
         tombolBuka.textContent = '📥 Buka / Unduh PDF';
         petunjuk.textContent = 'Jika PDF tidak tampil di layar HP, klik tombol Buka / Unduh PDF.';
+        labelJenis.textContent = 'Dokumen PDF';
+        labelJenis.style.background = '#ffedd5';
+        labelJenis.style.color = '#9a3412';
       }
     }
   </script>
-
 </body>
 </html>
