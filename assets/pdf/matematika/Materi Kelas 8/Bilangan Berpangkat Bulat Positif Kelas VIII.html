@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bahan Bacaan Digital Matematika Kelas VIII Fase D tentang Bilangan Berpangkat Bulat, disusun oleh Herdianto Parenta, SMPN 1 Tabang.">
+<meta name="theme-color" content="#087f75">
+<title>Bilangan Berpangkat Bulat | Ruang Belajar Matematika SMPN 1 Tabang</title>
+<style>
+:root{
+  --ink:#18324b;--muted:#62758a;--brand:#087f75;--brand2:#0da99a;
+  --pale:#e9f7f4;--gold:#f4b942;--line:#dce7ed;--paper:#fff;
+  --bg:#f4f8fb;--shadow:0 12px 35px rgba(25,55,78,.09);
+  --danger:#a43c32;--success:#17643b
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.72}
+a{color:#08766d}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1180px;margin:auto;padding:11px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:850;color:var(--ink)}
+.brand-mark{width:39px;height:39px;border-radius:12px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:22px}
+.nav{display:flex;gap:5px;flex-wrap:wrap}
+.nav a{text-decoration:none;padding:7px 10px;border-radius:9px;color:var(--muted);font-size:12px;font-weight:750}
+.nav a:hover{background:var(--pale);color:var(--brand)}
+main{max-width:1100px;margin:auto;padding:30px 22px 70px}
+.hero{background:linear-gradient(120deg,#075f5a,#0b9183);color:#fff;border-radius:26px;padding:40px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:25px;overflow:hidden;box-shadow:var(--shadow)}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:850;color:#b8eee5}
+.hero h1{font-size:clamp(31px,5vw,49px);line-height:1.12;margin:12px 0}
+.hero p{color:#e0f5f1;max-width:650px}
+.hero-art{width:100%;max-width:330px;justify-self:center}
+.pill{display:inline-block;background:#ffffff20;border:1px solid #ffffff55;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:750}
+.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+.meta span{font-size:12px;color:#e0f5f1}
+.section{margin-top:28px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:27px;box-shadow:var(--shadow);scroll-margin-top:90px}
+.section-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:17px}
+.number{flex:0 0 38px;height:38px;border-radius:12px;background:var(--pale);color:var(--brand);display:grid;place-items:center;font-weight:900}
+.section h2{font-size:25px;line-height:1.25;margin:2px 0 4px}
+.section h3{margin:22px 0 8px;color:#126c66;font-size:18px}
+.section h4{margin:0 0 9px}
+.muted{color:var(--muted)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.concept{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+.concept h3{margin:7px 0 5px;font-size:17px}
+.concept p{font-size:14px;margin:5px 0;color:var(--muted)}
+.tag{display:inline-block;background:#e7f5f2;color:#08766d;border-radius:7px;padding:3px 8px;font-size:11px;font-weight:850}
+.callout{background:#eff9f7;border-left:4px solid var(--brand2);padding:15px 18px;border-radius:0 12px 12px 0;margin:16px 0}
+.callout.gold{background:#fff8e8;border-color:var(--gold)}
+.callout.red{background:#fff1ef;border-color:#d97869}
+.math{font-weight:850;color:#075f5a;background:#eff9f7;padding:3px 8px;border-radius:7px;display:inline-block;white-space:nowrap}
+.formula{font-size:clamp(19px,3vw,25px);font-weight:850;text-align:center;color:#075f5a;background:#eff9f7;border:1px solid #d4eee8;padding:13px;border-radius:13px;margin:12px 0;overflow-wrap:anywhere}
+.formula small{display:block;font-size:12px;color:var(--muted);font-weight:650}
+.illustration{width:100%;height:auto;display:block;background:#f5faf9;border-radius:13px;margin:10px 0}
+.steps{counter-reset:step;display:grid;gap:11px}
+.step{counter-increment:step;display:flex;gap:13px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:13px}
+.step:before{content:counter(step);background:var(--brand);color:white;font-weight:900;width:29px;height:29px;flex:0 0 29px;border-radius:9px;display:grid;place-items:center}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+.table-wrap{overflow-x:auto}
+th{background:#0b766d;color:white;text-align:left}
+th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:#f7fafb}
+.question{border:1px solid var(--line);border-radius:15px;padding:17px;margin:14px 0}
+.question h4{margin:0 0 10px}
+.options{display:grid;gap:8px}
+.option{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);padding:9px 11px;border-radius:10px;cursor:pointer}
+.option:hover{background:#f4faf9}
+.option input{margin-top:6px;accent-color:var(--brand)}
+.feedback{display:none;margin-top:10px;padding:10px 12px;border-radius:9px;font-size:14px}
+.feedback.show{display:block}
+.feedback.correct{background:#e9f8ef;color:var(--success)}
+.feedback.incorrect{background:#fff0ed;color:var(--danger)}
+button{border:0;background:var(--brand);color:white;font-weight:850;padding:11px 17px;border-radius:10px;cursor:pointer;font-size:14px}
+button:hover{background:#06685f}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #f4b942;outline-offset:2px}
+.secondary{background:#e8f4f2;color:#08766d}
+.score{font-weight:900;color:var(--brand);margin-left:12px}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:10px 0}
+summary{font-weight:850;cursor:pointer;color:#126c66}
+.footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 10px}
+.small{font-size:13px;color:var(--muted)}
+.kicker{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--brand);font-weight:850}
+.ref-list li{margin:9px 0;overflow-wrap:anywhere}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding:30px}.hero-art{max-width:245px}.nav{display:none}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){
+ main{padding:17px 12px 45px}.section{padding:19px}.grid2,.grid3{grid-template-columns:1fr}
+ .hero{padding:25px 21px}.hero-art{max-width:195px}.section h2{font-size:22px}
+ table{font-size:12px}th,td{padding:8px}.meta{gap:6px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <div class="topbar-inner">
+  <div class="brand"><div class="brand-mark">∑</div><span>Ruang Belajar Matematika</span></div>
+  <nav class="nav" aria-label="Navigasi utama">
+   <a href="#tujuan">Tujuan</a><a href="#konsep">Konsep</a><a href="#eksponen">Eksponen</a><a href="#sifat">Sifat Pangkat</a><a href="#contoh">Contoh</a><a href="#latihan">Latihan</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero">
+ <div>
+  <span class="eyebrow">Bahan Bacaan Siswa • Belajar Mandiri</span>
+  <h1>Bilangan Berpangkat Bulat</h1>
+  <p>Bagaimana menuliskan perkalian berulang dengan lebih ringkas? Mengapa pangkat negatif justru menghasilkan pecahan? Mari menyelidiki pola, memahami aturan, dan menggunakannya untuk memecahkan masalah.</p>
+  <span class="pill">Matematika • Kelas VIII • Fase D</span>
+  <div class="meta"><span>SMPN 1 Tabang</span><span>•</span><span>Penyusun: Herdianto Parenta</span></div>
+ </div>
+ <svg class="hero-art" viewBox="0 0 340 260" role="img" aria-label="Ilustrasi susunan kotak yang menunjukkan pertumbuhan berpangkat">
+  <rect x="15" y="18" width="310" height="225" rx="26" fill="#ffffff" opacity=".13"/>
+  <g transform="translate(35 54)">
+   <rect x="0" y="0" width="65" height="65" rx="12" fill="#fff"/>
+   <rect x="82" y="0" width="65" height="65" rx="12" fill="#f4b942"/>
+   <rect x="164" y="0" width="65" height="65" rx="12" fill="#bcece4"/>
+   <g fill="#087f75"><circle cx="18" cy="18" r="5"/><circle cx="47" cy="18" r="5"/><circle cx="18" cy="47" r="5"/><circle cx="47" cy="47" r="5"/></g>
+   <g fill="#075f5a"><circle cx="99" cy="17" r="5"/><circle cx="129" cy="17" r="5"/><circle cx="99" cy="47" r="5"/><circle cx="129" cy="47" r="5"/></g>
+   <g fill="#087f75"><circle cx="181" cy="17" r="5"/><circle cx="211" cy="17" r="5"/><circle cx="181" cy="47" r="5"/><circle cx="211" cy="47" r="5"/></g>
+   <path d="M65 32h15m-6-6 6 6-6 6M147 32h15m-6-6 6 6-6 6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="67" y="157" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">2¹</text>
+  <text x="149" y="157" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">2²</text>
+  <text x="231" y="157" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">2³</text>
+  <text x="170" y="210" fill="#e0f5f1" font-size="14" font-weight="700" text-anchor="middle">Pola perkalian berulang</text>
+ </svg>
+</section>
+
+<section class="section" id="tujuan">
+ <div class="section-head"><div class="number">1</div><div><h2>Apa yang Akan Kita Pelajari?</h2><div class="muted">Tujuan pembelajaran dan kemampuan yang akan dikembangkan.</div></div></div>
+ <p>Setelah mempelajari bahan bacaan ini, kamu diharapkan mampu:</p>
+ <ul>
+  <li>menjelaskan bilangan berpangkat sebagai bentuk ringkas dari perkalian berulang;</li>
+  <li>membaca, menulis, dan menentukan nilai bilangan berpangkat dengan eksponen bulat positif, nol, dan negatif;</li>
+  <li>menggunakan sifat perkalian, pembagian, dan pangkat dari suatu pangkat;</li>
+  <li>membandingkan nilai bilangan berpangkat dan menjelaskan strategi yang digunakan;</li>
+  <li>menghubungkan perpangkatan dengan pertumbuhan berulang dalam situasi sederhana.</li>
+ </ul>
+ <div class="callout"><b>Keterkaitan dengan ATP:</b> Submateri ini merupakan bagian pertama dari pokok bahasan “Bilangan Berpangkat Bulat &amp; Notasi Ilmiah” kelas VIII semester ganjil. Alokasi TPK untuk Bilangan Berpangkat Bulat adalah 6 JP, dengan 2 JP ulangan harian.</div>
+ <div class="grid2">
+  <div class="concept"><span class="tag">Bernalar kritis</span><h3>Mencari pola</h3><p>Menjelaskan mengapa aturan perpangkatan berlaku, bukan sekadar menghafalnya.</p></div>
+  <div class="concept"><span class="tag">Mandiri &amp; komunikasi</span><h3>Menjelaskan strategi</h3><p>Menyelesaikan soal dan mengomunikasikan alasan dengan bahasa sendiri.</p></div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-head"><div class="number">2</div><div><h2>Cerita Pemantik: Koloni Mikroorganisme</h2><div class="muted">Mengapa jumlah yang berlipat dapat bertambah sangat cepat?</div></div></div>
+ <p>Bayangkan sebuah simulasi pertumbuhan mikroorganisme di laboratorium sekolah. Dalam model sederhana, jumlah mikroorganisme menjadi dua kali lipat pada setiap tahap pengamatan. Mula-mula ada 1 kelompok kecil. Setelah satu tahap menjadi 2, setelah dua tahap menjadi 4, lalu 8, dan seterusnya.</p>
+ <div class="table-wrap"><table>
+  <thead><tr><th>Tahap</th><th>Perhitungan</th><th>Jumlah relatif</th></tr></thead>
+  <tbody><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1 × 2</td><td>2</td></tr><tr><td>2</td><td>1 × 2 × 2</td><td>4</td></tr><tr><td>3</td><td>1 × 2 × 2 × 2</td><td>8</td></tr><tr><td>4</td><td>1 × 2 × 2 × 2 × 2</td><td>16</td></tr></tbody>
+ </table></div>
+ <div class="callout gold"><b>Pertanyaan pemantik:</b> Bagaimana menulis perkalian 2 yang berulang sebanyak 10 kali tanpa menuliskan angka 2 sepuluh kali? Apakah jumlahnya bertambah secara tetap atau berlipat?</div>
+ <p>Perpangkatan membantu kita menuliskan perkalian berulang secara ringkas. Model pertumbuhan di atas dapat ditulis dengan bilangan berpangkat.</p>
+</section>
+
+<section class="section" id="konsep">
+ <div class="section-head"><div class="number">3</div><div><h2>Mengenal Bilangan Berpangkat</h2><div class="muted">Kenali bagian-bagian dari bentuk perpangkatan.</div></div></div>
+ <p>Bilangan berpangkat adalah cara singkat untuk menyatakan perkalian berulang dari faktor yang sama. Pada bentuk <b>a<sup>n</sup></b>, bilangan <b>a</b> disebut <i>basis</i> atau bilangan pokok, sedangkan <b>n</b> disebut <i>eksponen</i> atau pangkat.</p>
+ <div class="formula">a<sup>n</sup> = a × a × … × a
+  <small>untuk n bilangan bulat positif; faktor a muncul sebanyak n kali</small>
+ </div>
+ <svg class="illustration" viewBox="0 0 600 175" role="img" aria-label="Diagram bagian basis dan eksponen pada bentuk a pangkat n">
+  <rect x="95" y="25" width="410" height="120" rx="18" fill="#e9f7f4"/>
+  <text x="255" y="112" fill="#075f5a" font-size="88" font-weight="800" text-anchor="middle">a</text>
+  <text x="306" y="63" fill="#d18a21" font-size="48" font-weight="800">n</text>
+  <path d="M250 120L180 145" stroke="#087f75" stroke-width="3"/><text x="145" y="164" fill="#18324b" font-size="15" font-weight="700" text-anchor="middle">Basis</text>
+  <path d="M318 55L390 25" stroke="#d18a21" stroke-width="3"/><text x="438" y="27" fill="#18324b" font-size="15" font-weight="700" text-anchor="middle">Eksponen</text>
+ </svg>
+ <div class="grid2">
+  <div class="concept"><h3>Contoh: 3<sup>4</sup></h3><p>Basisnya 3 dan eksponennya 4.</p><div class="formula">3<sup>4</sup> = 3 × 3 × 3 × 3 = 81</div></div>
+  <div class="concept"><h3>Contoh: 5<sup>2</sup></h3><p>Basisnya 5 dan eksponennya 2.</p><div class="formula">5<sup>2</sup> = 5 × 5 = 25</div></div>
+ </div>
+ <div class="callout red"><b>Jangan tertukar!</b> 3<sup>4</sup> berarti 3 dikalikan dengan dirinya sendiri sebanyak empat faktor, bukan 3 × 4. Jadi 3<sup>4</sup> = 81, bukan 12.</div>
+</section>
+
+<section class="section" id="eksponen">
+ <div class="section-head"><div class="number">4</div><div><h2>Eksponen Positif, Nol, dan Negatif</h2><div class="muted">Perhatikan pola ketika pangkat bertambah atau berkurang.</div></div></div>
+ <h3>A. Eksponen positif</h3>
+ <p>Jika eksponennya bilangan bulat positif, perpangkatan menyatakan perkalian berulang dari basis yang sama.</p>
+ <div class="formula">4<sup>3</sup> = 4 × 4 × 4 = 64</div>
+ <p>Artinya, angka 4 menjadi faktor sebanyak tiga kali.</p>
+
+ <h3>B. Eksponen nol</h3>
+ <p>Untuk setiap basis <b>a</b> yang tidak sama dengan nol, berlaku <b>a<sup>0</sup> = 1</b>. Kita dapat memahami aturan ini melalui pola berikut.</p>
+ <div class="table-wrap"><table>
+  <thead><tr><th>Bentuk</th><th>Nilai</th><th>Pola</th></tr></thead>
+  <tbody><tr><td>2<sup>3</sup></td><td>8</td><td>—</td></tr><tr><td>2<sup>2</sup></td><td>4</td><td>8 ÷ 2 = 4</td></tr><tr><td>2<sup>1</sup></td><td>2</td><td>4 ÷ 2 = 2</td></tr><tr><td>2<sup>0</sup></td><td>1</td><td>2 ÷ 2 = 1</td></tr></tbody>
+ </table></div>
+ <p>Setiap pangkat turun satu, nilainya dibagi 2. Karena itu, setelah 2<sup>1</sup> = 2, satu langkah berikutnya adalah 2<sup>0</sup> = 1.</p>
+ <div class="callout gold"><b>Catatan penting:</b> 0<sup>0</sup> tidak didefinisikan dalam aturan perpangkatan yang kita gunakan di sini. Sifat a<sup>0</sup> = 1 mensyaratkan a ≠ 0.</div>
+
+ <h3>C. Eksponen negatif</h3>
+ <p>Jika pangkat turun lagi, pola pembagian berlanjut. Perhatikan pola basis 2 berikut.</p>
+ <div class="table-wrap"><table>
+  <thead><tr><th>Bentuk</th><th>Nilai</th><th>Penjelasan</th></tr></thead>
+  <tbody>
+   <tr><td>2<sup>2</sup></td><td>4</td><td>2 × 2</td></tr>
+   <tr><td>2<sup>1</sup></td><td>2</td><td>4 ÷ 2</td></tr>
+   <tr><td>2<sup>0</sup></td><td>1</td><td>2 ÷ 2</td></tr>
+   <tr><td>2<sup>−1</sup></td><td>1/2</td><td>1 ÷ 2</td></tr>
+   <tr><td>2<sup>−2</sup></td><td>1/4</td><td>1/2 ÷ 2</td></tr>
+   <tr><td>2<sup>−3</sup></td><td>1/8</td><td>1/4 ÷ 2</td></tr>
+  </tbody>
+ </table></div>
+ <div class="formula">a<sup>−n</sup> = 1 ÷ a<sup>n</sup> = 1/a<sup>n</sup>
+  <small>untuk a ≠ 0 dan n bilangan bulat positif</small>
+ </div>
+ <p>Jadi, pangkat negatif tidak berarti hasilnya pasti negatif. Pangkat negatif menunjukkan kebalikan (resiprokal) dari pangkat positifnya.</p>
+ <div class="grid2">
+  <div class="concept"><h3>Contoh 1</h3><div class="formula">3<sup>−2</sup> = 1/3<sup>2</sup> = 1/9</div><p>Hasilnya pecahan positif.</p></div>
+  <div class="concept"><h3>Contoh 2</h3><div class="formula">10<sup>−3</sup> = 1/1000</div><p>Pangkat negatif mengubahnya menjadi kebalikan.</p></div>
+ </div>
+ <div class="callout red"><b>Kesalahan umum:</b> 3<sup>−2</sup> bukan −3<sup>2</sup> dan bukan −9. Nilai 3<sup>−2</sup> adalah 1/9.</div>
+</section>
+
+<section class="section" id="sifat">
+ <div class="section-head"><div class="number">5</div><div><h2>Sifat-Sifat Operasi Bilangan Berpangkat</h2><div class="muted">Gunakan aturan dengan memperhatikan basis dan operasi yang dilakukan.</div></div></div>
+ <h3>A. Perkalian bilangan berpangkat dengan basis sama</h3>
+ <p>Ketika dua bilangan berpangkat dengan basis sama dikalikan, faktor-faktor yang sama dapat digabung. Banyak faktor dijumlahkan.</p>
+ <div class="formula">a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup></div>
+ <div class="callout"><b>Contoh:</b><br>2<sup>3</sup> × 2<sup>2</sup> = (2 × 2 × 2) × (2 × 2)<br>= 2<sup>5</sup> = 32.</div>
+
+ <h3>B. Pembagian bilangan berpangkat dengan basis sama</h3>
+ <p>Dalam pembagian, faktor yang sama pada pembilang dan penyebut dapat dicoret. Banyak faktor yang tersisa dinyatakan dengan pengurangan eksponen.</p>
+ <div class="formula">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup>
+  <small>dengan a ≠ 0</small>
+ </div>
+ <div class="callout"><b>Contoh:</b><br>5<sup>4</sup> ÷ 5<sup>2</sup> = 5<sup>4−2</sup> = 5<sup>2</sup> = 25.</div>
+ <p>Contoh dengan hasil pangkat negatif: 2<sup>2</sup> ÷ 2<sup>5</sup> = 2<sup>−3</sup> = 1/8.</p>
+
+ <h3>C. Pangkat dari suatu pangkat</h3>
+ <p>Jika suatu bilangan berpangkat dipangkatkan lagi, eksponennya dikalikan.</p>
+ <div class="formula">(a<sup>m</sup>)<sup>n</sup> = a<sup>m×n</sup></div>
+ <div class="callout"><b>Contoh:</b><br>(3<sup>2</sup>)<sup>3</sup> = 3<sup>2×3</sup> = 3<sup>6</sup> = 729.</div>
+ <div class="callout gold"><b>Ingat perbedaannya:</b><br>Perkalian pangkat dengan basis sama → eksponen dijumlahkan.<br>Pembagian pangkat dengan basis sama → eksponen dikurangkan.<br>Pangkat dari suatu pangkat → eksponen dikalikan.</div>
+ <h3>Ringkasan sifat</h3>
+ <div class="table-wrap"><table>
+  <thead><tr><th>Operasi</th><th>Sifat</th><th>Contoh</th></tr></thead>
+  <tbody>
+   <tr><td>Perkalian, basis sama</td><td>a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup></td><td>2<sup>2</sup> × 2<sup>3</sup> = 2<sup>5</sup></td></tr>
+   <tr><td>Pembagian, basis sama</td><td>a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup></td><td>7<sup>5</sup> ÷ 7<sup>2</sup> = 7<sup>3</sup></td></tr>
+   <tr><td>Pangkat dari pangkat</td><td>(a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></td><td>(4<sup>2</sup>)<sup>3</sup> = 4<sup>6</sup></td></tr>
+  </tbody>
+ </table></div>
+</section>
+
+<section class="section" id="contoh">
+ <div class="section-head"><div class="number">6</div><div><h2>Contoh Soal dan Pembahasan</h2><div class="muted">Ikuti alasan pada setiap langkah, bukan hanya hasil akhirnya.</div></div></div>
+ <h3>Contoh 1 • Level dasar: menentukan nilai pangkat</h3>
+ <p>Tentukan nilai dari 2<sup>5</sup>.</p>
+ <div class="steps">
+  <div class="step"><div><b>Tulis sebagai perkalian berulang.</b><br>2<sup>5</sup> = 2 × 2 × 2 × 2 × 2.</div></div>
+  <div class="step"><div><b>Kalikan bertahap.</b><br>2 × 2 = 4, lalu 4 × 2 = 8, kemudian 8 × 2 = 16, dan 16 × 2 = 32.</div></div>
+  <div class="step"><div><b>Simpulkan.</b><br>Jadi, 2<sup>5</sup> = <b>32</b>.</div></div>
+ </div>
+
+ <h3>Contoh 2 • Level sedang: pangkat negatif</h3>
+ <p>Tentukan nilai 4<sup>−2</sup>.</p>
+ <div class="steps">
+  <div class="step"><div><b>Gunakan definisi pangkat negatif.</b><br>4<sup>−2</sup> = 1/4<sup>2</sup>.</div></div>
+  <div class="step"><div><b>Hitung pangkat positifnya.</b><br>4<sup>2</sup> = 4 × 4 = 16.</div></div>
+  <div class="step"><div><b>Tulis hasil.</b><br>Jadi, 4<sup>−2</sup> = <b>1/16</b>.</div></div>
+ </div>
+
+ <h3>Contoh 3 • Level sedang: gabungan sifat pangkat</h3>
+ <p>Sederhanakan (2<sup>3</sup> × 2<sup>4</sup>) ÷ 2<sup>5</sup>.</p>
+ <div class="steps">
+  <div class="step"><div><b>Kerjakan perkalian lebih dahulu.</b><br>2<sup>3</sup> × 2<sup>4</sup> = 2<sup>3+4</sup> = 2<sup>7</sup>.</div></div>
+  <div class="step"><div><b>Lanjutkan pembagian.</b><br>2<sup>7</sup> ÷ 2<sup>5</sup> = 2<sup>7−5</sup> = 2<sup>2</sup>.</div></div>
+  <div class="step"><div><b>Hitung nilainya.</b><br>2<sup>2</sup> = 4. Jadi, hasilnya <b>4</b>.</div></div>
+ </div>
+
+ <h3>Contoh 4 • Membandingkan bilangan berpangkat</h3>
+ <p>Manakah yang lebih besar, 2<sup>5</sup> atau 5<sup>2</sup>?</p>
+ <div class="grid2">
+  <div class="concept"><h3>Bilangan pertama</h3><div class="formula">2<sup>5</sup> = 32</div></div>
+  <div class="concept"><h3>Bilangan kedua</h3><div class="formula">5<sup>2</sup> = 25</div></div>
+ </div>
+ <div class="callout">Karena 32 lebih besar daripada 25, maka <b>2<sup>5</sup> &gt; 5<sup>2</sup></b>. Jangan membandingkan pangkatnya saja; hitung atau gunakan strategi yang sah untuk membandingkan nilai.</div>
+
+ <h3>Contoh 5 • Konteks pertumbuhan berlipat</h3>
+ <p>Dalam sebuah simulasi, satu kelompok mikroorganisme menjadi dua kali lipat pada setiap tahap. Jika mula-mula ada 3 kelompok, berapa kelompok setelah 4 tahap?</p>
+ <div class="steps">
+  <div class="step"><div><b>Tentukan pola pengali.</b><br>Setiap tahap jumlah dikalikan 2. Setelah empat tahap, faktor pengalinya adalah 2<sup>4</sup>.</div></div>
+  <div class="step"><div><b>Buat model matematika.</b><br>Jumlah akhir = 3 × 2<sup>4</sup>.</div></div>
+  <div class="step"><div><b>Hitung dan tafsirkan.</b><br>3 × 16 = <b>48 kelompok</b>. Jadi, menurut model sederhana tersebut, jumlah setelah empat tahap adalah 48 kelompok.</div></div>
+ </div>
+ <p class="small">Catatan: Ini merupakan model matematika untuk memahami pertumbuhan berlipat. Pertumbuhan organisme nyata dapat dipengaruhi kondisi lingkungan dan tidak selalu terus berlipat dengan laju yang sama.</p>
+</section>
+
+<section class="section">
+ <div class="section-head"><div class="number">7</div><div><h2>Aktivitas Eksplorasi: Jejak Pangkat</h2><div class="muted">Temukan pola dengan menghitung dan berdiskusi.</div></div></div>
+ <p>Lengkapi pola berikut secara mandiri. Setelah itu, bandingkan strategi dengan temanmu.</p>
+ <div class="table-wrap"><table>
+  <thead><tr><th>Pangkat</th><th>3<sup>3</sup></th><th>3<sup>2</sup></th><th>3<sup>1</sup></th><th>3<sup>0</sup></th><th>3<sup>−1</sup></th><th>3<sup>−2</sup></th></tr></thead>
+  <tbody><tr><td>Nilai</td><td>27</td><td>9</td><td>3</td><td>1</td><td>1/3</td><td>1/9</td></tr></tbody>
+ </table></div>
+ <ol>
+  <li>Apa yang terjadi pada nilai ketika eksponen turun satu?</li>
+  <li>Mengapa 3<sup>0</sup> bernilai 1?</li>
+  <li>Mengapa 3<sup>−2</sup> lebih kecil daripada 3<sup>−1</sup>?</li>
+  <li>Jelaskan dengan kalimatmu sendiri arti eksponen negatif.</li>
+ </ol>
+ <div class="callout gold"><b>Tantangan komunikasi:</b> Jelaskan pola tersebut kepada teman tanpa hanya menyebutkan rumus. Gunakan tabel atau contoh perkalian dan pembagian berulang.</div>
+</section>
+
+<section class="section">
+ <div class="section-head"><div class="number">8</div><div><h2>Pojok Waspada: Kesalahan yang Sering Terjadi</h2><div class="muted">Periksa kembali langkahmu sebelum menyimpulkan.</div></div></div>
+ <details><summary>Kesalahan 1: Mengalikan basis dengan eksponen</summary><p>3<sup>4</sup> bukan 3 × 4. Eksponen 4 menunjukkan bahwa basis 3 menjadi faktor sebanyak empat kali: 3 × 3 × 3 × 3 = 81.</p></details>
+ <details><summary>Kesalahan 2: Menganggap pangkat negatif menghasilkan bilangan negatif</summary><p>2<sup>−3</sup> = 1/2<sup>3</sup> = 1/8, bukan −8. Tanda negatif pada eksponen menunjukkan kebalikan, bukan tanda negatif pada hasil.</p></details>
+ <details><summary>Kesalahan 3: Menjumlahkan eksponen pada semua operasi</summary><p>Eksponen dijumlahkan pada perkalian dengan basis sama. Pada pembagian basis sama, eksponen dikurangkan. Pada pangkat dari pangkat, eksponen dikalikan.</p></details>
+ <details><summary>Kesalahan 4: Mengabaikan tanda kurung pada basis negatif</summary><p>(−2)<sup>2</sup> = (−2) × (−2) = 4, sedangkan −2<sup>2</sup> berarti −(2 × 2) = −4. Tanda kurung menentukan apakah tanda negatif termasuk bagian dari basis.</p></details>
+ <details><summary>Kesalahan 5: Menggunakan aturan pembagian ketika basis nol</summary><p>Aturan a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup> mensyaratkan a ≠ 0 karena pembagian dengan nol tidak terdefinisi.</p></details>
+</section>
+
+<section class="section" id="latihan">
+ <div class="section-head"><div class="number">9</div><div><h2>Uji Pemahamanmu!</h2><div class="muted">Pilih satu jawaban terbaik untuk setiap soal, lalu periksa hasilnya.</div></div></div>
+ <div id="quiz">
+  <div class="question" data-answer="b" data-explain="4³ berarti 4 × 4 × 4 = 64.">
+   <h4>1. Nilai dari 4<sup>3</sup> adalah …</h4>
+   <div class="options">
+    <label class="option"><input type="radio" name="q1" value="a"> 12</label>
+    <label class="option"><input type="radio" name="q1" value="b"> 64</label>
+    <label class="option"><input type="radio" name="q1" value="c"> 16</label>
+    <label class="option"><input type="radio" name="q1" value="d"> 43</label>
+   </div><div class="feedback" aria-live="polite"></div>
+  </div>
+  <div class="question" data-answer="c" data-explain="Untuk basis bukan nol, a⁰ = 1. Jadi 7⁰ = 1.">
+   <h4>2. Hasil dari 7<sup>0</sup> adalah …</h4>
+   <div class="options">
+    <label class="option"><input type="radio" name="q2" value="a"> 0</label>
+    <label class="option"><input type="radio" name="q2" value="b"> 7</label>
+    <label class="option"><input type="radio" name="q2" value="c"> 1</label>
+    <label class="option"><input type="radio" name="q2" value="d"> 70</label>
+   </div><div class="feedback" aria-live="polite"></div>
+  </div>
+  <div class="question" data-answer="a" data-explain="5⁻² = 1/5² = 1/25. Pangkat negatif berarti kebalikan.">
+   <h4>3. Bentuk pecahan dari 5<sup>−2</sup> adalah …</h4>
+   <div class="options">
+    <label class="option"><input type="radio" name="q3" value="a"> 1/25</label>
+    <label class="option"><input type="radio" name="q3" value="b"> −25</label>
+    <label class="option"><input type="radio" name="q3" value="c"> 25</label>
+    <label class="option"><input type="radio" name="q3" value="d"> −1/25</label>
+   </div><div class="feedback" aria-live="polite"></div>
+  </div>
+  <div class="question" data-answer="d" data-explain="3² × 3⁴ = 3²⁺⁴ = 3⁶. Pada perkalian dengan basis sama, eksponen dijumlahkan.">
+   <h4>4. Bentuk sederhana dari 3<sup>2</sup> × 3<sup>4</sup> adalah …</h4>
+   <div class="options">
+    <label class="option"><input type="radio" name="q4" value="a"> 3⁸</label>
+    <label class="option"><input type="radio" name="q4" value="b"> 3²</label>
+    <label class="option"><input type="radio" name="q4" value="c"> 3⁴</label>
+    <label class="option"><input type="radio" name="q4" value="d"> 3⁶</label>
+   </div><div class="feedback" aria-live="polite"></div>
+  </div>
+  <div class="question" data-answer="b" data-explain="2⁶ ÷ 2³ = 2⁶⁻³ = 2³ = 8.">
+   <h4>5. Nilai dari 2<sup>6</sup> ÷ 2<sup>3</sup> adalah …</h4>
+   <div class="options">
+    <label class="option"><input type="radio" name="q5" value="a"> 4</label>
+    <label class="option"><input type="radio" name="q5" value="b"> 8</label>
+    <label class="option"><input type="radio" name="q5" value="c"> 16</label>
+    <label class="option"><input type="radio" name="q5" value="d"> 32</label>
+   </div><div class="feedback" aria-live="polite"></div>
+  </div>
+  <div class="question" data-answer="c" data-explain="(2³)² = 2³ˣ² = 2⁶ = 64.">
+   <h4>6. Nilai dari (2<sup>3</sup>)<sup>2</sup> adalah …</h4>
+   <div class="options">
+    <label class="option"><input type="radio" name="q6" value="a"> 32</label>
+    <label class="option"><input type="radio" name="q6" value="b"> 12</label>
+    <label class="option"><input type="radio" name="q6" value="c"> 64</label>
+    <label class="option"><input type="radio" name="q6" value="d"> 16</label>
+   </div><div class="feedback" aria-live="polite"></div>
+  </div>
+  <div class="question" data-answer="a" data-explain="2⁵ = 32 dan 4² = 16, sehingga 2⁵ lebih besar.">
+   <h4>7. Pernyataan perbandingan yang benar adalah …</h4>
+   <div class="options">
+    <label class="option"><input type="radio" name="q7" value="a"> 2⁵ &gt; 4²</label>
+    <label class="option"><input type="radio" name="q7" value="b"> 2⁵ &lt; 4²</label>
+    <label class="option"><input type="radio" name="q7" value="c"> 2⁵ = 4²</label>
+    <label class="option"><input type="radio" name="q7" value="d"> Tidak dapat dibandingkan</label>
+   </div><div class="feedback" aria-live="polite"></div>
+  </div>
+  <div class="question" data-answer="d" data-explain="(−3)² = (−3) × (−3) = 9. Dua faktor negatif menghasilkan nilai positif.">
+   <h4>8. Nilai dari (−3)<sup>2</sup> adalah …</h4>
+   <div class="options">
+    <label class="option"><input type="radio" name="q8" value="a"> −9</label>
+    <label class="option"><input type="radio" name="q8" value="b"> −6</label>
+    <label class="option"><input type="radio" name="q8" value="c"> 6</label>
+    <label class="option"><input type="radio" name="q8" value="d"> 9</label>
+   </div><div class="feedback" aria-live="polite"></div>
+  </div>
+  <button type="button" id="checkQuiz">Periksa Jawaban</button>
+  <button type="button" class="secondary" id="resetQuiz">Ulangi Latihan</button>
+  <span class="score" id="score" aria-live="polite"></span>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-head"><div class="number">10</div><div><h2>Rangkuman Saku</h2><div class="muted">Hal-hal penting yang perlu kamu ingat.</div></div></div>
+ <ul>
+  <li>Bilangan berpangkat menuliskan perkalian berulang dengan lebih ringkas.</li>
+  <li>Pada a<sup>n</sup>, a disebut basis dan n disebut eksponen.</li>
+  <li>Untuk eksponen positif, a<sup>n</sup> berarti a dikalikan dengan dirinya sebanyak n faktor.</li>
+  <li>Untuk a ≠ 0, a<sup>0</sup> = 1.</li>
+  <li>Untuk a ≠ 0, a<sup>−n</sup> = 1/a<sup>n</sup>.</li>
+  <li>Perkalian dengan basis sama: eksponen dijumlahkan.</li>
+  <li>Pembagian dengan basis sama: eksponen dikurangkan dan basis tidak boleh nol.</li>
+  <li>Pangkat dari pangkat: eksponen dikalikan.</li>
+  <li>Dalam membandingkan bilangan berpangkat, perhatikan nilai keseluruhannya, bukan pangkatnya saja.</li>
+ </ul>
+ <div class="formula">a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup> &nbsp; | &nbsp;
+ a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup> &nbsp; | &nbsp;
+ (a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></div>
+</section>
+
+<section class="section">
+ <div class="section-head"><div class="number">11</div><div><h2>Refleksi Pembelajaran</h2><div class="muted">Periksa pemahaman dan strategi belajarmu.</div></div></div>
+ <p>Jawablah pertanyaan berikut di buku catatanmu.</p>
+ <ol>
+  <li>Apa perbedaan basis dan eksponen?</li>
+  <li>Bagaimana kamu menjelaskan bahwa 2<sup>−3</sup> = 1/8 kepada teman?</li>
+  <li>Sifat perpangkatan mana yang paling mudah kamu gunakan? Mengapa?</li>
+  <li>Bagian mana yang masih menantang: pangkat nol, pangkat negatif, atau operasi bilangan berpangkat?</li>
+  <li>Di mana kamu dapat menemukan situasi pertumbuhan atau perubahan yang berlipat dalam kehidupan sehari-hari?</li>
+ </ol>
+ <div class="callout gold"><b>Target belajarmu:</b> Kamu memahami konsep ketika dapat menjelaskan alasan di balik aturan, memilih sifat yang tepat, dan memeriksa apakah hasil perhitungan masuk akal.</div>
+</section>
+
+<section class="section">
+ <div class="section-head"><div class="number">12</div><div><h2>Daftar Pustaka dan Sumber Belajar</h2><div class="muted">Sumber kurikulum dan referensi penguatan konsep.</div></div></div>
+ <ol class="ref-list">
+  <li>Badan Standar, Kurikulum, dan Asesmen Pendidikan. (2025). <i>Panduan Mata Pelajaran Matematika Fase A–F dan Fase F Tingkat Lanjut.</i> Kementerian Pendidikan Dasar dan Menengah Republik Indonesia. Khususnya bagian Fase D dan pemetaan materi bilangan, hlm. 132–138.</li>
+  <li>SMPN 1 Tabang. (2025/2026). <i>Alur Tujuan Pembelajaran (ATP) Matematika Fase D – Hasil Revisi Kurikulum Merdeka &amp; Pembelajaran Mendalam.</i> Dokumen kurikulum internal sekolah, pokok bahasan Bilangan Berpangkat Bulat &amp; Notasi Ilmiah, kelas VIII semester ganjil.</li>
+  <li>Khan Academy. (n.d.). <i>Algebra Basics: Expressions with Exponents.</i> <a href="https://www.khanacademy.org/mission/algebra-basics" target="_blank" rel="noopener noreferrer">https://www.khanacademy.org/mission/algebra-basics</a>. Digunakan sebagai bahan pengayaan latihan sifat eksponen dan eksponen negatif.</li>
+  <li>OpenStax. (2020). <i>Elementary Algebra 2e, Section 6.7: Integer Exponents and Scientific Notation.</i> Rice University. <a href="https://openstax.org/books/elementary-algebra-2e/pages/6-7-integer-exponents-and-scientific-notation" target="_blank" rel="noopener noreferrer">Baca bagian 6.7</a>. Digunakan untuk verifikasi sifat eksponen bulat dan batasan basis bukan nol.</li>
+ </ol>
+ <p class="small">Materi disusun dengan kalimat dan contoh orisinal untuk pembelajaran siswa. Sumber eksternal digunakan sebagai rujukan konsep, bukan untuk menyalin uraian atau ilustrasi.</p>
+</section>
+
+<footer class="footer">
+ <div><b>Ruang Belajar Matematika</b> • Bahan Bacaan Digital</div>
+ <div>Disusun oleh <b>Herdianto Parenta</b> • Guru Matematika</div>
+ <div><b>SMPN 1 Tabang</b> • Matematika Kelas VIII • Fase D</div>
+ <div class="small">Belajar dengan sadar, bermakna, dan menggembirakan.</div>
+</footer>
+</main>
+
+<script>
+/* Kuis pilihan ganda: memeriksa jawaban, memberi umpan balik, dan menghitung skor. */
+(function(){
+ const quiz=document.getElementById('quiz');
+ const questions=[...quiz.querySelectorAll('.question')];
+ const checkButton=document.getElementById('checkQuiz');
+ const resetButton=document.getElementById('resetQuiz');
+ const scoreLabel=document.getElementById('score');
+
+ checkButton.addEventListener('click',function(){
+  let score=0;
+  let answered=0;
+  questions.forEach(function(question){
+   const selected=question.querySelector('input[type="radio"]:checked');
+   const feedback=question.querySelector('.feedback');
+   feedback.className='feedback show';
+   if(!selected){
+    feedback.classList.add('incorrect');
+    feedback.textContent='Belum dijawab. Pilih satu jawaban, lalu periksa kembali.';
+    return;
+   }
+   answered++;
+   if(selected.value===question.dataset.answer){
+    score++;
+    feedback.classList.add('correct');
+    feedback.textContent='Benar! '+question.dataset.explain;
+   }else{
+    feedback.classList.add('incorrect');
+    feedback.textContent='Belum tepat. '+question.dataset.explain;
+   }
+  });
+  scoreLabel.textContent='Skor: '+score+'/'+questions.length+' • Dijawab: '+answered+'/'+questions.length;
+ });
+
+ resetButton.addEventListener('click',function(){
+  questions.forEach(function(question){
+   question.querySelectorAll('input[type="radio"]').forEach(function(input){input.checked=false;});
+   const feedback=question.querySelector('.feedback');
+   feedback.className='feedback';
+   feedback.textContent='';
+  });
+  scoreLabel.textContent='';
+ });
+})();
+</script>
+</body>
+</html>

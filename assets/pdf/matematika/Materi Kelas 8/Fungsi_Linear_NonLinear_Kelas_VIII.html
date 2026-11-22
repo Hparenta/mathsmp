@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fungsi Linear & Non-Linear — Kelas VIII</title>
+<style>
+:root{--ink:#172033;--muted:#5e6b80;--paper:#f7f8fb;--card:#fff;--line:#dfe5ee;--accent:#2457c5;--accent2:#0f8b8d;--warm:#e98b3a;--good:#247a52;--bad:#b64242;--shadow:0 10px 30px rgba(24,38,65,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
+a{color:var(--accent)}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;padding:12px 18px;display:flex;gap:8px;align-items:center;overflow:auto}.brand{font-weight:800;margin-right:auto;white-space:nowrap}.nav button{border:0;background:transparent;color:var(--muted);padding:8px 10px;border-radius:10px;white-space:nowrap}.nav button:hover{background:#eef2fa;color:var(--ink)}
+.hero{background:linear-gradient(135deg,#13264d 0%,#2457c5 60%,#0f8b8d 100%);color:#fff;padding:58px 20px 48px}.hero-in{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}.eyebrow{letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;opacity:.85;font-weight:800}.hero h1{font-size:clamp(2.1rem,5vw,4.3rem);line-height:1.05;margin:10px 0}.hero p{font-size:1.06rem;max-width:760px}.badge{display:inline-block;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);padding:7px 11px;border-radius:999px;margin:4px 4px 0 0}.hero-art{min-height:280px;display:grid;place-items:center}.hero-art svg{width:100%;max-width:430px}
+main{max-width:1180px;margin:auto;padding:34px 18px 80px}.section{scroll-margin-top:80px;margin:0 0 52px}.section h2{font-size:2rem;margin:0 0 12px}.section h3{margin-top:26px}.lead{color:var(--muted);font-size:1.04rem}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}.span-4{grid-column:span 4}.span-6{grid-column:span 6}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+.callout{border-left:5px solid var(--accent);background:#eef4ff;border-radius:12px;padding:15px 17px;margin:18px 0}.meaning{border-left-color:var(--accent2);background:#ecfbfb}.reflect{border-left-color:var(--warm);background:#fff7ec}
+.kicker{font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}.small{font-size:.9rem;color:var(--muted)}.pill{display:inline-block;padding:4px 9px;border-radius:999px;background:#edf1f7;color:#42506a;font-size:.82rem;margin:2px}.formula{font-size:1.35rem;font-weight:800;background:#101827;color:#fff;padding:15px 18px;border-radius:12px;text-align:center;margin:15px 0}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px}.table-wrap{overflow:auto}.tbl{width:100%;border-collapse:collapse;margin:14px 0}.tbl th,.tbl td{padding:9px;border:1px solid var(--line);text-align:center}.tbl th{background:#f1f4f9}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:9px 0}summary{font-weight:750;cursor:pointer}
+.explore{background:#0f1c33;color:#fff;border-radius:18px;padding:20px}.explore label{display:block;font-weight:700;margin:10px 0 4px}.explore input[type=range]{width:100%}.explore .result{background:rgba(255,255,255,.08);border-radius:12px;padding:12px;margin-top:12px}.explore button,.btn{border:0;background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}.btn.secondary{background:#e9eef7;color:#1c2a43}.btn.good{background:var(--good)}.btn.bad{background:var(--bad)}
+#graph{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:14px}
+.steps .step{display:none}.steps .step.show{display:block}.q{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0}.option{display:block;width:100%;text-align:left;background:#f7f9fc;border:1px solid #dbe2ec;padding:11px 13px;border-radius:10px;margin:8px 0}.option:hover{border-color:var(--accent)}.option.selected{outline:3px solid #d8e3ff}.feedback{margin-top:12px;padding:12px;border-radius:10px;display:none}.feedback.show{display:block}.ok{background:#eaf7ef;color:#185a39}.no{background:#fff0f0;color:#7c2828}
+textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}.score{font-size:1.3rem;font-weight:800}
+.progress{height:10px;background:#e7ebf2;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:var(--accent);transition:.3s}
+.mis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.mis>div{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}.mis h4{margin:0 0 6px}
+footer{background:#101827;color:#dfe7f4;padding:34px 20px}.foot{max-width:1180px;margin:auto}.foot a{color:#bcd1ff}
+@media(max-width:850px){.hero-in{grid-template-columns:1fr}.hero-art{display:none}.span-4,.span-6,.span-8{grid-column:span 12}.twocol,.mis{grid-template-columns:1fr}.nav{padding-left:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.quiz{display:grid;gap:16px}
+.quiz-item{background:#fff;border:1px solid #e5e9f0;border-radius:16px;padding:18px}
+.quiz-item h3{margin:.35rem 0 1rem}
+.options{display:grid;gap:8px}
+.option{width:100%;text-align:left}
+.option:disabled{opacity:.75;cursor:default}
+.feedback.show{margin-top:10px}
+</style>
+</head>
+<body>
+<header class="top">
+<nav class="nav" aria-label="Navigasi materi">
+<div class="brand">MathSMP · Fungsi</div>
+<button onclick="go('awal')">Mulai</button><button onclick="go('peta')">Tujuan</button><button onclick="go('konsep')">Konsep</button><button onclick="go('eksplorasi')">Eksplorasi</button><button onclick="go('latihan')">Latihan</button><button onclick="go('miskonsepsi')">Miskonsepsi</button><button onclick="go('refleksi')">Refleksi</button>
+</nav>
+</header>
+
+<section id="awal" class="hero">
+<div class="hero-in">
+<div>
+<div class="eyebrow">Matematika · Fase D · Kelas VIII · Semester Ganjil</div>
+<h1>Fungsi Linear & Non-Linear</h1>
+<p>Memahami hubungan antara perubahan, aturan fungsi, tabel, dan grafik—lalu menggunakan hubungan itu untuk membaca situasi nyata.</p>
+<div><span class="badge">Berkesadaran</span><span class="badge">Bermakna</span><span class="badge">Menggembirakan</span></div>
+<p class="small" style="color:#dbe6ff;margin-top:18px">Penyusun: Herdianto Parenta · SMPN 1 Tabang · Kecamatan Tabang, Kabupaten Mamasa, Sulawesi Barat</p>
+</div>
+<div class="hero-art" aria-hidden="true">
+<svg viewBox="0 0 430 300" role="img">
+<rect x="20" y="20" width="390" height="250" rx="24" fill="rgba(255,255,255,.09)"/>
+<line x1="70" y1="230" x2="365" y2="230" stroke="#fff" stroke-width="3"/><line x1="70" y1="230" x2="70" y2="55" stroke="#fff" stroke-width="3"/>
+<polyline points="75,215 125,185 175,155 225,125 275,95 325,65" fill="none" stroke="#ffd36e" stroke-width="6" stroke-linecap="round"/>
+<path d="M82 205 Q150 145 220 170 T355 92" fill="none" stroke="#8de1dc" stroke-width="6" stroke-linecap="round"/>
+<circle cx="225" cy="125" r="8" fill="#fff"/><text x="235" y="117" fill="#fff" font-size="15">perubahan</text>
+</svg>
+</div>
+</div>
+</section>
+
+<main>
+<section id="peta" class="section">
+<h2>Peta belajar</h2>
+<p class="lead">Alur mengikuti ATP Fase D SMPN 1 Tabang: dari relasi dan fungsi, menuju penyajian dan nilai fungsi, lalu fungsi linear dan fungsi non-linear. Fokus unit ini adalah menganalisis perbedaan, representasi grafik, dan interpretasi situasi nyata.</p>
+<div class="grid">
+<div class="card span-4"><div class="kicker">01 · Relasi & fungsi</div><h3>Satu input → satu output</h3><p>Fungsi adalah relasi khusus: setiap anggota domain memiliki tepat satu pasangan di kodomain.</p></div>
+<div class="card span-4"><div class="kicker">02 · Representasi</div><h3>Tabel ↔ rumus ↔ grafik</h3><p>Satu fungsi dapat dibaca melalui pasangan berurutan, tabel nilai, grafik Kartesius, atau aturan aljabar.</p></div>
+<div class="card span-4"><div class="kicker">03 · Linear & non-linear</div><h3>Bandingkan perubahan</h3><p>Fungsi linear memiliki laju perubahan tetap; fungsi non-linear tidak harus demikian. Pada unit ini digunakan bentuk sederhana <b>y = ax²</b>.</p></div>
+</div>
+<div class="callout meaning"><b>Target belajar:</b> kamu tidak hanya menghafal bentuk <i>y = mx + c</i>. Kamu perlu dapat menjelaskan <i>mengapa</i> grafiknya berupa garis, apa arti gradien, kapan model masuk akal, dan bagaimana mengenali bahwa suatu hubungan tidak linear.</div>
+</section>
+
+<section class="section">
+<h2>Cerita pemantik: perjalanan menuju Tabang</h2>
+<div class="card">
+<p>Bayangkan sebuah perjalanan dari suatu titik awal menuju pusat kegiatan di Kecamatan Tabang. Sebuah kendaraan bergerak dengan kecepatan yang relatif tetap. Pada saat yang sama, biaya perjalanan dapat dipandang sebagai gabungan biaya awal dan biaya yang bertambah menurut jarak.</p>
+<p>Jika jarak bertambah 5 km, apakah waktu perjalanan selalu bertambah dengan jumlah yang sama? Bagaimana jika biaya memiliki biaya awal? Bagaimana bentuk grafik kedua hubungan itu?</p>
+<div class="callout reflect"><b>Berhenti sejenak.</b> Sebelum membaca penjelasan berikut, tuliskan dugaanmu: <br>1) Apa yang membuat suatu hubungan dapat disebut fungsi? <br>2) Ciri apa yang mungkin membuat grafik menjadi garis lurus? <br>3) Dalam perjalanan nyata, kapan model matematika sederhana mungkin tidak lagi cocok?</div>
+</div>
+</section>
+
+<section id="konsep" class="section">
+<h2>1. Dari fungsi ke fungsi linear</h2>
+<div class="twocol">
+<div class="card"><div class="kicker">Konsep inti</div><h3>Fungsi sebagai aturan pemetaan</h3>
+<p>Misalkan <i>x</i> menyatakan jarak dan <i>y</i> menyatakan biaya. Jika setiap jarak yang diperbolehkan memiliki tepat satu biaya, maka hubungan itu dapat dimodelkan sebagai fungsi.</p>
+<p>Contoh: <b>f(x)=2x+5</b>. Angka 2 menunjukkan perubahan keluaran setiap <i>x</i> bertambah 1, sedangkan 5 adalah nilai ketika <i>x=0</i>.</p>
+<div class="formula">y = mx + c</div>
+<ul><li><b>m</b> = gradien/laju perubahan.</li><li><b>c</b> = titik potong sumbu-y.</li><li>Jika <b>m = 0</b>, fungsi menjadi konstan, bukan garis miring.</li></ul>
+</div>
+<div class="card"><div class="kicker">Mengapa grafiknya garis?</div>
+<p>Ambil dua input <i>x₁</i> dan <i>x₂</i>. Untuk <i>f(x)=mx+c</i>, perubahan keluaran adalah:</p>
+<div class="formula">f(x₂) − f(x₁) = m(x₂ − x₁)</div>
+<p>Jadi perbandingan perubahan keluaran terhadap perubahan masukan selalu sama:</p>
+<div class="formula">Δy / Δx = m</div>
+<p>Karena laju perubahan tetap, titik-titik yang dihasilkan tersusun pada satu garis lurus.</p></div>
+</div>
+
+<h3>Gradien: “seberapa cepat y berubah?”</h3>
+<div class="card">
+<p>Jika dua titik pada garis adalah <b>(x₁,y₁)</b> dan <b>(x₂,y₂)</b>, dengan <i>x₁ ≠ x₂</i>, maka:</p>
+<div class="formula">m = (y₂ − y₁) / (x₂ − x₁)</div>
+<p>Jika <b>m &gt; 0</b>, grafik naik dari kiri ke kanan. Jika <b>m &lt; 0</b>, grafik turun. Jika <b>m = 0</b>, grafik mendatar.</p>
+</div>
+
+<h3>Contoh bertahap</h3>
+<div class="card steps">
+<p><b>Soal:</b> Biaya suatu layanan dinyatakan <i>C(x)=4x+10</i>, dengan <i>x</i> banyaknya satuan layanan. Tentukan biaya untuk 6 satuan.</p>
+<div class="step show"><b>Langkah 1.</b> Identifikasi aturan: C(x)=4x+10.</div>
+<div class="step"><b>Langkah 2.</b> Ganti x dengan 6: C(6)=4(6)+10.</div>
+<div class="step"><b>Langkah 3.</b> Hitung: 24+10=34.</div>
+<div class="step"><b>Kesimpulan.</b> Biayanya 34 satuan uang.</div>
+<button class="btn" onclick="nextStep(this)">Tampilkan langkah berikutnya</button>
+</div>
+</section>
+
+<section id="eksplorasi" class="section">
+<h2>2. Laboratorium Grafik</h2>
+<p class="lead">Laboratorium dipisahkan menjadi dua agar kamu dapat menyelidiki ciri fungsi linear dan non-linear secara fokus. Setiap laboratorium berisi pengamatan, pertanyaan, dan ruang untuk membuat dugaan.</p>
+
+<div class="card" style="border-left:5px solid var(--accent);margin-bottom:18px">
+<div class="kicker">Laboratorium A · Fungsi Linear</div>
+<h3>Selidiki perubahan yang tetap</h3>
+<p>Mulai dari fungsi <b>y = mx + c</b>. Ubah <b>m</b> dan <b>c</b>, lalu perhatikan perubahan grafik.</p>
+
+<div class="grid">
+<div class="card span-4">
+<label for="m">Gradien m: <b id="mv">2</b></label>
+<input id="m" type="range" min="-4" max="4" step="1" value="2">
+<label for="linC">Titik potong sumbu-y, c: <b id="linCv">1</b></label>
+<input id="linC" type="range" min="-5" max="5" step="1" value="1">
+<p id="linread" class="small"></p>
+</div>
+
+<div class="card span-8">
+<svg id="graph" viewBox="0 0 620 360" aria-label="Grafik fungsi linear"></svg>
+</div>
+
+<div class="card span-12">
+<h3>Catat temuanmu</h3>
+<table class="tbl">
+<tr><th>Percobaan</th><th>Yang diubah</th><th>Yang terjadi pada grafik</th></tr>
+<tr><td>1</td><td>Naikkan m dari 1 menjadi 3</td><td><textarea placeholder="Apa yang berubah?"></textarea></td></tr>
+<tr><td>2</td><td>Turunkan m dari 2 menjadi −2</td><td><textarea placeholder="Apa yang berubah?"></textarea></td></tr>
+<tr><td>3</td><td>Ubah c, tetapi m tetap</td><td><textarea placeholder="Apakah arah garis berubah?"></textarea></td></tr>
+</table>
+</div>
+</div>
+
+<div class="explore" style="margin-top:18px">
+<h3 style="margin-top:0">Bagaimana jika…? — Fungsi Linear</h3>
+<ol>
+<li>Jika <b>m = 0</b>, seperti apa grafiknya? Jelaskan menggunakan perubahan nilai <i>y</i>.</li>
+<li>Jika <b>c</b> berubah tetapi <b>m</b> tetap, apakah kemiringan garis berubah? Mengapa?</li>
+<li>Jika <b>m</b> menjadi dua kali lipat, apa yang dapat kamu perkirakan tentang kemiringan garis?</li>
+</ol>
+<div class="result">
+<b>Tantangan penalaran:</b> Jelaskan perbedaan peran <b>m</b> dan <b>c</b> tanpa menggunakan istilah “gradien” atau “titik potong”.
+</div>
+</div>
+</div>
+
+<div class="card" style="border-left:5px solid var(--accent2);margin-bottom:18px">
+<div class="kicker">Laboratorium B · Fungsi Non-Linear</div>
+<h3>Selidiki perubahan yang tidak tetap</h3>
+<p>Gunakan fungsi sederhana <b>y = ax²</b>. Perhatikan bagaimana perubahan <i>y</i> tidak tetap ketika <i>x</i> bertambah dengan langkah yang sama.</p>
+
+<div class="grid">
+<div class="card span-4">
+<label for="aNL">Koefisien a pada y = ax²: <b id="aNLv">1</b></label>
+<input id="aNL" type="range" min="-2" max="2" step="1" value="1">
+<p class="small">Bandingkan perubahan y ketika x berubah dari 0→1, 1→2, dan 2→3.</p>
+</div>
+
+<div class="card span-8">
+<svg id="graphNL" viewBox="0 0 620 360" aria-label="Grafik fungsi non-linear"></svg>
+</div>
+
+<div class="card span-12">
+<h3>Temukan pola</h3>
+<table class="tbl">
+<tr><th>x</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>
+<tr><th>y = x²</th><td>0</td><td>1</td><td>4</td><td>9</td></tr>
+<tr><th>Δy</th><td>—</td><td>1</td><td>3</td><td>5</td></tr>
+</table>
+<ol>
+<li>Apakah selisih <i>y</i> selalu sama?</li>
+<li>Apa hubungan antara perubahan yang tidak tetap dan bentuk grafik?</li>
+<li>Bandingkan dengan fungsi <i>y = 2x + 1</i>. Mana yang memiliki laju perubahan tetap?</li>
+</ol>
+<textarea placeholder="Tuliskan pola dan alasanmu di sini..."></textarea>
+</div>
+</div>
+
+<div class="explore" style="margin-top:18px">
+<h3 style="margin-top:0">Bagaimana jika…? — Fungsi Non-Linear</h3>
+<ol>
+<li>Ubah <b>a</b> dari 1 menjadi 2. Apa yang berubah pada grafik?</li>
+<li>Ubah <b>a</b> dari 1 menjadi −1. Apa yang berubah terhadap arah buka grafik?</li>
+<li>Jika perubahan <i>y</i> tidak tetap, apakah itu cukup untuk menyatakan hubungan tidak linear? Jelaskan.</li>
+</ol>
+<div class="result">
+<b>Tantangan penalaran:</b> Mengapa grafik <b>y = x²</b> tidak dapat disebut garis lurus hanya karena grafiknya memiliki pola yang teratur?
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>3. Fungsi non-linear sederhana</h2>
+<div class="twocol">
+<div class="card">
+<h3>Contoh: y = x²</h3>
+<p>Untuk x = −3, −2, −1, 0, 1, 2, 3 diperoleh:</p>
+<table class="tbl"><tr><th>x</th><th>−3</th><th>−2</th><th>−1</th><th>0</th><th>1</th><th>2</th><th>3</th></tr><tr><th>y</th><td>9</td><td>4</td><td>1</td><td>0</td><td>1</td><td>4</td><td>9</td></tr></table>
+<p>Grafiknya berbentuk parabola. Ketika x bertambah satu satuan, perubahan y tidak tetap.</p>
+</div>
+<div class="card">
+<h3>Perbandingan dengan y = 2x + 1</h3>
+<p>Untuk fungsi linear, setiap kenaikan 1 pada x selalu menambah y sebesar 2.</p>
+<p>Untuk fungsi kuadrat, kenaikan y berubah-ubah: dari 0 ke 1 bertambah 1, dari 1 ke 4 bertambah 3, dari 4 ke 9 bertambah 5.</p>
+<div class="callout"><b>Ide penting:</b> “Tidak linear” berarti hubungan tidak mengikuti satu laju perubahan konstan. Non-linear tidak berarti selalu kuadrat; bentuk non-linear lain juga ada.</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>4. Membaca grafik sebagai cerita</h2>
+<div class="card">
+<p>Grafik bukan sekadar gambar. Tanyakan tiga hal:</p>
+<ol><li><b>Apa arti sumbu x?</b> Waktu, jarak, jumlah barang, atau besaran lain?</li><li><b>Apa arti sumbu y?</b> Biaya, jarak, suhu, atau besaran lain?</li><li><b>Apa arti perubahan grafik?</b> Naik, turun, tetap, atau semakin cepat berubah?</li></ol>
+<p><b>Contoh:</b> Jika grafik biaya terhadap jumlah barang berbentuk <i>C(x)=5x+20</i>, angka 20 dapat dibaca sebagai biaya awal. Angka 5 menyatakan setiap tambahan satu barang menambah biaya 5 satuan.</p>
+<div class="callout reflect">Pertanyaan batas model: Apakah masuk akal memakai x = −3 untuk jumlah barang? Tidak. Matematika memberi aturan, tetapi konteks menentukan domain yang masuk akal.</div>
+</div>
+</section>
+
+<section id="miskonsepsi" class="section">
+<h2>5. Miskonsepsi yang perlu dihindari</h2>
+<div class="mis">
+<div><h4>“Linear berarti hanya ada x.”</h4><p><b>Akar miskonsepsi:</b> mengira bentuk harus y=mx.</p><p><b>Luruskan:</b> y=mx+c tetap linear; c hanya menggeser garis tanpa mengubah kemiringannya.</p></div>
+<div><h4>“c adalah gradien.”</h4><p><b>Akar miskonsepsi:</b> membaca simbol tanpa mengaitkannya dengan grafik.</p><p><b>Luruskan:</b> m menentukan kemiringan; c menunjukkan nilai y saat x=0.</p></div>
+<div><h4>“Semua grafik naik berarti linear.”</h4><p><b>Akar miskonsepsi:</b> menyamakan “naik” dengan “laju tetap”.</p><p><b>Luruskan:</b> y=x² untuk x≥0 juga naik, tetapi laju perubahannya tidak tetap.</p></div>
+<div><h4>“Fungsi selalu punya domain semua bilangan real.”</h4><p><b>Akar miskonsepsi:</b> mengabaikan konteks.</p><p><b>Luruskan:</b> domain bergantung pada aturan dan konteks. Jumlah barang, misalnya, tidak boleh sembarang bilangan real.</p></div>
+<div><h4>“Satu x boleh punya dua y.”</h4><p><b>Akar miskonsepsi:</b> fungsi disamakan dengan sembarang hubungan.</p><p><b>Luruskan:</b> pada fungsi, setiap input memiliki tepat satu output.</p></div>
+<div><h4>“Grafik adalah hasil akhir, bukan alat berpikir.”</h4><p><b>Akar miskonsepsi:</b> fokus pada menggambar.</p><p><b>Luruskan:</b> grafik digunakan untuk melihat pola, membandingkan perubahan, dan menafsirkan situasi.</p></div>
+</div>
+</section>
+
+<section id="latihan" class="section">
+<h2>6. Bank soal interaktif</h2>
+<p class="lead">Bank soal berisi <b>6 soal</b> bertingkat: Knowing, Applying, dan Reasoning. Keenam soal ditampilkan sekaligus agar kamu dapat mengerjakan semuanya. Setelah memilih jawaban, baca alasan matematisnya.</p>
+<div class="card">
+<div class="progress"><i id="prog"></i></div>
+<p class="score" id="score">Skor: 0 / 0</p>
+<div id="quiz"></div>
+<button class="btn secondary" onclick="resetQuiz()">Ulangi dari awal</button>
+</div>
+</section>
+
+<section class="section">
+<h2>7. Eksplorasi terbuka</h2>
+<div class="grid">
+<div class="card span-6">
+<div class="kicker">Knowing → Applying</div>
+<h3>Bangun fungsi sendiri</h3>
+<p>Pilih bilangan bulat m dan c. Buat fungsi linear y=mx+c. Tentukan dua titik pada grafik dan jelaskan bagaimana kamu mengetahuinya.</p>
+<textarea placeholder="Fungsiku: ...&#10;Dua titik: ...&#10;Alasanku: ..."></textarea>
+</div>
+<div class="card span-6">
+<div class="kicker">Reasoning</div>
+<h3>Apakah selalu linear?</h3>
+<p>Sebuah tabel menunjukkan jumlah produksi dan biaya total. Selisih biaya untuk setiap tambahan 1 unit adalah 8, 8, 8, 8. Apakah model linear masuk akal? Bagaimana jika selisihnya menjadi 8, 10, 12, 14?</p>
+<textarea placeholder="Tuliskan argumenmu. Gunakan bukti dari perubahan data."></textarea>
+</div>
+</div>
+</section>
+
+<section id="refleksi" class="section">
+<h2>8. Refleksi pembelajaran mendalam</h2>
+<div class="grid">
+<div class="card span-4"><div class="kicker">Berkesadaran</div><h3>Apa yang sekarang kamu pahami?</h3><textarea placeholder="Satu konsep yang paling berubah dalam cara berpikirku..."></textarea></div>
+<div class="card span-4"><div class="kicker">Bermakna</div><h3>Di mana konsep ini berguna?</h3><textarea placeholder="Situasi nyata yang dapat dimodelkan dengan fungsi..."></textarea></div>
+<div class="card span-4"><div class="kicker">Menggembirakan</div><h3>Strategi apa yang berhasil?</h3><textarea placeholder="Cara belajar/eksplorasi yang paling membantuku..."></textarea></div>
+</div>
+<div class="callout"><b>Jembatan ke topik berikutnya:</b> fungsi linear menjadi dasar untuk membaca hubungan dua variabel dan akan berguna ketika mempelajari SPLDV. Fungsi kuadrat yang diperkenalkan di sini juga menjadi landasan untuk memahami persamaan dan fungsi kuadrat lebih lanjut.</div>
+</section>
+
+<section class="section">
+<h2>Daftar pustaka & fungsi referensi</h2>
+<div class="card">
+<ol>
+<li><b>Badan Standar, Kurikulum, dan Asesmen Pendidikan. (2025).</b> <i>Panduan Mata Pelajaran Matematika: Fase A–F dan Fase Tingkat Lanjut.</i> Acuan utama untuk CP, karakteristik pembelajaran matematika, dan contoh alur tujuan pembelajaran. <a href="https://repositori.kemendikdasmen.go.id/33608/" target="_blank" rel="noopener">Repositori resmi</a>.</li>
+<li><b>ATP_Matematika_FaseD_Publik.xlsx.</b> Dokumen proyek yang menjadi acuan urutan: Relasi dan Fungsi → Fungsi Linear & Non-Linear, termasuk TPK fungsi linear, gradien, titik potong, grafik, serta fungsi kuadrat sederhana y=ax².</li>
+<li><b>Kementerian Pendidikan Dasar dan Menengah. (2025).</b> <i>Pembelajaran Mendalam.</i> Rujukan prinsip berkesadaran, bermakna, dan menggembirakan serta pengalaman memahami, mengaplikasi, dan merefleksi. <a href="https://kurikulum.kemendikdasmen.go.id/pembelajaran-mendalam" target="_blank" rel="noopener">Portal resmi</a>.</li>
+<li><b>OpenStax. (2015).</b> <i>Algebra and Trigonometry, Section 3.1: Functions and Function Notation.</i> Referensi pengayaan untuk fungsi dan berbagai representasi grafik. <a href="https://openstax.org/books/algebra-and-trigonometry/pages/3-1-functions-and-function-notation" target="_blank" rel="noopener">OpenStax</a>.</li>
+<li><b>Khan Academy.</b> <i>Graphing quadratics review.</i> Referensi pengayaan untuk membaca dan menggambar grafik fungsi kuadrat. <a href="https://www.khanacademy.org/math/algebra-home/alg-quadratics/alg-features-of-quadratic-functions/a/graphing-quadratics-review" target="_blank" rel="noopener">Khan Academy</a>.</li>
+</ol>
+<p class="small">Catatan: tautan eksternal digunakan sebagai pengayaan. Materi inti halaman ini dirancang agar tetap dapat digunakan tanpa koneksi internet.</p>
+</div>
+</section>
+</main>
+
+<footer><div class="foot"><b>Fungsi Linear & Non-Linear · Kelas VIII</b><p>SMPN 1 Tabang · Kecamatan Tabang · Kabupaten Mamasa · Sulawesi Barat<br>Penyusun: Herdianto Parenta</p></div></footer>
+
+<script>
+const qs=[
+{lvl:"Knowing",q:"Untuk f(x)=3x+2, berapakah f(4)?",opts:["10","12","14","16"],ans:2,why:"f(4)=3(4)+2=14."},
+{lvl:"Knowing",q:"Pada y=−2x+5, bilangan −2 menyatakan …",opts:["titik potong sumbu-y","gradien","domain","range"],ans:1,why:"Pada bentuk y=mx+c, m adalah gradien. Jadi m=−2."},
+{lvl:"Applying",q:"Garis melalui (1,4) dan (3,10). Gradiennya adalah …",opts:["2","3","4","5"],ans:1,why:"m=(10−4)/(3−1)=6/2=3."},
+{lvl:"Applying",q:"Biaya C(x)=7x+15. Berapa biaya untuk 5 unit?",opts:["22","35","42","50"],ans:3,why:"C(5)=7(5)+15=50."},
+{lvl:"Reasoning",q:"Tabel memiliki perubahan y berturut-turut 4, 4, 4, 4 saat x bertambah 1. Model linear paling masuk akal karena …",opts:["y selalu positif","laju perubahan tetap","grafiknya pasti parabola","domainnya harus real"],ans:1,why:"Jika x bertambah dengan selisih yang sama dan perubahan y tetap, hubungan tersebut memiliki laju perubahan tetap, ciri hubungan linear."},
+{lvl:"Reasoning",q:"Diberikan y=x² untuk x=1,2,3,4. Selisih y adalah 3,5,7. Kesimpulan paling tepat …",opts:["hubungan linear","laju perubahan tetap","hubungan tidak linear","y tidak bergantung pada x"],ans:2,why:"Selisih y berubah, sehingga laju perubahan tidak konstan. Hubungan tersebut non-linear."}
+];
+
+let correct=0,answered=0;
+function renderQuiz(){
+ const el=document.getElementById("quiz");
+ el.innerHTML=qs.map((x,qi)=>`
+ <article class="quiz-item" id="quiz-${qi}">
+   <div class="kicker">${x.lvl} · Soal ${qi+1}</div>
+   <h3>${x.q}</h3>
+   <div class="options">${x.opts.map((o,i)=>`<button class="option" data-q="${qi}" data-i="${i}" onclick="answer(${qi},${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join("")}</div>
+   <div id="fb-${qi}" class="feedback"></div>
+ </article>`).join("");
+ document.getElementById("prog").style.width="0%";
+ document.getElementById("score").textContent=`Skor: 0 / ${qs.length}`;
+}
+function answer(qi,i){
+ const fb=document.getElementById(`fb-${qi}`);
+ if(fb.classList.contains("show")) return;
+ const x=qs[qi];
+ const buttons=document.querySelectorAll(`.option[data-q="${qi}"]`);
+ buttons.forEach(b=>b.disabled=true);
+ buttons[i].classList.add("selected");
+ answered++;
+ if(i===x.ans){
+   correct++;
+   fb.className="feedback show ok";
+   fb.innerHTML=`<b>Benar.</b> ${x.why}`;
+ }else{
+   fb.className="feedback show no";
+   fb.innerHTML=`<b>Belum tepat.</b> ${x.why}`;
+ }
+ document.getElementById("score").textContent=`Skor: ${correct} / ${answered}`;
+ document.getElementById("prog").style.width=(answered/qs.length*100)+"%";
+ if(answered===qs.length){
+   setTimeout(()=>document.getElementById("quiz-summary").innerHTML=`<div class="callout meaning"><b>Hasil latihan:</b> ${correct} dari ${qs.length} soal benar. Gunakan pembahasan pada setiap soal untuk meninjau alasan matematisnya.</div>`,150);
+ }
+}
+function resetQuiz(){correct=0;answered=0;renderQuiz()}
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
+function nextStep(btn){const box=btn.closest(".steps"),steps=[...box.querySelectorAll(".step")],shown=steps.filter(s=>s.classList.contains("show")).length;if(shown<steps.length)steps[shown].classList.add("show");if(shown+1>=steps.length)btn.textContent="Semua langkah terlihat"}
+function drawAxes(svg, xmin, xmax, ymin, ymax){
+const W=620,H=360,L=55,R=20,T=20,B=35;
+const X=x=>L+(x-xmin)/(xmax-xmin)*(W-L-R);
+const Y=y=>H-B-(y-ymin)/(ymax-ymin)*(H-T-B);
+let s=`<rect width="${W}" height="${H}" fill="#fff"/>`;
+for(let x=Math.ceil(xmin);x<=xmax;x++){let px=X(x);s+=`<line x1="${px}" y1="${T}" x2="${px}" y2="${H-B}" stroke="#e9edf4"/><text x="${px}" y="${H-10}" text-anchor="middle" font-size="11" fill="#68758a">${x}</text>`}
+for(let y=Math.ceil(ymin);y<=ymax;y++){let py=Y(y);s+=`<line x1="${L}" y1="${py}" x2="${W-R}" y2="${py}" stroke="#e9edf4"/><text x="${L-8}" y="${py+4}" text-anchor="end" font-size="11" fill="#68758a">${y}</text>`}
+s+=`<line x1="${X(0)}" y1="${T}" x2="${X(0)}" y2="${H-B}" stroke="#27354d" stroke-width="2"/><line x1="${L}" y1="${Y(0)}" x2="${W-R}" y2="${Y(0)}" stroke="#27354d" stroke-width="2"/>`;
+return {s,X,Y,W,H};
+}
+function plotPath(fn,xmin,xmax,ymin,ymax,X,Y){
+let d="",first=true;
+for(let x=xmin;x<=xmax;x+=.1){
+let y=fn(x);
+if(y<ymin-1||y>ymax+1){first=true;continue}
+d+=(first?"M":"L")+X(x).toFixed(1)+" "+Y(y).toFixed(1)+" ";
+first=false;
+}
+return d;
+}
+function graphLinear(){
+const svg=document.getElementById("graph"),m=+document.getElementById("m").value,c=+document.getElementById("linC").value;
+document.getElementById("mv").textContent=m;document.getElementById("linCv").textContent=c;
+document.getElementById("linread").textContent=`Garis: y=${m}x${c>=0?"+":""}${c}. ${m>0?"Naik":m<0?"Turun":"Mendatar"}.`;
+const {s,X,Y,W}=drawAxes(svg,-6,6,-8,8);
+svg.innerHTML=s+`<path d="${plotPath(x=>m*x+c,-6,6,-8,8,X,Y)}" fill="none" stroke="#2457c5" stroke-width="4"/><text x="${W-175}" y="35" font-size="13" fill="#2457c5">y = ${m}x ${c>=0?"+":""}${c}</text>`;
+}
+function graphNonLinear(){
+const svg=document.getElementById("graphNL"),a=+document.getElementById("aNL").value;
+document.getElementById("aNLv").textContent=a;
+const {s,X,Y,W}=drawAxes(svg,-6,6,-8,8);
+svg.innerHTML=s+`<path d="${plotPath(x=>a*x*x,-6,6,-8,8,X,Y)}" fill="none" stroke="#0f8b8d" stroke-width="4"/><text x="${W-150}" y="35" font-size="13" fill="#0f8b8d">y = ${a}x²</text>`;
+}
+["m","linC"].forEach(id=>document.getElementById(id).addEventListener("input",graphLinear));
+document.getElementById("aNL").addEventListener("input",graphNonLinear);
+graphLinear();graphNonLinear();renderQuiz();
+</script>
+</body>
+</html>

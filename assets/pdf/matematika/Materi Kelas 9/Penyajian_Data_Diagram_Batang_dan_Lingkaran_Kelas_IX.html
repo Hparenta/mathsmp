@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bahan bacaan digital interaktif Matematika Fase D Kelas IX: Penyajian Data, Diagram Batang dan Diagram Lingkaran.">
+<title>Penyajian Data — Diagram Batang & Lingkaran | Kelas IX</title>
+<style>
+:root{
+  --ink:#17212b; --muted:#5d6b78; --paper:#f6f8f5; --card:#fff; --line:#dfe6df;
+  --accent:#176b5b; --accent2:#d99b2b; --soft:#e8f3ef; --soft2:#fff5dc; --danger:#b44848;
+  --shadow:0 14px 40px rgba(23,33,43,.08); --radius:20px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+a{color:var(--accent)} button,input,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1180px,92vw);margin:auto}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(246,248,245,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:10px;overflow:auto;padding:10px 0}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:700;font-size:.9rem;padding:8px 12px;border-radius:999px}
+.nav a:hover{background:var(--soft);color:var(--accent)}
+.hero{padding:58px 0 34px;background:
+ radial-gradient(circle at 80% 20%,rgba(217,155,43,.16),transparent 28%),
+ radial-gradient(circle at 20% 0%,rgba(23,107,91,.13),transparent 30%)}
+.kicker{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid #cfe0d8;background:rgba(255,255,255,.7);border-radius:999px;color:var(--accent);font-weight:800;font-size:.82rem}
+h1{font-size:clamp(2.3rem,6vw,5rem);line-height:.98;letter-spacing:-.055em;max-width:850px;margin:18px 0}
+.lead{font-size:1.12rem;color:var(--muted);max-width:760px}
+.meta{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0}
+.pill{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:999px;font-size:.84rem}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn{border:0;border-radius:12px;padding:11px 16px;font-weight:800;background:var(--accent);color:white;box-shadow:0 8px 20px rgba(23,107,91,.18)}
+.btn.secondary{background:white;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+main{padding-bottom:70px}
+.section{padding:46px 0}
+.section-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:22px}
+.num{flex:0 0 42px;height:42px;border-radius:13px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:900}
+h2{font-size:clamp(1.6rem,3vw,2.35rem);line-height:1.1;margin:0 0 5px;letter-spacing:-.025em}
+h3{margin-top:1.45em;line-height:1.25}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.card.half{grid-column:span 6}
+.card.third{grid-column:span 4}
+@media(max-width:800px){.card.half,.card.third{grid-column:span 12}.section{padding:34px 0}}
+.callout{border-left:5px solid var(--accent);background:var(--soft);padding:17px 19px;border-radius:12px;margin:18px 0}
+.callout.gold{border-left-color:var(--accent2);background:var(--soft2)}
+.callout.warn{border-left-color:var(--danger);background:#fff0f0}
+blockquote{margin:18px 0;padding:18px 20px;background:#fff;border:1px solid var(--line);border-radius:14px;font-size:1.05rem}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#eef3ef}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:15px}
+.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:#eef3ef;color:var(--accent);padding:6px 9px;border-radius:999px;font-size:.8rem;font-weight:800}
+.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#16231f;color:#fff;padding:16px 18px;border-radius:13px;overflow:auto}
+.steps{display:grid;gap:10px}.step{border:1px solid var(--line);border-radius:13px;background:#fff;overflow:hidden}
+.step button{width:100%;border:0;background:#fff;padding:14px 16px;text-align:left;font-weight:800;display:flex;justify-content:space-between}
+.step .body{display:none;padding:0 16px 16px}.step.open .body{display:block}
+.explore{background:linear-gradient(135deg,#fff,#f1f7f4);border:1px dashed #9ab9ad}
+input[type=number],input[type=text],textarea,select{width:100%;border:1px solid #cbd6cf;border-radius:10px;padding:10px;background:#fff}
+textarea{min-height:130px;resize:vertical}
+label{display:block;font-weight:750;margin:9px 0 5px}
+.range-row{display:grid;grid-template-columns:1fr 100px;gap:12px;align-items:center}
+input[type=range]{width:100%}
+.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.data-grid{grid-template-columns:1fr}}
+.data-row{display:grid;grid-template-columns:1.3fr .8fr;gap:8px;align-items:center}
+.chartbox{border:1px solid var(--line);border-radius:16px;padding:12px;background:#fbfcfb}
+.chartbox svg{width:100%;height:auto;display:block}
+.chartbox{position:relative;min-height:320px}
+.static-chart{display:block;padding:18px 14px 10px;background:#fff;border-radius:12px}
+.static-bar{height:260px;display:flex;align-items:flex-end;gap:18px;padding:10px 18px 0;border-left:2px solid #17212b;border-bottom:2px solid #17212b;background:repeating-linear-gradient(to top,transparent 0,transparent 39px,#e8eee9 40px)}
+.static-bar .bar-item{flex:1;min-width:48px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.static-bar .bar{width:68%;max-width:76px;border-radius:7px 7px 0 0;background:#176b5b;min-height:8px;position:relative}
+.static-bar .bar span{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:800}
+.static-bar .bar-label{font-size:11px;margin-top:8px;text-align:center;color:#17212b}
+.static-pie-wrap{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.static-pie{width:230px;height:230px;border-radius:50%;background:conic-gradient(#176b5b 0 30%,#d99b2b 30% 55%,#6c7f96 55% 75%,#9b6b4a 75% 90%,#7d8f5a 90% 100%);border:2px solid #fff;box-shadow:0 0 0 1px #dfe6df}
+.static-legend{display:grid;gap:8px;font-size:12px}
+.static-legend span{display:flex;gap:8px;align-items:center}
+.static-legend i{width:13px;height:13px;border-radius:3px;display:inline-block}
+.static-chart-note{margin:8px 0 0;font-size:12px;color:#5d6b78}
+.js-chart{display:none}
+
+.chart-note{font-size:.86rem;color:var(--muted);margin-top:8px}
+.feedback{margin-top:12px;padding:12px;border-radius:10px;display:none}
+.feedback.ok{display:block;background:#e8f5ed;color:#145d3e}
+.feedback.no{display:block;background:#fff0f0;color:#8c3434}
+.quiz{border:1px solid var(--line);border-radius:16px;padding:20px;margin:14px 0;background:#fff}
+.quiz .level{display:inline-block;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--soft);padding:5px 8px;border-radius:999px}
+.option{display:block;border:1px solid var(--line);padding:10px 12px;border-radius:10px;margin:8px 0;font-weight:500}
+.option:hover{background:#f5f8f5}
+.score{font-weight:900;color:var(--accent)}
+.progress{height:9px;background:#e3e9e4;border-radius:99px;overflow:hidden;margin:12px 0}.progress>div{height:100%;background:var(--accent);width:0}
+.footer{padding:30px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.checklist{display:grid;gap:9px}.check{display:flex;gap:10px;align-items:flex-start}.check input{margin-top:5px}
+.small{font-size:.88rem}.tiny{font-size:.78rem;color:var(--muted)}
+svg text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;margin-top:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}.dot{width:12px;height:12px;border-radius:3px;display:inline-block}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="container nav" aria-label="Navigasi utama">
+<a href="#tujuan">Tujuan</a><a href="#pemantik">Pemantik</a><a href="#data">Data & Tabel</a>
+<a href="#batang">Diagram Batang</a><a href="#lingkaran">Diagram Lingkaran</a><a href="#eksplorasi">Eksplorasi</a>
+<a href="#miskonsepsi">Miskonsepsi</a><a href="#kuis">Kuis</a><a href="#refleksi">Refleksi</a><a href="#pustaka">Pustaka</a>
+</div>
+</header>
+
+<header class="hero">
+<div class="container">
+<span class="kicker">MATEMATIKA • FASE D • KELAS IX</span>
+<h1>Penyajian Data</h1>
+<p class="lead"><strong>Diagram Batang & Diagram Lingkaran</strong> — belajar mengubah data menjadi representasi yang dapat dibaca, dibandingkan, dan dipertanggungjawabkan.</p>
+<div class="meta">
+<span class="pill">SMPN 1 Tabang</span><span class="pill">Kec. Tabang • Kab. Mamasa</span><span class="pill">Semester Genap</span><span class="pill">12 JP</span>
+</div>
+<p class="small"><strong>Penyusun:</strong> Herdianto Parenta</p>
+<div class="hero-actions">
+<a class="btn" href="#pemantik">Mulai dari masalah</a>
+<a class="btn secondary" href="#eksplorasi">Coba simulasi</a>
+</div>
+</div>
+</header>
+
+<main class="container">
+
+<section class="section" id="tujuan">
+<div class="section-head"><div class="num">1</div><div><h2>Ke mana pembelajaran ini membawamu?</h2><div class="muted">Urutan mengikuti Pokok Bahasan No. 21 pada ATP Fase D.</div></div></div>
+<div class="grid">
+<div class="card">
+<p>ATP menempatkan <strong>Penyajian Data (Diagram Batang & Lingkaran)</strong> pada Kelas IX Semester 2 dengan alokasi <strong>12 JP</strong>: 2 JP pengumpulan/pengelompokan data dan tabel frekuensi, 4 JP diagram batang, 4 JP diagram lingkaran, serta 2 JP asesmen.</p>
+<div class="badges"><span class="badge">Bernalar Kritis</span><span class="badge">Kreatif</span><span class="badge">Komunikasi</span><span class="badge">Mandiri</span></div>
+</div>
+<div class="card half"><h3>Setelah belajar, kamu dapat…</h3><ol>
+<li>mengumpulkan dan mengelompokkan data sederhana;</li>
+<li>membuat tabel distribusi frekuensi sederhana;</li>
+<li>membuat dan membaca diagram batang dengan skala konsisten;</li>
+<li>membuat dan membaca diagram lingkaran berdasarkan proporsi;</li>
+<li>membandingkan kedua representasi dan menarik kesimpulan secara kritis.</li>
+</ol></div>
+<div class="card half"><h3>Urutan berpikir</h3>
+<p><strong>Data mentah → kategori → frekuensi → representasi → interpretasi → keputusan.</strong></p>
+<p class="muted">Diagram bukan sekadar gambar. Ia adalah cara mengubah angka menjadi informasi yang bisa digunakan untuk menjawab pertanyaan.</p></div>
+</div>
+</section>
+
+<section class="section" id="pemantik">
+<div class="section-head"><div class="num">2</div><div><h2>Cerita pemantik: data dari Tabang</h2><div class="muted">Berhenti sejenak. Jangan langsung menghitung.</div></div></div>
+<div class="card">
+<p>Bayangkan OSIS SMPN 1 Tabang ingin merancang kegiatan sekolah yang dekat dengan kehidupan siswa. Tim kecil mengumpulkan data tentang <strong>jenis pangan lokal yang paling sering dipilih siswa sebagai bagian bekal atau makanan keluarga</strong>. Mereka memperoleh jawaban yang beragam.</p>
+<blockquote>“Jika kita hanya melihat daftar jawaban satu per satu, apakah mudah mengetahui pilihan yang paling banyak? Bagaimana cara menyajikan data agar teman, guru, dan orang tua dapat memahami hasil survei dengan cepat?”</blockquote>
+<div class="grid">
+<div class="card half explore"><h3>Pertanyaan sadar</h3><ul>
+<li>Apa yang sebenarnya ingin diketahui dari data?</li>
+<li>Informasi apa yang akan hilang jika semua jawaban hanya ditulis sebagai daftar?</li>
+<li>Apakah semua jenis diagram cocok untuk semua pertanyaan?</li>
+</ul></div>
+<div class="card half explore"><h3>Prediksimu</h3>
+<label for="prediksi">Tuliskan diagram yang menurutmu paling tepat untuk membandingkan banyaknya pilihan tiap jenis pangan, lalu jelaskan alasannya.</label>
+<textarea id="prediksi" placeholder="Menurut saya ... karena ..."></textarea>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="data">
+<div class="section-head"><div class="num">3</div><div><h2>Dari data mentah ke tabel frekuensi</h2><div class="muted">Tabel adalah jembatan antara pengumpulan data dan diagram.</div></div></div>
+<div class="card">
+<p>Misalkan hasil survei sederhana menghasilkan data berikut. Agar contoh dapat dihitung dengan jelas, data ini <strong>merupakan data ilustrasi pembelajaran</strong>, bukan klaim statistik tentang masyarakat Tabang.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Jenis pangan lokal</th><th>Frekuensi (f)</th><th>Bagian dari total</th></tr></thead>
+<tbody><tr><td>Jagung</td><td>12</td><td>12/40 = 30%</td></tr><tr><td>Ubi</td><td>10</td><td>10/40 = 25%</td></tr><tr><td>Kopi</td><td>8</td><td>8/40 = 20%</td></tr><tr><td>Sayur lokal</td><td>6</td><td>6/40 = 15%</td></tr><tr><td>Lainnya</td><td>4</td><td>4/40 = 10%</td></tr><tr><th>Total</th><th>40</th><th>100%</th></tr></tbody>
+</table></div>
+<div class="callout"><strong>Mengapa total penting?</strong> Untuk diagram lingkaran, setiap frekuensi harus dibandingkan dengan keseluruhan. Karena satu lingkaran mewakili 100% atau 360°, maka semua bagian harus bersama-sama tepat 100% atau 360°.</div>
+<div class="formula">frekuensi relatif = f / N &nbsp;&nbsp; | &nbsp;&nbsp; persentase = (f / N) × 100%</div>
+</div>
+</section>
+
+<section class="section" id="batang">
+<div class="section-head"><div class="num">4</div><div><h2>Diagram batang: membandingkan kategori</h2><div class="muted">Tinggi atau panjang batang harus sebanding dengan frekuensi.</div></div></div>
+<div class="grid">
+<div class="card half">
+<h3>Mengapa skala harus konsisten?</h3>
+<p>Jika 1 satuan pada sumbu mewakili 1 siswa, maka panjang batang harus mengikuti frekuensi secara proporsional. Skala yang tidak konsisten dapat membuat perbedaan terlihat lebih besar atau lebih kecil daripada keadaan sebenarnya.</p>
+<div class="formula">tinggi/panjang batang ∝ frekuensi</div>
+<div class="callout warn"><strong>Waspada:</strong> sumbu yang dipotong dari nilai selain 0 dapat menipu mata ketika diagram dipakai untuk membandingkan besar frekuensi.</div>
+</div>
+<div class="card half">
+<h3>Contoh langkah demi langkah</h3>
+<div class="steps">
+<div class="step open"><button type="button">Langkah 1 — Tentukan kategori <span>+</span></button><div class="body">Gunakan kategori yang sama dengan tabel: Jagung, Ubi, Kopi, Sayur lokal, dan Lainnya.</div></div>
+<div class="step"><button type="button">Langkah 2 — Tentukan skala <span>+</span></button><div class="body">Frekuensi terbesar adalah 12. Skala 0, 2, 4, 6, 8, 10, 12 cukup untuk contoh ini.</div></div>
+<div class="step"><button type="button">Langkah 3 — Gambar batang <span>+</span></button><div class="body">Tinggi batang masing-masing adalah 12, 10, 8, 6, dan 4. Batang tidak perlu bersentuhan karena kategori berbeda.</div></div>
+<div class="step"><button type="button">Langkah 4 — Baca maknanya <span>+</span></button><div class="body">Jagung memiliki frekuensi tertinggi, sedangkan Lainnya terendah. Jagung dipilih 2 siswa lebih banyak daripada Ubi.</div></div>
+</div>
+</div>
+</div>
+<div class="card">
+<h3>Diagram batang interaktif</h3>
+<p class="muted">Ubah frekuensi. Perhatikan bahwa sumbu selalu dimulai dari 0 sehingga perbandingan visual tetap jujur.</p>
+<div class="data-grid" id="barInputs"></div>
+<div class="chartbox" aria-label="Diagram batang interaktif">
+<div class="static-chart" id="barFallback">
+  <div class="static-bar">
+    <div class="bar-item"><div class="bar" style="height:100%"><span>12</span></div><div class="bar-label">Jagung</div></div>
+    <div class="bar-item"><div class="bar" style="height:83.33%"><span>10</span></div><div class="bar-label">Ubi</div></div>
+    <div class="bar-item"><div class="bar" style="height:66.67%"><span>8</span></div><div class="bar-label">Kopi</div></div>
+    <div class="bar-item"><div class="bar" style="height:50%"><span>6</span></div><div class="bar-label">Sayur lokal</div></div>
+    <div class="bar-item"><div class="bar" style="height:33.33%"><span>4</span></div><div class="bar-label">Lainnya</div></div>
+  </div>
+  <div class="static-chart-note">Tampilan awal: Jagung 12, Ubi 10, Kopi 8, Sayur lokal 6, Lainnya 4.</div>
+</div>
+<svg id="barChart" class="js-chart" viewBox="0 0 760 420" role="img"></svg>
+</div>
+<p id="barSummary" class="chart-note"></p>
+</div>
+</section>
+
+<section class="section" id="lingkaran">
+<div class="section-head"><div class="num">5</div><div><h2>Diagram lingkaran: melihat bagian dari keseluruhan</h2><div class="muted">Sudut sektor berasal dari proporsi terhadap total.</div></div></div>
+<div class="card">
+<div class="formula">sudut sektor = (f / N) × 360° &nbsp;&nbsp; | &nbsp;&nbsp; persentase = (f / N) × 100%</div>
+<p>Misalnya Jagung memiliki frekuensi 12 dari total 40. Maka:</p>
+<p><strong>(12/40) × 360° = 108°</strong>. Jadi sektor Jagung menempati 108° dari satu putaran penuh.</p>
+<div class="callout gold"><strong>Inti idenya:</strong> 12 dari 40 sama dengan 30% dari keseluruhan. Karena 30% × 360° = 108°, persentase dan sudut menyatakan proporsi yang sama dalam satuan berbeda.</div>
+<h3>Simulasi lingkaran</h3>
+<p class="muted">Geser nilai. Semua sektor dihitung ulang agar jumlahnya selalu menjadi satu keseluruhan.</p>
+<div class="data-grid" id="pieInputs"></div>
+<div class="chartbox">
+<div class="static-chart" id="pieFallback">
+  <div class="static-pie-wrap">
+    <div class="static-pie" aria-label="Diagram lingkaran contoh: 30%, 25%, 20%, 15%, 10%"></div>
+    <div class="static-legend">
+      <span><i style="background:#176b5b"></i>Jagung — 12 (30%)</span>
+      <span><i style="background:#d99b2b"></i>Ubi — 10 (25%)</span>
+      <span><i style="background:#6c7f96"></i>Kopi — 8 (20%)</span>
+      <span><i style="background:#9b6b4a"></i>Sayur lokal — 6 (15%)</span>
+      <span><i style="background:#7d8f5a"></i>Lainnya — 4 (10%)</span>
+    </div>
+  </div>
+  <div class="static-chart-note">Tampilan awal: total 40 data, sehingga proporsinya 30%, 25%, 20%, 15%, dan 10%.</div>
+</div>
+<svg id="pieChart" class="js-chart" viewBox="0 0 760 430" role="img"></svg>
+</div>
+<p id="pieSummary" class="chart-note"></p>
+</div>
+</section>
+
+<section class="section" id="eksplorasi">
+<div class="section-head"><div class="num">6</div><div><h2>Laboratorium “Bagaimana jika…?”</h2><div class="muted">Ubah parameter, buat dugaan, lalu periksa dugaanmu.</div></div></div>
+<div class="grid">
+<div class="card half explore">
+<h3>Eksperimen 1 — Total berubah</h3>
+<p>Jika Jagung tetap 12 siswa tetapi total responden berubah dari 40 menjadi 60, apakah persentase Jagung tetap 30%?</p>
+<label for="totalExp">Total responden: <span id="totalVal">40</span></label>
+<input id="totalExp" type="range" min="20" max="80" value="40" step="1">
+<p><strong>Persentase Jagung:</strong> <span id="percentExp">30%</span></p>
+<p class="tiny">Sebelum membaca hasil, tulis dugaanmu: <input id="dugaanExp" type="text" placeholder="Menurut saya..."></p>
+</div>
+<div class="card half explore">
+<h3>Eksperimen 2 — Dua diagram, satu data</h3>
+<p>Data yang sama dapat dibuat menjadi diagram batang atau lingkaran. Tanyakan: <em>mana yang lebih mudah untuk tujuan tertentu?</em></p>
+<select id="purpose">
+<option value="compare">Membandingkan frekuensi antar-kategori</option>
+<option value="whole">Melihat bagian setiap kategori dari keseluruhan</option>
+</select>
+<p id="purposeFeedback" class="callout"></p>
+</div>
+<div class="card">
+<h3>Tantangan terbuka</h3>
+<p>Bayangkan kamu menemukan diagram batang yang menunjukkan Jagung = 12 dan Ubi = 10, tetapi sumbu vertikal dimulai dari 8. Apa yang perlu kamu periksa sebelum menyimpulkan “Jagung jauh lebih banyak daripada Ubi”?</p>
+<textarea placeholder="Tuliskan alasanmu. Gunakan kata: skala, frekuensi, perbandingan."></textarea>
+</div>
+</div>
+</section>
+
+<section class="section" id="miskonsepsi">
+<div class="section-head"><div class="num">7</div><div><h2>Miskonsepsi yang perlu kamu hindari</h2><div class="muted">Kesalahan adalah petunjuk untuk memperbaiki cara berpikir.</div></div></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Miskonsepsi</th><th>Akar masalah</th><th>Cara meluruskan</th></tr></thead>
+<tbody>
+<tr><td>“Sektor 25% berarti 25 orang.”</td><td>Persen dianggap sebagai jumlah absolut.</td><td>Persen adalah bagian dari keseluruhan. Jika total 40, maka 25% × 40 = 10 orang.</td></tr>
+<tr><td>“Semua diagram bisa dibuat dari data apa saja.”</td><td>Memilih diagram berdasarkan bentuk, bukan tujuan.</td><td>Diagram batang kuat untuk membandingkan kategori; diagram lingkaran menekankan bagian terhadap keseluruhan.</td></tr>
+<tr><td>“Batang boleh dimulai dari 20 agar lebih hemat tempat.”</td><td>Tinggi batang dianggap sekadar hiasan.</td><td>Untuk perbandingan frekuensi, panjang/tinggi batang harus sebanding dengan nilai dan skala harus konsisten; gunakan titik awal 0.</td></tr>
+<tr><td>“Jumlah sudut sektor tidak harus 360°.”</td><td>Hubungan bagian–keseluruhan belum dipahami.</td><td>Satu lingkaran penuh adalah 360°. Karena sektor mewakili seluruh data, jumlah sudutnya harus 360°.</td></tr>
+<tr><td>“Kategori dengan batang tertinggi pasti paling penting.”</td><td>Frekuensi disamakan dengan nilai atau kepentingan.</td><td>Frekuensi hanya menunjukkan banyaknya kejadian/respons. Makna “penting” membutuhkan pertanyaan dan konteks tambahan.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="kuis">
+<div class="section-head"><div class="num">8</div><div><h2>Bank Soal Berjenjang</h2><div class="muted">Knowing → Applying → Reasoning</div></div></div>
+<div class="card">
+<div class="progress"><div id="quizProgress"></div></div>
+<div id="quizArea"></div>
+<div class="hero-actions">
+<button class="btn" id="checkQuiz">Periksa Jawaban</button>
+<button class="btn secondary" id="resetQuiz">Ulangi Latihan</button>
+<span class="score" id="score" aria-live="polite"></span>
+</div>
+</div>
+</section>
+
+<section class="section" id="refleksi">
+<div class="section-head"><div class="num">9</div><div><h2>Refleksi pembelajaran mendalam</h2><div class="muted">Bukan hanya “berapa jawaban benar?”, tetapi “mengapa cara berpikirmu bekerja?”.</div></div></div>
+<div class="grid">
+<div class="card half"><h3>A. Pemahaman konsep</h3><div class="checklist">
+<label class="check"><input type="checkbox"> Saya dapat menjelaskan mengapa batang harus sebanding dengan frekuensi.</label>
+<label class="check"><input type="checkbox"> Saya dapat menjelaskan asal rumus sudut sektor.</label>
+<label class="check"><input type="checkbox"> Saya dapat membedakan frekuensi dan persentase.</label>
+</div></div>
+<div class="card half"><h3>B. Strategi berpikir</h3><div class="checklist">
+<label class="check"><input type="checkbox"> Saya memeriksa total data sebelum membuat diagram lingkaran.</label>
+<label class="check"><input type="checkbox"> Saya memeriksa skala sebelum menafsirkan diagram batang.</label>
+<label class="check"><input type="checkbox"> Saya memilih diagram berdasarkan tujuan, bukan sekadar bentuknya.</label>
+</div></div>
+<div class="card"><h3>C. Hubungkan dengan kehidupan</h3>
+<p>Di sekolah, keluarga, atau lingkungan sekitar, data apa yang layak dikumpulkan? Siapa yang dapat menggunakan hasilnya untuk mengambil keputusan?</p>
+<textarea id="refleksiText" placeholder="Tuliskan contoh, alasan memilih data, diagram yang cocok, dan keputusan yang mungkin dibuat."></textarea>
+<div class="callout gold"><strong>Bekal berikutnya:</strong> kemampuan membaca dan menyajikan data akan membantu saat mempelajari ukuran pemusatan data (mean, median, modus, range) dan proyek matematika kontekstual.</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="pustaka">
+<div class="section-head"><div class="num">10</div><div><h2>Daftar pustaka & sumber belajar</h2><div class="muted">Sumber utama proyek dan rujukan pendukung yang relevan.</div></div></div>
+<div class="card">
+<ol class="ref-list">
+<li><strong>ATP Matematika Fase D — SMPN 1 Tabang.</strong> <em>ATP_Matematika_FaseD_Publik.xlsx.</em><br>
+<span class="small">Fungsi: acuan utama urutan tujuan pembelajaran, Sub TPK, alokasi 12 JP, dan keterkaitan materi di Kelas IX Semester 2.</span></li>
+<li><strong>Pusat Kurikulum dan Pembelajaran (2025).</strong> <em>Panduan Mata Pelajaran Matematika Fase A–F dan Fase F Tingkat Lanjut.</em> Badan Standar, Kurikulum, dan Asesmen Pendidikan.<br>
+<span class="small">Fungsi: acuan cakupan penyajian data, diagram batang/lingkaran, analisis dan interpretasi pada Fase D. Bagian yang dirujuk dalam dokumen proyek: hlm. 15 dan 174.</span></li>
+<li><strong>OpenStax.</strong> <em>Statistics</em>, bagian “Data, Sampling, and Variation in Data and Sampling”.<br>
+<span class="small">Fungsi: penguatan konsep pemilihan diagram; diagram batang untuk membandingkan kategori dan diagram lingkaran untuk bagian terhadap keseluruhan.</span><br>
+<a href="https://openstax.org/books/statistics/pages/1-2-data-sampling-and-variation-in-data-and-sampling" target="_blank" rel="noopener">Buka sumber OpenStax</a></li>
+<li><strong>National Council of Teachers of Mathematics (NCTM).</strong> <em>Principles and Standards for School Mathematics: Data Analysis and Probability.</em><br>
+<span class="small">Fungsi: penguatan penalaran data, representasi, komunikasi, koneksi, serta pembelajaran matematika yang menekankan pemahaman.</span><br>
+<a href="https://www.nctm.org/Standards-and-Positions/Principles-and-Standards/" target="_blank" rel="noopener">Buka laman NCTM</a></li>
+<li><strong>OpenStax.</strong> <em>Principles of Data Science</em>, bagian “Data Visualization and Graphical Displays”.<br>
+<span class="small">Fungsi: penguatan pemilihan visualisasi berdasarkan tujuan komunikasi data dan penggunaan diagram secara tepat.</span><br>
+<a href="https://openstax.org/books/principles-data-science/pages/9-2-encoding-data-that-change-over-time" target="_blank" rel="noopener">Buka sumber OpenStax</a></li>
+</ol>
+<div class="callout"><strong>Catatan:</strong> Data Tabang pada contoh numerik di halaman ini adalah data ilustrasi untuk belajar. Jangan menafsirkannya sebagai hasil survei resmi Kecamatan Tabang.</div>
+</div>
+</section>
+
+</main>
+
+<footer class="footer">
+<div class="container">
+<strong>Penyajian Data • Kelas IX Fase D</strong><br>
+SMPN 1 Tabang • Kecamatan Tabang • Kabupaten Mamasa • Sulawesi Barat<br>
+Penyusun: Herdianto Parenta
+</div>
+</footer>
+
+<script>
+const labels=["Jagung","Ubi","Kopi","Sayur lokal","Lainnya"];
+const initial=[12,10,8,6,4];
+const NS="http://www.w3.org/2000/svg";
+
+function el(tag,attrs={},text=""){
+  const svgTags=["svg","line","text","rect","path","circle","g"];
+  const e=svgTags.includes(tag) ? document.createElementNS(NS,tag) : document.createElement(tag);
+  for(const [k,v] of Object.entries(attrs)) e.setAttribute(k,v);
+  if(text)e.textContent=text;
+  return e;
+}
+function clear(node){while(node.firstChild)node.removeChild(node.firstChild);}
+function esc(v){return String(v).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));}
+
+function makeInputs(containerId,prefix,values){
+  const c=document.getElementById(containerId); clear(c);
+  values.forEach((v,i)=>{
+    const d=el("div",{class:"data-row"});
+    const l=el("label",{for:prefix+i},labels[i]); d.appendChild(l);
+    const inp=el("input",{id:prefix+i,type:"number",min:"0",max:"50",step:"1",value:v,ariaLabel:labels[i]});
+    d.appendChild(inp); c.appendChild(d);
+    inp.addEventListener("input",()=>{prefix==="bar" ? drawBar() : drawPie()});
+  });
+}
+function vals(prefix){return labels.map((_,i)=>Math.max(0,Number(document.getElementById(prefix+i).value)||0));}
+
+function drawBar(){
+  const v=vals("bar"), svg=document.getElementById("barChart"); clear(svg);
+  const W=760,H=420,left=62,right=20,top=28,bottom=72,plotW=W-left-right,plotH=H-top-bottom;
+  const max=Math.max(2,Math.ceil(Math.max(...v)/2)*2), step=2;
+  for(let y=0;y<=max;y+=step){
+    const yy=top+plotH-(y/max)*plotH;
+    svg.appendChild(el("line",{x1:left,y1:yy,x2:W-right,y2:yy,stroke:"#dfe6df"}));
+    svg.appendChild(el("text",{x:left-10,y:yy+4,"text-anchor":"end",fill:"#5d6b78","font-size":"12"},y));
+  }
+  svg.appendChild(el("line",{x1:left,y1:top,x2:left,y2:top+plotH,stroke:"#17212b","stroke-width":"1.5"}));
+  svg.appendChild(el("line",{x1:left,y1:top+plotH,x2:W-right,y2:top+plotH,stroke:"#17212b","stroke-width":"1.5"}));
+  const gap=22,bw=(plotW-gap*(labels.length+1))/labels.length;
+  v.forEach((n,i)=>{
+    const x=left+gap+i*(bw+gap), h=(n/max)*plotH, y=top+plotH-h;
+    svg.appendChild(el("rect",{x,y,width:bw,height:h,rx:"7",fill:"#176b5b"}));
+    svg.appendChild(el("text",{x:x+bw/2,y:y-8,"text-anchor":"middle",fill:"#17212b","font-size":"13","font-weight":"800"},n));
+    svg.appendChild(el("text",{x:x+bw/2,y:H-38,"text-anchor":"middle",fill:"#17212b","font-size":"12"},labels[i]));
+  });
+  svg.appendChild(el("text",{x:16,y:18,fill:"#5d6b78","font-size":"11"},"Frekuensi"));
+  const total=v.reduce((a,b)=>a+b,0), maxI=v.indexOf(Math.max(...v)), minI=v.indexOf(Math.min(...v));
+  document.getElementById("barSummary").textContent=total ? `Total = ${total}. Tertinggi: ${labels[maxI]} (${v[maxI]}). Terendah: ${labels[minI]} (${v[minI]}).` : "Masukkan frekuensi lebih dari 0 untuk membaca diagram.";
+}
+
+function polar(cx,cy,r,deg){const a=(deg-90)*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}
+function sectorPath(cx,cy,r,start,end){
+  const [x1,y1]=polar(cx,cy,r,start),[x2,y2]=polar(cx,cy,r,end),large=end-start>180?1:0;
+  return `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2} Z`;
+}
+function drawPie(){
+  const v=vals("pie"),svg=document.getElementById("pieChart"); clear(svg);
+  const W=760,H=430,cx=260,cy=205,r=150,total=v.reduce((a,b)=>a+b,0);
+  if(!total){svg.appendChild(el("text",{x:cx,y:cy,"text-anchor":"middle",fill:"#5d6b78"},"Masukkan frekuensi lebih dari 0"));return}
+  let angle=0;
+  const fills=["#176b5b","#d99b2b","#6c7f96","#9b6b4a","#7d8f5a"];
+  v.forEach((n,i)=>{
+    const sweep=n/total*360,end=angle+sweep;
+    svg.appendChild(el("path",{d:sectorPath(cx,cy,r,angle,end),fill:fills[i],stroke:"#fff","stroke-width":"2"}));
+    const mid=angle+sweep/2, [tx,ty]=polar(cx,cy,r*.63,mid);
+    if(sweep>=18) svg.appendChild(el("text",{x:tx,y:ty+4,"text-anchor":"middle",fill:"#fff","font-size":"12","font-weight":"900"},`${Math.round(n/total*100)}%`));
+    angle=end;
+  });
+  v.forEach((n,i)=>{
+    const y=55+i*55;
+    svg.appendChild(el("rect",{x:480,y:y-12,width:15,height:15,rx:"3",fill:fills[i]}));
+    svg.appendChild(el("text",{x:505,y:y+1,fill:"#17212b","font-size":"13","font-weight":"700"},`${labels[i]} — ${n} (${(n/total*100).toFixed(1)}%)`));
+    svg.appendChild(el("text",{x:505,y:y+19,fill:"#5d6b78","font-size":"11"},`Sudut ≈ ${(n/total*360).toFixed(1)}°`));
+  });
+  document.getElementById("pieSummary").textContent=`Total = ${total}. Jumlah semua persentase = 100% dan jumlah semua sudut = 360°.`;
+}
+
+makeInputs("barInputs","bar",initial); makeInputs("pieInputs","pie",initial);
+drawBar(); drawPie();
+if(document.getElementById("barChart").childElementCount>0){
+  document.getElementById("barChart").style.display="block";
+  document.getElementById("barFallback").style.display="none";
+}
+if(document.getElementById("pieChart").childElementCount>0){
+  document.getElementById("pieChart").style.display="block";
+  document.getElementById("pieFallback").style.display="none";
+}
+
+document.querySelectorAll(".step button").forEach(b=>b.addEventListener("click",()=>b.parentElement.classList.toggle("open")));
+
+const totalExp=document.getElementById("totalExp");
+totalExp.addEventListener("input",()=>{document.getElementById("totalVal").textContent=totalExp.value;document.getElementById("percentExp").textContent=(12/Number(totalExp.value)*100).toFixed(1)+"%";});
+const purpose=document.getElementById("purpose");
+function updatePurpose(){
+  document.getElementById("purposeFeedback").innerHTML=purpose.value==="compare"
+    ? "<strong>Pilihan yang cocok: diagram batang.</strong> Panjang/tinggi batang memudahkan membandingkan frekuensi antar-kategori."
+    : "<strong>Pilihan yang cocok: diagram lingkaran.</strong> Besar sektor membantu melihat bagian setiap kategori terhadap keseluruhan.";
+}
+purpose.addEventListener("change",updatePurpose);updatePurpose();
+
+const questions=[
+{level:"Knowing",q:"Data 40 siswa terdiri dari 12 Jagung, 10 Ubi, 8 Kopi, 6 Sayur lokal, dan 4 Lainnya. Berapa persentase Ubi?",opts:["20%","25%","30%","40%"],ans:1,why:"Persentase Ubi = 10/40 × 100% = 25%."},
+{level:"Knowing",q:"Jika frekuensi sebuah kategori 8 dari total 40, besar sudut sektor diagram lingkarannya adalah …",opts:["36°","54°","72°","90°"],ans:2,why:"Sudut = 8/40 × 360° = 72°."},
+{level:"Applying",q:"Sebuah diagram batang memakai skala 0, 5, 10, 15, 20. Frekuensi kategori A = 15 dan B = 10. Berapa selisih frekuensinya?",opts:["2","5","10","25"],ans:1,why:"Selisih = 15 − 10 = 5. Skala membantu membaca nilai, tetapi operasi tetap menggunakan frekuensi."},
+{level:"Applying",q:"Total responden 60 orang. Sebuah kategori memiliki 18 orang. Jika dibuat diagram lingkaran, persentasenya adalah …",opts:["18%","25%","30%","36%"],ans:2,why:"18/60 × 100% = 30%."},
+{level:"Reasoning",q:"Diagram A menunjukkan 12 dan 10 dengan batang dimulai dari 8. Diagram B menunjukkan data yang sama tetapi sumbu dimulai dari 0. Mengapa Diagram A berpotensi menyesatkan?",opts:["Karena semua batang harus berwarna sama.","Karena angka 12 dan 10 menjadi salah.","Karena tinggi batang yang tampak tidak lagi mencerminkan perbandingan 12:10 secara proporsional.","Karena diagram batang tidak boleh membandingkan kategori."],ans:2,why:"Jika sumbu dimulai dari 8, bagian batang yang terlihat adalah 4 dan 2. Mata dapat menangkap rasio 2:1, padahal rasio data sebenarnya 12:10 = 1,2:1. Sumbu dari 0 menjaga perbandingan visual tetap proporsional."},
+{level:"Reasoning",q:"Sebuah survei mencatat 30%, 25%, 20%, 15%, dan 10%. Seorang siswa membuat diagram lingkaran tetapi jumlah sudut sektornya 350°. Apa kesimpulan paling tepat?",opts:["Diagram benar karena persentasenya sudah benar.","Diagram belum benar karena satu lingkaran penuh harus berjumlah 360°; perlu memeriksa konversi persentase ke sudut.","Diagram benar jika sektor terbesar 108°.","Tidak dapat diperiksa tanpa mengetahui warna sektor."],ans:1,why:"Persentase sudah berjumlah 100%, sehingga sudut sektor harus berjumlah 360°. Selisih 10° menunjukkan ada kesalahan konstruksi atau pembulatan yang tidak ditangani dengan benar."}
+];
+function renderQuiz(){
+ const area=document.getElementById("quizArea");clear(area);
+ questions.forEach((q,i)=>{
+   const d=el("div",{class:"quiz"});
+   d.innerHTML=`<span class="level">${esc(q.level)}</span><h3>${i+1}. ${esc(q.q)}</h3>`;
+   q.opts.forEach((o,j)=>{
+     const lab=el("label",{class:"option"});
+     lab.innerHTML=`<input type="radio" name="q${i}" value="${j}"> ${esc(o)}`;
+     d.appendChild(lab);
+   });
+   const f=el("div",{id:`fb${i}`,class:"feedback"});d.appendChild(f);area.appendChild(d);
+ });
+ document.getElementById("quizProgress").style.width="0%";
+}
+renderQuiz();
+
+document.getElementById("checkQuiz").addEventListener("click",()=>{
+ let score=0,answered=0;
+ questions.forEach((q,i)=>{
+   const sel=document.querySelector(`input[name="q${i}"]:checked`),fb=document.getElementById(`fb${i}`);
+   if(sel){answered++;if(Number(sel.value)===q.ans){score++;fb.className="feedback ok";fb.innerHTML="<strong>Benar.</strong> "+esc(q.why);}else{fb.className="feedback no";fb.innerHTML="<strong>Belum tepat.</strong> "+esc(q.why);}}
+   else{fb.className="feedback no";fb.innerHTML="<strong>Belum dijawab.</strong> Pilih satu jawaban, lalu periksa kembali alasan matematisnya.";}
+ });
+ document.getElementById("score").textContent=`Skor ${score}/${questions.length} • ${answered} soal dijawab`;
+ document.getElementById("quizProgress").style.width=(answered/questions.length*100)+"%";
+});
+document.getElementById("resetQuiz").addEventListener("click",()=>{renderQuiz();document.getElementById("score").textContent=""});
+</script>
+</body>
+</html>
