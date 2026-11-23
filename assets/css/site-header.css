@@ -1,0 +1,33 @@
+/* Navbar bersama MathSMP — dipakai semua halaman melalui assets/js/site-header.js.
+   Semua kelas berawalan "sh-" agar tidak bentrok dengan stylesheet halaman. */
+.sh-header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #e5eaf2;font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:15px;line-height:1.4;color:#17233b}
+.sh-header *,.sh-header *::before,.sh-header *::after{box-sizing:border-box}
+.sh-wrap{max-width:1160px;margin:0 auto;padding:0 20px;min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.sh-brand{display:inline-flex;align-items:center;gap:10px;color:#102a56;font-weight:800;font-size:21px;letter-spacing:-.3px;text-decoration:none}
+.sh-brand img{width:40px;height:40px;border-radius:10px;display:block;flex:none}
+.sh-brand b{font-weight:800;color:#2563eb}
+.sh-nav{display:flex;align-items:center;gap:2px}
+.sh-link,.sh-drop-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 13px;border:0;border-radius:10px;background:transparent;color:#334155;font:inherit;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap}
+.sh-link:hover,.sh-drop-btn:hover{background:#eef3fb;color:#102a56}
+.sh-link.sh-active,.sh-drop-btn.sh-active{background:#e6efff;color:#1d4ed8}
+.sh-link:focus-visible,.sh-drop-btn:focus-visible,.sh-toggle:focus-visible,.sh-brand:focus-visible,.sh-menu a:focus-visible{outline:3px solid #93c5fd;outline-offset:1px}
+.sh-drop{position:relative}
+.sh-chev{width:14px;height:14px;transition:transform .15s}
+.sh-drop.sh-open .sh-chev{transform:rotate(180deg)}
+.sh-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;min-width:190px;padding:6px;background:#fff;border:1px solid #e5eaf2;border-radius:12px;box-shadow:0 14px 36px rgba(16,42,86,.14)}
+.sh-drop.sh-open .sh-menu{display:block}
+.sh-menu a{display:block;padding:9px 12px;border-radius:8px;color:#334155;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap}
+.sh-menu a:hover{background:#eef3fb;color:#102a56}
+.sh-menu a[aria-current="page"]{background:#e6efff;color:#1d4ed8}
+.sh-toggle{display:none;align-items:center;gap:8px;padding:9px 12px;border:1px solid #dbe4f0;border-radius:10px;background:#fff;color:#102a56;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.sh-toggle svg{width:20px;height:20px}
+@media(max-width:900px){
+  .sh-toggle{display:inline-flex}
+  .sh-nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;padding:10px 16px 16px;background:#fff;border-bottom:1px solid #e5eaf2;box-shadow:0 18px 30px rgba(16,42,86,.1);max-height:calc(100vh - 68px);overflow-y:auto}
+  .sh-header.sh-open .sh-nav{display:flex}
+  .sh-link,.sh-drop-btn{width:100%;justify-content:space-between;padding:12px 14px;font-size:15px}
+  .sh-menu{position:static;display:none;min-width:0;margin:2px 0 6px 12px;padding:4px 0 4px 10px;border:0;border-left:2px solid #dbe4f0;border-radius:0;box-shadow:none;background:transparent}
+  .sh-menu a{padding:10px 12px;font-size:15px}
+}
+@media(max-width:380px){.sh-brand{font-size:19px}.sh-brand img{width:34px;height:34px}}
+@media print{.sh-header{display:none}}

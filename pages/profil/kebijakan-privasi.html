@@ -9,36 +9,11 @@
   <link rel="stylesheet" href="../../assets/css/style-baru.css">
   <link rel="stylesheet" href="../../assets/css/homepage-ui.css?v=2">
   <link rel="stylesheet" href="../../assets/css/profile-pages.css">
+  <link rel="stylesheet" href="../../assets/css/site-header.css">
 </head>
 <body class="home-page profile-page privacy-page">
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="../../index.html" aria-label="MathSMP, Beranda">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" focusable="false"><path d="M18.5 5H6.8l6.1 7-6.1 7h11.7" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span>Math<span>SMP</span></span>
-    </a>
-    <div class="nav-menu-shell" id="navMenuShell">
-      <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-        <span>Menu</span>
-      </button>
-      <nav class="main-nav" id="primary-navigation" aria-label="Navigasi utama">
-        <a href="../../index.html">Beranda</a>
-        <a href="../../index.html#kelas">Materi</a>
-        <a href="../latihan/latihan-soal.html">Latihan Soal</a>
-        <details class="nav-dropdown">
-          <summary><svg class="nav-leading-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20M8 7h8M8 10h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-            TKA SMP <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </summary>
-          <div class="nav-dropdown-menu"><a href="../tka/bank-soal-tka.html">Bank Soal TKA</a><a href="../tka/tryout-tka.html">Tryout TKA</a></div>
-        </details>
-        <a href="../ruang-guru/ruang-guru.html">Ruang Guru</a>
-        <a href="tentang-saya.html">Tentang Saya</a>
-        <a class="nav-cta" href="../latihan/latihan-soal.html">Mulai Belajar <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </nav>
-    </div>
-  </div>
-</header>
+<div id="site-header"></div>
+<script src="../../assets/js/site-header.js"></script>
 <main>
   <section class="profile-hero">
     <div class="container profile-hero-inner">
@@ -63,7 +38,7 @@
       <article class="privacy-section">
         <h2>2. Informasi yang diproses</h2>
         <h3>A. Kuis reguler</h3>
-        <p>Pada versi aplikasi yang diperiksa, formulir Kuis meminta peserta mengisi nama lengkap dan kelas sebelum mulai mengerjakan. Setelah kuis dikumpulkan, sistem mencatat:</p>
+        <p>Pada versi aplikasi yang diperiksa, formulir Kuis meminta peserta mengisi nama atau inisial dan kelas sebelum mulai mengerjakan. Siswa dianjurkan memakai inisial atau nama panggilan, bukan nama lengkap. Setelah kuis dikumpulkan, sistem mencatat:</p>
         <ul>
           <li>Nama peserta dan kelas yang diisi;</li>
           <li>Tanggal dan waktu pengerjaan;</li>
@@ -107,7 +82,7 @@
       <article class="privacy-section">
         <h2>5. Data anak dan penggunaan oleh siswa</h2>
         <p>MathSMP ditujukan antara lain bagi siswa SMP yang dapat belum berusia dewasa. Pemrosesan data pribadi anak memerlukan perlakuan khusus dan persetujuan orang tua dan/atau wali sesuai ketentuan yang berlaku. Siswa dianjurkan menggunakan fitur yang meminta identitas dengan sepengetahuan dan izin orang tua/wali atau guru yang mendampingi.</p>
-        <div class="privacy-callout"><strong>Perhatian:</strong> Nama yang diketik secara sukarela tidak otomatis menjadi anonim. Menurut UU Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi, data pribadi mencakup informasi tentang orang yang teridentifikasi atau dapat diidentifikasi; nama lengkap juga disebut sebagai data pribadi yang bersifat umum. Pemrosesan data pribadi anak diselenggarakan secara khusus dan memerlukan persetujuan orang tua dan/atau wali. Pada formulir Kuis dan Tryout yang diperiksa, kolom nama dan kelas saat ini wajib diisi. Hindari memasukkan NIK, NISN, alamat rumah, nomor telepon pribadi, atau informasi sensitif lainnya. Baca <a href="https://jdih.komdigi.go.id/produk_hukum/view/id/832/t/undangundang%2Bnomor%2B27%2Btahun%2B2022" target="_blank" rel="noopener noreferrer">UU Nomor 27 Tahun 2022 pada JDIH Komdigi</a>.</div>
+        <div class="privacy-callout"><strong>Perhatian:</strong> Nama yang diketik secara sukarela tidak otomatis menjadi anonim. Menurut UU Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi, data pribadi mencakup informasi tentang orang yang teridentifikasi atau dapat diidentifikasi; nama lengkap juga disebut sebagai data pribadi yang bersifat umum. Pemrosesan data pribadi anak diselenggarakan secara khusus dan memerlukan persetujuan orang tua dan/atau wali. Pada formulir Kuis dan Tryout, kolom nama dan kelas wajib diisi, tetapi cukup dengan inisial atau nama panggilan; nama lengkap tidak diperlukan. Hindari memasukkan NIK, NISN, alamat rumah, nomor telepon pribadi, atau informasi sensitif lainnya. Baca <a href="https://jdih.komdigi.go.id/produk_hukum/view/id/832/t/undangundang%2Bnomor%2B27%2Btahun%2B2022" target="_blank" rel="noopener noreferrer">UU Nomor 27 Tahun 2022 pada JDIH Komdigi</a>.</div>
       </article>
 
       <article class="privacy-section">
@@ -160,24 +135,5 @@
     <div class="footer-bottom">© 2026 MathSMP · Portal Belajar Matematika SMP</div>
   </div>
 </footer>
-<script>
-(() => {
-  const shell = document.getElementById('navMenuShell');
-  if (!shell) return;
-  const toggle = shell.querySelector('.mobile-menu-toggle');
-  const nav = shell.querySelector('.main-nav');
-  if (!toggle || !nav) return;
-  const closeMenu = () => { shell.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); };
-  toggle.addEventListener('click', () => {
-    const isOpen = shell.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(isOpen));
-  });
-  nav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
-  document.addEventListener('click', event => { if (!shell.contains(event.target)) closeMenu(); });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && shell.classList.contains('is-open')) { closeMenu(); toggle.focus(); }
-  });
-})();
-</script>
 </body>
 </html>

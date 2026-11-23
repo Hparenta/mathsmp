@@ -294,7 +294,7 @@
     }
     const name=$("namaPeserta").value.trim();
     const className=$("kelasPeserta").value;
-    if (!name) { alert("Isi nama peserta terlebih dahulu."); $("namaPeserta").focus(); return; }
+    if (!name) { alert("Isi nama atau inisial peserta terlebih dahulu."); $("namaPeserta").focus(); return; }
     if (!CLASSES.includes(className)) { alert("Pilih kelas peserta."); $("kelasPeserta").focus(); return; }
 
     participant={nama:name,kelas:className};
