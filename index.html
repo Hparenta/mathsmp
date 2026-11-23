@@ -16,47 +16,11 @@
 
     <link rel="stylesheet" href="assets/css/style-baru.css">
     <link rel="stylesheet" href="assets/css/homepage-ui.css?v=2">
+  <link rel="stylesheet" href="assets/css/site-header.css">
 </head>
 <body class="home-page">
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="index.html" aria-label="MathSMP, Beranda">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" focusable="false"><path d="M18.5 5H6.8l6.1 7-6.1 7h11.7" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-      <span>Math<span>SMP</span></span>
-    </a>
-
-    <div class="nav-menu-shell" id="navMenuShell">
-      <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-        <span>Menu</span>
-      </button>
-      <nav class="main-nav" id="primary-navigation" aria-label="Navigasi utama">
-        <a class="active" href="index.html">Beranda</a>
-        <a href="index.html#kelas">Materi</a>
-        <a href="pages/latihan/latihan-soal.html">Latihan Soal</a>
-        <details class="nav-dropdown">
-          <summary>
-            <svg class="nav-leading-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20M8 7h8M8 10h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-            TKA SMP
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </summary>
-          <div class="nav-dropdown-menu">
-            <a href="pages/tka/bank-soal-tka.html">Bank Soal TKA</a>
-            <a href="pages/tka/tryout-tka.html">Tryout TKA</a>
-          </div>
-        </details>
-        <a href="pages/ruang-guru/ruang-guru.html">Ruang Guru</a>
-        <a href="pages/profil/tentang-saya.html">Tentang Saya</a>
-        <a class="nav-cta" href="pages/latihan/latihan-soal.html">
-          Mulai Belajar
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </nav>
-    </div>
-  </div>
-</header>
+<div id="site-header"></div>
+<script src="assets/js/site-header.js"></script>
 
 <main>
   <section class="hero">
@@ -182,20 +146,20 @@
     <div class="container tka-highlight">
       <div class="tka-highlight-copy">
         <span class="tka-status">TERSEDIA</span>
-        <h2 id="tka-home-title">Persiapan <em>TKA Matematika SMP</em></h2>
-        <p>Kerangka bank soal dan tryout 30 nomor telah disiapkan. Konten soal masih disusun dan ditinjau, sehingga latihan TKA belum tersedia untuk dikerjakan.</p>
-        <a class="btn btn-primary" href="pages/tka/tka.html">Lihat Informasi TKA
+        <h2 id="tka-home-title">Persiapan <em>TKA SMP</em></h2>
+        <p>Tryout TKA sudah bisa dikerjakan: dua paket Matematika (90 menit) dan satu paket Bahasa Indonesia (75 menit), masing-masing 30 soal. Paket baru akan terus ditambahkan.</p>
+        <a class="btn btn-primary" href="pages/tka/tryout-tka.html">Mulai Tryout TKA
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
       <div class="tka-mini-grid" aria-label="Status persiapan TKA">
         <div class="tka-mini-card">
           <span class="tka-mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" focusable="false"><path d="M5 3.5h9l5 5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3.5V9h5M8 13h8M8 17h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-          <div><strong>Bank Soal TKA</strong><small>Konten sedang disusun</small></div>
+          <div><strong>Bank Soal TKA</strong><small>Pilih paket untuk dipelajari</small></div>
         </div>
         <div class="tka-mini-card">
           <span class="tka-mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" focusable="false"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <div><strong>Tryout 30 Soal</strong><small>Kerangka paket disiapkan</small></div>
+          <div><strong>Tryout TKA</strong><small>3 paket · 30 soal per paket</small></div>
         </div>
       </div>
     </div>
@@ -233,39 +197,5 @@
   </div>
 </footer>
 
-<script>
-(() => {
-  const shell = document.getElementById('navMenuShell');
-  if (!shell) return;
-  const toggle = shell.querySelector('.mobile-menu-toggle');
-  const nav = shell.querySelector('.main-nav');
-  if (!toggle || !nav) return;
-
-  const closeMenu = () => {
-    shell.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-  };
-
-  toggle.addEventListener('click', () => {
-    const isOpen = shell.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(isOpen));
-  });
-
-  nav.addEventListener('click', (event) => {
-    if (event.target.closest('a')) closeMenu();
-  });
-
-  document.addEventListener('click', (event) => {
-    if (!shell.contains(event.target)) closeMenu();
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && shell.classList.contains('is-open')) {
-      closeMenu();
-      toggle.focus();
-    }
-  });
-})();
-</script>
 </body>
 </html>

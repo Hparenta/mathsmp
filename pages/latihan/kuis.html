@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kerjakan kuis MathSMP sesuai materi pokok. Cukup tulis nama atau inisial dan kelas, lalu lihat skor dan pembahasan.">
   <title>Kuis Reguler — MathSMP</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
   <script>
@@ -224,15 +225,12 @@
       color: #15803d;
     }
   </style>
+  <link rel="stylesheet" href="../../assets/css/site-header.css">
 </head>
 <body>
 
-  <header class="header-latihan-minimal">
-    <div class="header-latihan-inner">
-      <a href="../../index.html" class="header-latihan-brand" aria-label="MathSMP, Beranda"><span class="header-latihan-mark" aria-hidden="true">∑</span><span>Math<strong>SMP</strong></span></a>
-      <a href="../../index.html" class="header-latihan-home">⌂ <span>Beranda</span></a>
-    </div>
-  </header>
+  <div id="site-header"></div>
+<script src="../../assets/js/site-header.js"></script>
 
   <main class="wadah">
     <div class="panel-kuis">
@@ -250,11 +248,11 @@
           <label for="topikSelect">Pilih Pokok Bahasan / Materi Kuis *</label>
           <select id="topikSelect">
             <option value="">-- Pilih Materi Kuis --</option>
-            <option value="populasiSampel" data-nama="Populasi dan Sampel">Populasi dan Sampel (100 Soal)</option>
-            <option value="operasiBilanganRasional" data-nama="Operasi Bilangan Rasional">Operasi Bilangan Rasional (100 Soal)</option>
-            <option value="fungsiLinear" data-nama="Fungsi Linear">Kelas VIII - Fungsi Linear dan Grafiknya</option>
-            <option value="bangunRuangSisiLengkung" data-nama="Bangun Ruang Sisi Lengkung">Kelas IX - Bangun Ruang Sisi Lengkung</option>
-            <option value="bahasaIndonesiaKelas7SemesterGanjil" data-nama="UAS Bahasa Indonesia Kelas VII — Semester Ganjil">Bahasa Indonesia Kelas VII — UAS Semester Ganjil (30 soal)</option>
+            <option value="operasiBilanganRasional" data-nama="Operasi Bilangan Rasional">Kelas VII — Operasi Bilangan Rasional</option>
+            <option value="fungsiLinear" data-nama="Fungsi Linear dan Grafiknya">Kelas VIII — Fungsi Linear dan Grafiknya</option>
+            <option value="populasiSampel" data-nama="Populasi dan Sampel">Kelas IX — Populasi dan Sampel</option>
+            <option value="bangunRuangSisiLengkung" data-nama="Bangun Ruang Sisi Lengkung">Kelas IX — Bangun Ruang Sisi Lengkung</option>
+            <option value="bahasaIndonesiaKelas7SemesterGanjil" data-nama="UAS Bahasa Indonesia Kelas VII — Semester Ganjil">Kelas VII — Bahasa Indonesia: UAS Semester Ganjil</option>
           </select>
         </div>
         <button class="btn-mulai" type="button" onclick="lanjutIdentitas()">Lanjutkan</button>
@@ -265,8 +263,9 @@
         <div class="materi-terpilih"><strong>Materi kuis:</strong> <span id="labelMateriTerpilih"></span></div>
         <div class="grid-input">
           <div class="grup-field">
-            <label for="namaSiswa">Nama Lengkap Siswa *</label>
-            <input type="text" id="namaSiswa" placeholder="Contoh: Herdianto Parenta" autocomplete="name" required>
+            <label for="namaSiswa">Nama atau Inisial Siswa *</label>
+            <input type="text" id="namaSiswa" placeholder="Contoh: H.P. atau nama panggilan" autocomplete="off" maxlength="40" required>
+            <small style="display:block;margin-top:6px;font-size:12.5px;line-height:1.5;color:#64748b">Cukup tulis inisial atau nama panggilan. Nama/inisial, kelas, dan skor dipakai untuk rekap nilai oleh guru.</small>
           </div>
           <div class="grup-field">
             <label for="kelasSiswa">Kelas *</label>
@@ -281,7 +280,7 @@
             </select>
           </div>
         </div>
-        <button class="btn-mulai" type="button" onclick="mulaiKuis()">Mulai Kuis (Acak 10 Soal)</button>
+        <button class="btn-mulai" id="tombolMulaiKuis" type="button" onclick="mulaiKuis()">Mulai Kuis</button>
         <button class="btn-kembali" type="button" onclick="kembaliPilihMateri()">← Kembali, ganti materi</button>
       </section>
 
@@ -367,6 +366,7 @@
         const selectEl = document.getElementById("topikSelect");
         if ([...selectEl.options].some(opt => opt.value === topikUrl)) {
           selectEl.value = topikUrl;
+          window.__topikDariUrl = true;
         }
       }
     })();
@@ -383,8 +383,10 @@
     }
     document.getElementById("topikSelect").addEventListener("change", perbaruiInfoKuis);
     perbaruiInfoKuis();
+    // Materi sudah dipilih dari Daftar Kuis atau halaman materi: langsung ke isian identitas.
+    if (window.__topikDariUrl) lanjutIdentitas(true);
 
-    function lanjutIdentitas() {
+    function lanjutIdentitas(otomatis) {
       const selectEl = document.getElementById("topikSelect");
       const topikKode = selectEl.value;
       if (!topikKode) {
@@ -393,7 +395,7 @@
         return;
       }
       if (!window.bankSoal || !window.bankSoal[topikKode] || window.bankSoal[topikKode].length === 0) {
-        alert("Bank soal untuk materi ini belum tersedia atau sedang disiapkan.");
+        if (otomatis !== true) alert("Bank soal untuk materi ini belum tersedia atau sedang disiapkan.");
         return;
       }
       const opsiAktif = selectEl.options[selectEl.selectedIndex];
@@ -403,10 +405,23 @@
       document.getElementById("formIdentitas").hidden = false;
       document.getElementById("langkahMateri").classList.remove("aktif");
       document.getElementById("langkahIdentitas").classList.add("aktif");
-      document.getElementById("namaSiswa").focus();
+      const cfg = konfigurasiKuis(topikKode);
+      document.getElementById("tombolMulaiKuis").textContent = cfg.acak
+        ? `Mulai Kuis (${cfg.jumlahSoal} Soal Acak)`
+        : `Mulai Kuis (${cfg.jumlahSoal} Soal Sesuai Naskah)`;
+      if (window.__topikDariUrl) {
+        document.querySelector(".btn-kembali").textContent = "← Kembali ke Daftar Kuis";
+      }
+      if (otomatis !== true) document.getElementById("namaSiswa").focus();
     }
 
     function kembaliPilihMateri() {
+      if (window.__topikDariUrl) {
+        const slug = new URLSearchParams(window.location.search).get("mapel")
+          || (mapelAktif() === "Bahasa Indonesia" ? "bahasa-indonesia" : "matematika");
+        window.location.href = `daftar-kuis.html?mapel=${encodeURIComponent(slug)}`;
+        return;
+      }
       document.getElementById("formIdentitas").hidden = true;
       document.getElementById("formPilihMateri").hidden = false;
       document.getElementById("langkahIdentitas").classList.remove("aktif");
@@ -423,7 +438,7 @@
       const namaMateri = opsiAktif.getAttribute("data-nama") || opsiAktif.text;
 
       if (!nama) {
-        alert("Silakan isi Nama Lengkap terlebih dahulu!");
+        alert("Silakan isi nama atau inisial terlebih dahulu!");
         document.getElementById("namaSiswa").focus();
         return;
       }

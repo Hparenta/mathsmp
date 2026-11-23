@@ -2,21 +2,16 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daftar paket kuis MathSMP per materi pokok, disiapkan guru untuk latihan dan evaluasi.">
   <meta name="theme-color" content="#173b68">
   <title>Kuis — MathSMP</title>
   <link rel="stylesheet" href="../../assets/css/style-baru.css">
   <link rel="stylesheet" href="../../assets/css/latihan-hub.css">
+  <link rel="stylesheet" href="../../assets/css/site-header.css">
 </head>
 <body class="lh-page">
-<header class="lh-header">
-  <div class="lh-container lh-header-inner">
-    <a class="lh-brand" href="../../index.html" aria-label="MathSMP, Beranda">
-      <span class="lh-brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M5 11.5c6.7-2.4 13.2-1.2 19 3.1v26c-5.8-4.3-12.3-5.5-19-3.1v-26Z" fill="currentColor" opacity=".96"/><path d="M43 11.5c-6.7-2.4-13.2-1.2-19 3.1v26c5.8-4.3 12.3-5.5 19-3.1v-26Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 16c4.5-1 8.5-.4 12 1.6M8 22c4.5-1 8.5-.4 12 1.6M28 17.6c3.5-2 7.5-2.6 12-1.6M28 23.6c3.5-2 7.5-2.6 12-1.6" stroke="#173b68" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-      <span>Math<strong>SMP</strong></span>
-    </a>
-    <a class="lh-home-link" href="../../index.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1V10Z" fill="currentColor" opacity=".9"/></svg> Beranda</a>
-  </div>
-</header>
+<div id="site-header"></div>
+<script src="../../assets/js/site-header.js"></script>
 <main class="lh-main">
   <div class="lh-container">
     <div class="lh-breadcrumb"><a href="latihan-soal.html">Latihan Soal</a><span>›</span><a id="breadcrumbMapel" href="pilih-jenis.html?mapel=matematika">Matematika</a><span>›</span><span>Kuis</span></div>
@@ -45,9 +40,9 @@
   const container = document.getElementById('daftarPaket');
   const icon = '<svg viewBox="0 0 24 24" fill="none"><path d="M7 4h10a2 2 0 0 1 2 2v15l-7-4-7 4V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8h6M9 11h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   const packages = mapel === 'matematika' ? [
-    { id: 'populasiSampel', title: 'Populasi dan Sampel', grade: 'Kelas IX', info: 'Bank soal tersedia · 10 soal acak per sesi' },
     { id: 'operasiBilanganRasional', title: 'Operasi Bilangan Rasional', grade: 'Kelas VII', info: 'Bank soal tersedia · 10 soal acak per sesi' },
     { id: 'fungsiLinear', title: 'Fungsi Linear dan Grafiknya', grade: 'Kelas VIII', info: 'Bank soal tersedia · 10 soal acak per sesi' },
+    { id: 'populasiSampel', title: 'Populasi dan Sampel', grade: 'Kelas IX', info: 'Bank soal tersedia · 10 soal acak per sesi' },
     { id: 'bangunRuangSisiLengkung', title: 'Bangun Ruang Sisi Lengkung', grade: 'Kelas IX', info: 'Bank soal tersedia · 10 soal acak per sesi' }
   ] : mapel === 'bahasa-indonesia' ? [
     { id: 'bahasaIndonesiaKelas7SemesterGanjil', title: 'UAS Bahasa Indonesia — Semester Ganjil', grade: 'Kelas VII', info: '30 soal pilihan ganda · 10 LOTS · 15 Medium · 5 HOTS' }

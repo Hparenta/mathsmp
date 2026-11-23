@@ -19,23 +19,14 @@
     [hidden]{display:none!important}
     .jenis-dokumen{display:inline-block;margin-top:5px;padding:3px 8px;border-radius:20px;background:#dcfce7;color:#166534;font-size:11px;font-weight:700}
     @media(max-width:600px){.wadah-materi{padding:18px;margin:18px auto}.bingkai-pdf{height:620px}.info-dokumen{align-items:flex-start}}
+      .btn-ke-bank{background:#7c3aed}
+    .btn-ke-kuis[hidden],#catatanLatihan[hidden]{display:none}
   </style>
+  <link rel="stylesheet" href="../../assets/css/site-header.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="wadah nav-isi">
-      <a href="../../index.html" class="logo"><span class="logo-ikon">∑</span> Math<span>SMP</span></a>
-      <nav class="menu-utama">
-        <a href="../../index.html">Beranda</a>
-        <a href="../../index.html#kelas" class="aktif">Materi</a>
-        <a href="../latihan/latihan-soal.html">Latihan Soal</a>
-        <a href="../tka/tka.html">TKA SMP</a>
-        <a href="../latihan/kuis.html">Kuis Harian</a>
-        <a href="../ruang-guru/ruang-guru.html">Ruang Guru</a>
-        <a href="../../index.html#tentang">Tentang</a>
-      </nav>
-    </div>
-  </header>
+  <div id="site-header"></div>
+<script src="../../assets/js/site-header.js"></script>
 
   <main class="wadah">
     <div class="wadah-materi">
@@ -60,7 +51,9 @@
         </div>
         <div class="grup-aksi">
           <a id="tombolUnduh" href="../../assets/pdf/matematika/Fungsi-Linear-dan-Grafiknya.pdf" target="_blank" rel="noopener noreferrer" class="btn-unduh">📥 Buka / Unduh PDF</a>
-          <a href="../latihan/latihan-soal.html" class="btn-ke-kuis">🎯 Latihan Soal →</a>
+          <a id="tombolKuis" href="../latihan/latihan-soal.html" class="btn-ke-kuis">🎯 Latihan Soal →</a>
+          <a id="tombolBank" href="../latihan/latihan-soal.html" class="btn-ke-kuis btn-ke-bank" hidden>📚 Bank Soal Materi Ini</a>
+          <small id="catatanLatihan" hidden style="flex-basis:100%;font-size:13px;color:#475569">Latihan khusus materi ini belum tersedia. Pilih latihan lain melalui menu Latihan Soal.</small>
         </div>
       </div>
 
@@ -68,10 +61,12 @@
     </div>
   </main>
 
+  <script src="../../assets/js/materi-latihan.js"></script>
   <script>
     function gantiMateri(tombolKlik, judulBaru, lokasiFile, jenisMateri = 'pdf') {
       document.querySelectorAll('.btn-bab').forEach(btn => btn.classList.remove('aktif'));
       tombolKlik.classList.add('aktif');
+      MateriLatihan.pasang(lokasiFile);
       document.getElementById('judulBab').textContent = judulBaru;
       const layar = document.getElementById('layarPdf');
       const tombolBuka = document.getElementById('tombolUnduh');
@@ -93,6 +88,7 @@
         labelJenis.style.color = '#166534';
       }
     }
+    MateriLatihan.pasang(document.getElementById('layarPdf').getAttribute('src'));
   </script>
 </body>
 </html>
