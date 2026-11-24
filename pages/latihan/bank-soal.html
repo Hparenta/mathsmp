@@ -30,7 +30,8 @@
           <h2>Topik</h2>
           <button class="lh-topic-button" type="button" data-topic="semua" aria-pressed="true"><span class="lh-topic-symbol">▦</span>Semua Topik</button>
           <button class="lh-topic-button" type="button" data-topic="operasiBilanganRasional" aria-pressed="false"><span class="lh-topic-symbol">⅟</span>Bilangan Rasional</button>
-          <button class="lh-topic-button" type="button" data-topic="fungsiLinear" aria-pressed="false"><span class="lh-topic-symbol">ƒ</span>Fungsi Linear</button>\n          <button class="lh-topic-button" type="button" data-topic="relasiFungsi" aria-pressed="false"><span class="lh-topic-symbol">↔</span>Relasi dan Fungsi</button>
+          <button class="lh-topic-button" type="button" data-topic="fungsiLinear" aria-pressed="false"><span class="lh-topic-symbol">ƒ</span>Fungsi Linear</button>
+          <button class="lh-topic-button" type="button" data-topic="relasiFungsi" aria-pressed="false"><span class="lh-topic-symbol">↔</span>Relasi dan Fungsi</button>
           <button class="lh-topic-button" type="button" data-topic="populasiSampel" aria-pressed="false"><span class="lh-topic-symbol">▥</span>Statistika</button>
           <button class="lh-topic-button" type="button" data-topic="bangunRuangSisiLengkung" aria-pressed="false"><span class="lh-topic-symbol">◇</span>Bangun Ruang</button>
         </aside>
@@ -51,7 +52,8 @@
 <footer class="lh-footer">© 2026 MathSMP · Bank Soal Materi untuk belajar mandiri</footer>
 <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-populasi-sampel.js"></script>
 <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-operasi-bilangan-rasional.js"></script>
-<script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-fungsi-linear.js"></script>\n<script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-relasi-fungsi.js"></script>
+<script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-fungsi-linear.js"></script>
+<script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-relasi-fungsi.js"></script>
 <script src="../../data/bank-soal/kuis-harian/matematika/bank-soal-bangun-ruang-sisi-lengkung.js"></script>
 <script src="../../data/bank-soal/kuis-harian/bahasa-indonesia/bank-soal-kelas-7-semester-ganjil.js"></script>
 <script>
@@ -77,7 +79,8 @@
   }
   const daftarTopik = mapel === 'matematika' ? [
     { id: 'operasiBilanganRasional', nama: 'Operasi Bilangan Rasional', kelas: 'Kelas VII' },
-    { id: 'fungsiLinear', nama: 'Fungsi Linear dan Grafiknya', kelas: 'Kelas VIII' },\n    { id: 'relasiFungsi', nama: 'Relasi dan Fungsi', kelas: 'Kelas VIII' },
+    { id: 'fungsiLinear', nama: 'Fungsi Linear dan Grafiknya', kelas: 'Kelas VIII' },
+    { id: 'relasiFungsi', nama: 'Relasi dan Fungsi', kelas: 'Kelas VIII' },
     { id: 'populasiSampel', nama: 'Populasi dan Sampel', kelas: 'Kelas IX' },
     { id: 'bangunRuangSisiLengkung', nama: 'Bangun Ruang Sisi Lengkung', kelas: 'Kelas IX' }
   ] : [
@@ -129,15 +132,18 @@
         const keyText = Number.isInteger(keyIndex) && options[keyIndex] !== undefined
           ? `${letters[keyIndex]}. ${escapeHTML(options[keyIndex])}` : 'Kunci belum tersedia';
         const stimulusHTML = item.stimulus
-          ? `<div class="lh-stimulus-block"><span class="lh-stimulus-label">Stimulus / Bahan Bacaan</span>${escapeHTML(item.stimulus).replace(/\n/g, '<br>')}</div>`
+          ? `<div class="lh-stimulus-block"><span class="lh-stimulus-label">Stimulus / Bahan Bacaan</span>${escapeHTML(item.stimulus).replace(/
+/g, '<br>')}</div>`
           : '';
         return `<article class="lh-question">
           <div class="lh-question-top"><span class="lh-question-number">Soal ${item.nomorAsli || start + index + 1}</span><span>${escapeHTML(item._kelas)} · ${escapeHTML(item._topicName)} ${item.level ? `· <span class="lh-question-level">${escapeHTML(item.level)}</span>` : ''}</span></div>
           ${stimulusHTML}
-          <p class="lh-question-text">${escapeHTML(item.soal).replace(/\n/g, '<br>')}</p>
+          <p class="lh-question-text">${escapeHTML(item.soal).replace(/
+/g, '<br>')}</p>
           ${item.gambar ? `<div class="lh-question-image">${item.gambar}</div>` : ''}
           <div class="lh-options">${options.map((option, optionIndex) => `<div class="lh-option"><span class="lh-option-letter">${letters[optionIndex] || ''}.</span><span>${escapeHTML(option)}</span></div>`).join('')}</div>
-          <details class="lh-answer"><summary>Lihat kunci dan pembahasan</summary><div class="lh-answer-body"><strong>Kunci jawaban: ${keyText}</strong><p>${escapeHTML(item.pembahasan || 'Pembahasan belum tersedia.').replace(/\n/g, '<br>')}</p></div></details>
+          <details class="lh-answer"><summary>Lihat kunci dan pembahasan</summary><div class="lh-answer-body"><strong>Kunci jawaban: ${keyText}</strong><p>${escapeHTML(item.pembahasan || 'Pembahasan belum tersedia.').replace(/
+/g, '<br>')}</p></div></details>
         </article>`;
       }).join('');
     }
