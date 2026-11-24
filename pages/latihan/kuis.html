@@ -556,7 +556,7 @@
       const hurufOpsi = ["A", "B", "C", "D", "E"];
       soalTerpilih.forEach((item, index) => {
         const stimulusHTML = item.stimulus
-          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${escapeHTML(item.stimulus).replace(/\n/g, "<br>")}</div>`
+          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${renderTeksSoal(item.stimulus)}</div>`
           : "";
         html += `<div class="kartu-soal" id="kotak_soal_${index}">
           ${stimulusHTML}
@@ -606,11 +606,11 @@
         const teksKunci = `${hurufOpsi[item.jawabanBenar]}. ${item.pilihan[item.jawabanBenar]}`;
 
         const stimulusHTML = item.stimulus
-          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${escapeHTML(item.stimulus).replace(/\n/g, "<br>")}</div>`
+          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${renderTeksSoal(item.stimulus)}</div>`
           : "";
         ulasanHtml += `<div class="kartu-soal">
           ${stimulusHTML}
-          <p class="teks-soal"><strong>${item.nomorAsli || index + 1}.</strong> ${escapeHTML(item.soal)}</p>
+          <p class="teks-soal"><strong>${item.nomorAsli || index + 1}.</strong> ${renderTeksSoal(item.soal)}</p>
           ${item.gambar ? `<div class="gambar-soal">${item.gambar}</div>` : ""}
           <p style="font-size:14px; margin-bottom:6px;">Jawabanmu: <strong>${escapeHTML(teksJawabanSiswa)}</strong></p>
           <div class="pembahasan-box ${isBenar ? "benar" : "salah"}">
