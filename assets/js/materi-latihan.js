@@ -8,7 +8,10 @@
   var PETA = {
     'Operasi-Bilangan-Rasional': { topik: 'operasiBilanganRasional' },
     'Fungsi-Linear-dan-Grafiknya': { topik: 'fungsiLinear' },
-    'Fungsi_Linear_NonLinear_Kelas_VIII': { topik: 'fungsiLinear' },\n    'Penyajian-dan-Nilai-Fungsi': { topik: 'relasiFungsi' },\n    'Konsep-Relasi': { topik: 'relasiFungsi' },\n    'Konsep-Fungsi': { topik: 'relasiFungsi' },
+    'Fungsi_Linear_NonLinear_Kelas_VIII': { topik: 'fungsiLinear' },
+    'Penyajian-dan-Nilai-Fungsi': { topik: 'relasiFungsi' },
+    'Konsep-Relasi': { topik: 'relasiFungsi' },
+    'Konsep-Fungsi': { topik: 'relasiFungsi' },
     'Populasi-dan-Sampel': { topik: 'populasiSampel' },
     'bahan_bacaan_teknik_sampling': { topik: 'populasiSampel' },
     'Bangun_Ruang_Sisi_Lengkung_Kelas_IX': { topik: 'bangunRuangSisiLengkung' }
