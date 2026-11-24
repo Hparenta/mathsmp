@@ -132,18 +132,15 @@
         const keyText = Number.isInteger(keyIndex) && options[keyIndex] !== undefined
           ? `${letters[keyIndex]}. ${escapeHTML(options[keyIndex])}` : 'Kunci belum tersedia';
         const stimulusHTML = item.stimulus
-          ? `<div class="lh-stimulus-block"><span class="lh-stimulus-label">Stimulus / Bahan Bacaan</span>${escapeHTML(item.stimulus).replace(/
-/g, '<br>')}</div>`
+          ? `<div class="lh-stimulus-block"><span class="lh-stimulus-label">Stimulus / Bahan Bacaan</span>${escapeHTML(item.stimulus).replace(/\n/g, '<br>')}</div>`
           : '';
         return `<article class="lh-question">
           <div class="lh-question-top"><span class="lh-question-number">Soal ${item.nomorAsli || start + index + 1}</span><span>${escapeHTML(item._kelas)} · ${escapeHTML(item._topicName)} ${item.level ? `· <span class="lh-question-level">${escapeHTML(item.level)}</span>` : ''}</span></div>
           ${stimulusHTML}
-          <p class="lh-question-text">${escapeHTML(item.soal).replace(/
-/g, '<br>')}</p>
+          <p class="lh-question-text">${escapeHTML(item.soal).replace(/\n/g, '<br>')}</p>
           ${item.gambar ? `<div class="lh-question-image">${item.gambar}</div>` : ''}
           <div class="lh-options">${options.map((option, optionIndex) => `<div class="lh-option"><span class="lh-option-letter">${letters[optionIndex] || ''}.</span><span>${escapeHTML(option)}</span></div>`).join('')}</div>
-          <details class="lh-answer"><summary>Lihat kunci dan pembahasan</summary><div class="lh-answer-body"><strong>Kunci jawaban: ${keyText}</strong><p>${escapeHTML(item.pembahasan || 'Pembahasan belum tersedia.').replace(/
-/g, '<br>')}</p></div></details>
+          <details class="lh-answer"><summary>Lihat kunci dan pembahasan</summary><div class="lh-answer-body"><strong>Kunci jawaban: ${keyText}</strong><p>${escapeHTML(item.pembahasan || 'Pembahasan belum tersedia.').replace(/\n/g, '<br>')}</p></div></details>
         </article>`;
       }).join('');
     }
