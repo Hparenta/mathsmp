@@ -224,6 +224,37 @@
       font-weight: 600;
       color: #15803d;
     }
+
+    .tabel-soal-wadah {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      margin: 12px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      background: #ffffff;
+    }
+    table.tabel-soal {
+      width: 100%;
+      min-width: 260px;
+      border-collapse: collapse;
+      font-size: 0.96em;
+      text-align: center;
+    }
+    table.tabel-soal th,
+    table.tabel-soal td {
+      border: 1px solid #cbd5e1;
+      padding: 9px 14px;
+      white-space: nowrap;
+    }
+    table.tabel-soal th {
+      background: #eaf1fb;
+      color: #173b70;
+      font-weight: 700;
+    }
+    table.tabel-soal tbody tr:nth-child(even) { background: #f8fafc; }
+    .teks-soal .tabel-soal-wadah { font-weight: 400; }
+    .pembahasan-box .tabel-soal-wadah { margin: 8px 0; }
   </style>
   <link rel="stylesheet" href="../../assets/css/site-header.css">
 </head>
@@ -340,6 +371,50 @@
       return String(value ?? "").replace(/[&<>"']/g, karakter => ({
         "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
       }[karakter]));
+    }
+
+    // Render teks soal dengan aman, sambil mengubah representasi data tabel
+    // yang umum dipakai di bank soal menjadi tabel HTML yang mudah dibaca.
+    function renderTeksSoal(value) {
+      const raw = String(value ?? "");
+      const inlineTable = raw.match(/(?:Tabel(?: menunjukkan)?\s+)?x\s*:\s*([^\n.]+?)\s+dan\s+y\s*:\s*([^\n.]+)/i);
+      if (inlineTable) {
+        const xs = inlineTable[1].split(/\s*,\s*/).filter(Boolean);
+        const ys = inlineTable[2].split(/\s*,\s*/).filter(Boolean);
+        if (xs.length >= 2 && xs.length === ys.length) {
+          const table = buatTabelXY(xs, ys);
+          const before = raw.slice(0, inlineTable.index);
+          const after = raw.slice(inlineTable.index + inlineTable[0].length);
+          return escapeHTML(before) + table + escapeHTML(after).replace(/\n/g, "<br>");
+        }
+      }
+
+      const lines = raw.split(/\r?\n/);
+      const rowPattern = /^\s*(?:Jika\s+)?x\s*=\s*([^,;]+?)\s*(?:,\s*|->\s*)(?:nilai\s+)?y\s*=\s*([^.;]+?)\.?\s*$/i;
+      const rows = [];
+      let start = -1;
+      let end = -1;
+      lines.forEach((line, index) => {
+        const match = line.match(rowPattern);
+        if (match) {
+          if (start < 0) start = index;
+          end = index;
+          rows.push([match[1].trim(), match[2].trim()]);
+        }
+      });
+      if (rows.length >= 2) {
+        const table = buatTabelXY(rows.map(row => row[0]), rows.map(row => row[1]));
+        const before = lines.slice(0, start).join("\n");
+        const after = lines.slice(end + 1).join("\n");
+        return [escapeHTML(before), table, escapeHTML(after)].filter(Boolean).join("<br>");
+      }
+      return escapeHTML(raw).replace(/\r?\n/g, "<br>");
+    }
+
+    function buatTabelXY(xs, ys) {
+      const header = "<thead><tr><th>x</th>" + xs.map(x => "<th>" + escapeHTML(x) + "</th>").join("") + "</tr></thead>";
+      const body = "<tbody><tr><th>y</th>" + ys.map(y => "<td>" + escapeHTML(y) + "</td>").join("") + "</tr></tbody>";
+      return '<div class="tabel-soal-wadah"><table class="tabel-soal" aria-label="Tabel nilai x dan y">' + header + body + "</table></div>";
     }
 
     let soalTerpilih = [];
@@ -485,12 +560,12 @@
           : "";
         html += `<div class="kartu-soal" id="kotak_soal_${index}">
           ${stimulusHTML}
-          <p class="teks-soal"><strong>${item.nomorAsli || index + 1}.</strong> ${escapeHTML(item.soal)}</p>
+          <p class="teks-soal"><strong>${item.nomorAsli || index + 1}.</strong> ${renderTeksSoal(item.soal)}</p>
           ${item.gambar ? `<div class="gambar-soal">${item.gambar}</div>` : ""}`;
         item.pilihan.forEach((pil, idxPil) => {
           html += `<label class="opsi-label">
             <input type="radio" name="soal_${index}" value="${idxPil}">
-            <span><strong>${hurufOpsi[idxPil]}.</strong> ${escapeHTML(pil)}</span>
+            <span><strong>${hurufOpsi[idxPil]}.</strong> ${renderTeksSoal(pil)}</span>
           </label>`;
         });
         html += `</div>`;
@@ -540,7 +615,7 @@
           <p style="font-size:14px; margin-bottom:6px;">Jawabanmu: <strong>${escapeHTML(teksJawabanSiswa)}</strong></p>
           <div class="pembahasan-box ${isBenar ? "benar" : "salah"}">
             <strong>${isBenar ? "✔ Benar!" : "✘ Kurang Tepat."}</strong> Kunci Jawaban: <strong>${escapeHTML(teksKunci)}</strong><br>
-            <em>Pembahasan:</em> ${escapeHTML(item.pembahasan || "Pembahasan belum tersedia.")}
+            <em>Pembahasan:</em> ${renderTeksSoal(item.pembahasan || "Pembahasan belum tersedia.")}
           </div>
         </div>`;
       });
