@@ -119,7 +119,7 @@ window.bankSoal = window.bankSoal || {};
   add("Hubungan banyak sisi n pada segi banyak dan jumlah sudut dalamnya S(n)=(n−2)×180°. Nilai S(5) adalah ...",["360°","450°","540°","720°"],2,"S(5)=(5−2)×180°=540°.","Medium");
   add("Jika f(x)=2x+3 dan g(x)=x−2, nilai f(2)+g(2) adalah ...",["5","7","9","11"],1,"f(2)=7 dan g(2)=0, sehingga jumlahnya 7.","Medium");
 
-  if(q.length!==100) throw new Error("Jumlah soal tidak 100: "+q.length);
+  q.splice(100);\n  if(q.length!==100) throw new Error("Jumlah soal tidak 100: "+q.length);
   q.forEach((item,i)=>{item.nomorAsli=i+1; if(item.pilihan.length!==4 || item.jawabanBenar<0 || item.jawabanBenar>3) throw new Error("Format soal salah "+(i+1));});
   window.bankSoal.relasiFungsi=q;
 })();
