@@ -377,20 +377,20 @@
     // yang umum dipakai di bank soal menjadi tabel HTML yang mudah dibaca.
     function renderTeksSoal(value) {
       const raw = String(value ?? "");
-      const inlineTable = raw.match(/(?:Tabel(?: menunjukkan)?\\s+)?x\\s*:\\s*([^\\n.]+?)\\s+dan\\s+y\\s*:\\s*([^\\n.]+)/i);
+      const inlineTable = raw.match(/(?:Tabel(?: menunjukkan)?\s+)?x\s*:\s*([^\n.]+?)\s+dan\s+y\s*:\s*([^\n.]+)/i);
       if (inlineTable) {
-        const xs = inlineTable[1].split(/\\s*,\\s*/).filter(Boolean);
-        const ys = inlineTable[2].split(/\\s*,\\s*/).filter(Boolean);
+        const xs = inlineTable[1].split(/\s*,\s*/).filter(Boolean);
+        const ys = inlineTable[2].split(/\s*,\s*/).filter(Boolean);
         if (xs.length >= 2 && xs.length === ys.length) {
           const table = buatTabelXY(xs, ys);
           const before = raw.slice(0, inlineTable.index);
           const after = raw.slice(inlineTable.index + inlineTable[0].length);
-          return escapeHTML(before) + table + escapeHTML(after).replace(/\\n/g, "<br>");
+          return escapeHTML(before) + table + escapeHTML(after).replace(/\n/g, "<br>");
         }
       }
 
-      const lines = raw.split(/\\r?\\n/);
-      const rowPattern = /^\\s*(?:Jika\\s+)?x\\s*=\\s*([^,;]+?)\\s*(?:,\\s*)?(?:nilai\\s+)?y\\s*=\\s*([^.;]+?)\\.?\\s*$/i;
+      const lines = raw.split(/\r?\n/);
+      const rowPattern = /^\s*(?:Jika\s+)?x\s*=\s*([^,;]+?)\s*(?:,\s*|->\s*)(?:nilai\s+)?y\s*=\s*([^.;]+?)\.?\s*$/i;
       const rows = [];
       let start = -1;
       let end = -1;
@@ -404,11 +404,11 @@
       });
       if (rows.length >= 2) {
         const table = buatTabelXY(rows.map(row => row[0]), rows.map(row => row[1]));
-        const before = lines.slice(0, start).join("\\n");
-        const after = lines.slice(end + 1).join("\\n");
+        const before = lines.slice(0, start).join("\n");
+        const after = lines.slice(end + 1).join("\n");
         return [escapeHTML(before), table, escapeHTML(after)].filter(Boolean).join("<br>");
       }
-      return escapeHTML(raw).replace(/\\r?\\n/g, "<br>");
+      return escapeHTML(raw).replace(/\r?\n/g, "<br>");
     }
 
     function buatTabelXY(xs, ys) {
@@ -556,7 +556,7 @@
       const hurufOpsi = ["A", "B", "C", "D", "E"];
       soalTerpilih.forEach((item, index) => {
         const stimulusHTML = item.stimulus
-          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${escapeHTML(item.stimulus).replace(/\n/g, "<br>")}</div>`
+          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${renderTeksSoal(item.stimulus)}</div>`
           : "";
         html += `<div class="kartu-soal" id="kotak_soal_${index}">
           ${stimulusHTML}
@@ -606,11 +606,11 @@
         const teksKunci = `${hurufOpsi[item.jawabanBenar]}. ${item.pilihan[item.jawabanBenar]}`;
 
         const stimulusHTML = item.stimulus
-          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${escapeHTML(item.stimulus).replace(/\n/g, "<br>")}</div>`
+          ? `<div class="stimulus-soal"><strong>Stimulus / Bahan Bacaan</strong>${renderTeksSoal(item.stimulus)}</div>`
           : "";
         ulasanHtml += `<div class="kartu-soal">
           ${stimulusHTML}
-          <p class="teks-soal"><strong>${item.nomorAsli || index + 1}.</strong> ${escapeHTML(item.soal)}</p>
+          <p class="teks-soal"><strong>${item.nomorAsli || index + 1}.</strong> ${renderTeksSoal(item.soal)}</p>
           ${item.gambar ? `<div class="gambar-soal">${item.gambar}</div>` : ""}
           <p style="font-size:14px; margin-bottom:6px;">Jawabanmu: <strong>${escapeHTML(teksJawabanSiswa)}</strong></p>
           <div class="pembahasan-box ${isBenar ? "benar" : "salah"}">
