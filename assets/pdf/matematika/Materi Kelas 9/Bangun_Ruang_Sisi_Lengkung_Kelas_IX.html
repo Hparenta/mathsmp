@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bangun Ruang Sisi Lengkung — Matematika IX</title>
+<style>
+:root{--ink:#17212b;--muted:#5f6c78;--paper:#fbfaf6;--card:#fff;--line:#dfe5e3;--accent:#176f63;--accent2:#e7f2ef;--warm:#fff4df;--good:#e7f5e9;--bad:#fde9e7;--shadow:0 10px 28px #17212b12}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
+header{position:sticky;top:0;z-index:20;background:#fffdf9ef;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.head{max-width:1180px;margin:auto;padding:14px 22px;display:flex;justify-content:space-between;gap:20px;align-items:center}.brand b{display:block;font-size:15px;letter-spacing:.08em}.brand span{font-size:12px;color:var(--muted)}.school{color:var(--muted);font-size:13px}
+nav{max-width:1180px;width:100%;box-sizing:border-box;margin:auto;padding:0 22px 12px;display:flex;gap:7px;overflow:auto}nav a{white-space:nowrap;text-decoration:none;color:#586674;font-size:12px;padding:6px 9px;border-radius:999px}nav a:hover{background:var(--accent2);color:var(--accent)}
+main{max-width:1180px;margin:auto;padding:30px 22px 80px}.hero{padding:48px 0 30px}.eyebrow{font-weight:800;color:var(--accent);letter-spacing:.13em;font-size:12px}.hero h1{font-size:clamp(34px,6vw,66px);line-height:1.03;margin:10px 0 14px;max-width:800px}.hero p{max-width:760px;font-size:17px;color:var(--muted)}.identity{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.pill{border:1px solid var(--line);background:white;border-radius:999px;padding:6px 12px;font-size:12px}
+section{margin:54px 0}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:18px}.section-head h2{font-size:30px;margin:0}.tag{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.1em}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:18px}.grid>*{min-width:0}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow);min-width:0}.card+.card{margin-top:18px}.grid>.card{margin-top:0}.card h3{margin-top:0}.muted{color:var(--muted)}.call{background:var(--accent2);border-left:5px solid var(--accent);padding:16px 18px;border-radius:0 16px 16px 0;margin:18px 0}.warm{background:var(--warm);border-color:#f1dfbb}.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}.step{padding:15px;border:1px solid var(--line);border-radius:16px;background:#fff}.step b{display:block;color:var(--accent);font-size:12px}.step small{color:var(--muted)}
+.formula{font-size:21px;font-weight:800;padding:14px 18px;background:#f1f6f4;border-radius:14px;display:inline-block;max-width:100%;overflow-x:auto;margin:8px 0}.formula small{font-size:12px;color:var(--muted);display:block;font-weight:500}
+button,select,input{font:inherit}button{border:0;border-radius:12px;padding:10px 15px;background:var(--accent);color:white;font-weight:700;cursor:pointer}button:hover{filter:brightness(.97)}input[type=range]{width:100%}.control{margin:14px 0}.control label{font-weight:700;font-size:13px;display:flex;justify-content:space-between}.chk{display:flex;gap:8px;align-items:flex-start;font-size:13px;font-weight:600;margin:12px 0;cursor:pointer}.chk input{margin-top:5px}.out{background:var(--accent2);border-radius:14px;padding:13px;margin-top:10px}.out strong{font-size:18px}.svgbox{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;overflow:hidden}.svgbox svg{width:100%;height:auto;display:block;min-height:190px}.concept{background:#f8faf9;border:1px solid var(--line);border-radius:15px;padding:15px 17px;margin:14px 0}.note{font-size:13px;color:var(--muted)}.compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:15px 0}.compare>div{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff}.compare b{display:block;color:var(--accent)}.sequence{counter-reset:item;display:grid;gap:10px}.sequence>div{counter-increment:item;padding:14px 14px 14px 48px;border:1px solid var(--line);border-radius:14px;position:relative}.sequence>div:before{content:counter(item);position:absolute;left:14px;top:13px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;text-align:center;font-weight:800}.mis{background:#fff8f7;border:1px solid #f0d4d0;border-radius:14px;padding:14px;margin:12px 0}.mis b{color:#a74337}
+.quiz-q{padding:18px;border:1px solid var(--line);border-radius:18px;margin:14px 0;background:#fff}.quiz-q h4{margin:0 0 10px}.opts{display:grid;gap:7px}.opts label{padding:10px;border:1px solid var(--line);border-radius:10px;cursor:pointer}.opts label:hover{background:var(--accent2)}.feedback{margin-top:10px;padding:10px;border-radius:10px}.correct{background:var(--good)}.wrong{background:var(--bad)}
+textarea{width:100%;min-height:105px;border:1px solid var(--line);border-radius:14px;padding:12px;resize:vertical;background:#fff;font:inherit}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden}th,td{padding:11px;border:1px solid var(--line);text-align:left}th{background:#eef4f2}
+#pustaka li{overflow-wrap:anywhere}
+footer{max-width:1180px;margin:auto;padding:35px 22px 60px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+@media(max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}.steps,.compare{grid-template-columns:minmax(0,1fr)}.head{align-items:flex-start}.school{display:none}.hero h1{font-size:42px}.section-head h2{font-size:25px}.card{padding:18px}}
+@media print{header{position:static}button,nav{display:none!important}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head"><div class="brand"><b>MATEMATIKA IX</b><span>Bangun Ruang Sisi Lengkung</span></div><div class="school">SMPN 1 Tabang · Fase D</div></div>
+  <nav aria-label="Daftar bagian materi">
+    <a href="#mulai">Mulai</a><a href="#misi">Misi</a><a href="#tabung">Tabung</a><a href="#kerucut">Kerucut</a><a href="#bola">Bola</a><a href="#jaring">Jaring-jaring</a><a href="#bukti">Asal Rumus</a><a href="#variasi">Variasi</a><a href="#eksplorasi">Eksplorasi</a><a href="#kasus">Masalah Nyata</a><a href="#latihan">Latihan</a><a href="#refleksi">Refleksi</a><a href="#pustaka">Pustaka</a>
+  </nav>
+</header>
+
+<main>
+<section id="mulai" class="hero">
+<div class="eyebrow">PEMBELAJARAN MENDALAM · MEMAHAMI → MENGAPLIKASI → MEREFLEKSI</div>
+<h1>Bangun Ruang Sisi Lengkung</h1>
+<p>Tabung, kerucut, dan bola tidak dipelajari sebagai kumpulan rumus. Kamu akan membongkar bentuknya, menemukan alasan di balik rumus, menguji dugaan melalui simulasi, lalu menggunakan matematika untuk menyelesaikan satu masalah nyata.</p>
+<div class="identity"><span class="pill">Penyusun: Herdianto Parenta</span><span class="pill">SMPN 1 Tabang</span><span class="pill">Kec. Tabang, Kab. Mamasa, Sulawesi Barat</span></div>
+<div class="call"><b>Tujuan akhir:</b> kamu mampu menjelaskan strategi penyelesaian dan mengaitkan hasil perhitungan dengan keputusan pada situasi nyata.</div>
+</section>
+
+<section id="misi">
+<div class="section-head"><div><div class="tag">BERKESADARAN</div><h2>Mulai dari satu misi</h2></div></div>
+<div class="card warm">
+<h3>Rancangan wadah hasil panen</h3>
+<p>Bayangkan kelompokmu diminta membantu merancang <b>wadah penyimpanan hasil panen</b>, misalnya biji kopi atau kakao, yang dapat dibuat dari bahan lembaran. Wadah harus cukup menampung hasil panen, tetapi bahan tidak boleh terbuang percuma. Sebelum memilih ukuran, kamu perlu mengetahui bentuk mana yang paling masuk akal dan mengapa.</p>
+<div class="steps">
+<div class="step"><b>1 · Prediksi</b><small>Jika jari-jari diperbesar, apa yang berubah pada kapasitas dan kebutuhan bahan?</small></div>
+<div class="step"><b>2 · Selidiki</b><small>Bongkar jaring-jaring dan temukan asal rumus.</small></div>
+<div class="step"><b>3 · Putuskan</b><small>Pilih rancangan berdasarkan bukti matematika, bukan tebakan.</small></div>
+</div>
+<h3>Pertanyaan awal</h3>
+<ul><li>Jika hanya tinggi wadah yang dijadikan dua kali semula (jari-jari tetap), apa yang terjadi pada kapasitasnya?</li><li>Jika semua ukuran wadah dijadikan dua kali semula, apakah kapasitasnya juga menjadi dua kali? Mengapa?</li><li>Mengapa luas permukaan dan volume tidak berubah dengan cara yang sama?</li><li>Mengapa kerucut dengan alas dan tinggi sama hanya memiliki sepertiga volume tabung?</li></ul>
+<textarea id="prediksi" placeholder="Tuliskan dugaanmu sebelum memulai..." aria-label="Dugaan awal"></textarea>
+</div>
+</section>
+
+<section>
+<div class="section-head"><div><div class="tag">PETA TUJUAN</div><h2>Apa yang akan kamu kuasai?</h2></div></div>
+<div class="grid">
+<div class="card"><h3>TPK 1 · Jaring-jaring & luas permukaan</h3><p>Mengidentifikasi dan merepresentasikan unsur tabung dan kerucut, membuat jaring-jaring, serta merumuskan dan menghitung luas permukaan dalam konteks wadah penyimpanan dan kemasan.</p><b>Profil:</b> Penalaran Kritis · Kreativitas · Kolaborasi · Komunikasi</div>
+<div class="card"><h3>TPK 2 · Volume & kapasitas</h3><p>Merumuskan dan menghitung volume tabung dan kerucut, menganalisis hubungan tabung = 3 × kerucut untuk alas-tinggi sama, lalu menerapkannya pada kapasitas tampung.</p><b>Profil:</b> Penalaran Kritis · Kreativitas · Kemandirian · Komunikasi</div>
+<div class="card"><h3>TPK 3 · Bola, variasi bentuk & perubahan ukuran</h3><p>Merumuskan luas permukaan dan volume bola, menyelesaikan variasi bentuk (tanpa tutup, setengah bola, gabungan, dilebur), menganalisis pengaruh perubahan jari-jari, lalu menggunakan ketiga bangun dalam masalah kontekstual.</p><b>Profil:</b> Penalaran Kritis · Komunikasi · Kemandirian · Kolaborasi</div>
+<div class="card"><h3>Alur pengalaman</h3><p><b>Memahami</b> bentuk dan alasan rumus → <b>Mengaplikasi</b> pada variasi bentuk dan satu kasus → <b>Merefleksi</b> strategi, bukti, dan keputusan.</p></div>
+</div>
+</section>
+
+<section id="tabung">
+<div class="section-head"><div><div class="tag">MEMAHAMI · TABUNG</div><h2>Tabung: mengenali bentuk sebelum menghitung</h2></div></div>
+<div class="grid">
+<div class="card">
+<h3>1. Apa yang dimaksud tabung?</h3>
+<p>Tabung adalah bangun ruang yang mempunyai <b>dua sisi berbentuk lingkaran yang sama besar dan sejajar</b>. Kedua lingkaran itu disebut alas dan tutup. Bagian yang menghubungkan keduanya disebut <b>selimut tabung</b>.</p>
+<p>Jika kita menggunakan kaleng, gelas berbentuk tabung, atau wadah berbentuk silinder sebagai contoh, bagian atas dan bawahnya dapat kita bayangkan sebagai dua lingkaran. Jarak tegak lurus antara kedua lingkaran itulah <b>tinggi (h)</b>.</p>
+</div>
+<div class="card svgbox">
+<svg viewBox="0 0 560 320" role="img" aria-label="Ilustrasi tabung dengan jari-jari dan tinggi">
+<ellipse cx="260" cy="60" rx="120" ry="34" fill="#e7f2ef" stroke="#176f63" stroke-width="3"/>
+<path d="M140 60V220C140 239 194 254 260 254S380 239 380 220V60" fill="#f9fcfb" stroke="#176f63" stroke-width="3"/>
+<ellipse cx="260" cy="220" rx="120" ry="34" fill="#e7f2ef" stroke="#176f63" stroke-width="3"/>
+<line x1="260" y1="60" x2="380" y2="60" stroke="#b45f19" stroke-width="4"/>
+<circle cx="260" cy="60" r="4" fill="#b45f19"/>
+<text x="316" y="48" fill="#b45f19" font-size="20">r</text>
+<line x1="410" y1="60" x2="410" y2="220" stroke="#17212b" stroke-width="3"/>
+<line x1="402" y1="60" x2="418" y2="60" stroke="#17212b" stroke-width="3"/>
+<line x1="402" y1="220" x2="418" y2="220" stroke="#17212b" stroke-width="3"/>
+<text x="425" y="145" font-size="20">h</text>
+<text x="205" y="292" font-size="18" fill="#176f63">dua alas lingkaran yang sama</text>
+</svg>
+</div>
+</div>
+<div class="card">
+<h3>2. Unsur-unsurnya</h3>
+<div class="compare">
+<div><b>r — jari-jari</b><span>Jarak dari pusat lingkaran ke tepinya.</span></div>
+<div><b>d — diameter</b><span>Garis yang melalui pusat dan menghubungkan dua titik pada lingkaran. d = 2r.</span></div>
+<div><b>h — tinggi</b><span>Jarak tegak lurus antara kedua alas.</span></div>
+</div>
+<div class="call"><b>Kesadaran konsep:</b> sebelum memasukkan angka ke rumus, tanyakan dahulu: “Bangunnya apa? Apa yang diketahui? Apa yang ditanyakan? Satuan apa yang digunakan?”</div>
+</div>
+</section>
+
+<section id="kerucut">
+<div class="section-head"><div><div class="tag">MEMAHAMI · KERUCUT</div><h2>Kerucut: bedakan r, h, dan s</h2></div></div>
+<div class="grid">
+<div class="card">
+<h3>Bayangkan sebuah kerucut</h3>
+<p>Kerucut mempunyai satu alas berbentuk lingkaran dan satu titik puncak. Tiga ukuran yang sering muncul adalah:</p>
+<ul><li><b>r</b> = jari-jari alas;</li><li><b>h</b> = tinggi tegak lurus dari puncak ke pusat alas;</li><li><b>s</b> = garis pelukis, yaitu garis dari puncak ke tepi alas.</li></ul>
+<div class="formula">s = √(r² + h²)</div>
+<p>Hubungan tersebut berasal dari Teorema Pythagoras pada segitiga siku-siku yang terbentuk dari r, h, dan s.</p>
+<p><b>Contoh:</b> kerucut dengan r = 5 cm dan h = 12 cm mempunyai s = √(5² + 12²) = √169 = 13 cm.</p>
+</div>
+<div class="card svgbox">
+<svg viewBox="0 0 560 360" role="img" aria-label="Ilustrasi kerucut dengan r h dan s">
+<ellipse cx="275" cy="270" rx="150" ry="43" fill="#e7f2ef" stroke="#176f63" stroke-width="3"/>
+<path d="M125 270 L275 52 L425 270" fill="#f9fcfb" stroke="#176f63" stroke-width="3"/>
+<line x1="275" y1="52" x2="275" y2="270" stroke="#17212b" stroke-width="3" stroke-dasharray="8 6"/>
+<line x1="275" y1="270" x2="425" y2="270" stroke="#b45f19" stroke-width="4"/>
+<line x1="275" y1="52" x2="425" y2="270" stroke="#9b4d27" stroke-width="4"/>
+<text x="285" y="165" font-size="20">h</text>
+<text x="340" y="288" fill="#b45f19" font-size="20">r</text>
+<text x="355" y="145" fill="#9b4d27" font-size="20">s</text>
+<text x="230" y="325" fill="#176f63" font-size="17">alas berbentuk lingkaran</text>
+</svg>
+</div>
+</div>
+<div class="card">
+<div class="mis"><b>Miskonsepsi:</b> jangan menggunakan h sebagai pengganti s pada luas selimut. Tinggi h berdiri tegak lurus terhadap alas, sedangkan s berada pada sisi miring. Jika soal hanya memberi r dan h, cari s lebih dahulu dengan Teorema Pythagoras.</div>
+</div>
+</section>
+
+<section id="bola">
+<div class="section-head"><div><div class="tag">MEMAHAMI · BOLA</div><h2>Bola: ukuran dan pengaruh perubahan jari-jari</h2></div></div>
+<div class="grid">
+<div class="card">
+<h3>Kenali ukuran bola</h3>
+<p>Bola adalah bangun ruang yang setiap titik pada permukaannya mempunyai jarak yang sama dari satu titik pusat. Jarak tersebut disebut <b>jari-jari r</b>. Diameter bola adalah 2r.</p>
+<p>Karena bola tidak memiliki alas, tutup, atau rusuk, cara berpikir kita berbeda dari tabung dan kerucut. Rumus luas permukaan dan volume bola akan kita telusuri bersama pada bagian <a href="#bukti">Asal Rumus</a> (bagian E).</p>
+</div>
+<div class="card svgbox">
+<svg viewBox="0 0 560 350" role="img" aria-label="Ilustrasi bola dengan pusat, jari-jari, dan diameter">
+<circle cx="275" cy="170" r="120" fill="#eef7f4" stroke="#176f63" stroke-width="3"/>
+<ellipse cx="275" cy="170" rx="120" ry="42" fill="none" stroke="#8aa9a3" stroke-width="2" stroke-dasharray="7 6"/>
+<line x1="155" y1="170" x2="275" y2="170" stroke="#17212b" stroke-width="2" stroke-dasharray="5 4"/>
+<line x1="275" y1="170" x2="395" y2="170" stroke="#b45f19" stroke-width="4"/>
+<circle cx="275" cy="170" r="5" fill="#b45f19"/>
+<text x="335" y="157" fill="#b45f19" font-size="20">r</text>
+<line x1="246" y1="196" x2="271" y2="175" stroke="#176f63" stroke-width="1.5"/>
+<text x="196" y="214" fill="#176f63" font-size="18">pusat</text>
+<line x1="155" y1="176" x2="155" y2="305" stroke="#9aa9b0" stroke-width="1.5" stroke-dasharray="3 4"/>
+<line x1="395" y1="176" x2="395" y2="305" stroke="#9aa9b0" stroke-width="1.5" stroke-dasharray="3 4"/>
+<line x1="155" y1="305" x2="395" y2="305" stroke="#17212b" stroke-width="2"/>
+<text x="222" y="330" font-size="17">diameter = 2r</text>
+</svg>
+</div>
+</div>
+<div class="card">
+<h3>Mengapa perubahan r sangat berpengaruh?</h3>
+<p>Bandingkan dua bola yang sebangun. Jika semua ukuran panjang diperbesar dengan faktor k, maka ukuran yang berupa luas berubah menurut k², sedangkan ukuran ruang berubah menurut k³.</p>
+<div class="compare">
+<div><b>r → 2r</b>luas permukaan menjadi 4 kali semula</div>
+<div><b>r → 2r</b>volume menjadi 8 kali semula</div>
+<div><b>Makna</b>Volume bertambah lebih cepat daripada luas permukaan.</div>
+</div>
+<p>Inilah alasan perubahan ukuran bola perlu dianalisis, bukan hanya dihitung. Kamu dapat mengujinya pada Eksplorasi C.</p>
+</div>
+</section>
+
+<section id="jaring">
+<div class="section-head"><div><div class="tag">MEMAHAMI · REPRESENTASI</div><h2>Jaring-jaring: membuka bangun untuk melihat bagian-bagiannya</h2></div></div>
+<div class="card">
+<p><b>Jaring-jaring</b> adalah susunan sisi-sisi bangun ruang yang dibuka dan diratakan pada bidang datar. Tujuannya bukan sekadar menggambar. Dengan jaring-jaring, kita dapat melihat <b>bagian mana saja yang harus dihitung</b> untuk memperoleh luas permukaan. Rumusnya kita susun pada bagian Asal Rumus.</p>
+</div>
+<div class="grid">
+<div class="card"><h3>Jaring-jaring tabung</h3>
+<div class="sequence">
+<div><b>Bayangkan tabung dipotong pada satu garis selimut.</b> Setelah dibuka, selimut dapat diratakan menjadi persegi panjang.</div>
+<div><b>Perhatikan panjang persegi panjang.</b> Jika selimut dililitkan kembali, sisi panjangnya tepat mengelilingi lingkaran. Jadi panjangnya sama dengan keliling alas, yaitu 2πr.</div>
+<div><b>Perhatikan lebarnya.</b> Lebar persegi panjang sama dengan tinggi tabung, yaitu h.</div>
+<div><b>Lengkapi dengan dua lingkaran.</b> Alas dan tutup menempel pada sisi panjang persegi panjang.</div>
+</div>
+<div class="svgbox" style="margin-top:14px"><svg viewBox="0 0 620 370" role="img" aria-label="Jaring-jaring tabung: persegi panjang dengan dua lingkaran menempel pada sisi panjangnya">
+<line x1="184.35" y1="230" x2="184.35" y2="322" stroke="#9aa9b0" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="435.65" y1="230" x2="435.65" y2="322" stroke="#9aa9b0" stroke-width="1.5" stroke-dasharray="4 4"/>
+<rect x="184.35" y="120" width="251.3" height="110" fill="#eef7f4" stroke="#176f63" stroke-width="3"/>
+<circle cx="310" cy="80" r="40" fill="#fff" stroke="#176f63" stroke-width="3"/>
+<circle cx="310" cy="270" r="40" fill="#fff" stroke="#176f63" stroke-width="3"/>
+<line x1="310" y1="80" x2="350" y2="80" stroke="#b45f19" stroke-width="3"/>
+<circle cx="310" cy="80" r="3.5" fill="#b45f19"/>
+<text x="324" y="70" fill="#b45f19" font-size="17">r</text>
+<text x="362" y="86" fill="#176f63" font-size="17">tutup</text>
+<text x="362" y="276" fill="#176f63" font-size="17">alas</text>
+<text x="310" y="182" font-size="19" text-anchor="middle">selimut</text>
+<line x1="160" y1="120" x2="160" y2="230" stroke="#17212b" stroke-width="3"/>
+<line x1="152" y1="120" x2="168" y2="120" stroke="#17212b" stroke-width="3"/>
+<line x1="152" y1="230" x2="168" y2="230" stroke="#17212b" stroke-width="3"/>
+<text x="134" y="181" font-size="20">h</text>
+<line x1="184.35" y1="330" x2="435.65" y2="330" stroke="#b45f19" stroke-width="3"/>
+<line x1="184.35" y1="322" x2="184.35" y2="338" stroke="#b45f19" stroke-width="3"/>
+<line x1="435.65" y1="322" x2="435.65" y2="338" stroke="#b45f19" stroke-width="3"/>
+<text x="310" y="358" fill="#b45f19" font-size="16" text-anchor="middle">panjang = 2πr (sama dengan keliling alas)</text>
+</svg></div>
+<p><b>Mengapa persegi panjangnya tidak boleh sembarang ukuran?</b> Karena saat digulung, panjangnya harus tepat sama dengan keliling lingkaran. Jika terlalu pendek atau terlalu panjang, selimut tidak menutup dengan tepat.</p></div>
+<div class="card"><h3>Jaring-jaring kerucut</h3>
+<div class="sequence">
+<div><b>Potong selimut kerucut dari puncak ke tepi alas.</b> Setelah diratakan, selimut berbentuk <b>juring</b> (potongan lingkaran).</div>
+<div><b>Jari-jari juring adalah garis pelukis s.</b> Titik puncak kerucut menjadi titik pusat juring.</div>
+<div><b>Busur juring sama panjang dengan keliling alas.</b> Saat digulung, busur itu menjadi tepi alas kerucut.</div>
+<div><b>Lengkapi dengan satu lingkaran.</b> Alas kerucut menempel pada busur juring.</div>
+</div>
+<div class="svgbox" style="margin-top:14px"><svg viewBox="0 0 620 300" role="img" aria-label="Jaring-jaring kerucut: juring berjari-jari s dengan lingkaran alas menempel pada busur">
+<path d="M170 150 L126.738 16.852 A140 140 0 1 1 126.738 283.148 Z" fill="#eef7f4" stroke="#176f63" stroke-width="3" stroke-linejoin="round"/>
+<path d="M126.738 16.852 A140 140 0 1 1 126.738 283.148" fill="none" stroke="#b45f19" stroke-width="5"/>
+<line x1="170" y1="150" x2="126.738" y2="16.852" stroke="#9b4d27" stroke-width="4"/>
+<circle cx="394" cy="150" r="84" fill="#fff" stroke="#176f63" stroke-width="3"/>
+<circle cx="170" cy="150" r="4" fill="#17212b"/>
+<text x="140" y="92" fill="#9b4d27" font-size="18" text-anchor="end">s = 10 cm</text>
+<text x="140" y="222" fill="#9b4d27" font-size="18" text-anchor="end">s</text>
+<text x="245" y="140" fill="#176f63" font-size="14" text-anchor="middle">selimut (juring)</text>
+<text x="245" y="162" fill="#17212b" font-size="14" text-anchor="middle">sudut = 216°</text>
+<text x="394" y="146" fill="#176f63" font-size="16" text-anchor="middle">alas</text>
+<text x="394" y="168" fill="#17212b" font-size="16" text-anchor="middle">r = 6 cm</text>
+<text x="330" y="280" fill="#b45f19" font-size="15">busur (oranye) = keliling alas = 2πr</text>
+</svg></div>
+<p>Pada gambar, kerucut berukuran r = 6 cm dan s = 10 cm. Busurnya sepanjang 2π × 6 = 12π cm, sedangkan lingkaran penuh berjari-jari 10 cm berkeliling 20π cm. Jadi juring itu hanya 12π ÷ 20π = 0,6 atau 3/5 bagian lingkaran, yaitu 0,6 × 360° = 216°.</p></div>
+</div>
+</section>
+
+<section id="bukti">
+<div class="section-head"><div><div class="tag">MEMAHAMI · ASAL-USUL RUMUS</div><h2>Ikuti alasan dari bentuk sampai rumus</h2></div></div>
+<div class="card">
+<h3>A. Luas permukaan tabung</h3>
+<p>Kita tidak mulai dari rumus. Kita mulai dari jaring-jaring. Jaring-jaring tabung memiliki <b>dua lingkaran</b> dan <b>satu persegi panjang</b>.</p>
+<p>Luas satu lingkaran adalah πr². Karena ada dua, luas kedua alas adalah 2πr².</p>
+<p>Selimut berbentuk persegi panjang. Panjangnya sama dengan keliling lingkaran, yaitu 2πr, dan lebarnya h. Maka:</p>
+<div class="formula">L<sub>selimut</sub> = 2πr × h = 2πrh</div>
+<p>Gabungkan semuanya:</p>
+<div class="formula">LP<sub>tabung</sub> = 2πr² + 2πrh</div>
+<div class="call"><b>Makna rumus:</b> suku 2πr² berasal dari dua alas; suku 2πrh berasal dari selimut. Jika kamu lupa rumus, kamu masih dapat membangunnya kembali.</div>
+</div>
+<div class="grid">
+<div class="card">
+<h3>B. Volume tabung</h3>
+<p>Bayangkan tabung sebagai tumpukan sangat banyak lapisan tipis. Setiap lapisan memiliki luas yang sama dengan luas alas, yaitu πr². Jika tinggi seluruh tumpukan h, maka banyaknya “lapisan” sebanding dengan h.</p>
+<p>Karena itu volume dapat dipahami sebagai <b>luas alas × tinggi</b>:</p>
+<div class="formula">V<sub>tabung</sub> = πr²h</div>
+<p>Perhatikan bedanya: luas permukaan berbicara tentang <b>bahan yang menutupi bagian luar</b>, sedangkan volume berbicara tentang <b>ruang yang dapat diisi</b>.</p>
+</div>
+<div class="card">
+<h3>C. Luas permukaan kerucut</h3>
+<p>Dari jaring-jaring, selimut kerucut adalah juring berjari-jari s dengan busur sepanjang 2πr. Juring ini hanya sebagian dari lingkaran penuh berjari-jari s, yang kelilingnya 2πs.</p>
+<div class="sequence">
+<div>Bagian lingkaran yang diambil: <b>2πr ÷ 2πs = r/s</b>.</div>
+<div>Luas lingkaran penuh berjari-jari s adalah <b>πs²</b>.</div>
+<div>Luas juring = <b>(r/s) × πs² = πrs</b>.</div>
+</div>
+<div class="formula">L<sub>selimut</sub> = πrs</div>
+<p>Tambahkan luas alas πr²:</p>
+<div class="formula">LP<sub>kerucut</sub> = πr² + πrs = πr(r + s)</div>
+<p><b>Contoh</b> r = 6 cm, s = 10 cm: L<sub>selimut</sub> = π × 6 × 10 = 60π cm², LP = π × 6 × (6 + 10) = 96π cm².</p>
+</div>
+</div>
+<div class="card">
+<h3>D. Mengapa volume kerucut ⅓ volume tabung?</h3>
+<p><b>Aktivitas bersama kelompok:</b> buat sebuah kerucut dan sebuah tabung tanpa tutup dari karton, dengan <b>alas yang sama</b> dan <b>tinggi yang sama</b>. Isi kerucut sampai penuh dengan beras atau pasir kering, lalu tuang ke tabung. Ulangi. Setelah <b>tiga kali</b> tuang, tabung penuh.</p>
+<p>Percobaan itu menunjukkan hubungan volume ketika alas dan tinggi sama:</p>
+<div class="formula">V<sub>kerucut</sub> = ⅓V<sub>tabung</sub></div>
+<p>Karena V<sub>tabung</sub> = πr²h, maka:</p>
+<div class="formula">V<sub>kerucut</sub> = ⅓πr²h</div>
+<div class="call"><b>Perhatikan syaratnya.</b> Angka ⅓ bukan muncul karena “kerucut selalu lebih kecil”. Ia berlaku hanya untuk perbandingan dengan tabung yang alas dan tingginya sama. Buktikan sendiri pada Eksplorasi B dengan mengubah ukuran tabung pembanding.</div>
+</div>
+<div class="card">
+<h3>E. Mengapa bola memakai r² untuk luas dan r³ untuk volume?</h3>
+<div class="grid" style="margin-bottom:0">
+<div>
+<p>Bayangkan sebuah bola tepat masuk ke dalam tabung. Jari-jari tabung sama dengan jari-jari bola (r), dan tingginya sama dengan diameter bola (2r). Ahli matematika Yunani, Archimedes, menemukan dua hubungan istimewa antara bola dan tabung pembungkusnya:</p>
+<div class="sequence">
+<div><b>Volume bola</b> sama dengan <b>⅔ volume tabung</b> pembungkusnya.</div>
+<div><b>Luas permukaan bola</b> sama dengan <b>luas selimut tabung</b> pembungkusnya.</div>
+</div>
+</div>
+<div class="svgbox"><svg viewBox="0 0 560 300" role="img" aria-label="Bola tepat di dalam tabung dengan jari-jari r dan tinggi 2r">
+<ellipse cx="250" cy="50" rx="90" ry="24" fill="#e7f2ef" stroke="#176f63" stroke-width="3"/>
+<path d="M160 50V230C160 243 200 254 250 254S340 243 340 230V50" fill="none" stroke="#176f63" stroke-width="3"/>
+<ellipse cx="250" cy="230" rx="90" ry="24" fill="none" stroke="#176f63" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="250" cy="140" r="90" fill="#eef7f4" fill-opacity=".85" stroke="#b45f19" stroke-width="3"/>
+<line x1="250" y1="140" x2="340" y2="140" stroke="#b45f19" stroke-width="4"/>
+<circle cx="250" cy="140" r="4" fill="#b45f19"/>
+<text x="289" y="130" fill="#b45f19" font-size="20">r</text>
+<line x1="378" y1="50" x2="378" y2="230" stroke="#17212b" stroke-width="3"/>
+<line x1="370" y1="50" x2="386" y2="50" stroke="#17212b" stroke-width="3"/>
+<line x1="370" y1="230" x2="386" y2="230" stroke="#17212b" stroke-width="3"/>
+<text x="394" y="146" font-size="20">h = 2r</text>
+<text x="250" y="288" font-size="16" fill="#176f63" text-anchor="middle">bola tepat di dalam tabung</text>
+</svg></div>
+</div>
+<p style="margin-top:16px">Gunakan hubungan itu. Volume tabung pembungkus adalah πr² × 2r = 2πr³, sehingga:</p>
+<div class="formula">V<sub>bola</sub> = ⅔ × 2πr³ = ⁴⁄₃πr³</div>
+<p>Luas selimut tabung pembungkus adalah 2πr × 2r = 4πr², sehingga:</p>
+<div class="formula">LP<sub>bola</sub> = 4πr²</div>
+<div class="call"><b>Uji alasan:</b> luas dihitung dari dua ukuran panjang (r × r), maka muncul r². Volume dihitung dari tiga ukuran panjang (r × r × r), maka muncul r³. Itu sebabnya, jika r menjadi 2r, luas menjadi 2² = 4 kali dan volume menjadi 2³ = 8 kali. Pembuktian lengkap kedua hubungan Archimedes dipelajari pada jenjang berikutnya.</div>
+</div>
+</section>
+
+<section id="variasi">
+<div class="section-head"><div><div class="tag">MENGAPLIKASI · VARIASI BENTUK</div><h2>Bagaimana jika bentuknya tidak utuh?</h2></div></div>
+<div class="card warm">
+<p>Soal tidak selalu memakai bangun yang utuh. Gunakan empat pertanyaan ini sebelum menghitung:</p>
+<div class="sequence">
+<div><b>Bagian apa saja yang ada?</b> Apakah tutup ada? Apakah bolanya utuh atau setengah?</div>
+<div><b>Bagian mana yang tampak di luar?</b> Luas permukaan hanya menghitung bagian luar. Bidang yang menyatu atau tertutup tidak dihitung.</div>
+<div><b>Apa yang ditanyakan?</b> Bahan (luas permukaan), kapasitas (volume), atau keduanya?</div>
+<div><b>Apa yang tetap?</b> Jika benda dilebur dan dicetak ulang, bentuk berubah tetapi banyaknya bahan (volume) tetap.</div>
+</div>
+</div>
+<div class="grid">
+<div class="card">
+<h3>1. Tabung tanpa tutup</h3>
+<p>Hanya ada satu alas, jadi suku alasnya tidak dikali dua:</p>
+<div class="formula">LP = πr² + 2πrh</div>
+<p><b>Contoh:</b> wadah nira tanpa tutup berdiameter 20 cm dan tinggi 25 cm (π = 3,14). Jari-jarinya 10 cm.</p>
+<p>LP = 3,14 × 10² + 2 × 3,14 × 10 × 25 = 314 + 1.570 = <b>1.884 cm²</b>.</p>
+</div>
+<div class="card">
+<h3>2. Setengah bola pejal</h3>
+<p>Ada permukaan lengkung (setengah dari 4πr²) dan satu bidang datar berbentuk lingkaran:</p>
+<div class="formula">LP = 2πr² + πr² = 3πr²</div>
+<div class="formula">V = ½ × ⁴⁄₃πr³ = ⅔πr³</div>
+<p><b>Contoh:</b> r = 9 cm (π = 3,14). LP = 3 × 3,14 × 81 = <b>763,02 cm²</b> dan V = ⅔ × 3,14 × 729 = <b>1.526,04 cm³</b>.</p>
+<div class="mis"><b>Hati-hati:</b> untuk mangkuk setengah bola yang terbuka, bidang datarnya tidak ada. Luas bahan hanya 2πr².</div>
+</div>
+<div class="card">
+<h3>3. Bangun gabungan</h3>
+<p>Pisahkan menjadi bangun-bangun yang dikenal. <b>Volume</b> dijumlahkan. Pada <b>luas permukaan</b>, bidang yang menyatu tidak ikut dihitung.</p>
+<p><b>Contoh:</b> tabung (r = 3 cm, h = 8 cm) yang ditutup setengah bola berjari-jari sama (π = 3,14).</p>
+<p>V = πr²h + ⅔πr³ = 226,08 + 56,52 = <b>282,6 cm³</b>.</p>
+<p>LP = alas tabung + selimut tabung + permukaan setengah bola = 28,26 + 150,72 + 56,52 = <b>235,5 cm²</b>. Tutup tabung tidak dihitung karena menyatu dengan setengah bola.</p>
+</div>
+<div class="card">
+<h3>4. Dilebur dan dicetak ulang</h3>
+<p><b>Yang tetap adalah volume.</b> Bentuk dan luas permukaan boleh berubah.</p>
+<p><b>Contoh:</b> bola logam berjari-jari 3 cm dilebur lalu dicetak menjadi tabung berjari-jari 3 cm. Berapa tingginya?</p>
+<p>V<sub>bola</sub> = ⁴⁄₃π × 3³ = 36π cm³. Maka πr²h = π × 9 × h = 36π, sehingga h = <b>4 cm</b>. Nilai π saling meniadakan, jadi tidak perlu dihitung.</p>
+<p>Luas permukaan berubah: bola 4π × 3² = 36π cm², tabung tertutup 2π × 3² + 2π × 3 × 4 = 42π cm².</p>
+</div>
+</div>
+</section>
+
+<section id="eksplorasi">
+<div class="section-head"><div><div class="tag">MENGAPLIKASI · EKSPLORASI</div><h2>Uji dugaanmu dengan simulator</h2></div></div>
+<div class="grid">
+<div class="card"><h3>Eksplorasi A · Tabung</h3>
+<div class="control"><label for="r">r (cm)<span id="rv">7</span></label><input id="r" type="range" min="2" max="20" value="7"></div>
+<div class="control"><label for="h">h (cm)<span id="hv">22</span></label><input id="h" type="range" min="5" max="40" value="22"></div>
+<div class="control"><label for="pi">Nilai π</label><select id="pi"><option value="3.14">3,14</option><option value="22/7">22/7</option><option value="PI">π</option></select></div>
+<div class="out" id="tabOut" aria-live="polite"></div><p class="muted" id="piNote"></p></div>
+<div class="card"><h3>Eksplorasi B · Kerucut vs tabung</h3>
+<div class="control"><label for="kr">Kerucut: r (cm)<span id="krv">6</span></label><input id="kr" type="range" min="2" max="15" value="6"></div>
+<div class="control"><label for="kh">Kerucut: h (cm)<span id="khv">12</span></label><input id="kh" type="range" min="2" max="30" value="12"></div>
+<label class="chk" for="samaCone"><input type="checkbox" id="samaCone" checked> Tabung pembanding memakai alas dan tinggi yang sama dengan kerucut</label>
+<div class="control"><label for="tr">Tabung: r (cm)<span id="trv">6</span></label><input id="tr" type="range" min="2" max="15" value="6" disabled></div>
+<div class="control"><label for="th">Tabung: h (cm)<span id="thv">12</span></label><input id="th" type="range" min="2" max="30" value="12" disabled></div>
+<div class="out" id="coneOut" aria-live="polite"></div><p class="muted">Hilangkan centang, ubah ukuran tabung, lalu amati kapan rasionya tidak lagi ⅓.</p></div>
+<div class="card"><h3>Eksplorasi C · Bola</h3>
+<div class="control"><label for="br">r (cm)<span id="brv">5</span></label><input id="br" type="range" min="1" max="15" value="5"></div>
+<div class="control"><label for="bk">Faktor pembesaran k<span id="bkv">2</span></label><input id="bk" type="range" min="1" max="4" step="0.5" value="2"></div>
+<div class="out" id="ballOut" aria-live="polite"></div><p class="muted">Bandingkan perubahan luas permukaan dengan k², dan perubahan volume dengan k³.</p></div>
+</div>
+</section>
+
+<section id="kasus">
+<div class="section-head"><div><div class="tag">MENGAPLIKASI · MASALAH KONTEKSTUAL</div><h2>Dari rumus menuju keputusan nyata</h2></div></div>
+<div class="card warm">
+<h3>Misi: merancang wadah penyimpanan hasil panen</h3>
+<p>Bayangkan sebuah kelompok di Tabang akan membuat wadah berbentuk <b>tabung tertutup</b> dari lembaran bahan untuk menyimpan biji kopi atau kakao. Wadah harus menampung sedikitnya <b>80 liter</b>. Rancangan awal memiliki <b>r = 35 cm</b> dan <b>h = 26 cm</b>. Gunakan π = 22/7 dan abaikan bahan untuk sambungan atau lipatan.</p>
+<div class="call"><b>Masalahnya bukan sekadar “hitung volume”.</b> Kamu harus menentukan apakah kapasitasnya cukup, mengetahui berapa bahan yang diperlukan, lalu menilai apakah perubahan ukuran benar-benar membuat rancangan lebih baik.</div>
+</div>
+<div class="grid">
+<div class="card"><h3>Langkah A — Pahami kebutuhan</h3>
+<p>Ubah 80 liter menjadi cm³ karena ukuran r dan h dinyatakan dalam cm. Ingat bahwa 1 liter = 1 dm³ = 1.000 cm³.</p><div class="formula">80 liter = 80.000 cm³</div>
+<p>Artinya, volume wadah harus paling sedikit 80.000 cm³.</p></div>
+<div class="card"><h3>Langkah B — Bentuk model matematika</h3>
+<p>Karena wadah berbentuk tabung, gunakan:</p><div class="formula">V = πr²h</div>
+<p>Untuk bahan lembaran yang menutup seluruh wadah, gunakan:</p><div class="formula">LP = 2πr² + 2πrh</div></div>
+<div class="card"><h3>Langkah C — Hitung dan tafsirkan</h3>
+<p>Dengan r = 35 cm dan h = 26 cm:</p><div class="formula">V = 22/7 × 35² × 26 = 100.100 cm³</div><p>Jadi kapasitas = <b>100,1 liter</b>. Kebutuhan 80 liter terpenuhi.</p><p>Luas bahan tertutup = <b>13.420 cm²</b>.</p></div>
+</div>
+<div class="card">
+<h3>Langkah D — Jangan berhenti pada jawaban</h3>
+<p>Apakah rancangan perlu diperbesar? Belum tentu. Jika kapasitas sudah melebihi kebutuhan, memperbesar ukuran dapat menambah bahan yang diperlukan. Sekarang cari alternatif yang masih memenuhi 80 liter, lalu bandingkan luas permukaannya dengan rancangan awal.</p>
+<div class="grid"><div class="control"><label for="ar">r alternatif (cm) <span id="arv">35</span></label><input id="ar" type="range" min="20" max="45" value="35"></div><div class="control"><label for="ah">h alternatif (cm) <span id="ahv">26</span></label><input id="ah" type="range" min="15" max="60" value="26"></div></div>
+<div class="out" id="altOut" aria-live="polite"></div>
+<textarea id="decision" aria-label="Keputusan rancangan" placeholder="Tuliskan: ukuran alternatif yang kamu pilih, kapasitasnya, luas bahan yang diperlukan, dan alasan mengapa pilihanmu lebih/kurang baik daripada rancangan awal."></textarea>
+<div class="call"><b>Pengayaan:</b> untuk kapasitas tertentu, bahan paling hemat diperoleh ketika tinggi wadah mendekati dua kali jari-jarinya (h ≈ 2r). Perhatikan angka “h ÷ r” pada simulator. Dapatkah kamu menemukan rancangan yang mendekati kondisi itu dan masih memenuhi 80 liter?</div>
+</div>
+<div class="card">
+<h3>Bagaimana kerucut dan bola ikut membantu?</h3>
+<p>Bayangkan bagian atas wadah diganti tutup kerucut. Luas selimut kerucut (πrs) dapat digunakan untuk memperkirakan bahan penutup. Bayangkan pula sebuah bola digunakan sebagai pelampung indikator. Jika jari-jarinya diperbesar dua kali, luas permukaan menjadi 4 kali dan volumenya menjadi 8 kali.</p>
+<p>Dengan demikian, ketiga bangun bukan tiga bab yang terpisah. Semuanya dapat digunakan untuk <b>memodelkan benda, menghitung kebutuhan, membandingkan pilihan, dan mengambil keputusan</b>.</p>
+</div>
+</section>
+
+<section id="latihan">
+<div class="section-head"><div><div class="tag">LATIHAN · BERTAHAP</div><h2>Buktikan pemahamanmu</h2><p class="muted">Mulailah dari soal pemahaman dasar. Setelah itu lanjutkan ke penerapan dan penalaran. Jika salah, baca alasan pada pembahasan lalu coba lagi.</p></div></div>
+<div id="quiz"></div>
+<button type="button" onclick="checkQuiz()">Periksa jawaban</button>
+<span id="score" aria-live="polite" style="margin-left:12px;font-weight:800"></span>
+</section>
+
+<section id="refleksi">
+<div class="section-head"><div><div class="tag">MEREFLEKSI</div><h2>Kembali pada proses berpikirmu</h2></div></div>
+<div class="card">
+<p><b>1.</b> Apa dugaan awalmu yang berubah setelah eksplorasi?</p><textarea aria-label="Refleksi 1"></textarea>
+<p><b>2.</b> Bukti matematika apa yang paling meyakinkanmu?</p><textarea aria-label="Refleksi 2"></textarea>
+<p><b>3.</b> Strategi apa yang kamu gunakan ketika menyelesaikan masalah wadah?</p><textarea aria-label="Refleksi 3"></textarea>
+<p><b>4.</b> Jika masalah yang sama diberikan dengan ukuran berbeda, bagian mana dari strategimu yang tetap dan mana yang berubah?</p><textarea aria-label="Refleksi 4"></textarea>
+<p><b>5.</b> Jelaskan dengan bahasamu sendiri mengapa rumus tidak cukup hanya dihafalkan untuk menyelesaikan masalah nyata.</p><textarea aria-label="Refleksi 5"></textarea>
+</div>
+</section>
+
+<section id="pustaka">
+<div class="section-head"><div><div class="tag">PUSTAKA</div><h2>Sumber belajar</h2></div></div>
+<div class="card">
+<ol>
+<li><b>Setiyani, Ari; Kustiana, Yudi; Wantini, Sri; Wibowo, Setiawan Agung; Sugeng, Kiki Ariyanti; Susanto, Dicky.</b> (2025). <i>Panduan Mata Pelajaran Matematika: Fase A–F dan Fase Tingkat Lanjut</i>. Badan Standar, Kurikulum, dan Asesmen Pendidikan. Digunakan sebagai acuan pendekatan Pembelajaran Mendalam dan arah pembelajaran matematika.</li>
+<li><b>Peraturan Menteri Pendidikan Dasar dan Menengah Nomor 10 Tahun 2025</b> tentang Standar Kompetensi Lulusan. Digunakan sebagai acuan nama dimensi Profil Lulusan.</li>
+<li><b>ATP Matematika Fase D – Hasil Revisi Kurikulum Merdeka & Deep Learning.</b> ATP proyek SMPN 1 Tabang. Digunakan sebagai acuan TP/TPK, konteks lokal, dimensi profil lulusan, dan urutan materi Bangun Ruang Sisi Lengkung.</li>
+<li><b>OpenStax.</b> (2020). <i>Prealgebra 2e, Section 9.6: Solve Geometry Applications: Volume and Surface Area</i>. openstax.org/books/prealgebra/pages/9-6-solve-geometry-applications-volume-and-surface-area. Digunakan untuk verifikasi rumus dan aplikasi volume/luas permukaan.</li>
+<li><b>Khan Academy.</b> <i>Volume and Surface Area</i>. khanacademy.org (materi daring, diakses November 2026). Digunakan sebagai sumber pengayaan untuk eksplorasi volume dan luas permukaan.</li>
+</ol>
+</div>
+</section>
+</main>
+<footer>
+<b>Matematika IX · Bangun Ruang Sisi Lengkung</b><br>
+Penyusun Herdianto Parenta · SMPN 1 Tabang · Kecamatan Tabang · Kabupaten Mamasa · Sulawesi Barat · Versi 8
+</footer>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+function piVal(){return $("pi").value==="3.14"?3.14:$("pi").value==="22/7"?22/7:Math.PI}
+function fmt(n){return n.toLocaleString("id-ID",{maximumFractionDigits:2})}
+function updateTab(){
+ const r=+$("r").value,h=+$("h").value,p=piVal();
+ $("rv").textContent=r;$("hv").textContent=h;
+ $("tabOut").innerHTML=`<strong>Volume = ${fmt(p*r*r*h)} cm³</strong><br>Luas permukaan tertutup = ${fmt(2*p*r*r+2*p*r*h)} cm²`;
+ $("piNote").textContent=`π yang digunakan = ${p.toLocaleString("id-ID",{maximumFractionDigits:6})}`;
+}
+function updateCone(){
+ const r=+$("kr").value,h=+$("kh").value,p=Math.PI,s=Math.sqrt(r*r+h*h),same=$("samaCone").checked;
+ if(same){$("tr").value=r;$("th").value=h}
+ $("tr").disabled=same;$("th").disabled=same;
+ const tr=+$("tr").value,th=+$("th").value;
+ $("krv").textContent=r;$("khv").textContent=h;$("trv").textContent=tr;$("thv").textContent=th;
+ const vc=p*r*r*h/3,vt=p*tr*tr*th,ratio=vc/vt,identik=(tr===r&&th===h),third=Math.abs(ratio-1/3)<1e-9;
+ const verdict=identik?"= ⅓ — alas dan tinggi sama":(third?"= ⅓ secara kebetulan: r²h kedua bangun sama, tetapi alas dan tinggi berbeda":"≠ ⅓ — alas atau tinggi berbeda");
+ $("coneOut").innerHTML=`<strong>s = ${fmt(s)} cm</strong> · luas selimut = ${fmt(p*r*s)} cm² · luas permukaan = ${fmt(p*r*(r+s))} cm²<br>V kerucut = ${fmt(vc)} cm³<br>V tabung pembanding = ${fmt(vt)} cm³<br>Rasio V kerucut : V tabung = <strong>${ratio.toLocaleString("id-ID",{minimumFractionDigits:3,maximumFractionDigits:3})}</strong> ${verdict}`;
+}
+function updateBall(){
+ const r=+$("br").value,k=+$("bk").value,p=Math.PI,r2=r*k;
+ const lp0=4*p*r*r,v0=4*p*r*r*r/3,lp1=4*p*r2*r2,v1=4*p*r2*r2*r2/3;
+ $("brv").textContent=r;$("bkv").textContent=fmt(k);
+ $("ballOut").innerHTML=`Bola awal (r = ${fmt(r)} cm): LP = ${fmt(lp0)} cm², V = ${fmt(v0)} cm³<br>Bola baru (r = ${fmt(r2)} cm): LP = ${fmt(lp1)} cm², V = ${fmt(v1)} cm³<br><strong>LP menjadi ${fmt(lp1/lp0)} kali</strong> (k² = ${fmt(k*k)}) · <strong>V menjadi ${fmt(v1/v0)} kali</strong> (k³ = ${fmt(k*k*k)})`;
+}
+const LP_AWAL=2*(22/7)*35*35+2*(22/7)*35*26;
+function updateAlt(){
+ const r=+$("ar").value,h=+$("ah").value,p=22/7,v=p*r*r*h,lp=2*p*r*r+2*p*r*h,ok=v>=80000,d=lp-LP_AWAL;
+ $("arv").textContent=r;$("ahv").textContent=h;
+ const banding=!ok?"":(Math.abs(d)<0.5?"Luas bahan sama dengan rancangan awal.":(d<0?`Lebih hemat ${fmt(-d)} cm² daripada rancangan awal.`:`Lebih boros ${fmt(d)} cm² daripada rancangan awal.`));
+ $("altOut").innerHTML=`Volume = <strong>${fmt(v)} cm³ = ${fmt(v/1000)} liter</strong><br>Luas permukaan = <strong>${fmt(lp)} cm²</strong> · h ÷ r = ${fmt(h/r)}<br>${ok?"✓ Memenuhi kapasitas minimal 80 liter. "+banding:"✗ Belum memenuhi kapasitas minimal 80 liter"}`;
+}
+["r","h","pi"].forEach(id=>$(id).addEventListener(id==="pi"?"change":"input",updateTab));
+["kr","kh","tr","th"].forEach(id=>$(id).addEventListener("input",updateCone));
+$("samaCone").addEventListener("change",updateCone);
+["br","bk"].forEach(id=>$(id).addEventListener("input",updateBall));
+["ar","ah"].forEach(id=>$(id).addEventListener("input",updateAlt));
+const qs=[
+{lv:"Mengetahui",q:"Jaring-jaring tabung terdiri atas ...",o:["dua lingkaran dan satu persegi panjang","satu lingkaran dan satu segitiga","dua persegi panjang dan satu lingkaran","satu juring dan satu lingkaran"],a:0,e:"Dua alas berbentuk lingkaran dan satu selimut berbentuk persegi panjang."},
+{lv:"Mengetahui",q:"Rumus volume tabung adalah ...",o:["2πr²h","πrh²","πr²h","2πrh"],a:2,e:"Volume = luas alas × tinggi = πr²h."},
+{lv:"Mengetahui",q:"Garis pelukis kerucut biasanya dilambangkan ...",o:["r","h","s","d"],a:2,e:"s menyatakan garis pelukis."},
+{lv:"Menerapkan",q:"Tabung r = 7 cm dan h = 10 cm. Dengan π = 22/7, volumenya ...",o:["1.540 cm³","1.400 cm³","1.070 cm³","770 cm³"],a:0,e:"V = 22/7 × 49 × 10 = 1.540 cm³."},
+{lv:"Menerapkan",q:"Kerucut r = 6 cm dan h = 8 cm. Garis pelukisnya ...",o:["8 cm","10 cm","12 cm","14 cm"],a:1,e:"s = √(6²+8²) = √100 = 10 cm."},
+{lv:"Menerapkan",q:"Bola berjari-jari 3 cm. Jika r menjadi 6 cm, volume menjadi ...",o:["2 kali","4 kali","6 kali","8 kali"],a:3,e:"Volume bola berbanding r³. Faktor 2 memberi faktor 2³ = 8."},
+{lv:"Menerapkan",q:"Sebuah ember berbentuk tabung tanpa tutup memiliki r = 7 cm dan h = 10 cm. Dengan π = 22/7, luas bahan untuk membuat ember adalah ...",o:["748 cm²","594 cm²","440 cm²","1.540 cm²"],a:1,e:"Tanpa tutup: LP = πr² + 2πrh = 154 + 440 = 594 cm². Angka 748 cm² adalah luas jika wadah bertutup."},
+{lv:"Menerapkan",q:"Sebuah setengah bola pejal berjari-jari 6 cm. Dengan π = 3,14, volumenya ...",o:["226,08 cm³","678,24 cm³","452,16 cm³","904,32 cm³"],a:2,e:"V = ⅔πr³ = ⅔ × 3,14 × 216 = 452,16 cm³. Angka 904,32 cm³ adalah volume bola utuh."},
+{lv:"Bernalar",q:"Sebuah tabung dibuat sehingga tingginya menjadi dua kali semula, tetapi jari-jarinya tetap. Apa yang pasti terjadi pada volumenya?",o:["Menjadi 2 kali","Menjadi 4 kali","Menjadi 8 kali","Tetap"],a:0,e:"V = πr²h; jika hanya h dikali 2, V juga dikali 2."},
+{lv:"Bernalar",q:"Mengapa pernyataan 'volume kerucut selalu sepertiga volume tabung' perlu diberi syarat?",o:["Karena π berubah","Karena kerucut tidak punya alas","Karena alas dan tinggi pembanding harus sama","Karena s harus sama dengan h"],a:2,e:"Hubungan 1/3 berlaku ketika kerucut dan tabung memiliki alas serta tinggi yang sama."},
+{lv:"Bernalar",q:"Rancangan tabung sudah memiliki kapasitas lebih dari kebutuhan. Mengapa memperbesar ukuran belum tentu menjadi keputusan yang baik?",o:["Karena volume tidak bisa berubah","Karena bahan dan luas permukaan juga berubah","Karena tabung tidak bisa diperbesar","Karena π menjadi lebih kecil"],a:1,e:"Perubahan ukuran memengaruhi kapasitas sekaligus kebutuhan bahan; keputusan harus mempertimbangkan keduanya."},
+{lv:"Bernalar",q:"Sebuah bola logam dilebur lalu dicetak menjadi sebuah tabung. Besaran yang pasti tetap sama adalah ...",o:["luas permukaan","volume","jari-jari","tinggi"],a:1,e:"Peleburan hanya mengubah bentuk, bukan banyaknya logam. Karena itu volume tetap, sedangkan luas permukaan umumnya berubah."}
+];
+const quiz=$("quiz");
+qs.forEach((x,i)=>{
+ const div=document.createElement("div");div.className="quiz-q";div.dataset.ans=x.a;
+ div.innerHTML=`<h4>${i+1}. <span class="pill">${x.lv}</span> ${x.q}</h4><div class="opts">${x.o.map((v,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${v}</label>`).join("")}</div><div id="fb${i}" class="feedback" hidden></div>`;
+ quiz.appendChild(div);
+});
+window.checkQuiz=()=>{
+ let score=0,done=0;
+ qs.forEach((x,i)=>{
+   const pick=document.querySelector(`input[name="q${i}"]:checked`),fb=$("fb"+i);
+   fb.hidden=false;
+   if(!pick){fb.className="feedback wrong";fb.innerHTML="Belum dijawab.";return}
+   done++;const ok=+pick.value===x.a;if(ok)score++;
+   fb.className="feedback "+(ok?"correct":"wrong");fb.innerHTML=(ok?"✓ Benar. ":"✗ Belum tepat. ")+x.e;
+ });
+ $("score").textContent=`Skor: ${score}/${qs.length} · Dijawab: ${done}/${qs.length}`;
+};
+updateTab();updateCone();updateBall();updateAlt();
+})();
+</script>
+<script src="../../../js/materi-latihan.js"></script>
+<script src="../../../js/materi-nav.js"></script>
+</body>
+</html>
