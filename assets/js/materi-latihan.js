@@ -10,7 +10,8 @@
     'Fungsi-Linear-dan-Grafiknya': { topik: 'fungsiLinear' },
     'Fungsi_Linear_NonLinear_Kelas_VIII': { topik: 'fungsiLinear' },
     'Populasi-dan-Sampel': { topik: 'populasiSampel' },
-    'bahan_bacaan_teknik_sampling': { topik: 'populasiSampel' }
+    'bahan_bacaan_teknik_sampling': { topik: 'populasiSampel' },
+    'Bangun_Ruang_Sisi_Lengkung_Kelas_IX': { topik: 'bangunRuangSisiLengkung' }
   };
 
   function kunci(fileUrl) {
