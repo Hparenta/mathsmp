@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manajemen Ujian - HParentaEdu CBT</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5fb;
+      color: #24334b;
+    }
+
+    header {
+      background: #174eaa;
+      color: white;
+      padding: 18px 24px;
+    }
+
+    header h2 { margin: 0 0 5px; }
+    .header-nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .header-nav a {
+      display: inline-block;
+      padding: 9px 15px;
+      border-radius: 7px;
+      background: white;
+      color: #174eaa;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .header-nav a:hover {
+      background: #e5edf9;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 25px auto;
+      padding: 0 16px;
+    }
+
+    .panel {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 14px #18345a12;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #174eaa;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field { margin-bottom: 14px; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font: inherit;
+      background: white;
+    }
+
+    textarea {
+      min-height: 75px;
+      resize: vertical;
+    }
+
+    button {
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .primary {
+      background: #174eaa;
+      color: white;
+    }
+
+    .secondary {
+      background: #e5edf9;
+      color: #174eaa;
+    }
+
+    .danger {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .question-picker {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .question-choice {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 5px;
+      border-bottom: 1px solid #e2e8f0;
+      cursor: pointer;
+    }
+
+    .question-choice:last-child { border-bottom: 0; }
+
+    .question-choice input {
+      width: auto;
+      margin-top: 3px;
+    }
+
+    .question-choice small {
+      display: block;
+      margin-top: 5px;
+      color: #64748b;
+    }
+
+    .muted {
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .exam-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .exam-card h4 {
+      margin: 0 0 10px;
+    }
+
+    .exam-meta {
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .status-draft {
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    .status-published {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status-closed {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    #message {
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 650px) {
+      .grid { grid-template-columns: 1fr; }
+      .panel { padding: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h2>HParentaEdu CBT</h2>
+  <div>Manajemen Ujian Matematika</div>
+
+  <nav class="header-nav">
+    <a href="teacher-dashboard.html">⌂ Home</a>
+    <a href="teacher-questions.html">Bank Soal</a>
+  </nav>
+</header>
+
+<main>
+  <div id="message"></div>
+
+  <section class="panel">
+    <h3 id="formTitle">Buat Ujian Baru</h3>
+
+    <form id="examForm">
+      <input type="hidden" id="examId">
+
+      <div class="field">
+        <label for="title">Nama Ujian</label>
+        <input
+          id="title"
+          required
+          maxlength="150"
+          placeholder="Contoh: Penilaian Harian Bilangan Bulat"
+        >
+      </div>
+
+      <div class="field">
+        <label for="grade">Kelas</label>
+        <select id="grade" required>
+          <option value="7">Kelas VII</option>
+          <option value="8">Kelas VIII</option>
+          <option value="9">Kelas IX</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="description">Keterangan Ujian</label>
+        <textarea
+          id="description"
+          placeholder="Keterangan atau petunjuk ujian (opsional)"
+        ></textarea>
+      </div>
+
+      <div class="field">
+        <label>Pilih Soal dari Bank Soal</label>
+        <p id="questionSelectionCount" class="muted">
+          Belum ada soal dipilih.
+        </p>
+        <div id="questionPicker" class="question-picker">
+          Memuat bank soal...
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="startAt">Tanggal dan Jam Mulai</label>
+          <input id="startAt" type="datetime-local" required>
+        </div>
+
+        <div class="field">
+          <label for="endAt">Tanggal dan Jam Berakhir</label>
+          <input id="endAt" type="datetime-local" required>
+        </div>
+
+        <div class="field">
+          <label for="durationMinutes">Durasi Ujian (menit)</label>
+          <input
+            id="durationMinutes"
+            type="number"
+            min="1"
+            max="600"
+            value="90"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="shuffleQuestions">Acak Urutan Soal</label>
+          <select id="shuffleQuestions">
+            <option value="false">Tidak</option>
+            <option value="true">Ya</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="status">Status Ujian</label>
+        <select id="status">
+          <option value="draft">Draft</option>
+          <option value="published">Terbit</option>
+          <option value="closed">Ditutup</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="primary" id="saveButton">
+          Simpan Ujian
+        </button>
+
+        <button
+          type="button"
+          class="secondary hidden"
+          id="cancelButton"
+        >
+          Batal Edit
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h3>Daftar Ujian</h3>
+
+    <input
+      id="searchInput"
+      placeholder="Cari nama ujian atau kelas..."
+    >
+
+    <p id="examCount" class="muted">Memuat daftar ujian...</p>
+    <div id="examList"></div>
+  </section>
+</main>
+
+<script type="module" src="js/teacher-exams.js"></script>
+
+</body>
+</html>

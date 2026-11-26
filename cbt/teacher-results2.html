@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hasil dan Nilai - HParentaEdu CBT</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+  <main class="dashboard-container">
+
+    <header class="dashboard-header">
+      <div>
+        <h1>Hasil dan Nilai</h1>
+        <p>Rekap hasil ujian peserta didik</p>
+      </div>
+
+      <a href="teacher-dashboard.html" class="menu-item">
+        Kembali ke Dashboard
+      </a>
+    </header>
+
+    <section class="dashboard-section">
+      <h2>Pilih Ujian</h2>
+
+      <select id="examSelect">
+        <option value="">Memuat daftar ujian...</option>
+      </select>
+    </section>
+
+    <section class="dashboard-section">
+      <h2>Rekap Nilai</h2>
+
+      <div id="resultsMessage">
+        Pilih ujian untuk melihat hasil dan nilai siswa.
+      </div>
+
+      <div id="resultsSummary"></div>
+
+      <div style="overflow-x:auto;">
+        <table id="resultsTable" style="width:100%; display:none;">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Nama Siswa</th>
+              <th>NIS</th>
+              <th>Kelas</th>
+              <th>Nilai</th>
+              <th>Benar</th>
+              <th>Salah</th>
+              <th>Tidak Dijawab</th>
+              <th>Waktu Pengumpulan</th>
+            </tr>
+          </thead>
+
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/teacher-results.js"></script>
+
+</body>
+</html>

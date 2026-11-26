@@ -1,0 +1,169 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f0ff, #f4f7fb);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 35px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  text-align: center;
+  color: #174ea6;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #d5dce5;
+  border-radius: 8px;
+  font-size: 15px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #174ea6;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #123d82;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#message {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #c62828;
+}
+
+.footer {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  margin-top: 25px;
+}
+
+/* =========================
+   DASHBOARD SISWA
+========================= */
+
+.dashboard-page {
+  display: block;
+  min-height: 100vh;
+  padding: 25px;
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  background: #174ea6;
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+  color: white;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.dashboard-card h2 {
+  color: #174ea6;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.dashboard-info {
+  color: #555;
+  line-height: 1.8;
+}
+
+.logout-button {
+  background: #c62828;
+  max-width: 150px;
+}
+
+.logout-button:hover {
+  background: #a51f1f;
+}
+
+@media (max-width: 600px) {
+  .dashboard-page {
+    padding: 15px;
+  }
+
+  .dashboard-header,
+  .dashboard-card {
+    padding: 20px;
+  }
+}

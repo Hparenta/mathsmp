@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Soal - HParentaEdu CBT</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5fb;
+      color: #24334b;
+    }
+    header {
+      background: #174eaa;
+      color: white;
+      padding: 18px 24px;
+    }
+    header h2 { margin: 0 0 5px; }
+    main {
+      max-width: 1100px;
+      margin: 25px auto;
+      padding: 0 16px;
+    }
+    .header-nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .header-nav a {
+      display: inline-block;
+      padding: 9px 15px;
+      border-radius: 7px;
+      background: white;
+      color: #174eaa;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .header-nav a:hover {
+      background: #e5edf9;
+    }
+    .panel {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 14px #18345a12;
+    }
+    h3 { margin-top: 0; color: #174eaa; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .field { margin-bottom: 14px; }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font: inherit;
+      background: white;
+    }
+    textarea { min-height: 95px; resize: vertical; }
+    button {
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .primary { background: #174eaa; color: white; }
+    .secondary { background: #e5edf9; color: #174eaa; }
+    .danger { background: #fee2e2; color: #b91c1c; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filters {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .question {
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .question h4 { margin: 0 0 10px; }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .option {
+      background: #f5f7fb;
+      padding: 9px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .meta {
+      color: #64748b;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .answer {
+      color: #166534;
+      font-weight: bold;
+      font-size: 13px;
+      margin: 10px 0;
+    }
+    .status {
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .active { color: #15803d; }
+    .inactive { color: #b91c1c; }
+    #message {
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .hidden { display: none; }
+
+    @media (max-width: 650px) {
+      .grid, .filters, .options {
+        grid-template-columns: 1fr;
+      }
+      .panel { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>HParentaEdu CBT</h2>
+  <div>Manajemen Bank Soal Matematika</div>
+
+  <nav class="header-nav">
+    <a href="teacher-dashboard.html">⌂ Home</a>
+    <a href="teacher-exams.html">Manajemen Ujian</a>
+  </nav>
+</header>
+
+<main>
+  <div id="message"></div>
+
+  <section class="panel">
+    <h3 id="formTitle">Tambah Soal Baru</h3>
+
+    <form id="questionForm">
+      <input type="hidden" id="questionId">
+
+      <div class="grid">
+        <div class="field">
+          <label for="grade">Kelas</label>
+          <select id="grade" required>
+            <option value="7">Kelas VII</option>
+            <option value="8">Kelas VIII</option>
+            <option value="9">Kelas IX</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="difficulty">Tingkat Kesulitan</label>
+          <select id="difficulty" required>
+            <option value="mudah">Mudah</option>
+            <option value="sedang">Sedang</option>
+            <option value="sulit">Sulit</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="topic">Materi</label>
+        <input id="topic" required placeholder="Contoh: Bilangan Bulat">
+      </div>
+
+      <div class="field">
+        <label for="questionText">Teks Soal</label>
+        <textarea id="questionText" required
+          placeholder="Tuliskan pertanyaan di sini..."></textarea>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="optionA">Pilihan A</label>
+          <input id="optionA" required>
+        </div>
+        <div class="field">
+          <label for="optionB">Pilihan B</label>
+          <input id="optionB" required>
+        </div>
+        <div class="field">
+          <label for="optionC">Pilihan C</label>
+          <input id="optionC" required>
+        </div>
+        <div class="field">
+          <label for="optionD">Pilihan D</label>
+          <input id="optionD" required>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="correctAnswer">Kunci Jawaban</label>
+          <select id="correctAnswer" required>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="isActive">Status Soal</label>
+          <select id="isActive">
+            <option value="true">Aktif</option>
+            <option value="false">Nonaktif</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="primary" id="saveButton">
+          Simpan Soal
+        </button>
+        <button type="button" class="secondary hidden" id="cancelButton">
+          Batal Edit
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h3>Daftar Bank Soal</h3>
+
+    <div class="filters">
+      <input id="searchInput" placeholder="Cari soal atau materi...">
+
+      <select id="filterGrade">
+        <option value="">Semua Kelas</option>
+        <option value="7">Kelas VII</option>
+        <option value="8">Kelas VIII</option>
+        <option value="9">Kelas IX</option>
+      </select>
+
+      <select id="filterDifficulty">
+        <option value="">Semua Kesulitan</option>
+        <option value="mudah">Mudah</option>
+        <option value="sedang">Sedang</option>
+        <option value="sulit">Sulit</option>
+      </select>
+    </div>
+
+    <div id="questionCount">Memuat soal...</div>
+    <div id="questionList"></div>
+  </section>
+</main>
+
+<script type="module" src="js/teacher-questions.js"></script>
+</body>
+</html>

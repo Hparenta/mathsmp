@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Guru - HParentaEdu CBT</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #edf2fc;
+      color: #263449;
+    }
+
+    .header {
+      background: #194fa8;
+      color: white;
+      padding: 25px 5%;
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 27px;
+    }
+
+    .header p {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 22px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.05);
+    }
+
+    .card h2 {
+      color: #194fa8;
+      margin-top: 0;
+    }
+
+    .identity p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .stat-card {
+      background: #f2f6ff;
+      border-left: 5px solid #194fa8;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .stat-card h3 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      color: #52647d;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #194fa8;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .menu-item {
+      border: 1px solid #dce5f5;
+      border-radius: 12px;
+      padding: 20px;
+      background: white;
+    }
+
+    .menu-item h3 {
+      color: #194fa8;
+      margin-top: 0;
+    }
+
+    .menu-item p {
+      color: #64748b;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .menu-status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #e8edf5;
+      color: #52647d;
+      font-size: 12px;
+    }
+
+    .logout-area {
+      text-align: right;
+    }
+
+    button {
+      border: none;
+      border-radius: 9px;
+      padding: 13px 28px;
+      background: #c62828;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    #pageMessage {
+      text-align: center;
+      padding: 30px;
+      color: #52647d;
+    }
+
+    #errorMessage {
+      color: #c62828;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #8a96a8;
+      padding: 20px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 22px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .logout-area {
+        text-align: left;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>HParentaEdu CBT</h1>
+    <p>Portal Pengelolaan Ujian Guru</p>
+  </header>
+
+  <main class="container" id="dashboardContent" hidden>
+
+    <section class="card">
+      <h2>Selamat Datang, <span id="teacherName">Guru</span>!</h2>
+      <p>Selamat bekerja di Portal Guru HParentaEdu CBT.</p>
+    </section>
+
+    <section class="card identity">
+      <h2>Identitas Guru</h2>
+
+      <p><strong>Nama:</strong> <span id="profileName">-</span></p>
+      <p><strong>Email:</strong> <span id="profileEmail">-</span></p>
+      <p><strong>Role:</strong> <span id="profileRole">-</span></p>
+      <p><strong>Status:</strong> <span id="profileStatus">Memeriksa...</span></p>
+    </section>
+
+    <section class="card">
+      <h2>Ringkasan CBT</h2>
+
+      <div class="stats">
+        <div class="stat-card">
+          <h3>Total Ujian</h3>
+          <div class="stat-number">-</div>
+        </div>
+
+        <div class="stat-card">
+          <h3>Ujian Aktif</h3>
+          <div class="stat-number">-</div>
+        </div>
+
+        <div class="stat-card">
+          <h3>Peserta Ujian</h3>
+          <div class="stat-number">-</div>
+        </div>
+      </div>
+
+      <p><small>Data ringkasan akan diaktifkan setelah modul ujian selesai dibuat.</small></p>
+    </section>
+
+    <section class="card">
+      <h2>Menu Pengelolaan CBT</h2>
+
+      <div class="menu-grid">
+
+
+        <a href="teacher-questions.html" class="menu-item">
+            <h3>Bank Soal</h3>
+            <p>Mengelola soal matematika SMP untuk ujian CBT.</p>
+            <span class="menu-status">Kelola Bank Soal</span>
+        </a>
+
+
+      <a href="teacher-exams.html" class="menu-item">
+        <h3>Manajemen Ujian</h3>
+        <p>Membuat ujian, mengatur jadwal, dan durasi pengerjaan.</p>
+        <span class="menu-status">Kelola Ujian</span>
+      </a>
+
+        <div class="menu-item">
+          <h3>Peserta Ujian</h3>
+          <p>Melihat daftar siswa yang mengikuti ujian.</p>
+          <span class="menu-status">Tahap berikutnya</span>
+        </div>
+
+        <a href="teacher-results.html" class="menu-item">
+          <h3>Hasil dan Nilai</h3>
+          <p>Melihat hasil ujian dan rekap nilai siswa.</p>
+          <span class="menu-status">Lihat Hasil Ujian</span>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="card logout-area">
+      <button id="logoutButton" type="button">Keluar</button>
+    </section>
+
+  </main>
+
+  <div id="pageMessage">
+    Memverifikasi autentikasi guru...
+  </div>
+
+  <p id="errorMessage" style="text-align:center;"></p>
+
+  <footer>
+    HParentaEdu CBT © 2026
+  </footer>
+
+  <script type="module" src="js/teacher-dashboard.js"></script>
+
+</body>
+</html>

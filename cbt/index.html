@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HParentaEdu CBT - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="login-container">
+    <section class="login-card">
+      <h1>HParentaEdu CBT</h1>
+      <p class="subtitle">Computer Based Test</p>
+
+      <form id="loginForm">
+        <label for="fullName">Nama lengkap</label>
+        <input id="fullName" type="text"
+          placeholder="Masukkan nama lengkap" required>
+
+        <label for="nis">NIS</label>
+        <input id="nis" type="text" inputmode="numeric"
+          placeholder="Masukkan NIS" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password"
+          placeholder="Masukkan password" required>
+
+        <button type="submit" id="loginButton">Masuk</button>
+        <p id="message" role="alert"></p>
+      </form>
+
+      <p class="footer">HParentaEdu · Sistem Ujian Sekolah</p>
+    </section>
+  </main>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

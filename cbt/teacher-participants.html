@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peserta Ujian - HParentaEdu CBT</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #edf2fc;
+      color: #263449;
+    }
+    .header {
+      background: #194fa8;
+      color: #fff;
+      padding: 22px 5%;
+    }
+    .header h1 { margin: 0 0 7px; font-size: 25px; }
+    .header p { margin: 0; }
+    .container {
+      max-width: 1250px;
+      margin: 28px auto;
+      padding: 0 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.05);
+    }
+    h2 { margin: 0 0 17px; color: #194fa8; font-size: 20px; }
+    .toolbar {
+      display: flex;
+      align-items: end;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .field { flex: 1 1 320px; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    select {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 15px;
+    }
+    button, .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 43px;
+      border: 0;
+      border-radius: 8px;
+      padding: 11px 18px;
+      background: #194fa8;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    button:disabled { opacity: .55; cursor: not-allowed; }
+    .back-link { background: #e8eef9; color: #194fa8; }
+    #participantsMessage {
+      margin: 16px 0 0;
+      color: #52647d;
+      line-height: 1.5;
+    }
+    #errorMessage { color: #b42318; font-weight: bold; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .summary-card {
+      background: #f2f6ff;
+      border-left: 4px solid #194fa8;
+      border-radius: 9px;
+      padding: 14px;
+    }
+    .summary-card span {
+      display: block;
+      color: #52647d;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+    .summary-card strong { color: #194fa8; font-size: 24px; }
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      min-width: 950px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #e5eaf2;
+      text-align: left;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    th { background: #f2f6ff; color: #194fa8; }
+    tbody tr:hover { background: #fafcff; }
+    .status {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .status-not_started { color: #475569; background: #e8edf5; }
+    .status-in_progress { color: #854d0e; background: #fef3c7; }
+    .status-completed { color: #166534; background: #dcfce7; }
+    .status-expired { color: #991b1b; background: #fee2e2; }
+    footer {
+      padding: 20px;
+      text-align: center;
+      color: #8a96a8;
+      font-size: 13px;
+    }
+    @media (max-width: 600px) {
+      .header h1 { font-size: 21px; }
+      .card { padding: 17px; }
+      .toolbar button, .toolbar .back-link { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>HParentaEdu CBT</h1>
+    <p>Daftar Peserta Ujian</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Peserta Ujian</h2>
+      <div class="toolbar">
+        <div class="field">
+          <label for="examSelect">Pilih ujian</label>
+          <select id="examSelect" disabled>
+            <option value="">Memuat daftar ujian...</option>
+          </select>
+        </div>
+        <button id="refreshButton" type="button" disabled>Perbarui Data</button>
+        <a class="back-link" href="teacher-dashboard.html">Kembali ke Dashboard</a>
+      </div>
+      <p id="participantsMessage" role="status">Memverifikasi akun guru...</p>
+      <p id="errorMessage" role="alert"></p>
+      <div id="summary" class="summary" hidden>
+        <div class="summary-card"><span>Total peserta</span><strong id="totalCount">0</strong></div>
+        <div class="summary-card"><span>Belum mulai</span><strong id="notStartedCount">0</strong></div>
+        <div class="summary-card"><span>Sedang mengerjakan</span><strong id="inProgressCount">0</strong></div>
+        <div class="summary-card"><span>Selesai</span><strong id="completedCount">0</strong></div>
+        <div class="summary-card"><span>Kedaluwarsa</span><strong id="expiredCount">0</strong></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Data Peserta</h2>
+      <div class="table-wrap">
+        <table id="participantsTable" hidden>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Nama Siswa</th>
+              <th>NIS</th>
+              <th>Kelas / Rombel</th>
+              <th>Status Ujian</th>
+              <th>Nilai</th>
+              <th>Waktu Mulai</th>
+              <th>Waktu Pengumpulan</th>
+            </tr>
+          </thead>
+          <tbody id="participantsBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>HParentaEdu CBT © 2026</footer>
+  <script type="module" src="js/teacher-participants.js"></script>
+</body>
+</html>

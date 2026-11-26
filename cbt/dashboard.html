@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard Siswa - HParentaEdu CBT</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+  <main class="dashboard-container">
+
+    <header class="dashboard-header">
+      <h1>HParentaEdu CBT</h1>
+      <p>Computer Based Test - Matematika SMP</p>
+    </header>
+
+    <!-- SELAMAT DATANG -->
+
+    <section class="dashboard-card">
+      <h2>Selamat Datang!</h2>
+
+      <p class="dashboard-info">
+        Anda berhasil masuk ke sistem ujian.
+      </p>
+    </section>
+
+    <!-- IDENTITAS PESERTA -->
+
+    <section class="dashboard-card">
+      <h2>Identitas Peserta</h2>
+
+      <div class="dashboard-info">
+
+        <p>
+          <strong>Nama:</strong>
+          <span id="studentName">Memuat...</span>
+        </p>
+
+        <p>
+          <strong>NIS:</strong>
+          <span id="studentNis">Memuat...</span>
+        </p>
+
+        <p>
+          <strong>Kelas:</strong>
+          <span id="studentClass">Memuat...</span>
+        </p>
+
+        <p>
+          <strong>Rombel:</strong>
+          <span id="studentSection">Memuat...</span>
+        </p>
+
+        <p>
+          <strong>Status:</strong>
+          <span id="studentStatus">Memeriksa...</span>
+        </p>
+
+      </div>
+    </section>
+
+    <!-- DAFTAR UJIAN -->
+
+    <section class="dashboard-card">
+
+      <h2>Ujian Saya</h2>
+
+      <p
+        id="examMessage"
+        class="dashboard-info"
+      >
+        Memuat daftar ujian...
+      </p>
+
+      <div id="examList"></div>
+
+    </section>
+
+
+    <!-- RIWAYAT UJIAN -->
+
+    <section class="dashboard-card">
+
+      <h2>Riwayat Ujian</h2>
+
+      <p
+        id="historyMessage"
+        class="dashboard-info"
+      >
+        Memuat riwayat ujian...
+      </p>
+
+      <div id="historyList"></div>
+
+    </section>
+
+    <!-- LOGOUT -->
+
+    <section class="dashboard-card">
+
+      <button
+        type="button"
+        id="logoutButton"
+        class="logout-button"
+      >
+        Keluar
+      </button>
+
+    </section>
+
+    <p id="dashboardMessage"></p>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+      HParentaEdu CBT &copy; 2026
+    </footer>
+
+  </main>
+
+  <script
+    type="module"
+    src="js/dashboard.js"
+  ></script>
+
+</body>
+</html>
