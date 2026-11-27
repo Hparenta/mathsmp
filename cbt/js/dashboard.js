@@ -506,6 +506,14 @@ function formatCountdown(milliseconds) {
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
+function typesetMath(element) {
+  if (window.MathJax?.typesetPromise && element) {
+    window.MathJax.typesetPromise([element]).catch((error) => {
+      console.warn("Gagal merender notasi matematika:", error);
+    });
+  }
+}
+
 function sanitizeQuestionSvg(svgSource) {
   if (
     typeof svgSource !== "string" ||
@@ -1167,6 +1175,7 @@ function renderActiveExam(data) {
         : "Tandai ragu-ragu";
 
     updateNavigation();
+    typesetMath(questionPanel);
   }
 
   // ========================================
