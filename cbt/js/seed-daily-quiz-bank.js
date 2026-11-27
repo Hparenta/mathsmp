@@ -1,4 +1,5 @@
 import { auth } from "./firebase-config.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 import { dailyQuizQuestions } from "./daily-quiz-bank-data.js";
 
 const API_BASE = "https://backend.herdiantoparenta2.workers.dev";
@@ -102,4 +103,12 @@ async function runImport() {
   }
 }
 
-document.getElementById("startImport").addEventListener("click", runImport);
+const startButton = document.getElementById("startImport");
+startButton.disabled = true;
+onAuthStateChanged(auth, (user) => {
+  startButton.disabled = !user;
+  document.getElementById("status").textContent = user
+    ? "Sesi guru terdeteksi. Siap melakukan impor."
+    : "Belum login. Login sebagai guru, lalu buka halaman impor ini.";
+});
+startButton.addEventListener("click", runImport);
