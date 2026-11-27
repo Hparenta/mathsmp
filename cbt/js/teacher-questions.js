@@ -12,6 +12,18 @@ const $ = (id) => document.getElementById(id);
 let questions = [];
 let currentToken = null;
 
+function typesetMath(element) {
+  if (!window.MathJax || !element) return;
+
+  const ready = window.MathJax.startup?.promise || Promise.resolve();
+
+  ready
+    .then(() => window.MathJax.typesetPromise?.([element]))
+    .catch((error) => {
+      console.warn("Gagal merender notasi matematika:", error);
+    });
+}
+
 function showMessage(message, error = false) {
   $("message").textContent = message;
   $("message").style.color = error ? "#b91c1c" : "#15803d";
@@ -126,6 +138,8 @@ function renderQuestions() {
       </div>
     </article>
   `).join("");
+
+  typesetMath($("questionList"));
 
   $("questionList").querySelectorAll("[data-edit]").forEach((button) => {
     button.addEventListener("click", () => {
