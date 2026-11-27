@@ -196,15 +196,16 @@ function installExamStyles() {
 
     .cbt-question-image {
       display: block;
-      width: auto;
-      max-width: 100%;
-      max-height: 340px;
+      width: 100%;
+      max-width: 680px;
       height: auto;
+      max-height: 460px;
       object-fit: contain;
-      margin: 0 auto 20px;
-      padding: 8px;
+      object-position: center;
+      margin: 4px auto 22px;
+      padding: 14px;
       border: 1px solid #e2e8f0;
-      border-radius: 10px;
+      border-radius: 12px;
       background: #ffffff;
     }
 
@@ -506,34 +507,86 @@ function formatCountdown(milliseconds) {
 }
 
 function sanitizeQuestionSvg(svgSource) {
-  if (typeof svgSource !== "string" || !svgSource.trim() || svgSource.length > 20000) {
+  if (
+    typeof svgSource !== "string" ||
+    !svgSource.trim() ||
+    svgSource.length > 20000
+  ) {
     return "";
   }
 
+  // Elemen SVG yang lazim dipakai untuk ilustrasi geometri dan grafik.
   const allowedTags = new Set([
-    "svg", "g", "path", "rect", "circle", "ellipse",
-    "line", "polyline", "polygon", "text", "tspan"
-  ]);
-  const allowedAttributes = new Set([
-    "xmlns", "viewBox", "width", "height", "x", "y",
-    "x1", "y1", "x2", "y2", "cx", "cy", "r", "rx", "ry",
-    "d", "points", "fill", "fill-opacity", "stroke",
-    "stroke-width", "stroke-dasharray", "stroke-linecap",
-    "stroke-linejoin", "font-size", "font-weight",
-    "font-family", "text-anchor", "dominant-baseline",
-    "opacity", "transform"
+    "svg", "g", "defs", "title", "desc",
+    "path", "rect", "circle", "ellipse", "line",
+    "polyline", "polygon", "text", "tspan",
+    "marker", "clipPath", "mask", "symbol", "use",
+    "linearGradient", "radialGradient", "stop", "pattern"
   ]);
 
+  const allowedAttributes = new Set([
+    "xmlns", "xmlns:xlink", "viewBox", "preserveAspectRatio",
+    "width", "height", "x", "y", "x1", "y1", "x2", "y2",
+    "cx", "cy", "r", "rx", "ry", "d", "points",
+    "fill", "fill-rule", "fill-opacity", "stroke",
+    "stroke-width", "stroke-opacity", "stroke-dasharray",
+    "stroke-dashoffset", "stroke-linecap", "stroke-linejoin",
+    "font-size", "font-weight", "font-family", "text-anchor",
+    "dominant-baseline", "textLength", "lengthAdjust",
+    "dx", "dy", "rotate", "opacity", "transform", "id",
+    "clip-path", "mask", "marker-start", "marker-mid", "marker-end",
+    "gradientUnits", "gradientTransform", "spreadMethod",
+    "offset", "stop-color", "stop-opacity", "patternUnits",
+    "patternContentUnits", "patternTransform",
+    "markerWidth", "markerHeight", "refX", "refY",
+    "orient", "href", "xlink:href"
+  ]);
+
+  const safeStyleProperties = new Set([
+    "fill", "fill-rule", "fill-opacity", "stroke",
+    "stroke-width", "stroke-opacity", "stroke-dasharray",
+    "stroke-linecap", "stroke-linejoin", "font-size",
+    "font-weight", "font-family", "text-anchor",
+    "dominant-baseline", "opacity"
+  ]);
+
+  function sanitizeStyle(styleText) {
+    return styleText.split(";").map((declaration) => {
+      const separator = declaration.indexOf(":");
+      if (separator < 1) return "";
+
+      const property = declaration.slice(0, separator).trim().toLowerCase();
+      const value = declaration.slice(separator + 1).trim();
+
+      if (
+        !safeStyleProperties.has(property) ||
+        !value ||
+        /url\s*\(|expression\s*\(|javascript:|@import|[<>]/i.test(value)
+      ) {
+        return "";
+      }
+
+      return `${property}:${value}`;
+    }).filter(Boolean).join(";");
+  }
+
   try {
-    const parsed = new DOMParser().parseFromString(svgSource, "image/svg+xml");
+    const parsed = new DOMParser().parseFromString(
+      svgSource,
+      "image/svg+xml"
+    );
     const root = parsed.documentElement;
+
     if (
       root.localName !== "svg" ||
       root.namespaceURI !== "http://www.w3.org/2000/svg" ||
       parsed.querySelector("parsererror")
-    ) return "";
+    ) {
+      return "";
+    }
 
     const elements = [root, ...root.querySelectorAll("*")];
+
     for (const element of elements) {
       if (!allowedTags.has(element.localName)) {
         element.remove();
@@ -542,11 +595,42 @@ function sanitizeQuestionSvg(svgSource) {
 
       for (const attribute of [...element.attributes]) {
         const name = attribute.name;
-        const value = attribute.value;
+        const value = attribute.value.trim();
+
+        if (name === "style") {
+          const safeStyle = sanitizeStyle(value);
+          if (safeStyle) {
+            element.setAttribute("style", safeStyle);
+          } else {
+            element.removeAttribute(name);
+          }
+          continue;
+        }
+
+        if (!allowedAttributes.has(name)) {
+          element.removeAttribute(name);
+          continue;
+        }
+
+        // Referensi hanya boleh menuju ID internal SVG, bukan URL eksternal.
         if (
-          !allowedAttributes.has(name) ||
-          !allowedAttributes.has(name) ||
-          /url\s*\(|javascript:|data:/i.test(value)
+          ["href", "xlink:href"].includes(name) &&
+          !/^#[A-Za-z_][\w:.-]*$/.test(value)
+        ) {
+          element.removeAttribute(name);
+          continue;
+        }
+
+        if (/url\s*\(/i.test(value)) {
+          if (!/^url\(\s*#[A-Za-z_][\w:.-]*\s*\)$/i.test(value)) {
+            element.removeAttribute(name);
+          }
+          continue;
+        }
+
+        if (
+          /javascript:|data:|expression\s*\(/i.test(value) ||
+          (name === "id" && !/^[A-Za-z_][\w:.-]*$/.test(value))
         ) {
           element.removeAttribute(name);
         }
