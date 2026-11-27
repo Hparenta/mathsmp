@@ -1104,10 +1104,8 @@ function renderActiveExam(data) {
       "Klik untuk mengumpulkan ujian. Soal yang belum dijawab akan diberi peringatan.";
 
     submitButton.addEventListener("click", () => {
-      if (answeredCount !== total) return;
-
       submitExam();
-  });
+    });
 
     navigation.append(
       heading,
@@ -1341,21 +1339,19 @@ function updateNavigationAfterSave() {
     shell.querySelector(".cbt-submit");
 
   if (submitButton) {
-    const allAnswered = answeredCount === total;
+    // Tombol tetap aktif meskipun ada soal kosong.
+    // Nonaktifkan hanya saat penyimpanan jawaban sedang berlangsung.
     const allSaved = savingQuestions.size === 0;
 
-    submitButton.disabled = !(allAnswered && allSaved);
+    submitButton.disabled = !allSaved;
+    submitButton.style.opacity = allSaved ? "1" : "0.55";
+    submitButton.style.cursor = allSaved ? "pointer" : "not-allowed";
 
-    submitButton.style.opacity =
-      allAnswered && allSaved ? "1" : "0.55";
-
-    submitButton.style.cursor =
-      allAnswered && allSaved ? "pointer" : "not-allowed";
-
-    submitButton.title =
-      allAnswered && allSaved
-        ? "Semua jawaban sudah tersimpan."
-        : "Jawab dan simpan semua soal terlebih dahulu.";
+    submitButton.title = allSaved
+      ? (answeredCount === total
+          ? "Semua jawaban sudah tersimpan. Klik untuk mengumpulkan ujian."
+          : "Masih ada soal kosong. Klik untuk mengumpulkan dengan jawaban yang sudah ada.")
+      : "Tunggu hingga jawaban selesai disimpan.";
   }
 }
 
@@ -1662,8 +1658,10 @@ function showExamResultModal(result) {
 async function submitExam() {
   if (!activeAttempt || isSubmittingExam) return;
 
-    const questions = activeAttempt.exam.questions;
-  const answers = activeAttempt.attempt.answers || {};
+  const questions = activeAttempt.exam.questions;
+  // Gunakan state jawaban terbaru yang sudah dikonfirmasi tersimpan ke server,
+  // bukan snapshot attempt.answers saat ujian pertama kali dimulai.
+  const answers = savedAnswers;
 
   const unansweredCount = questions.filter((question) => {
     return !["A", "B", "C", "D"].includes(
