@@ -14,6 +14,14 @@ let questions = [];
 let exams = [];
 let selectedQuestionIds = new Set();
 
+function typesetMath(element) {
+  if (window.MathJax?.typesetPromise && element) {
+    window.MathJax.typesetPromise([element]).catch((error) => {
+      console.warn("Gagal merender notasi matematika:", error);
+    });
+  }
+}
+
 function showMessage(message, error = false) {
   $("message").textContent = message;
   $("message").style.color = error ? "#b91c1c" : "#15803d";
@@ -125,6 +133,8 @@ function renderQuestionPicker() {
       </span>
     </label>
   `).join("");
+
+  typesetMath($("questionPicker"));
 
   $("questionPicker")
     .querySelectorAll('input[type="checkbox"]')
