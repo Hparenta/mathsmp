@@ -506,7 +506,7 @@ function formatCountdown(milliseconds) {
 }
 
 function sanitizeQuestionSvg(svgSource) {
-  if (typeof svgSource !== "string" || !svgSource.trim() || svgSource.length > 50000) {
+  if (typeof svgSource !== "string" || !svgSource.trim() || svgSource.length > 20000) {
     return "";
   }
 
@@ -545,7 +545,8 @@ function sanitizeQuestionSvg(svgSource) {
         const value = attribute.value;
         if (
           !allowedAttributes.has(name) ||
-          /url\\s*\\(|javascript:|data:/i.test(value)
+          !allowedAttributes.has(name) ||
+          /url\s*\(|javascript:|data:/i.test(value)
         ) {
           element.removeAttribute(name);
         }
