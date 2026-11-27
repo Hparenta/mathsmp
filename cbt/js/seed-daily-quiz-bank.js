@@ -61,7 +61,8 @@ async function runImport() {
           options: source.options,
           correctAnswer: source.correctAnswer,
           isActive: true,
-          explanation: source.explanation
+          explanation: source.explanation,
+          ...(source.imageSvg ? { imageSvg: source.imageSvg } : {})
         };
 
         try {
