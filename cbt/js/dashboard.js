@@ -194,6 +194,20 @@ function installExamStyles() {
       white-space: pre-wrap;
     }
 
+    .cbt-question-image {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      max-height: 340px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 20px;
+      padding: 8px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
     .cbt-instruction {
       color: #7890ae;
       font-size: 12px;
@@ -489,6 +503,59 @@ function formatCountdown(milliseconds) {
   }
 
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function sanitizeQuestionSvg(svgSource) {
+  if (typeof svgSource !== "string" || !svgSource.trim() || svgSource.length > 50000) {
+    return "";
+  }
+
+  const allowedTags = new Set([
+    "svg", "g", "path", "rect", "circle", "ellipse",
+    "line", "polyline", "polygon", "text", "tspan"
+  ]);
+  const allowedAttributes = new Set([
+    "xmlns", "viewBox", "width", "height", "x", "y",
+    "x1", "y1", "x2", "y2", "cx", "cy", "r", "rx", "ry",
+    "d", "points", "fill", "fill-opacity", "stroke",
+    "stroke-width", "stroke-dasharray", "stroke-linecap",
+    "stroke-linejoin", "font-size", "font-weight",
+    "font-family", "text-anchor", "dominant-baseline",
+    "opacity", "transform"
+  ]);
+
+  try {
+    const parsed = new DOMParser().parseFromString(svgSource, "image/svg+xml");
+    const root = parsed.documentElement;
+    if (
+      root.localName !== "svg" ||
+      root.namespaceURI !== "http://www.w3.org/2000/svg" ||
+      parsed.querySelector("parsererror")
+    ) return "";
+
+    const elements = [root, ...root.querySelectorAll("*")];
+    for (const element of elements) {
+      if (!allowedTags.has(element.localName)) {
+        element.remove();
+        continue;
+      }
+
+      for (const attribute of [...element.attributes]) {
+        const name = attribute.name;
+        const value = attribute.value;
+        if (
+          !allowedAttributes.has(name) ||
+          /url\\s*\\(|javascript:|data:/i.test(value)
+        ) {
+          element.removeAttribute(name);
+        }
+      }
+    }
+
+    return new XMLSerializer().serializeToString(root);
+  } catch {
+    return "";
+  }
 }
 
 function createTextElement(tag, text, className = "") {
@@ -908,7 +975,21 @@ function renderActiveExam(data) {
       "cbt-instruction"
     );
 
-    questionPanel.append(questionText, instruction);
+    questionPanel.appendChild(questionText);
+
+    const safeSvg = sanitizeQuestionSvg(question.imageSvg);
+    if (safeSvg) {
+      const illustration = document.createElement("img");
+      illustration.className = "cbt-question-image";
+      illustration.alt = "Ilustrasi soal";
+      illustration.loading = "lazy";
+      illustration.decoding = "async";
+      illustration.src =
+        "data:image/svg+xml;charset=utf-8," + encodeURIComponent(safeSvg);
+      questionPanel.appendChild(illustration);
+    }
+
+    questionPanel.appendChild(instruction);
 
     const optionsContainer = document.createElement("div");
     optionsContainer.className = "cbt-options";
