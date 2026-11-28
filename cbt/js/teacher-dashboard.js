@@ -8,6 +8,25 @@ import {
 // Backend lokal untuk pengujian.
 const API_BASE = "https://backend.herdiantoparenta2.workers.dev";
 
+async function apiGet(path, user) {
+  const idToken = await user.getIdToken();
+  const response = await fetch(`${API_BASE}${path}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${idToken}`,
+      "Content-Type": "application/json"
+    },
+    cache: "no-store"
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok || data.status !== "success") {
+    throw new Error(data.message || `Gagal mengambil data (${response.status}).`);
+  }
+  return data;
+}
+
+
 const dashboard = document.getElementById("dashboardContent");
 const pageMessage = document.getElementById("pageMessage");
 const errorMessage = document.getElementById("errorMessage");
@@ -69,6 +88,30 @@ function displayTeacher(profile, user) {
   dashboard.hidden = false;
 }
 
+async function loadDashboardSummary(user) {
+  const totalElement = document.getElementById("totalExamCount");
+  const activeElement = document.getElementById("activeExamCount");
+  const participantElement = document.getElementById("participantCount");
+  const summaryMessage = document.getElementById("summaryMessage");
+
+  try {
+    const data = await apiGet("/api/teacher/dashboard-summary", user);
+    const summary = data.summary || {};
+
+    totalElement.textContent = String(summary.totalExams ?? 0);
+    activeElement.textContent = String(summary.activeExams ?? 0);
+    participantElement.textContent = String(summary.participants ?? 0);
+    summaryMessage.textContent = "Data ringkasan diperbarui dari Firestore.";
+  } catch (error) {
+    console.error("Gagal memuat ringkasan CBT:", error);
+    totalElement.textContent = "–";
+    activeElement.textContent = "–";
+    participantElement.textContent = "–";
+    summaryMessage.textContent = "Ringkasan belum dapat dimuat. Silakan muat ulang halaman.";
+  }
+}
+
+
 onAuthStateChanged(auth, async (user) => {
   if (verificationStarted) return;
 
@@ -83,6 +126,7 @@ onAuthStateChanged(auth, async (user) => {
     const profile = await verifyTeacher(user);
 
     displayTeacher(profile, user);
+    await loadDashboardSummary(user);
 
   } catch (error) {
     console.error("Dashboard verification error:", error);
